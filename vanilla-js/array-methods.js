@@ -25,5 +25,10 @@ const transferToObjects2 = numbers.map((newObj) => {    return v = {newObj}; });
 console.log(transferToObjects2)
 
 
- const transformToObjects  = numbers.map((newObj) => {    return v = {newObj}; }); 
+const transformToObjects  = numbers.map((newObj) => {    return v = {newObj}; }); 
+console.log(transformToObjects)
+
+
+const numbers = [1,2,3]
+const transformToObjects  = numbers.map((vval) => {    return v = {val}; }); 
 console.log(transformToObjects)

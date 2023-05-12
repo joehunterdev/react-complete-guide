@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "name": "chord-finder",
+  "version": "0.0.1",
+  "description": "A simple chord finder based on user input notes on a piano",
+  "main": "chord-finder.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chord",
+    "js"
+  ],
+  "author": "Joe Hunter",
+  "license": "MIT"
+}
