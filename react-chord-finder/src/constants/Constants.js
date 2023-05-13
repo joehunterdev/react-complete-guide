@@ -14,7 +14,6 @@ const _notes = {
     12:'B'
 }
 Object.freeze(_notes)
-// export default _notes;
 
 //Numberd object
 const _aliases = {
@@ -27,13 +26,12 @@ const _aliases = {
 }
 
 Object.freeze(_aliases)
-// export default _aliases;
 
 //Numberd object
   //index = num of notes "two:"
     // two indexes []
     // root and 6
-const  _intervals = {
+const  _intervals = [{
     "third" : {
        "major": [3,5],
        "minor":[2,5]
@@ -42,12 +40,10 @@ const  _intervals = {
         "major 7th":[3,5,7],
         "minor 7th":[2,5,7]
     }
-}
+}]
 
 
 
 Object.freeze(_intervals)
-
-export default {_intervals,_aliases};
-
-// export default {_intervals,_aliases,_notes};
+// export  default {_intervals,_aliases,_notes}
+export default _intervals

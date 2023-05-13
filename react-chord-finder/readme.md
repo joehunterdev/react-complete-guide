@@ -18,5 +18,5 @@
 -  *the use of _, which is frequently used to preface the name of an object's property or method that is private.* 
 -  Test cases
 -  Docs / Diagram
--  investigate '.map() ' `.filter()` 
+-  investigate '.map()' `.filter()` 
 -  iterating objects
