@@ -17,14 +17,13 @@ Object.freeze(_notes)
 // export default _notes;
 
 //Numberd object
-const _aliases = {
-
-    2: ['C#','Bb'],
-    4: ['D#','Eb'],
-    6: ['F#','Gb'],
-    7: ['G#','Ab'],
-    11:['A#','Bb']
-}
+const _aliases = [
+     ['C#','Bb'],
+     ['D#','Eb'],
+     ['F#','Gb'],
+     ['G#','Ab'],
+     ['A#','Bb']
+]
 
 Object.freeze(_aliases)
 // export default _aliases;
@@ -51,3 +50,29 @@ Object.freeze(_intervals)
 export default {_intervals,_aliases};
 
 // export default {_intervals,_aliases,_notes};
+
+
+/*
+const _intervals = Object.freeze({
+	//intervals
+	one: [
+		{
+			interval: [2],
+*/
+
+/*
+const _notes = {
+	0: "C",
+*/
+
+/*Returning a note*
+/*Uszes a funciotn, uses keys  and find, finally export*/
+
+/*
+function getNoteId(value) {
+    return Object
+        .keys(_notes)
+        .find(key => _notes[key] === value);
+}
+module.exports = getNoteId
+*/
