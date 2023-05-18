@@ -118,16 +118,6 @@ function add(a:number,b:number)
 
 ### Updates
 - Create React App is dead, hooks are the future utilize: "Next" "Vite" or "Remix" 
-- [Alternatives to React](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a087a325)
-
----
-
-### Todo's 
-
-18-05-2023
-
-- [] Re install starter as finance dashboard
-- [] Enable strict mode
-- [x] setup react app using next.js or any alternative to create-react-app
-  - could create issues with app.jsx
-- [] Document and code Section 3 [Working with components](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25595404#overview)
+- [Alternatives to Create React App](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a087a325)
+ 
+ 
