@@ -2,7 +2,8 @@ import React from "react";
 import './Expenses.css'
 import ExpenseItem from "./ExpenseItem";
 
-function Expenses(props){
+//Alternative Syntax
+const Expenses = (props) => {
     return (
     <div className="expenses">
       <ExpenseItem title={props.expenses[0].title} id={props.expenses[0].id} amount={props.expenses[0].amount} date={props.expenses[0].date}></ExpenseItem>
