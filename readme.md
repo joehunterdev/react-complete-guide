@@ -39,6 +39,13 @@ concat()  => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/G
 slice()  => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
 splice()  => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
 
+## TypeScript
+    Allows us to define types, avoiding potential issues like contactenating to strings together "1"+"2" instead of computing them as integers. This stricter typing will allow bugs to be detected (in ide) before run time. 
+        ```
+        function add(a:number,b:number)
+        ```
+
+
 ## Updates
     - Create React App is dead, hooks are the future utilize: "Next" "Vite" or "Remix" (create react app)[https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a087a325]
 
