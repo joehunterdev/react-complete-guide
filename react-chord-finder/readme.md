@@ -10,11 +10,12 @@ Rough Outline Output chord name output from virtual piano keys
 - [x] getChord
   
 -  uses an object two: [5,5] output C fifth in case to define chord type (major, minor, augmented, diminished, 7th, Triad, 9th, sus) 
+  
     ```
         // Array Destructuring
         [a,b] = ["Hello", "Joe"]
-        
     ```
+
 - [] Use props
 - [] Use State
 - [] PascalCase
