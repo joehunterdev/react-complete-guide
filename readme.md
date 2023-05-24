@@ -164,11 +164,6 @@
     - Just remember were passing around a pointer to a function
     - First check you can pass state to the parent. 
   
-    #### Assignment 2
-    - Listen to change evvent on drop down
-    - forward data up
-    - in that componnet store it (check it)
-
 
   #### Lifiting up the state
     - You may want move the state between two components on the same level (two siblings for example) but at differnent branches in the component tree. 
@@ -177,7 +172,10 @@
     - Infact as we have a 3 level structure it is ExpenseForm.js that passes the state up
     - You only need to lift the state as far as required. Dont have to go all the way to app.js root
 
-
+    #### Assignment 2 (4.)
+    - [x] Listen to change event on drop down (picked yea wants to go up to expenses)
+    - [x] Forward data up 
+    - [x] Save in state in expense
    
 
 ---
@@ -212,12 +210,13 @@ function add(a:number,b:number)
 ---
 
 ### Todo's 
+24-05-2023
+- Basic react test app (taking it out of this current dashboard concept) 
+- [] Revise passing up state 
 
 18-05-2023
-
 - [] Re install starter as finance dashboard
-- [] Enable strict mode
+- [x] Enable strict mode
 - [x] setup react app using next.js or any alternative to create-react-app
   - could create issues with app.jsx
-- [] Document and code Section 3 [Working with components](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25595404#overview)
-- [] Revise passing up state 
+- [x] Document and code Section 3 [Working with components](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25595404#overview)

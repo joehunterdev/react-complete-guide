@@ -29,13 +29,11 @@ function App() {
       console.log("im in app.js");
       console.log(expenses)
   }
-  const onChangeFilter = inputFilter => {
-     console.log(inputFilter)
-  }
+
   return (
     <div>
        <NewExpense onAddExpense={addExpenseHandler} />
-       <Expenses expenses={expenses} />
+       <Expenses expenses={expenses}/>
     </div>
   );
 
