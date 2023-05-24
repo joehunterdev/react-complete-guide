@@ -7,7 +7,7 @@
 - Makes rich interfaces easier. Declarative component focused approach
 - SPA Single Page Application
 - Beware that alot of *next gen* es6 features will need to be setup to run in browser
-
+- 
 ### The basics: Component
   - Trait of a component is that its reusable (dry)
   - Separation of concerns dont do many things in one place 1 specific task
@@ -19,7 +19,7 @@
 
 - React Code will be transformed and optimized under hood
 - index.js is first to run
-- typically 2 react packages (dom /)
+- typically 2 react packages: react & react Dom (dom /)
 - we import react dom and create root tag jsx <App /> which reads from index.html
 - if its inner js files you can ommit the .js on import
 - Component is a custom html element 
@@ -89,7 +89,96 @@
    - *Just to beaware you may come accross this in wild*
 
 
+### The basics: State & Events
+  - React to events from the user, clicks content capture
+  - We can listen to all DOM events [Button Dom](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) 
+
+  #### Listening & Handlers
+   - Listner: Simply add a prop `onClick={clickHandler}` and link to a function *could also be an inline (anonymous) arrow function*
+   - Were just pointing to the function no need for `()` otherwise js will do at runtime
+   - A convention is using "Handler" in the name
+
+  #### Listening & Handlers
+   - To be able to change variables/props we need to use **state**
+   - If we have a variable in a function that changes react does not care: code executes but the overal function does not change. Function is not retriggerd after first render
+   - Remember we just dealing with functions that output JSX. And we need to call it. 
+    1. React calls any functions that returns JSX 
+    2. Returns any functions within that JSX
+       After rendering react will not re-render/re-evalutated (unless we use state)
+
+  #### State
+   - To get started with state we need to use a *named import* import this from react lib `{useState}`
+   - Allows us to define which elements of a component can be updated
+   - Simply this *hook* inside your function **useState()** no nesting. You just call directly top level main function
+   - State needs a default `useState(props.title);` 
+   - No assignment using `=` simply function call
+   - Pass a the prop and a new method via *destructuring [title,setTitle]*
+   - Use *Const* 
+      `let [title,setTitle] = useState(props.title);
+      const clickHandler = () => {
+          setTitle('Updated'); //state updating function
+       }`
+
+   - Each time a component is registerd / instantiated it will create a new copy of use state, managed independantly. Even if the component exists more than once. 
+   - React keeps track of used state. (Will protect that var if unaffected)
+   - These states ofcourse can be updated in a variety of ways. Over HTTP for example
+
+  #### Forms
+   -  It will usually make sense to separate form and logic to keep things lean
+   -  You can use standard html atts on forms as expected
+
+  #### Event Listening
+  - See available events some will work better than others
+  - We dont need a long addEventListner passing the element we just need to specify event as a param `titleChangeHandler = (event)`
+  - event will be an object from which you can extract *event.target.value*
+
+  #### Multiple States
+  - Using this event.target.state we ensure that this data survives and is not affected by the lifecycle of the component
+  - Event values are always stored as string
+
+  #### Single States
+  -  This is a preference You could make your code leaner by utilizing one state by passing an object `useState({t})`
+  -  Make sure you dont overwrite your state when you init your state function. So you will need to use spread operator `...userInput,`
+
+  #### Updating state depending on prev
+   - When updating state and depend on previous you should **pass in a function into state updater function. Like anonymous arrow**.
+   - `setUserInput((prevState) => {return ...prevState,enteredTitle:event.target.value};)`
+   - React schedules updates. So you could be dependant on an old snapshhot. 
+   - Using *prevState* ensures everything is up to date 
+
+  #### Form handling
+   -  You can utilize onSubmit, pass the event and assign state vars to object keys
+   -  Dont forget to utilize *preventDefault*
+   -  At somepoint you will need to clear the form data (use state)
+
+  #### Two way binding
+    - You can reset / clear content by setting to empty string on the submitHandler `dateChangeHandler('');` & feeding back a` value={}` att to form
+
+  #### Child to parent 
+    - As were working with a new expense really we should be modifying our data at the same level as the rest of our expense initialization in app.js
+    - We can pass a function to child component and call that function inside the child
+    - *Props can only be passd from parent->child*
+    - For example: one level up we can pass a function `onSaveDataExpense`
+    - Reminder: your props come in from attributes. `<ExpenseItem someProp={}>`
+    - In the example we have passed the data and assignned it a unique id
+    - Just remember were passing around a pointer to a function
+    - First check you can pass state to the parent. 
   
+    #### Assignment 2
+    - Listen to change evvent on drop down
+    - forward data up
+    - in that componnet store it (check it)
+
+
+  #### Lifiting up the state
+    - You may want move the state between two components on the same level (two siblings for example) but at differnent branches in the component tree. 
+    - The approach is utilizing props *function* to pass up app.js which the siblings share. 
+    - `props.onAddExpense(expenseData)` At the moment we pass data in way of a function the state gets lifted
+    - Infact as we have a 3 level structure it is ExpenseForm.js that passes the state up
+    - You only need to lift the state as far as required. Dont have to go all the way to app.js root
+
+
+   
 
 ---
 
@@ -118,6 +207,17 @@ function add(a:number,b:number)
 
 ### Updates
 - Create React App is dead, hooks are the future utilize: "Next" "Vite" or "Remix" 
-- [Alternatives to Create React App](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a087a325)
- 
- 
+- [Alternatives to React](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a087a325)
+
+---
+
+### Todo's 
+
+18-05-2023
+
+- [] Re install starter as finance dashboard
+- [] Enable strict mode
+- [x] setup react app using next.js or any alternative to create-react-app
+  - could create issues with app.jsx
+- [] Document and code Section 3 [Working with components](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25595404#overview)
+- [] Revise passing up state 
