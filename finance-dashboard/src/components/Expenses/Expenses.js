@@ -17,25 +17,23 @@ const Expenses = (props) => {
     setFilterDate(inputFilterYear);
   };
 
+  const filteredExpenses = () => {
+
+    return  inputDateFilter ? props.expenses.filter((expense) => expense.date.getUTCFullYear().toString() === inputDateFilter) : props.expenses 
+
+  }
+
+
   return (
     <div className="expenses">
       <ExpensesFilter onSaveFilterData={saveFilterDataHandler} />
-      {inputDateFilter
-        ? props.expenses.filter((expense) => expense.date.getUTCFullYear().toString() === inputDateFilter).map(expense =>
+      {filteredExpenses().map((expense) =>
             <ExpenseItem
              title={expense.title}
              key={expense.id}
              amount={expense.amount}
              date={expense.date}></ExpenseItem>
-             )
-        : props.expenses.map((expense) =>
-            <ExpenseItem
-             title={expense.title}
-             key={expense.id}
-             amount={expense.amount}
-             date={expense.date}></ExpenseItem>
-             )
-      }
+             )}
  
     </div>
   );
