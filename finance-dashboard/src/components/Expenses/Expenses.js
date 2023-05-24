@@ -1,33 +1,90 @@
-import React,{useState} from "react";
-import './Expenses.css'
+import React, { useState } from "react";
+import "./Expenses.css";
 import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpensesFilter";
 
-
-//Alternative Syntax
+//Alternative Syntax to function
 const Expenses = (props) => {
-    //Step 3: Define state + default
-    const [inputDateFilter,setFilterDate] = useState(false)
+  //Step 3: Define state + default
+  const [inputDateFilter, setFilterDate] = useState(false);
+//   const [expensesFiltered, setFilterDate] = useState(false);
 
-   //Step 1: Setup function recieved by child
-    // pass param could be called anything
-   const saveFilterDataHandler = (inputFilterData) => {
+  //Step 1: Setup function recieved by child
+  // pass param could be called anything
+  const saveFilterDataHandler = (inputFilterYear) => {
+    //  const filterYear = {inputFilterYear}
 
-     const filterData = {inputFilterData}
+    //Step 3.5: Define state + default
+    setFilterDate(inputFilterYear);
+    //   console.log(filterYear)
+  };
 
-     //Step 3.5: Define state + default
-      setFilterDate(filterData)
+//   const filterExpenses = () => {
 
-   }
+//      if(inputDateFilter){
 
-    return (
+//      } else {
+
+//         props.expenses.filter(expense => expense.date.getUTCFullYear().toString() === inputDateFilter);
+
+//      }
+
+
+//   }
+
+  //    const date
+
+  return (
     <div className="expenses">
       <ExpensesFilter onSaveFilterData={saveFilterDataHandler} />
-      <ExpenseItem title={props.expenses[0].title} id={props.expenses[0].id} amount={props.expenses[0].amount} date={props.expenses[0].date}></ExpenseItem>
-      <ExpenseItem title={props.expenses[1].title} id={props.expenses[1].id} amount={props.expenses[1].amount} date={props.expenses[1].date}></ExpenseItem>
-      <ExpenseItem title={props.expenses[2].title} id={props.expenses[2].id} amount={props.expenses[2].amount} date={props.expenses[2].date}></ExpenseItem>
-    </div>
-    )
-}
 
-export default Expenses
+      {/* {props.expenses.map(expense =>
+             <ExpenseItem
+              title={expense.title}
+              key={expense.id}
+              amount={expense.amount}
+              date={expense.date}></ExpenseItem>
+              )} */}
+      {/* {props.expenses.map((expense) => console.log(typeof inputDateFilter))}
+      {console.log(inputDateFilter)} */}
+      {/* {console.log())} */}
+
+      {inputDateFilter
+        ? props.expenses.filter((expense) => expense.date.getUTCFullYear().toString() === inputDateFilter).map(expense =>
+            <ExpenseItem
+             title={expense.title}
+             key={expense.id}
+             amount={expense.amount}
+             date={expense.date}></ExpenseItem>
+             )
+        : props.expenses.map((expense) =>
+            <ExpenseItem
+             title={expense.title}
+             key={expense.id}
+             amount={expense.amount}
+             date={expense.date}></ExpenseItem>
+             )
+      }
+ 
+      {/* {inputDateFilter === "all"
+        ? props.expenses
+        : props.expenses
+            .filter(
+              (expense) =>
+                expense.date.getUTCFullYear().toString() === inputDateFilter
+            )
+            .map((expense) => (
+            console.log(expense.title)
+                //   <ExpenseItem
+            //     title={expense.title}
+            //     key={expense.id}
+            //     amount={expense.amount}
+            //     date={expense.date}
+            //   ></ExpenseItem>
+            ))} */}
+
+    </div>
+  );
+};
+
+export default Expenses;
