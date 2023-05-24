@@ -10,15 +10,13 @@ function NewExpense(props){
             ...inputExpenseData,
             id:Math.random().toString()
         }
-        console.log("New " + expenseData)
         props.onAddExpense(expenseData)//passing up as argument
     }
 
     return(
         <div className='new-expense'>
           <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} /> 
-          {/* simply a pointer */}
-        </div>
+         </div>
     )
 
 }

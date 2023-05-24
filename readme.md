@@ -88,6 +88,7 @@
    ```
    - *Just to beaware you may come accross this in wild*
 
+---
 
 ### The basics: State & Events
   - React to events from the user, clicks content capture
@@ -176,7 +177,54 @@
     - [x] Listen to change event on drop down (picked yea wants to go up to expenses)
     - [x] Forward data up 
     - [x] Save in state in expense
-   
+    - [ ] Pass back state prop to provide two way binding
+
+    #### Controlled/UnControlled Components & Stateless vs Statefull Components
+    - 2 way binding means controlling a component
+    - *A controlled* Both value and chanhgse to value are handled within the *Parent Component*
+  	- A statefull component is one that **manages a state**
+  	- Expense item does not have a state so its known as simply a **Stateless component** or **Presentational Componnet**
+  	- Most pieces will only focus on outputting somthing
+
+---
+
+### Lists ann Conditionals
+
+  #### Rendering Lists
+  - Array **map()** is typical tool for this creates a new array based on old ones and transforms
+    - ````
+              {props.expenses.map(expense => <ExpenseItem
+              title={expense.title}
+              id={expense.id}
+              amount={expense.amount}
+              date={expense.date}></ExpenseItem>)}
+      ```
+    - takes argument passed as expression, executes for every element of array
+  - Utilize **{dynamic expression}** in JSX
+  
+  ### Statefull Lists
+    - Remember to update our componenet array will need to **useState**
+    - Lets create a new state `useState(INIT_STATE)`
+    - Add new expense item first and import *spread* to enrich array `setExpenses([expense,...setExpenses])`
+      - Spread works on both *objects* & *arrays*
+    - Alternatively we can pass function. this makes it alot cleaner `setExpenses((prevExpenses) => {return [expense,...prevExpenses]})` and returns directly
+
+  ### Keys
+    - They are required to identify 
+    - You can inspect in the browser, if new div flashes it has been added. 
+      - if theres no key it will actually overwrite existing element in render
+    - We need to add a special `key={expense.id}` prop (in most cases we will have a unique identifier anyway)
+
+  ### Assignment 3
+    - Get the date filter to work
+      - [x] Check Does select retain option
+      - [x] Check date reaches Expenses.js
+      - *Lets presume were are going to filter directly in expenses. (See what instructor propsoses)*
+      - [ ] Create new copy of array, filter where year === `.filter(food => food.includes(':chicken')))` 
+      - use filter 
+      - should not change the overall expenses array 
+      - derive new array or subset
+      - generate new key e{x} maby ? current float is strange
 
 ---
 
@@ -210,11 +258,16 @@ function add(a:number,b:number)
 ---
 
 ### Todo's 
+
 24-05-2023
 - Basic react test app (taking it out of this current dashboard concept) 
 - [] Revise passing up state 
+- [] saveFilterDataHandler 
+- [x] BUG undefined (reading 'value') at titleChangeHandler (date format may have been breaking, or simply issue naming)
+
 
 18-05-2023
+
 - [] Re install starter as finance dashboard
 - [x] Enable strict mode
 - [x] setup react app using next.js or any alternative to create-react-app
