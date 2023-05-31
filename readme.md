@@ -217,25 +217,26 @@
   - We need to add a special `key={expense.id}` prop (in most cases we will have a unique identifier anyway)
 
   #### Assignment 3 (Filter Expenses)
-    - Get the date filter to work
-      - [x] Check Does select retain option
-      - [x] Check date reaches Expenses.js
-      - *Lets presume were are going to filter directly in expenses. (See what instructor propsoses)*
-      - [ ] Create new copy of array, filter where year === ` 
-      - use filter 
-      - should not change the overall expenses array 
-      - derive new array or subset
-      - generate new key e{x} maby ? current float is strange
+  - Get the date filter to work
+    - [x] Check Does select retain option
+    - [x] Check date reaches Expenses.js
+    - *Lets presume were are going to filter directly in expenses. (See what instructor propsoses)*
+    - [ ] Create new copy of array, filter where year === ` 
+    - use filter 
+    - should not change the overall expenses array 
+    - derive new array or subset
+    - generate new key e{x} maby ? current float is strange
 
   ### Conditionals
    - special javascript evaluation `{if something true do this otherwise} && {outputsomthing}` or `{filteredExpenses === 0 && <p>No Expenses</p> }` 
    - Use ternery in jsx
    - Alternatively you could simply filter the expenses before hand. Including a point to `{someContent}`
  
-  ### Conditional Returns
-  - If the jsx in your component doesnt need to change you can simply return false 
+  #### Conditional Returns
+   - If the jsx in your component doesnt need to change you can simply return false 
 
-  ### Assignement 4
+  #### Assignement 4
+
   - [x] Hide form
   - [x] Add new expense button shows form
   - [x] Cancel Button hides form again
@@ -243,9 +244,57 @@
   - [x] Return "add new button on form" when state is false
     - *Instructor has handled display logic one level up in new expense*
 
-  ### Dynamic Styles
+---
+
+  #### Dynamic Styles
   - `style{{}}` this wants to receive a JS object as style with keyname => value
   - use camel case where css attribute has -
+
+    ### Styling React Components
+      - Conditional styles not global
+      - Styled components
+      - Css Modules
+
+    #### Setting dynamic inline styles
+      - Tackling global styles
+      - A dynmic style may look like this: `{{color:!isValid ? 'red':'black'}}`
+      - Beware of inline styles as they have heighest priority
+
+    #### Setting CSS Classes Dynamically
+      - ` ${Bat ticks}  ` are your friend template literals 
+      - [Template Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
+      - 
+
+    #### Styled components are scoped styles using css
+    - One aproach is to use *styled compononets* [styled components](https://styled-components.com/)     
+      - `$ npm install --save styled-components`
+      - Using a library like this you will come across a *tagged template literal* `styled.button``;` the baticks are simply a way of calling a special method
+      - You can add css styling in these ticks
+      - This library has all elements (html) for styling
+      - can use a multiline string which is neat
+      - They will create unique classnames and are global stlyles
+      - Remember *remove the selectors*
+      - Whats also nice is you can assign these styles to a whole component `<FormControl className={}>`
+      - In addition you can pass props to change styles dynamically
+        - `<FormControl invalid={true/false}>`
+        - `border: 1px ${props => (props.invalid ? 'red' : #ccc)}`
+          - 
+      #### Media Queries
+      - `@media (min-width:768px){width:auto}` can be added to your styles to detect and handle screen dynamics
+
+      #### CSS Modules
+      - [css modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/)
+      - 1. Css modules require you to do your import `import styles from `
+      - 2. Include `.module` to the file name
+      - 3. In your attribute you need to add an object instead of string `className={styles.button}`
+      - it will output a special class name *component name_classname___unique id*
+      - *This is neat as they are globally accessible but still within in the component scope*
+
+    #### Dynamic Styles
+     - To create a dynamic property we need to use [] like this as *you may get invalid property name*
+      - `className={styles{styles['form-control']}}` this behaves like an *array key* 
+      - To continue to append classnames you can use battick method as above
+      - `@media (min-width:768px){button{width:auto}}`  in your `Button.module.css`
 
 ---
 
