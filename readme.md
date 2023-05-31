@@ -202,21 +202,21 @@
     - takes argument passed as expression, executes for every element of array
   - Utilize **{dynamic expression}** in JSX
   
-  ### Statefull Lists
+ #### Statefull Lists
   - Remember to update our componenet array will need to **useState**
   - Lets create a new state `useState(INIT_STATE)`
   - Add new expense item first and import *spread* to enrich array `setExpenses([expense,...setExpenses])`
     - Spread works on both *objects* & *arrays*
   - Alternatively we can pass function. this makes it alot cleaner `setExpenses((prevExpenses) => {return [expense,...prevExpenses]})` and returns directly
 
-  ### Keys
+  #### Keys
 
   - They are required to identify 
   - You can inspect in the browser, if new div flashes it has been added. 
     - if theres no key it will actually overwrite existing element in render
   - We need to add a special `key={expense.id}` prop (in most cases we will have a unique identifier anyway)
 
-  ### Assignment 3 (Filter Expenses)
+  #### Assignment 3 (Filter Expenses)
     - Get the date filter to work
       - [x] Check Does select retain option
       - [x] Check date reaches Expenses.js
@@ -241,7 +241,12 @@
   - [x] Cancel Button hides form again
   - [x] Seprate form jsx and "add new" button in NewExpense
   - [x] Return "add new button on form" when state is false
-  
+    - *Instructor has handled display logic one level up in new expense*
+
+  ### Dynamic Styles
+  - `style{{}}` this wants to receive a JS object as style with keyname => value
+  - use camel case where css attribute has -
+
 ---
 
 ### Array functions 
@@ -294,3 +299,7 @@ function add(a:number,b:number)
 - [x] setup react app using next.js or any alternative to create-react-app
   - could create issues with app.jsx
 - [x] Document and code Section 3 [Working with components](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25595404#overview)
+
+[] Remove Chord Finder from branchees
+
+__ = "BEM Block element modifier"
