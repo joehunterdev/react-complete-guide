@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Expenses.css";
-import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
 
 //Alternative Syntax to function
 const Expenses = (props) => {
@@ -17,24 +17,20 @@ const Expenses = (props) => {
     setFilterDate(inputFilterYear);
   };
 
-  const filteredExpenses = () => {
+  // function filteredExpenses(){
 
-    return  inputDateFilter ? props.expenses.filter((expense) => expense.date.getUTCFullYear().toString() === inputDateFilter) : props.expenses 
+  //   return inputDateFilter ? props.expenses.filter((expense) => expense.date.getUTCFullYear().toString() === inputDateFilter) : props.expenses
 
-  }
+  // }
 
-
+  const filteredExpenses = props.expenses.filter((expense) => {
+    return expense.date.getFullYear().toString() === inputDateFilter;
+  });
+  
   return (
     <div className="expenses">
       <ExpensesFilter onSaveFilterData={saveFilterDataHandler} />
-      {filteredExpenses().map((expense) =>
-            <ExpenseItem
-             title={expense.title}
-             key={expense.id}
-             amount={expense.amount}
-             date={expense.date}></ExpenseItem>
-             )}
- 
+      <ExpensesList items={filteredExpenses}></ExpensesList>
     </div>
   );
 };

@@ -7,7 +7,7 @@ function ExpenseItem(props) {
   let [title, setTitle] = useState(props.title);
 
   return (
-    <div>
+    <li>
       <Card className="expense-item">
         <ExpenseDate date={props.date} />
         <div className="expense-item__description">
@@ -16,7 +16,7 @@ function ExpenseItem(props) {
         </div>
         {/* <button onClick={clickHandler}>Change Title</button> */}
       </Card>
-    </div>
+    </li>
   );
 }
 

@@ -3,40 +3,39 @@ import React, { useState } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = (props) => {
+
+
   const [inputTitle, setInputTitle] = useState('');
   const [inputAmount, setInputAmount] = useState('');
   const [inputDate, setInputDate] = useState('');
-  // const [userInput, setUserInput] = useState({
-  //   inputTitle: '',
-  //   inputAmount: '',
-  //   inputDate: '',
-  // });
+  const [inputOpenNewExpenseHandler, setOpenNewExpenseHandler] = useState(false);
+
+  const openNewExpenseHandler = (event) => {
+      setOpenNewExpenseHandler(true)
+  }
+
+  const closeExpenseHandler = (event) => {
+      setOpenNewExpenseHandler(false)
+  }
+
+  if (!inputOpenNewExpenseHandler) {
+    return <button onClick={openNewExpenseHandler}>Add New Expense</button>;
+  }
+
 
   const titleChangeHandler = (event) => {
     setInputTitle(event.target.value);
-    // setUserInput({
-    //   ...userInput,
-    //   inputTitle: event.target.value,
-    // });
-    // setUserInput((prevState) => {
-    //   return { ...prevState, inputTitle: event.target.value };
-    // });
+
   };
 
   const amountChangeHandler = (event) => {
     setInputAmount(event.target.value);
-    // setUserInput({
-    //   ...userInput,
-    //   inputAmount: event.target.value,
-    // });
+
   };
 
   const dateChangeHandler = (event) => {
     setInputDate(event.target.value);
-    // setUserInput({
-    //   ...userInput,
-    //   inputDate: event.target.value,
-    // });
+
   };
 
   const submitHandler = (event) => {
@@ -54,6 +53,8 @@ const ExpenseForm = (props) => {
     setInputDate('');
   };
 
+    
+  
   return (
     <form onSubmit={submitHandler}>
       <div className='new-expense__controls'>
@@ -87,6 +88,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className='new-expense__actions'>
+        <button onClick={closeExpenseHandler}>Cancel</button>
         <button type='submit'>Add Expense</button>
       </div>
     </form>

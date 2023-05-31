@@ -153,38 +153,38 @@
    -  At somepoint you will need to clear the form data (use state)
 
   #### Two way binding
-    - You can reset / clear content by setting to empty string on the submitHandler `dateChangeHandler('');` & feeding back a` value={}` att to form
+  - You can reset / clear content by setting to empty string on the submitHandler `dateChangeHandler('');` & feeding back a` value={}` att to form
 
   #### Child to parent 
-    - As were working with a new expense really we should be modifying our data at the same level as the rest of our expense initialization in app.js
-    - We can pass a function to child component and call that function inside the child
-    - *Props can only be passd from parent->child*
-    - For example: one level up we can pass a function `onSaveDataExpense`
-    - Reminder: your props come in from attributes. `<ExpenseItem someProp={}>`
-    - In the example we have passed the data and assignned it a unique id
-    - Just remember were passing around a pointer to a function
-    - First check you can pass state to the parent. 
+  - As were working with a new expense really we should be modifying our data at the same level as the rest of our expense initialization in app.js
+  - We can pass a function to child component and call that function inside the child
+  - *Props can only be passd from parent->child*
+  - For example: one level up we can pass a function `onSaveDataExpense`
+  - Reminder: your props come in from attributes. `<ExpenseItem someProp={}>`
+  - In the example we have passed the data and assignned it a unique id
+  - Just remember were passing around a pointer to a function
+  - First check you can pass state to the parent. 
   
 
   #### Lifiting up the state
-    - You may want move the state between two components on the same level (two siblings for example) but at differnent branches in the component tree. 
-    - The approach is utilizing props *function* to pass up app.js which the siblings share. 
-    - `props.onAddExpense(expenseData)` At the moment we pass data in way of a function the state gets lifted
-    - Infact as we have a 3 level structure it is ExpenseForm.js that passes the state up
-    - You only need to lift the state as far as required. Dont have to go all the way to app.js root
+  - You may want move the state between two components on the same level (two siblings for example) but at differnent branches in the component tree. 
+  - The approach is utilizing props *function* to pass up app.js which the siblings share. 
+  - `props.onAddExpense(expenseData)` At the moment we pass data in way of a function the state gets lifted
+  - Infact as we have a 3 level structure it is ExpenseForm.js that passes the state up
+  - You only need to lift the state as far as required. Dont have to go all the way to app.js root
 
-    #### Assignment 2 (4.)
-    - [x] Listen to change event on drop down (picked yea wants to go up to expenses)
-    - [x] Forward data up 
-    - [x] Save in state in expense
-    - [ ] Pass back state prop to provide two way binding
+  #### Assignment 2 (4.)
+  - [x] Listen to change event on drop down (picked yea wants to go up to expenses)
+  - [x] Forward data up 
+  - [x] Save in state in expense
+  - [ ] Pass back state prop to provide two way binding
 
-    #### Controlled/UnControlled Components & Stateless vs Statefull Components
-    - 2 way binding means controlling a component
-    - *A controlled* Both value and chanhgse to value are handled within the *Parent Component*
-  	- A statefull component is one that **manages a state**
-  	- Expense item does not have a state so its known as simply a **Stateless component** or **Presentational Componnet**
-  	- Most pieces will only focus on outputting somthing
+  #### Controlled/UnControlled Components & Stateless vs Statefull Components
+   - 2 way binding means controlling a component
+   - *A controlled* Both value and chanhgse to value are handled within the *Parent Component*
+ 	- A statefull component is one that **manages a state**
+ 	- Expense item does not have a state so its known as simply a **Stateless component** or **Presentational Componnet**
+ 	- Most pieces will only focus on outputting somthing
 
 ---
 
@@ -192,7 +192,7 @@
 
   #### Rendering Lists
   - Array **map()** is typical tool for this creates a new array based on old ones and transforms
-    - ````
+     ````
               {props.expenses.map(expense => <ExpenseItem
               title={expense.title}
               id={expense.id}
@@ -203,29 +203,45 @@
   - Utilize **{dynamic expression}** in JSX
   
   ### Statefull Lists
-    - Remember to update our componenet array will need to **useState**
-    - Lets create a new state `useState(INIT_STATE)`
-    - Add new expense item first and import *spread* to enrich array `setExpenses([expense,...setExpenses])`
-      - Spread works on both *objects* & *arrays*
-    - Alternatively we can pass function. this makes it alot cleaner `setExpenses((prevExpenses) => {return [expense,...prevExpenses]})` and returns directly
+  - Remember to update our componenet array will need to **useState**
+  - Lets create a new state `useState(INIT_STATE)`
+  - Add new expense item first and import *spread* to enrich array `setExpenses([expense,...setExpenses])`
+    - Spread works on both *objects* & *arrays*
+  - Alternatively we can pass function. this makes it alot cleaner `setExpenses((prevExpenses) => {return [expense,...prevExpenses]})` and returns directly
 
   ### Keys
-    - They are required to identify 
-    - You can inspect in the browser, if new div flashes it has been added. 
-      - if theres no key it will actually overwrite existing element in render
-    - We need to add a special `key={expense.id}` prop (in most cases we will have a unique identifier anyway)
 
-  ### Assignment 3
+  - They are required to identify 
+  - You can inspect in the browser, if new div flashes it has been added. 
+    - if theres no key it will actually overwrite existing element in render
+  - We need to add a special `key={expense.id}` prop (in most cases we will have a unique identifier anyway)
+
+  ### Assignment 3 (Filter Expenses)
     - Get the date filter to work
       - [x] Check Does select retain option
       - [x] Check date reaches Expenses.js
       - *Lets presume were are going to filter directly in expenses. (See what instructor propsoses)*
-      - [ ] Create new copy of array, filter where year === `.filter(food => food.includes(':chicken')))` 
+      - [ ] Create new copy of array, filter where year === ` 
       - use filter 
       - should not change the overall expenses array 
       - derive new array or subset
       - generate new key e{x} maby ? current float is strange
 
+  ### Conditionals
+   - special javascript evaluation `{if something true do this otherwise} && {outputsomthing}` or `{filteredExpenses === 0 && <p>No Expenses</p> }` 
+   - Use ternery in jsx
+   - Alternatively you could simply filter the expenses before hand. Including a point to `{someContent}`
+ 
+  ### Conditional Returns
+  - If the jsx in your component doesnt need to change you can simply return false 
+
+  ### Assignement 4
+  - [x] Hide form
+  - [x] Add new expense button shows form
+  - [x] Cancel Button hides form again
+  - [x] Seprate form jsx and "add new" button in NewExpense
+  - [x] Return "add new button on form" when state is false
+  
 ---
 
 ### Array functions 
@@ -258,7 +274,12 @@ function add(a:number,b:number)
 ---
 
 ### Todo's 
-
+29-05-2023
+  - 69 - 16:00
+  - 74 - 17:00 
+  - 77 -18:: 00
+  - 81 - 19:00
+  - 
 24-05-2023
 - Basic react test app (taking it out of this current dashboard concept) 
 - [] Revise passing up state 

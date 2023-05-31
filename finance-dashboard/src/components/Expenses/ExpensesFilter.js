@@ -12,7 +12,8 @@ const ExpensesFilter = (props) => {
       props.onSaveFilterData(event.target.value)//This param passes back the prop value defined in parent
 
    }
- 
+   
+
   return (
     <div className='expenses-filter'>
       <div className='expenses-filter__control'>
