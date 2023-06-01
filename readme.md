@@ -352,7 +352,42 @@ _A javascript library for building user interfaces_
   - Keys, children, parent, the line number, hooks
   - In addition you can test and change values the current state 
 
-
+### Practice Project
+  - AddUser Component
+      - does not require global styles
+      - [x] create form inputs x2
+      - [x] clear inputs
+  - App Component 
+    - [x] append to array
+    - [x] UI Card Component
+    - [x] UI Button Component
+  - [0] Managing User Input State 
+      - [x] validate form input 
+      - [x] dynamic styles for validation 
+      - [x] prevent default
+      - [x] capture username, age inputs
+      - [x] pass input state up
+      - [x] pass valid state up to app.js
+      - [ ] isValid default to true
+  - [x] Users List Component
+    - Unique keys
+  - [x] Users Li item Component
+  - [] Managing a list of users via state
+  - [] Error Modal
+    - [] Dismiss
+    - [z] Level App.js typicaly will see modals at this level
+  - [x] Managing error state
+  - [x] Use CSS Modules
+  - [] Review Code vids
+  - [] Pass back specific error message to modal
+  - [] Neaten Css
+  
+  - Questions: 
+    - Where to store array of users level Users
+      - list of users is child li
+    - Need to add to app.js ?
+    - Generic Container stateless
+    - Card Container
 ### Array functions
 
 [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)

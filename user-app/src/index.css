@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  width: 80%;
+  padding-top: 20%;
+} 
+
+.container div:first {
+   margin-top:6%; 
+}
