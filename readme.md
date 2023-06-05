@@ -388,6 +388,79 @@ _A javascript library for building user interfaces_
     - Need to add to app.js ?
     - Generic Container stateless
     - Card Container
+
+---
+
+### Fragments, Portals & Refs
+  - These are all additinal tools in the toolbelt
+  
+  #### JSX Limitations
+    - You cant return / store more than one *root* element in jsx
+    - You cant return more than one thing in javascript either needs parent node
+    - Instead of JSX you can actually return an array (with a catch) *this requires a key*
+      - Essentially is way easier just to wrap in a `div` just beware of divistis this is actually a common issue in react. Many divs with no *semantic value*
+
+  #### Creating custom wrapper
+  - To get around this issue we can create a wrapper that returns nothing but `props.children`
+  - This fullfils the requirement that one root element must be returned
+  - Wrapper and the jsx only has to return one thing, If you inspect you will notice we have eliminated one extra div
+
+
+  ```
+  //Helpers/wrapper.js
+    const Wrapper = props => {
+     return props.children
+    } ```
+
+   ```
+      //App.js
+
+        return(){
+          <Wrapper>
+            <do something>
+          </Wrapper>
+        }
+    ```
+  
+#### Creating react fragments
+
+  - `<React.Fragment></React.Fragment>` or `<></>` **Its an empty wrapper**. However it doesnt render any real html element. Gets around including another div
+
+  - You can short hand this by including `React {Fragment}`
+
+  #### Portals
+
+  - Portals are like fragments but help render semantically. (You wouldnt want to render a modal inside an internal div) 
+  - You can wrap fragments in portals. 
+
+  - Rendered Content html essential move somewhere else
+  - You can use this wherever you render jsx
+  - 1. Start by defining an element with a root say `<div id="overlay></div>"`
+  - 2. Define a const `overlady-handler` and return your jsx for the modal itself
+  - 3. `Import react ReactDOM` to be able to portal this to somewhere else
+  - 4. `{ReactDOM.createPortal(<SomeComponent props="{}>,docuement.getElementId("overlay"))}` your implementation will look like this
+    - this is similar to create root in index.js
+
+  #### Refs Hook
+  - Imagine updating a state everytime on keystroke when only required on submit. We can use refs to setup a relationship between the html element and javascript itself 
+  - `const nameInputRef useRef()` assign this to a const
+  - `<input ref="{nameInputRef}> ` asssign attribute
+  - Insterestingly if you now log *nameInputRef* you will see it has a current prop (by default undefined) 
+  - You can now access this by using `inputRef.current.value` 
+    - You can get around reseting the state using this method. Using state in general and two extra atts !
+    - In the case of inputs you can just reset `inputRef.current.value = ''` (rarely to be used)
+  - State or refs are interchangeable. 
+  - If just want to **readonly = refs**
+
+  ##### Controlled vs Uncontrolled
+
+  - When accesing via refs this is called uncontrolled as were **not controlling the state**
+  - Uncontrolled input containers
+
+---
+
+
+
 ### Array functions
 
 [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
@@ -419,6 +492,10 @@ function add(a:number,b:number)
 ---
 
 ### Todo's
+05-06-2023
+ 99 -102 15:00
+ 103 - 111 16:00
+ - [] Use a fragment and portal & ref
 
 29-05-2023
 
