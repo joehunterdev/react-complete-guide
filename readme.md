@@ -457,6 +457,31 @@ _A javascript library for building user interfaces_
   - When accesing via refs this is called uncontrolled as were **not controlling the state**
   - Uncontrolled input containers
 
+--- 
+
+### Handling Side Effects, Reducers and Context hook
+
+  #### Sideffects useEffect hook
+  - The main job of react is to *Render UI* & *React to User Input*
+  - Side effects are everything that happens outside of normal compnenet function.  
+    - Storage data browser
+    - HTTP Requests
+    - Managage timers
+  - Many side effects should not be included in your component we do this via `useEffect()` hook
+  - `useEffect((do after every component eval),[dependancies])` 
+    - your side affect goes into function 1 param / then specify your dependancies in function 2nd param
+  - A good use of this would be *authenticated user status* for a login system storing auth data after refresh 
+    - we could use efect to handle this so client doesnt need to login again
+    - `localStorage.setItem('isLoggedIn','1')` 
+    - `useEffect((do after every component eval),[dependancies])` will run after component eval
+    - Now in storage in browser you will find this new element 
+    - We can now check against this variable, but we would want to control when this runs
+
+  #### What not to add as dependancy
+  #### useEffect Cleanup
+  #### Summary
+  #### Reducers useReducer
+
 ---
 
 
@@ -494,8 +519,9 @@ function add(a:number,b:number)
 ### Todo's
 05-06-2023
  99 -102 15:00
- 103 - 111 16:00
+ 103 - 111 17:00
  - [] Use a fragment and portal & ref
+ - [] Do sideeffect example and when to use
 
 29-05-2023
 
