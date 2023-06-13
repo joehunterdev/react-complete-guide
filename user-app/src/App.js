@@ -15,12 +15,6 @@ function App() {
   const [users,setUsers] = useState(INIT_STATE)
   const [showModal,setShowModal] = useState(false)
 
-  // clearChildState = null;
-
-  // assignClearChildState(childClearStateFunc) {
-  //   this.clearChildState = childClearStateFunc;
-  // }
-
 
   const modalHandler = isValid => {
 
@@ -29,7 +23,6 @@ function App() {
       let  show = isValid = !isValid;
 
       setShowModal(show);
-      // console.log("Show " + show);
 
   }
   const addUserHandler = user => {
