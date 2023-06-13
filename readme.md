@@ -119,10 +119,9 @@ _A javascript library for building user interfaces_
 - If we have a variable in a function that changes react does not care: code executes but the overal function does not change. Function is not retriggerd after first render
 - Remember we just dealing with functions that output JSX. And we need to call it.
 
-
-    1. React calls any functions that returns JSX
-    2. Returns any functions within that JSX
-       After rendering react will not re-render/re-evalutated (unless we use state)
+  1. React calls any functions that returns JSX
+  2. Returns any functions within that JSX
+     After rendering react will not re-render/re-evalutated (unless we use state)
 
 #### State
 
@@ -134,9 +133,9 @@ _A javascript library for building user interfaces_
 - Pass a the prop and a new method via _destructuring [title,setTitle]_
 - Use _Const_
   `let [title,setTitle] = useState(props.title);
- const clickHandler = () => {
-     setTitle('Updated'); //state updating function
-  }`
+const clickHandler = () => {
+    setTitle('Updated'); //state updating function
+ }`
 
 - Each time a component is registerd / instantiated it will create a new copy of use state, managed independantly. Even if the component exists more than once.
 - React keeps track of used state. (Will protect that var if unaffected)
@@ -228,6 +227,7 @@ _A javascript library for building user interfaces_
            amount={expense.amount}
            date={expense.date}></ExpenseItem>)}
    ```
+  ````
 - Takes argument passed as expression, executes for every element of array
 
 - Utilize **{dynamic expression}** in JSX
@@ -287,54 +287,58 @@ _A javascript library for building user interfaces_
 
 ### Styling React Components
 
-  - Conditional styles not global
-  - Styled components
-  - Css Modules
+- Conditional styles not global
+- Styled components
+- Css Modules
 
 #### Setting dynamic inline styles
 
-  - Tackling global styles
-  - A dynmic style may look like this: `{{color:!isValid ? 'red':'black'}}`
-  - Beware of inline styles as they have heighest priority
+- Tackling global styles
+- A dynmic style may look like this: `{{color:!isValid ? 'red':'black'}}`
+- Beware of inline styles as they have heighest priority
 
 #### Setting CSS Classes Dynamically
 
-  - ` ${Bat ticks}  ` are your friend template literals
-  - [Template Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
-  -
+- `${Bat ticks} ` are your friend template literals
+- [Template Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
+-
 
 #### Styled components are scoped styles using css
 
-  - One aproach is to use *styled compononets* [styled components](https://styled-components.com/)
-    - `$ npm install --save styled-components`
-    - Using a library like this you will come across a *tagged template literal* `styled.button``;` the baticks are simply a way of calling a special method
-    - You can add css styling in these ticks
-    - This library has all elements (html) for styling
-    - can use a multiline string which is neat
-    - They will create unique classnames and are global stlyles
-    - Remember *remove the selectors*
-    - Whats also nice is you can assign these styles to a whole component `<FormControl className={}>`
-    - In addition you can pass props to change styles dynamically
-      - `<FormControl invalid={true/false}>`
-      - `border: 1px ${props => (props.invalid ? 'red' : #ccc)}`
-      
-      #### Media Queries
-      - `@media (min-width:768px){width:auto}` can be added to your styles to detect and handle screen dynamics
+- One aproach is to use _styled compononets_ [styled components](https://styled-components.com/)
 
-      #### CSS Modules
-      - [css modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/)
-      - 1. Css modules require you to do your import `import styles from `
-      - 2. Include `.module` to the file name
-      - 3. In your attribute you need to add an object instead of string `className={styles.button}`
-      - it will output a special class name *component name_classname___unique id*
-      - *This is neat as they are globally accessible but still within in the component scope*
+  - `$ npm install --save styled-components`
+  - Using a library like this you will come across a _tagged template literal_ ` styled.button``; ` the baticks are simply a way of calling a special method
+  - You can add css styling in these ticks
+  - This library has all elements (html) for styling
+  - can use a multiline string which is neat
+  - They will create unique classnames and are global stlyles
+  - Remember _remove the selectors_
+  - Whats also nice is you can assign these styles to a whole component `<FormControl className={}>`
+  - In addition you can pass props to change styles dynamically
+
+    - `<FormControl invalid={true/false}>`
+    - `border: 1px ${props => (props.invalid ? 'red' : #ccc)}`
+
+    #### Media Queries
+
+    - `@media (min-width:768px){width:auto}` can be added to your styles to detect and handle screen dynamics
+
+    #### CSS Modules
+
+    - [css modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/)
+    - 1. Css modules require you to do your import `import styles from `
+    - 2. Include `.module` to the file name
+    - 3. In your attribute you need to add an object instead of string `className={styles.button}`
+    - it will output a special class name _component name_classname\_\_\_unique id_
+    - _This is neat as they are globally accessible but still within in the component scope_
 
 #### Dynamic Styles
 
-   - To create a dynamic property we need to use [] like this as *you may get invalid property name*
-    - `className={styles{styles['form-control']}}` this behaves like an *array key*
-    - To continue to append classnames you can use battick method as above
-    - `@media (min-width:768px){button{width:auto}}`  in your `Button.module.css`
+- To create a dynamic property we need to use [] like this as _you may get invalid property name_
+- `className={styles{styles['form-control']}}` this behaves like an _array key_
+- To continue to append classnames you can use battick method as above
+- `@media (min-width:768px){button{width:auto}}` in your `Button.module.css`
 
 ---
 
@@ -342,77 +346,82 @@ _A javascript library for building user interfaces_
 
 #### Break Points
 
-  - You can open up the console and *inspect the js file* to add a **breakpoint** on the line to look at the problem step by step
-  - You can also levarage *Step into* to continue on the flow
-  - *Step over* to complete the current function call
-  
+- You can open up the console and _inspect the js file_ to add a **breakpoint** on the line to look at the problem step by step
+- You can also levarage _Step into_ to continue on the flow
+- _Step over_ to complete the current function call
+
 #### React Dev Tools
-  - Componenets tool will provide a tree
-  - Clicking on the component it will provide props view
-  - Keys, children, parent, the line number, hooks
-  - In addition you can test and change values the current state 
+
+- Componenets tool will provide a tree
+- Clicking on the component it will provide props view
+- Keys, children, parent, the line number, hooks
+- In addition you can test and change values the current state
 
 ### Practice Project
-  - AddUser Component
-      - does not require global styles
-      - [x] create form inputs x2
-      - [x] clear inputs
-  - App Component 
-    - [x] append to array
-    - [x] UI Card Component
-    - [x] UI Button Component
-  - [0] Managing User Input State 
-      - [x] validate form input 
-      - [x] dynamic styles for validation 
-      - [x] prevent default
-      - [x] capture username, age inputs
-      - [x] pass input state up
-      - [x] pass valid state up to app.js
-      - [ ] isValid default to true
-  - [x] Users List Component
-    - Unique keys
-  - [x] Users Li item Component
-  - [] Managing a list of users via state
-  - [] Error Modal
-    - [] Dismiss
-    - [z] Level App.js typicaly will see modals at this level
-  - [x] Managing error state
-  - [x] Use CSS Modules
-  - [] Review Code vids
-  - [] Pass back specific error message to modal
-  - [] Neaten Css
-  
-  - Questions: 
-    - Where to store array of users level Users
-      - list of users is child li
-    - Need to add to app.js ?
-    - Generic Container stateless
-    - Card Container
+
+- AddUser Component
+  - does not require global styles
+  - [x] create form inputs x2
+  - [x] clear inputs
+- App Component
+  - [x] append to array
+  - [x] UI Card Component
+  - [x] UI Button Component
+- [0] Managing User Input State
+  - [x] validate form input
+  - [x] dynamic styles for validation
+  - [x] prevent default
+  - [x] capture username, age inputs
+  - [x] pass input state up
+  - [x] pass valid state up to app.js
+  - [ ] isValid default to true
+- [x] Users List Component
+  - Unique keys
+- [x] Users Li item Component
+- [] Managing a list of users via state
+- [] Error Modal
+  - [] Dismiss
+  - [z] Level App.js typicaly will see modals at this level
+- [x] Managing error state
+- [x] Use CSS Modules
+- [] Review Code vids
+- [] Pass back specific error message to modal
+- [] Neaten Css
+
+- Questions:
+  - Where to store array of users level Users
+    - list of users is child li
+  - Need to add to app.js ?
+  - Generic Container stateless
+  - Card Container
 
 ---
 
 ### Fragments, Portals & Refs
-  - These are all additinal tools in the toolbelt
-  
-  #### JSX Limitations
+
+- These are all additinal tools in the toolbelt
+
+#### JSX Limitations
+
     - You cant return / store more than one *root* element in jsx
     - You cant return more than one thing in javascript either needs parent node
     - Instead of JSX you can actually return an array (with a catch) *this requires a key*
       - Essentially is way easier just to wrap in a `div` just beware of divistis this is actually a common issue in react. Many divs with no *semantic value*
 
-  #### Creating custom wrapper
-  - To get around this issue we can create a wrapper that returns nothing but `props.children`
-  - This fullfils the requirement that one root element must be returned
-  - Wrapper and the jsx only has to return one thing, If you inspect you will notice we have eliminated one extra div
+#### Creating custom wrapper
 
+- To get around this issue we can create a wrapper that returns nothing but `props.children`
+- This fullfils the requirement that one root element must be returned
+- Wrapper and the jsx only has to return one thing, If you inspect you will notice we have eliminated one extra div
 
-  ```
-  //Helpers/wrapper.js
-    const Wrapper = props => {
-     return props.children
-    } ```
+````
+//Helpers/wrapper.js
+  const Wrapper = props => {
+   return props.children
+  } ```
 
-   ```
+````
+
       //App.js
 
         return(){
@@ -421,70 +430,231 @@ _A javascript library for building user interfaces_
           </Wrapper>
         }
     ```
-  
+
 #### Creating react fragments
 
-  - `<React.Fragment></React.Fragment>` or `<></>` **Its an empty wrapper**. However it doesnt render any real html element. Gets around including another div
+- `<React.Fragment></React.Fragment>` or `<></>` **Its an empty wrapper**. However it doesnt render any real html element. Gets around including another div
 
-  - You can short hand this by including `React {Fragment}`
+- You can short hand this by including `React {Fragment}`
 
-  #### Portals
+#### Portals
 
-  - Portals are like fragments but help render semantically. (You wouldnt want to render a modal inside an internal div) 
-  - You can wrap fragments in portals. 
+- Portals are like fragments but help render semantically. (You wouldnt want to render a modal inside an internal div)
+- You can wrap fragments in portals.
 
-  - Rendered Content html essential move somewhere else
-  - You can use this wherever you render jsx
-  - 1. Start by defining an element with a root say `<div id="overlay></div>"`
-  - 2. Define a const `overlady-handler` and return your jsx for the modal itself
-  - 3. `Import react ReactDOM` to be able to portal this to somewhere else
-  - 4. `{ReactDOM.createPortal(<SomeComponent props="{}>,docuement.getElementId("overlay"))}` your implementation will look like this
-    - this is similar to create root in index.js
+- Rendered Content html essential move somewhere else
+- You can use this wherever you render jsx
+- 1. Start by defining an element with a root say `<div id="overlay></div>"`
+- 2. Define a const `overlady-handler` and return your jsx for the modal itself
+- 3. `Import react ReactDOM` to be able to portal this to somewhere else
+- 4. `{ReactDOM.createPortal(<SomeComponent props="{}>,docuement.getElementId("overlay"))}` your implementation will look like this
+  - this is similar to create root in index.js
 
-  #### Refs Hook
-  - Imagine updating a state everytime on keystroke when only required on submit. We can use refs to setup a relationship between the html element and javascript itself 
-  - `const nameInputRef useRef()` assign this to a const
-  - `<input ref="{nameInputRef}> ` asssign attribute
-  - Insterestingly if you now log *nameInputRef* you will see it has a current prop (by default undefined) 
-  - You can now access this by using `inputRef.current.value` 
-    - You can get around reseting the state using this method. Using state in general and two extra atts !
-    - In the case of inputs you can just reset `inputRef.current.value = ''` (rarely to be used)
-  - State or refs are interchangeable. 
-  - If just want to **readonly = refs**
+#### Refs Hook
 
-  ##### Controlled vs Uncontrolled
+- Imagine updating a state everytime on keystroke when only required on submit. We can use refs to setup a relationship between the html element and javascript itself
+- `const nameInputRef useRef()` assign this to a const
+- `<input ref="{nameInputRef}> ` asssign attribute
+- Insterestingly if you now log _nameInputRef_ you will see it has a current prop (by default undefined)
+- You can now access this by using `inputRef.current.value`
+  - You can get around reseting the state using this method. Using state in general and two extra atts !
+  - In the case of inputs you can just reset `inputRef.current.value = ''` (rarely to be used)
+- State or refs are interchangeable.
+- If just want to **readonly = refs**
 
-  - When accesing via refs this is called uncontrolled as were **not controlling the state**
-  - Uncontrolled input containers
+##### Controlled vs Uncontrolled
 
---- 
-
-### Handling Side Effects, Reducers and Context hook
-
-  #### Sideffects useEffect hook
-  - The main job of react is to *Render UI* & *React to User Input*
-  - Side effects are everything that happens outside of normal compnenet function.  
-    - Storage data browser
-    - HTTP Requests
-    - Managage timers
-  - Many side effects should not be included in your component we do this via `useEffect()` hook
-  - `useEffect((do after every component eval),[dependancies])` 
-    - your side affect goes into function 1 param / then specify your dependancies in function 2nd param
-  - A good use of this would be *authenticated user status* for a login system storing auth data after refresh 
-    - we could use efect to handle this so client doesnt need to login again
-    - `localStorage.setItem('isLoggedIn','1')` 
-    - `useEffect((do after every component eval),[dependancies])` will run after component eval
-    - Now in storage in browser you will find this new element 
-    - We can now check against this variable, but we would want to control when this runs
-
-  #### What not to add as dependancy
-  #### useEffect Cleanup
-  #### Summary
-  #### Reducers useReducer
+- When accesing via refs this is called uncontrolled as were **not controlling the state**
+- Uncontrolled input containers
 
 ---
 
+### Handling Side Effects, Reducers and Context hook
 
+#### Sideffects useEffect hook
+
+- The main job of react is to _Render UI_ & _React to User Input_ To handle side effects.
+- Good for code to be executed in response to something
+- Side effects are everything that happens outside of normal compnenet function.
+  - Storage data browser
+  - HTTP Requests
+  - Managage timers
+- Many side effects should not be included in your component we do this via `useEffect()` hook
+- `useEffect((do after every component eval),[dependancies])`
+  - your side affect goes into function 1 param / then specify your dependancies in function 2nd param
+- A good use of this would be _authenticated user status_ for a login system storing auth data after refresh
+  - we could use efect to handle this so client doesnt need to login again
+  - `localStorage.setItem('isLoggedIn','1')`
+  - `useEffect((do after every component eval),[dependancies])` will run after component eval
+  - Now in storage in browser you will find this new element
+  - We can now check against this variable, but we would want to control when this run
+    ```
+    useEffect(() => {
+        const storedUserLoggedInInformation = localStorage.getItem('isLoggedIn');
+
+        if (storedUserLoggedInInformation === '1') {
+          setIsLoggedIn(true);
+        }
+      }, [setFormIsValid,enteredEmail,entererdPassword])
+    ```
+
+  - _Will only run on component reload_ if you have no dependancies it will only run once
+  - Dependancies []
+  - You can pass dependacies to use effect() ` [setFormIsValid,enteredEmail,entererdPassword]`
+  - It helps us ensure we have one code in one place which re-runs when dependancies change
+  - Its also common to re-run logic when props / state change
+
+#### What not to add as dependancy
+
+  - add everything as use effect as dependancy except:
+  - Dont need to add state updating functions
+      - Dont need to add "built-in" apis or functions
+      - DON'T need to add variables or functions  you might've defined OUTSIDE of your components
+      - add all "things" you use in your effect function if those "things" could change because your component (or some parent component) re-rendered.
+          ```import { useEffect, useState } from 'react';
+
+                let myTimer;
+
+                const MyComponent = (props) => {
+                  const [timerIsActive, setTimerIsActive] = useState(false);
+
+                  const { timerDuration } = props; // using destructuring to pull out specific props values
+
+                  useEffect(() => {
+                    if (!timerIsActive) {
+                      setTimerIsActive(true);
+                      myTimer = setTimeout(() => {
+                        setTimerIsActive(false);
+                      }, timerDuration);
+                    }
+                  }, [timerIsActive, timerDuration]);
+                };```
+
+- `timerIsActive` is added as a dependency because it's component state that may change when the component changes (e.g. because the state was updated)
+
+- `timerDuration` is added as a dependency because it's a prop value of that component - so it may change if a parent component changes that value (causing this MyComponent component to re-render as well)
+
+- `setTimerIsActive` is NOT added as a dependency because it's that exception: State updating functions could be added but don't have to be added since React guarantees that the functions themselves never change
+
+- `myTimer` is NOT added as a dependency because it's not a component-internal variable (i.e. not some state or a prop value) - it's defined outside of the component and changing it (no matter where) wouldn't cause the component to be re-evaluated
+
+- `setTimeout` is NOT added as a dependency because it's a built-in API (built-into the browser) - it's independent from React and your components, it doesn't change
+
+#### useEffect() Cleanup
+
+- **Debouncing** is when we would like to restrict the calling of a time-consuming function frequently.
+
+  - An example would be waiting till user has finished typing into form to perform a function.
+  - We could use a timer to achieve this. `setTimeout()`
+  - In `useEffect` you can `return` (must be function)
+  - Return will not return until final. Imagine if this was a http you wouldnt want to send a request every milisecond
+
+  _Here have assignend timeout to a variable and below placed return
+  statement that is a function returning a clear method_
+
+  ```useEffect(() => {
+        const identifier = setTimeout(() => {
+          console.log('Checking form validity!');
+          setFormIsValid(
+            enteredEmail.includes('@') && enteredPassword.trim().length > 6
+          );
+        }, 500);
+
+        return () => {
+          console.log('CLEANUP');
+          clearTimeout(identifier);
+        };
+      }, [enteredEmail, enteredPassword]);
+  ```
+
+### Summary
+
+- useEffect() is the most important react hook
+
+#### Reducers useReducer()
+
+- Very similar to `useState()` but more options
+- Good for managing complex states
+- Returns array of two items like use effect
+- `const [state,dispatchFunction] = useReducer(reducerFn, intialState, initialFm);`
+
+  - snapshot state
+  - function that can be used to dispatch action
+  - reducer is a function triggerd automatically recieves latest state snapshot
+  - initial state
+  - a function to set the initial state
+  - like a state object with multiple dimensions `action.val`
+  - Handy for creating small pools of isolated data contexts
+  - In conjunctoin Context API
+  - This might make managing the state easier by separating logic (validation outside component) by grouping logic together
+    - You can couple this with use effect to only run when the user has finished typing
+  - Nested Properties:
+    - use destructing to extract the valid state
+    - pass specific properties instead of the entire object
+    - Apply use affect only on the single targetted property of state
+  - useReducer vs useState:
+    - you will know when to use reducer (when state becomes cumbersome)
+    - useState:
+      - is the main managment tool
+      - often unique good for independant states of data
+      - if state updates are easy and only a few kinds
+    - useReducer:
+      - Great if you need _more power_
+      - shold be considered if you have related pieces of state
+      - can be helpful if you have more complex states
+      - not good if you have a simple state
+        ```
+        import { useReducer } from 'react';
+        function reducer(state, action) {
+          // ...
+        }
+        function MyComponent() {
+          const [state, dispatch] = useReducer(reducer, { age: 42 });
+          // ...
+        ```
+  - Context api:
+
+    - when you pass alot of data via alot of componenets using props
+    - We may find state required in lots of places this can be an issue
+    - Observe in MainHeader were passing props to nav however were just passing them on. (even if this intermediate component doesnt need it) Also we only need to pass what props are needed.
+    - Login function may be required in a cart and a shop in different branches in component tree (we may not have direct conection)
+    - Avoids prop chain
+    - use camel case for context file creation
+    - To use context _provide_ it (wrapped to it) and _consume_ it (listen)
+      - add wrapped compnenets allowed to use it. Works now for all children
+        - App.js `<AuthContext.Provider>`
+        - Nav.js `<AuthContext.Consumer> {(ctx) => { return (<nav>)}` takes a child that is a function and as arg you will get context data
+        - Note: `<AuthContext.Consumer> {(ctx) => ` is kind of ugly using this return statement. can be improved using useContext hook import `useContext` and assign it like so `const ctx = useContext(AuthContext)`
+        - We can infact _pass a function_ as a context `,onLogout:logoutHandler}` we can no access this context value on the button `onClick={ctx.onLogout}`
+        - props are setup to make components reuseable.
+        - However if we want to do somthing very specific useContext (allows code more concise)
+    - Its good to define a default for context for clarity and code completion ` onLogout: () => {},`
+    - We can even provide a custom context provider. Putting our logout handler in here!
+    - Note the structure we have now done all our login logic in an external context provider
+
+      - this will allow for separation of concerns
+
+    - Context Limitations:
+
+      - Props for configuration
+      - Context state management accross components
+      - Context isnt made for high frequent changes (use redux)
+
+    - Rules of Hooks:
+      - Only call in react functions (components & custom hooks)
+      - ONly call at the top level (not nested or block statements)
+      - Always add everything your refer to inside of useEffect as a dependancy
+      -
+    - Forward Refs:
+      - Imperative aproach calling somthing within a function
+      - useImperativeHandle can be used as an alternative to state and props
+      - Interestingly you can pass refs as an arguemnt of a component `(props,ref)`
+        - this needs to be coupled with a wrapper called `React.forwardRef` as in this is capabale of being bound to a ref
+        - however you will only be allowed to access whats exposed from `useImperativeHandler()`
+
+- Note: instructor has used use effect to only run after state update
+
+---
 
 ### Array functions
 
@@ -515,34 +685,3 @@ function add(a:number,b:number)
 - [Alternatives to React](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a087a325)
 
 ---
-
-### Todo's
-05-06-2023
- 99 -102 15:00
- 103 - 111 17:00
- - [] Use a fragment and portal & ref
- - [] Do sideeffect example and when to use
-
-29-05-2023
-
-- 69 - 16:00
-- 74 - 17:00
-- 77 -18:: 00
-- 81 - 19:00
-- 24-05-2023
-- Basic react test app (taking it out of this current dashboard concept)
-- [] Revise passing up state
-- [] saveFilterDataHandler
-- [x] BUG undefined (reading 'value') at titleChangeHandler (date format may have been breaking, or simply issue naming)
-
-18-05-2023
-
-- [] Re install starter as finance dashboard
-- [x] Enable strict mode
-- [x] setup react app using next.js or any alternative to create-react-app
-  - could create issues with app.jsx
-- [x] Document and code Section 3 [Working with components](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25595404#overview)
-
-[] Remove Chord Finder from branchees
-
-\_\_ = "BEM Block element modifier"
