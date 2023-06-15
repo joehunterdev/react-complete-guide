@@ -1,11 +1,19 @@
-import Header from "./components/Layout/Header";
 // import AuthContext from "./components/store/auth-context";
+import React from "react";
+import Header from "./Components/Layout/Header/Header";
+import Container  from "./Components/UI/Container/Container";
+import Hero from "./Components/Layout/Hero/Hero";
+import Modal from "./Components/UI/Modal/Modal";
 
 function App() {
   return (
-    <div>
+    <React.Fragment>
       <Header></Header>
-    </div>
+      <Container>
+        <Hero></Hero>
+      </Container>
+      <Modal>Some content here</Modal>
+    </React.Fragment>
   );
 }
 

@@ -1,17 +1,19 @@
-import React from 'react';
-
-// import Navigation from './Navigation';
-import classes from './Header.module.css';
-
+import React from "react";
+// import styles from "./Header.module.css";
+import cx from 'classnames'
+import globalStyles from "../../../Assets/global-styles/bootstrap.min.module.css";
+import Button from '../../UI/Button/Button'
 const MainHeader = (props) => {
   return (
-    // <header className={classes['main-header']}>
-    <header className={classes['header']}>
-      <h1>React Meals</h1>
-      <div className='main-image'>
-        <img src='./meals.jpg' alt="some header" />
+    <header>
+    <nav className={cx(globalStyles.navbar,globalStyles['bg-body-tertiary'])} >
+      <div className={globalStyles.container}>
+        <span className={globalStyles['navbar-brand']}>React Meals</span>
+       <div className={globalStyles['d-flex']}>
+           <Button subClass="btn-danger" target="modal" modal="staticBackdrop">Cart</Button> 
+        </div> 
       </div>
-      <HeaderCartButton /> 
+    </nav>
     </header>
   );
 };
