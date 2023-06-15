@@ -322,7 +322,7 @@ const clickHandler = () => {
 
     #### Media Queries
 
-    - `@media (min-width:768px){width:auto}` can be added to your styles to detect and handle screen dynamics
+    - `@media (min-width:x){width:auto}` can be added to your styles to detect and handle screen dynamics
 
     #### CSS Modules
 
@@ -338,7 +338,7 @@ const clickHandler = () => {
 - To create a dynamic property we need to use [] like this as _you may get invalid property name_
 - `className={styles{styles['form-control']}}` this behaves like an _array key_
 - To continue to append classnames you can use battick method as above
-- `@media (min-width:768px){button{width:auto}}` in your `Button.module.css`
+- `@media (min-width:x){button{width:auto}}` in your `Button.module.css`
 
 ---
 
@@ -558,7 +558,7 @@ const clickHandler = () => {
           setFormIsValid(
             enteredEmail.includes('@') && enteredPassword.trim().length > 6
           );
-        }, 500);
+        }, ;
 
         return () => {
           console.log('CLEANUP');
@@ -655,6 +655,46 @@ const clickHandler = () => {
 - Note: instructor has used use effect to only run after state update
 
 ---
+### Section 12 Food order app
+
+## General Notes
+  - menu / meals
+  - header
+  - ui add button
+  - wrapper (modal)
+  - cart
+    - has context
+    - reducer
+    - making items removeable
+  - header component 
+  - modal using portal
+
+#### Checklist
+  
+  - [] Adding a "Header" Component
+    - Has title
+    - Top fixed sticky header
+    - Shopping cart info (right)
+    - shopping cart button (right)
+  
+  - [] Adding the "Cart" Button Component
+  - [] Adding a "Meals" Component
+  - [] Adding Individual Meal Items & Displaying Them
+  - [] Adding a Form
+  - [] Fixing Form Input IDs
+  - [] Working on the "Shopping Cart" Component
+  - [] Adding a Modal via a React Portal
+  - [] Managing Cart & Modal State
+  - [] Adding a Cart Context
+  - [] Using the Context
+  - [] Adding a Cart Reducer
+  - [] Working with Refs & Forward Refs
+  - [] Outputting Cart Items
+  - [] Working on a More Complex Reducer Logic
+  - [] Making Items Removable
+  - [] Using the useEffect Hook
+  
+---
 
 ### Array functions
 
@@ -682,6 +722,6 @@ function add(a:number,b:number)
 ### Updates
 
 - Create React App is dead, hooks are the future utilize: "Next" "Vite" or "Remix"
-- [Alternatives to React](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a087a325)
+- [Alternatives to React](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a
 
 ---
