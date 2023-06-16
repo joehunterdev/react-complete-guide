@@ -9,13 +9,20 @@ import globalStyles from "../../../Assets/global-styles/bootstrap.min.module.css
 */
 const Button = (props) => {
 
+// const 
 //  if(props.modalTarget){
     
 //   {props.modalTarget ? `data-bs-toggle="modal" data-bs-target="#${modalTarget}` : ''}
 
 //  }
 
-  return  <button type="button" className={cx(globalStyles.btn,globalStyles[`btn-${props.subClass}`])} data-bs-toggle={props.toggle} data-bs-target={props.target}>{props.children}</button>
+ const setDisplay = (event) => {
+   
+    props.showModal();
+
+ } 
+
+  return  <button type="button" onClick={props.onClick} className={cx(globalStyles.btn,globalStyles[`btn-${props.subClass}`])} data-bs-toggle={props.toggle} data-bs-target={props.target}>{props.children}</button>
 
 }
 
