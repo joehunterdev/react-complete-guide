@@ -1,8 +1,7 @@
 import Card from "../UI/Card/Card";
-// import DUMMY_MEALS from '../../storage/dummy-meals'
 import MealItem from "./MealItem";
 import "bootstrap/dist/css/bootstrap.css";
-const DUMMY_MEALS = [
+const initialMeals = [
   {
     id: "m1",
     name: "Sushi",
@@ -29,7 +28,7 @@ const DUMMY_MEALS = [
   },
 ];
 const MealItems = () =>
-  DUMMY_MEALS.map((meal) => (
+initialMeals.map((meal) => (
     <MealItem
       key={meal.id}
       name={meal.name}

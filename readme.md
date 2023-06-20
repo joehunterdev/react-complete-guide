@@ -661,7 +661,7 @@ const clickHandler = () => {
 #### Bugs
   - 
 ---
-
+<img src="../_dev/../react-complete-guide/food-order-app/_dev/screenshot.png">
 ### Array functions
 
 [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)

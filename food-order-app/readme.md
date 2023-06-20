@@ -25,19 +25,31 @@
   - [x] Adding a "Meals" Component
   - [x] Adding Individual Meal Items & Displaying Them
   - [x] Adding a Form
-  - [] Fixing Form Input IDs
+  - [] Fixing Form Input IDs (need to be unique)
+    - [] Input Component
+  - [0] Figure out parent / sibling relationship for menu cart 
   - [] Working on the "Shopping Cart" Component
   - [x] Adding a Modal via a React Portal
-    - [ ] Dialog closable bkg
+    - [] Dialog closable bkg
+    - [ ] 
   - [] Managing Cart & Modal State
-  - [] Adding a Cart Context
-  - [] Using the Context
-  - [] Adding a Cart Reducer
+    - [0] Adding a Cart Context
+    - [0] Using the Context
+    - [0] Adding a Cart Reducer
   - [] Working with Refs & Forward Refs
   - [] Outputting Cart Items
   - [] Working on a More Complex Reducer Logic
   - [] Making Items Removable
   - [] Using the useEffect Hook
+  - [] Removing Container as a node in component tree
 
 #### Caveats / Threats
   - Using react css modules rather than react-bootstrap ? smells a little 
+
+#### Context & Reducer
+1. Create the context.
+2. Put state and dispatch into context.
+3. Use context anywhere in the tree.
+
+#### Structure
+  CartProvider

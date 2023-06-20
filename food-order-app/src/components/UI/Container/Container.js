@@ -4,11 +4,11 @@ import globalStyles from "../../../Assets/global-styles/bootstrap.min.module.css
 
 const Container = (props) => {
     return (
-        <main>
+        // <main>
             <div className={globalStyles.container}>
                 {props.children}
             </div>
-        </main>
+        // </main>
     )
 }
 

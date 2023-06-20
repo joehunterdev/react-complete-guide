@@ -1,16 +1,41 @@
-import { useState } from "react"
+import { useState } from "react";
+// import MealItem from "../Meals/MealItem";
+//render all items, total amount, close button, order button
+//const Cart = ({meals,onChangeMeal,onDeleteMeal}) => {
+import "bootstrap/dist/css/bootstrap.css";
+import Modal from "../UI/Modal/Modal";
 
-const Cart = () => {
+const Cart = (props) => {
 
-    [cartItems,setCartItems] = useState({});
+  // const [showModal, setShowModal] = useState(false);
 
+  // const modalHandler = (event) => {
+  // console.log("cast to show modal");
+  // setShowModal((prevShowModal) => !prevShowModal);
+  //};
+
+  const dismissModalHandler = (event) => {
+    props.onDismissModalHandler(true);
+ }
+
+  const cartItems = (
+    <ul className="list-group">
+      {[{ key: "c1", id: "c1", name: "Sushi", amount: 2, price: 12.99 }].map((item) => (
+        <li className="list-group-item" key={item.key}>{item.name}</li>
+      ))}
+    </ul>
+  );
+
+  return (
     
+    <Modal onDismissModalHandler={dismissModalHandler}>
+      {cartItems}
+      <div className="modal-footer">
+        <span>Total Amount:</span>
+        <span>32</span>
+      </div>
+     </Modal>
+  );
+};
 
-    return (
-        <div>
-            <h1>Cart</h1>
-        </div>
-    )
-}
-
-export default Cart
+export default Cart;

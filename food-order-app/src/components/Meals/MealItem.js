@@ -15,7 +15,6 @@ const MealItem = ({name,price,description}) => {
               <span>{description}</span>
               <MealItemForm />
             </div>
-            <Button onClick={addToCartHandler} subClass="primary" >Add To Cart</Button>
     </Card>
     )
 
