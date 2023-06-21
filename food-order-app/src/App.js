@@ -10,15 +10,18 @@ function App() {
 
   const [showModal, setShowModal] = React.useState(false);
 
-  const showModalHandler = (event) => {
-    console.log("Show modal handler triggered app.js");
+  const toggleModalHandler = (event) => {
     setShowModal((prevShowModal) => !prevShowModal);
   };
 
+  // const hideModalHandler()  => {
+  //   setShowModal(false);
+  // }
+
   return (
     <Fragment>
-      {showModal && <Cart onDismissModalHandler={showModalHandler} showModal={showModal} />} 
-      <Header cart={{ items: 7 }} onDismissModalHandler={showModalHandler}></Header>
+      {showModal && <Cart onToggleModalHandler={toggleModalHandler}   />} 
+      <Header cart={{ items: 7 }} onToggleModalHandler={toggleModalHandler}></Header>
       <main>
         <Container>
           <Hero></Hero>

@@ -30,9 +30,8 @@
   - [0] Figure out parent / sibling relationship for menu cart 
   - [] Working on the "Shopping Cart" Component
   - [x] Adding a Modal via a React Portal
-    - [] Dialog closable bkg
-    - [ ] 
   - [] Managing Cart & Modal State
+    - [] Dialog closable bkg anoying minor bug. Try using proper bs integration with two methods as proposed (show/hide)
     - [0] Adding a Cart Context
     - [0] Using the Context
     - [0] Adding a Cart Reducer

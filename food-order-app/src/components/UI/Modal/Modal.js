@@ -3,106 +3,39 @@ import ReactDOM from 'react-dom';
 import cx from 'classnames'
 import globalStyles from "../../../Assets/global-styles/bootstrap.min.module.css";
 
-// import Modal from 'react-bootstrap/Modal'
-// portal
-// const Backdrop = (props) => {
-//   const closeModalHandler = (event) => {
-//     props.onDismissModalHandler(false)
-//   };
-//   return (
-//     <div
-//       className={cx(globalStyles.modal, globalStyles.block)}
-//       id="staticBackdrop"
-//       data-bs-backdrop="static"
-//       data-bs-keyboard="false"
-//       tabIndex="-1"
-//       aria-labelledby="staticBackdropLabel"
-//       // aria-hidden="true"
-//       role="dialog"
-//       onClick={closeModalHandler}
-//       style={{ display: !props.showModal ? 'block' : 'none' }}
-//     >
-//       {props.children}
-//     </div>
-//   )
 
-// }
-
-
-// const Body = props => {
-//   //   const closeModalHandler = (event) => {
-//   //     props.onDismissModalHandler(false)
-//   //  };
-
-//   return (
-//     <div className={globalStyles['modal-dialog']}>
-//       <div className={globalStyles['modal-content']}>
-//         <div className={globalStyles['modal-header']}>
-//           <h1 className={cx(globalStyles['modal-title'], globalStyles['fs-5'])} id="staticBackdropLabel">
-//             Add to order
-//           </h1>
-//           <button
-//             type="button"
-//             className={globalStyles['btn-close']}
-//             data-bs-dismiss="modal"
-//             // onClick={closeModalHandler}
-//             aria-label="Close"
-//           ></button>
-//         </div>
-//         <div className={globalStyles['modal-body']}>
-//           {props.children}
-//         </div>
-//         <div className={globalStyles['modal-footer']}>
-//           <button
-//             type="button"
-//             // onClick={closeModalHandler}
-//             className={cx(globalStyles.btn, globalStyles['btn-secondary'])}
-//             data-bs-dismiss="modal"
-//           >
-//             Close
-//           </button>
-//           <button type="button"
-//             //  onClick={closeModalHandler} 
-//             className={cx(globalStyles.btn, globalStyles['btn-primary'])}>
-//             Understood
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
-const portalElement = document.getElementById('root');
+const portalElement = document.body
 
 
 const Modal = (props) => {
 
-  const dismissModalHandler = (event) => {
+  // const onTest = (e) => { 
+  //   console.log(e)
 
-    props.onDismissModalHandler(false)
-  };
+  // }
 
   //  return ReactDOM.createPortal(<Backdrop onClick={closeModalHandler} ><Body>{props.children}</Body></Backdrop>,portalElement);
-  //TODO: Bugfix backdrop click z-index issue
+  //TODO: Bugfix backdrop click z-index issue ? affects buttons 
   return ReactDOM.createPortal(
+
     <div
-      className={cx(globalStyles.modal, globalStyles.block,globalStyles["background-green"])}
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabIndex="-1"
-      aria-labelledby="staticBackdropLabel"
-      // aria-hidden="true"
-      role="dialog"
-      // onClick={dismissModalHandler}
-      style={{ display: !props.showModal ? 'block' : 'none' }}
+      className={cx(globalStyles.modal)}
+      id="cartModal"
+      // role="dialog"
+      tabIndex="-1" 
+      // onClick={props.onToggleModalHandler}
+      // onClick={onTest}
+      style={{ display: !props.showModal ? 'block' : 'none',backgroundColor: 'gray', position:'absolute'}}
     >
-      <div className={globalStyles['modal-dialog']} style={{ zIndex: 99 }}>
+      <div className={globalStyles['modal-dialog']} style={{zIndex: 35002 }}>
         <div className={globalStyles['modal-content']}>
           <div className={globalStyles['modal-header']}>
-            <h1 className={cx(globalStyles['modal-title'], globalStyles['fs-5'])} id="staticBackdropLabel">
+            <h1 className={cx(globalStyles['modal-title'], globalStyles['fs-5'])}>
               Add to order
             </h1>
+            <button type="button" className={globalStyles.close} data-dismiss="modal" aria-label="Close" onClick={props.onToggleModalHandler}>
+            <span aria-hidden="true">×</span>
+          </button>
           </div>
           <div className={globalStyles['modal-body']}>
             {props.children}
@@ -110,16 +43,15 @@ const Modal = (props) => {
           <div className={globalStyles['modal-footer']}>
             <button
               type="button"
-              onClick={dismissModalHandler}
+              onClick={props.onToggleModalHandler}
               className={cx(globalStyles.btn, globalStyles['btn-secondary'])}
-              data-bs-dismiss="modal"
-            >
+              >
               Close
             </button>
             <button type="button"
               className={cx(globalStyles.btn, globalStyles['btn-success'])}>
               Order
-            </button>
+            </button> 
           </div>
         </div>
       </div>

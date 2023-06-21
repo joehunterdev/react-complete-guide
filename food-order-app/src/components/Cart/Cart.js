@@ -7,17 +7,6 @@ import Modal from "../UI/Modal/Modal";
 
 const Cart = (props) => {
 
-  // const [showModal, setShowModal] = useState(false);
-
-  // const modalHandler = (event) => {
-  // console.log("cast to show modal");
-  // setShowModal((prevShowModal) => !prevShowModal);
-  //};
-
-  const dismissModalHandler = (event) => {
-    props.onDismissModalHandler(true);
- }
-
   const cartItems = (
     <ul className="list-group">
       {[{ key: "c1", id: "c1", name: "Sushi", amount: 2, price: 12.99 }].map((item) => (
@@ -28,7 +17,7 @@ const Cart = (props) => {
 
   return (
     
-    <Modal onDismissModalHandler={dismissModalHandler}>
+    <Modal onToggleModalHandler={props.onToggleModalHandler}>
       {cartItems}
       <div className="modal-footer">
         <span>Total Amount:</span>
