@@ -1,46 +1,60 @@
+
+
+import React, { useState, useContext, Fragment } from "react";
+import { CartDispatchContext, CartContext, CartProvider } from "../Cart/CartContext";
 import "bootstrap/dist/css/bootstrap.css";
-import React, { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartPlus, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 
-const MealItemForm = ({ onAddMeal }) => {
+const MealItemForm = ({ id }) => {
+  const [amount, setAmount] = useState(1);
+  const dispatch = useContext(CartDispatchContext);
 
-  const [amount, setAmount] = useState('');
+  const decreaseAmountHandler = (event) => {
+    setAmount(amount - 1);
+  }
+
+  const increaseAmountHandler = (event) => {
+    setAmount(amount + 1);
+  }
+
+  // Todo: may need to pass some id here 
 
   return (
-    <div className="container">
-      {/* <form> */}
-        <div className="mb-3 row">
-          <label htmlFor="inputName" className="col-8 col-form-label">
-            Amount
-          </label>
-          <div className="col-6">
-            <input
-              type="number"
-              value={amount}
-              min='1'
-              max='5'
-              onChange={(e) => setAmount(e.target.value)}
-              className="form-control"
-              name="amount"
-              id="amount"
-            />
-          </div>
-        </div>
-        <div className="mb-3 row">
-          <button
-            onClick={() => {
-              setAmount("");
-              onAddMeal(amount);
-            }}
-          >Add
-          </button>
-        </div>
-      {/* </form> */}
-    </div>
+
+    <Fragment>
+      <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
+        <button className="btn btn-link px-2" onClick={decreaseAmountHandler}>
+          <FontAwesomeIcon icon={faMinus} />
+        </button>
+        <input className="form-control form-control-sm"
+          type="number"
+          value={amount}
+          min='1'
+          max='5'
+          onChange={(e) => setAmount(e.target.value)}
+          name="amount"
+        />
+        <button className="btn btn-link px-2" onClick={increaseAmountHandler}>
+          <FontAwesomeIcon icon={faPlus} />
+        </button>
+      </div>
+
+      <div className="col-md-1 col-lg-1 col-xl-1 text-end">
+
+        <button className="btn text-primary" onClick={() => {
+          dispatch({
+            type: 'added',
+            id: id,
+            amount: amount,
+          });
+        }}>
+          <FontAwesomeIcon icon={faCartPlus} /></button>
+
+      </div>
+    </Fragment>
   );
 };
+ 
 
 export default MealItemForm;
-
-        //   {/* <button type="submit" onSubmit={submitHandler} className="btn btn-primary">Add</button> */}
-        //   {/* <Button onClick={addToCartHandler} subClass="primary" >Add To Cart</Button> */}
-

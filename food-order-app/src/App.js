@@ -6,6 +6,9 @@ import Hero from "./Components/Layout/Hero/Hero";
 // import Modal from "./Components/UI/Modal/Modal";
 import Meals from "./Components/Meals/Meals";
 import Cart from "./Components/Cart/Cart";
+
+import { CartProvider } from "./Components/Cart/CartContext";
+
 function App() {
 
   const [showModal, setShowModal] = React.useState(false);
@@ -19,7 +22,7 @@ function App() {
   // }
 
   return (
-    <Fragment>
+    <CartProvider>
       {showModal && <Cart onToggleModalHandler={toggleModalHandler}   />} 
       <Header cart={{ items: 7 }} onToggleModalHandler={toggleModalHandler}></Header>
       <main>
@@ -30,7 +33,7 @@ function App() {
           <Meals></Meals>
         </Container>
       </main>
-    </Fragment>
+    </CartProvider>
   );
 }
 

@@ -26,12 +26,12 @@ const Modal = (props) => {
       // onClick={props.onToggleModalHandler}
       // onClick={onTest}
       style={{ display: !props.showModal ? 'block' : 'none',backgroundColor: 'gray', position:'absolute'}}
-    >
-      <div className={globalStyles['modal-dialog']} style={{zIndex: 35002 }}>
+    > 
+      <div className={globalStyles['modal-dialog']} style={{zIndex: 35002, maxWidth:'80%' }} >
         <div className={globalStyles['modal-content']}>
           <div className={globalStyles['modal-header']}>
             <h1 className={cx(globalStyles['modal-title'], globalStyles['fs-5'])}>
-              Add to order
+              Your Cart
             </h1>
             <button type="button" className={globalStyles.close} data-dismiss="modal" aria-label="Close" onClick={props.onToggleModalHandler}>
             <span aria-hidden="true">×</span>
@@ -50,7 +50,7 @@ const Modal = (props) => {
             </button>
             <button type="button"
               className={cx(globalStyles.btn, globalStyles['btn-success'])}>
-              Order
+              Order Now
             </button> 
           </div>
         </div>

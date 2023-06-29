@@ -1,84 +1,88 @@
+import mealItems from '../../store/meal-items';
+import { createContext, useReducer } from 'react';
 
-import { createContext, useContext, useReducer } from 'react';
+export const CartContext = createContext(null);
+export const CartDispatchContext = createContext(null);
 
-const MealsContext = createContext(null);
+export function CartProvider({ children }) {
 
-const MealsDispatchContext = createContext(null);
-
-export function MealsProvider({ children }) {
-  const [meals, dispatch] = useReducer(
-    mealsReducer,
-    initialMeals
+  const [cart, dispatch] = useReducer(
+    cartReducer,
+    []
   );
-
+ 
+ // mealItems.filter(cid => cid.id === action.id).values.price
+ 
   return (
-    <MealsContext.Provider value={meals}>
-      <MealsDispatchContext.Provider value={dispatch}>
+    <CartContext.Provider value={cart}>
+      <CartDispatchContext.Provider value={dispatch}>
         {children}
-      </MealsDispatchContext.Provider>
-    </MealsContext.Provider>
+      </CartDispatchContext.Provider>
+    </CartContext.Provider>
   );
 }
 
-export function useMeals() {
-  return useContext(MealsContext);
-}
+function cartReducer(cartItems, action) {
 
-export function useMealsDispatch() {
-  return useContext(MealsDispatchContext);
-}
+  let meal = mealItems.filter((mid) => mid.id === action.id);
+  // console.log(meal.concat(...meal));
+  let price = meal.map((mid) => mid.price).toString();
+  let description = meal.map((mid) => mid.description).toString();
+  let name = meal.map((mid) => mid.name).toString();
+ 
+  if (cartItems.map(t => t.id).includes(action.id)) {
+    action.type = 'updated';
+  }
+  const updatedTotalAmount =  cartItems.map(t => t.amount * t.price);
 
-function mealsReducer(meals, action) {
+  console.log(updatedTotalAmount)
+
   switch (action.type) {
     case 'added': {
-      return [...meals, {
+      return [...cartItems, {
         id: action.id,
-        text: action.text,
-        done: false
+        amount: action.amount,
+        price: price,
+        description: description, 
+        name: name,
+        mealTotal:updatedTotalAmount
       }];
+      
     }
-    case 'changed': {
-      return meals.map(t => {
-        if (t.id === action.meal.id) {
-          return action.meal;
+    case 'updated': {
+      return cartItems.map(t => {
+        if (t.id === action.id) {
+          return {
+            id: action.id,
+            amount: t.amount + action.amount,
+            price: price,
+            description: description, 
+            name: name,
+            mealTotal:updatedTotalAmount
+          }
         } else {
           return t;
         }
       });
     }
-    case 'deleted': {
-      return meals.filter(t => t.id !== action.id);
-    }
+
+    // case 'deleted': {
+    //   return cart.filter(t => t.id !== action.id);
+    // }
+
+    //  case 'getTotal': {
+    //   return [...cartItems,{
+    //         totalAmount: updatedTotalAmount
+    //   }];
+    //  }
+
     default: {
       throw Error('Unknown action: ' + action.type);
     }
+ 
   }
-}
 
  
-const initialMeals = [
-    {
-      id: "m1",
-      name: "Sushi",
-      description: "Finest fish and veggies",
-      price: 22.99,
-    },
-    {
-      id: "m2",
-      name: "Schnitzel",
-      description: "A german specialty!",
-      price: 16.5,
-    },
-    {
-      id: "m3",
-      name: "Barbecue Burger",
-      description: "American, raw, meaty",
-      price: 12.99,
-    },
-    {
-      id: "m4",
-      name: "Green Bowl",
-      description: "Healthy...and green...",
-      price: 18.99,
-    },
-  ];
+}
+ 
+
