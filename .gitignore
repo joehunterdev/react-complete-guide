@@ -1,0 +1,14 @@
+*/_dev
+*.zip
+*-vite
+*project-ideas.md
+*.code-workspace
+*/node_modules
+/effects-reducer-context
+/dev-app
+/styled-app
+/user-app
+/finance-dashboard
+
+# !*/food-order-app/*
+food-order-app/public/*

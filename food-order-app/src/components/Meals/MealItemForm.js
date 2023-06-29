@@ -10,6 +10,8 @@ const MealItemForm = ({ id }) => {
   const [amount, setAmount] = useState(1);
   const dispatch = useContext(CartDispatchContext);
 
+// Todo: validate range
+
   const decreaseAmountHandler = (event) => {
     setAmount(amount - 1);
   }
@@ -18,7 +20,7 @@ const MealItemForm = ({ id }) => {
     setAmount(amount + 1);
   }
 
-  // Todo: may need to pass some id here 
+  
 
   return (
 
