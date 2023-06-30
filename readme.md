@@ -658,10 +658,101 @@ const clickHandler = () => {
 ### Section 12 Food order app
   - [../food-order-app/readme](Readme)
 
+---
+
+### Section 13 Food order app
+
+
+#### How react really works
+  - Essentially react doesnt care about the web it will work with any node. 
+  - React Dom has an interface to the web (Virtual Dom)
+  - **Context** (component wide data), **Props** (data from parent components), **State** (internal data) 
+    - whenever these change this will update the components. react then interacts with the ReactDom
+      - React first defines default state, then target state- Then passes on only the differences to make this change possible to the real dom
+  - Re-Evaluationg is not the same as re-rendering. Imagin if there are no changes to the dom this is just a re-evaluation
+    - Remember performance wise reaching out to the real dom is performance intensive process
+
+#### Component updates
+  - we can use state to make changes to dom. 
+  - everything will come down to a state being changed. Context and Props 
+  - for every state change of each component. react dom is re-activated this is only 
+  - the difference between two snapshots
+  - You can check for flashes in element chrome console
+  - update mechanisim is based on comparing differences
+  - To a child as were initializing the component it will be re-evaluated
+  - `<Demo clickHandler={false}/>` will still run in child component. This false value is a primitative that gets re-initialez
+    - We can specify the reloading of a component based on certain behaviour using .memo
+      - For functional components `export default React.memo(DemoOutput)` 
+    - `React.memo` essentially can put a filter to listen in for state changes in the case that `<Button onSomthing={nochange}>` in parent looks like this where no state relative to the child changes
+      - *This is not always worth it*. As memo still needs to generate **new props** and **re-render**. Good for larger apps. To cutt off an entire branch of components
+    - Rememver to do this evaluation it will be tricky when using ref types, Objects, Arrays etc. They are more difficult to evaluate to truthy in a comparison
+      - [Refs and Primative](https://academind.com/tutorials/reference-vs-primitive-values/)
+      - Passing (ref types) functions may be complicated. 
+
+
+#### useCallback
+  - hook to store a function across component execution
+
+```       let obj1 = {}
+          undefined
+          let obj2 = {}
+          undefined
+          obj1 === obj2
+          false
+          obj2 = obj1 // pointed to the obj1 place in memory
+          {}
+```
+  - Essentially this is the same as `useCallback` 
+  - `toggleParagraphHandler = useCallback(( )` knowing this method will never change, we can now store it for re-use
+
+```
+  const toggleParagraphHandler = useCallback(( ) => {
+    setShowParagraph ((prevShowParagraph) => !prevShowParagraph)
+ },[dependaciesHere]) 
+ 
+```
+  - Again by using `useCallback` we are passing the exact object (in memory) to `React.memo()` for comparison
+  - Depancies like functiions are **closures** when a function is defined js locks in all vars outside. js closes over and stores them at the time of closure.
+  - passing in the depndacy this will allow for rerunning of the enclosed function 
+  - Its important to understand closure and primative / ref types in JavaScript
+  - Two functions are objects and ARE never equal in javascript
+  - [Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+
+#### State
+  - Use state is ran once and handed of to be observed.
+  - For reevaluations no new state is created. react will only do statemanagemnt when needed.
+  - Child components may be reinitialed if removed from the dom. Then state will be re-initialized
+  - React doesnt act immediately it schedules state changes. It might feel instant ;) 
+    - multiple updates can occur at teh same time.
+    - Recommended: a good way to consider is using the function method `setShowParagraph((oreShowParagraph) => !prevshowParagraph)` This ensures that is looks for the latest state change. not component re-evaluation
+    - Procedurally a below func will not be executed the state schedule will happen first
+    - Updates in functions will work in batches. *State Batches* functions grouped together in order then in order fed to the dom in one go
+
+#### Optimiztion with useMemo
+  - imagine we have like a sort function but thats very intensive. This function can be *memoized* with sort as return.
+  - Ofcourse we need to pass dependancies 
+  - levarage *destructuring* to pass just items as depndancy `const {items} = props;`
+  - now use memo will only run when "items" changes
+
+    ```
+      const {items} = props; // destructuring
+
+      // memoiszed
+      const sortedList = useMemo(() => {
+        return props.items.sort((a, b) => a - b);
+      },[items])
+
+    ```
+- dont forget you will neeed to avoid problems with ref type comparisons so wrap you props sent in `useMemo` also.
+- this presumes in this scenario that the sort example function is a highly intensive process
+
+---
+
 #### Bugs
   - 
 ---
-<img src="../_dev/../react-complete-guide/food-order-app/_dev/screenshot.png">
+
+
 ### Array functions
 
 [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
@@ -688,6 +779,6 @@ function add(a:number,b:number)
 ### Updates
 
 - Create React App is dead, hooks are the future utilize: "Next" "Vite" or "Remix"
-- [Alternatives to React](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a
+- [Alternatives to React](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a)
 
 ---
