@@ -9,12 +9,6 @@ import globalStyles from "../../../Assets/global-styles/bootstrap.min.module.css
 */
 const Button = (props) => {
 
-// const 
-//  if(props.modalTarget){
-    
-//   {props.modalTarget ? `data-bs-toggle="modal" data-bs-target="#${modalTarget}` : ''}
-
-//  }
 
  const setDisplay = (event) => {
    

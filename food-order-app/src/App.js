@@ -1,5 +1,5 @@
 // import AuthContext from "./components/store/auth-context";
-import React, { Fragment, useState } from "react";
+import React, { useContext, useState } from "react";
 import Header from "./Components/Layout/Header/Header";
 import Container from "./Components/UI/Container/Container";
 import Hero from "./Components/Layout/Hero/Hero";
@@ -7,24 +7,24 @@ import Hero from "./Components/Layout/Hero/Hero";
 import Meals from "./Components/Meals/Meals";
 import Cart from "./Components/Cart/Cart";
 
-import { CartProvider } from "./Components/Cart/CartContext";
+import { CartProvider } from "./store/cart-context";
 
 function App() {
 
-  const [showModal, setShowModal] = React.useState(false);
+  const cartItems = useContext(CartProvider)
+
+  const [showModal, setShowModal] = useState(false);
 
   const toggleModalHandler = (event) => {
     setShowModal((prevShowModal) => !prevShowModal);
   };
 
-  // const hideModalHandler()  => {
-  //   setShowModal(false);
-  // }
-
+   console.log(cartItems)
+  
   return (
     <CartProvider>
       {showModal && <Cart onToggleModalHandler={toggleModalHandler}   />} 
-      <Header cart={{ items: 7 }} onToggleModalHandler={toggleModalHandler}></Header>
+      <Header onToggleModalHandler={toggleModalHandler}></Header>
       <main>
         <Container>
           <Hero></Hero>

@@ -1,10 +1,10 @@
 
 
 import React, { useState, useContext, Fragment } from "react";
-import { CartDispatchContext } from "./CartContext";
+import { CartDispatchContext } from "../../store/cart-context";
 import "bootstrap/dist/css/bootstrap.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const CartItemForm = ({ id, amountInput }) => {
   const [amount, setAmount] = useState(amountInput);
@@ -12,21 +12,33 @@ const CartItemForm = ({ id, amountInput }) => {
   const dispatch = useContext(CartDispatchContext);
 
   const decreaseAmountHandler = (event) => {
-    dispatch({
-      type: 'updated',
-      id: id,
-      amount: amount - 1
-    });
-    setAmount(amount - 1);
+
+    if (amount > 1) {
+      setAmount(amount - 1);
+      dispatch({
+        type: 'updated',
+        id: id,
+        amount: -1
+      });
+
+    } else {
+      dispatch({
+        type: 'deleted',
+        id: id,
+        amount: amount
+      });
+    }
   }
 
   const increaseAmountHandler = (event) => {
-    dispatch({
-      type: 'updated',
-      id: id,
-      amount: amount + 1
-    });
-    setAmount(amount + 1);
+    if (amount < 10) {
+      setAmount(amount + 1);
+      dispatch({
+        type: 'updated',
+        id: id,
+        amount: +1
+      });
+    }
   }
 
   const onDeleteHandler = (event) => {
@@ -35,14 +47,8 @@ const CartItemForm = ({ id, amountInput }) => {
       id: id,
       amount: amount
     });
-    setAmount(0);
   }
 
-  // const onAmountHandler = (event) => {
-  //    props.amountHandler(event.target.value);
-  // }
-
-  // Todo: may need to pass some id here 
   return (
 
     <Fragment>
@@ -50,7 +56,7 @@ const CartItemForm = ({ id, amountInput }) => {
         <button className="btn btn-link px-2" onClick={decreaseAmountHandler} >
           <FontAwesomeIcon icon={faMinus} />
         </button>
-        <input className="form-control form-control-lg"
+        <input className="form-control form-control-sm"
           type="number"
           value={amount}
           min='1'
@@ -63,9 +69,9 @@ const CartItemForm = ({ id, amountInput }) => {
         </button>
       </div>
 
-      <div className="col-md-1 col-lg-1 col-xl-1 text-end">
-      <button className="btn text-danger" onClick={onDeleteHandler}>
-                    <FontAwesomeIcon icon={faTrash} /></button> 
+      <div className="col-md-1 col-lg-1 col-xl-2 text-end">
+        <button className="btn text-danger" onClick={onDeleteHandler}>
+          <FontAwesomeIcon icon={faTrash} /></button>
       </div>
     </Fragment>
   );

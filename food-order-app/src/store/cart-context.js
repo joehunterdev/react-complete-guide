@@ -1,4 +1,4 @@
-import mealItems from '../../store/meal-items';
+import mealItems from './meal-items';
 import { createContext, useReducer } from 'react';
 
 export const CartContext = createContext(null);
@@ -13,8 +13,6 @@ export function CartProvider({ children }) {
     initialState
   );
 
-  // mealItems.filter(cid => cid.id === action.id).values.price
-
   return (
     <CartContext.Provider value={cart}>
       <CartDispatchContext.Provider value={dispatch}>
@@ -26,11 +24,11 @@ export function CartProvider({ children }) {
 
 function cartReducer(state, action) {
 
+  //Todo: just pass item as {} from dispatch
   let meal = mealItems.filter((mid) => mid.id === action.id);
   let price = meal.map((mid) => mid.price).toString();
   // let description = meal.map((mid) => mid.description).toString();
   let name = meal.map((mid) => mid.name).toString();
-
 
   if (state.items.map(t => t.id).includes(action.id) && action.type !== 'deleted') {
     action.type = 'updated';
@@ -69,9 +67,8 @@ function cartReducer(state, action) {
     case 'deleted': {
       return {
         items: [...state.items.filter(t => t.id !== action.id)],
-        totalAmount: state.totalAmount - price * action.amount
+        totalAmount: state.totalAmount - (price * action.amount)
       }
-
     }
 
     default: {

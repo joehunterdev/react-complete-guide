@@ -12,4 +12,6 @@ body {
   margin: 0;
   background-color: #3f3f3f;
 }
-
+main {
+  margin-top:  14px;
+}

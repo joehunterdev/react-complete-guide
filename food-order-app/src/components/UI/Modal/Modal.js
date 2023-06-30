@@ -15,19 +15,21 @@ const Modal = (props) => {
   // }
 
   //  return ReactDOM.createPortal(<Backdrop onClick={closeModalHandler} ><Body>{props.children}</Body></Backdrop>,portalElement);
+  //,globalStyles['modal-dialog-scrollable']
   //TODO: Bugfix backdrop click z-index issue ? affects buttons 
   return ReactDOM.createPortal(
 
     <div
-      className={cx(globalStyles.modal)}
+      className={cx(globalStyles.modal,globalStyles['pt-4'])}
       id="cartModal"
       // role="dialog"
       tabIndex="-1" 
       // onClick={props.onToggleModalHandler}
       // onClick={onTest}
+      //, maxWidth:'50%'
       style={{ display: !props.showModal ? 'block' : 'none',backgroundColor: 'gray', position:'absolute'}}
     > 
-      <div className={globalStyles['modal-dialog']} style={{zIndex: 35002, maxWidth:'80%' }} >
+      <div className={globalStyles['modal-dialog']} style={{zIndex: 35002 }} >
         <div className={globalStyles['modal-content']}>
           <div className={globalStyles['modal-header']}>
             <h1 className={cx(globalStyles['modal-title'], globalStyles['fs-5'])}>
@@ -48,10 +50,11 @@ const Modal = (props) => {
               >
               Close
             </button>
-            <button type="button"
+              {props.showCheckOut && <button type="button"
               className={cx(globalStyles.btn, globalStyles['btn-success'])}>
               Order Now
-            </button> 
+            </button> }
+            {console.log(props.showCheckOut)}
           </div>
         </div>
       </div>
