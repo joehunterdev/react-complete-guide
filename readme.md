@@ -747,6 +747,71 @@ const clickHandler = () => {
 - this presumes in this scenario that the sort example function is a highly intensive process
 
 ---
+### Class Based Components
+  - Classes are just anothe way to handle react components. 
+  - This was the old react requirement (Pior 16.8)
+  - Instead of `return` we use `render()`
+  - Helps with error boundries
+  - Class based cant use react hooks
+  - use them for error boundries or if team is using classed based
+ 
+ #### Creating class
+  - 1. import `component` 
+  - 2. `extend` component
+  - 3. You can now use `this.`
+
+ #### State in classes
+   - Methods you dont need to define type `const`
+   - Old react required classes for state
+   - *State is always*  an object in classes 
+   - Must *init via constructor*
+   - Must be *called state* 
+   - In your method you can overwrite old state: `this.setState({showUsers}) ;` Classes wont merge state for you
+   - You can actually define constants in `render()`
+   - Beware the `this` method can be tricky. You need to ensure that `this` referes to existing class using `bind()` method
+   - When adding constructur and extending classes you need to use `super()`
+   - 
+ #### Side effects in classes
+  - You can use lifecycle methods like:
+  -  `componentDidMount()` on mounted will call `useEffect(...,[])` 
+  - `componentDidUpdate()` called when component is updated `useEffect(...,[somedepenadncy])`, 
+  - `componentWillMount()`essentially the clean up function called when unmounted `useEffect(() => {return () => {}.[]})`
+  - Work with `componentDidUpdate()` recieving two state params `prevProps` and `prevState`
+
+```
+ // see how beautiful useEffect is in functional components heres classbased alternative
+
+    componentDidUpdate(prevProps, prevState) {
+
+        if (prevState.searchTerm !== this.state.searchTerm) {
+            this.setState({ filteredUsers: DUMMY_USERS.filter((user) => user.name.includes(this.state.searchTerm)) })
+
+        }
+
+    }
+
+```
+
+####  More lifecycle methods in classes
+
+  - Imagine getting a bunch of users from a database. You wouldnt want to get them one by one. You can use `componentDidMount()` (load when component has mounted) and send http requests in here. 
+  - Dont forget componentDidMount will only run once
+  - `useEffect` will always execute when component is intially mounted
+  - *This is a differnt mental model to follow*
+
+#### Context and Classes
+  - 1. Context consumer can be used in classes and functional by `importing` and using `<Context>` You can only use one context
+  - 2.  `static contextType = UsersContext` you can only do this once
+
+#### Error Boundries
+  - Error boundries usually handle things out of your control. Server failures etc
+  - `throw new Error('Server error)` this is a useful to provde feedback
+  - Try catch can be tricky using components. Like try catch in a jsx. 
+  - For this we need use errorBoundries `componentDidCatch(err)` this can be created in a separate class. This could be wrapped around a component that needs to be *protected*. And pass props
+  - The dev server will provide full debug info but in production it will just show the error. 
+  - In general these boundaries are to ensure that you can handle issues in an elegant way. Without crashing your entire application
+
+---
 
 #### Bugs
   - 
