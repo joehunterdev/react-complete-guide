@@ -830,14 +830,64 @@ const clickHandler = () => {
       - It can be as simple as a `fetch(url)` url and return extra option in callback
         - Here your can target your response body. `response.success`
       - You need to handle `fetches` response 
-      - http is aysnch it doesnt happen imediatly
-      - Json Data is the most usefull
+    - http is aysnch it doesnt happen imediatly
+
+    - Json Data is the most usefull
+    - After making the call we can handle json and add api body call to the state
 
   #### Aysnch / await
+    - Promise is returned by `fetch()`
+    - When dealing with promises you can create the `then()` chain or use `asynch` on your method and `await`. It does the same simply easier to read. 
+    - 
+```
+    fetch('https://swapi.py4e.com/api/films/').then(
+      (response) => { return response.json() }).then((data) => {
+        const transformedMovies = data.results.map(movieData => {
+          return { 
+            id: movieData.episode_id, 
+            title: movieData.title, 
+            openingText: movieData.opening_crawl, 
+            releaseDate: movieData.release_date }
+        })
+        setMovies(transformedMovies)
+      })
+
+    With await
+
+    const response = await fetch('https://swapi.py4e.com/api/films/');
+    const data = await response.json();
+   
+        const transformedMovies = data.results.map(movieData => {
+          return { 
+            id: movieData.episode_id, 
+            title: movieData.title, 
+            openingText: movieData.opening_crawl, 
+            releaseDate: movieData.release_date }
+        })
+
+        setMovies(transformedMovies)
+```
 
   #### Handlers & Data Sets
+  - Its likely you will want to use a spinner or some animation when loading
+  - 1. Simple as defining is loaded state 
+  - 2. inside your fetch handler init this to true or false before and after. 
+  - 3. Finally wiht condition in your return
+
+  - Loading isnt the only state we could.. "Finding more.." *You always want to inform the user of the state of the application* 
+
   #### HTTP Errors
+   - Technical or Internal issues can be both
+   - *Use try catch* when working with asynch await
+   - *Fectch api* will not generate an error
+   - See implementation [Error Handler](http-requests-and-db\src\App.js)
+   - You dont have to perform all these inline in the return ofcourse 
+
   #### useEffect() and Requests
+    - Note we have alot of *side effects*. These can and should go into `useEffect()`
+    - useEffect is great to handle stuff on loading cycle 
+
+
   #### Post Request
     - [] Something
 
