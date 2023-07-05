@@ -813,6 +813,48 @@ const clickHandler = () => {
 
 ---
 
+### Http Requests & DB
+
+  #### How not to db
+  - *Browser Side apps (React) does not talk directly to db* 
+  - **bad practice** as you would expose creds to users in browser
+  - Backend can be *nodejs app, PHP* like api
+  - [tutorials]( https://academind.com/tutorials/) [http requests](https://codesandbox.io/s/http-requests-umvp4d)
+
+  #### Backend
+    - []
+
+  #### Get Request
+    - *Axios* is good for handling request
+    - *Fetch API* built in javascript
+      - It can be as simple as a `fetch(url)` url and return extra option in callback
+        - Here your can target your response body. `response.success`
+      - You need to handle `fetches` response 
+      - http is aysnch it doesnt happen imediatly
+      - Json Data is the most usefull
+
+  #### Aysnch / await
+
+  #### Handlers & Data Sets
+  #### HTTP Errors
+  #### useEffect() and Requests
+  #### Post Request
+    - [] Something
+
+``
+```
+```
+
+---
+
+
+#### Usefull node
+````
+-save @fortawesome/free-solid-svg-icons                                   
+>> npm i --save @fortawesome/free-regular-svg-icons
+>> npm i --save @fortawesome/free-brands-svg-icons
+````
+---
 #### Bugs
   - 
 ---
