@@ -819,54 +819,53 @@ const clickHandler = () => {
   - *Browser Side apps (React) does not talk directly to db* 
   - **bad practice** as you would expose creds to users in browser
   - Backend can be *nodejs app, PHP* like api
-  - [tutorials]( https://academind.com/tutorials/) [http requests](https://codesandbox.io/s/http-requests-umvp4d)
-
-  #### Backend
-    - []
+  - [Tutorials]( https://academind.com/tutorials/) [http requests](https://codesandbox.io/s/http-requests-umvp4d)
 
   #### Get Request
-    - *Axios* is good for handling request
-    - *Fetch API* built in javascript
-      - It can be as simple as a `fetch(url)` url and return extra option in callback
-        - Here your can target your response body. `response.success`
-      - You need to handle `fetches` response 
-    - http is aysnch it doesnt happen imediatly
+  - *Axios* is good for handling request
+  - *Fetch API* built in javascript
+    - It can be as simple as a `fetch(url)` url and return extra option in callback
+      - Here your can target your response body. `response.success`
+    - You need to handle `fetches` response 
+  - http is aysnch it doesnt happen imediatly
 
-    - Json Data is the most usefull
-    - After making the call we can handle json and add api body call to the state
+  - Json Data is the most usefull
+  - After making the call we can handle json and add api body call to the state
 
   #### Aysnch / await
-    - Promise is returned by `fetch()`
-    - When dealing with promises you can create the `then()` chain or use `asynch` on your method and `await`. It does the same simply easier to read. 
-    - 
-```
-    fetch('https://swapi.py4e.com/api/films/').then(
-      (response) => { return response.json() }).then((data) => {
-        const transformedMovies = data.results.map(movieData => {
-          return { 
-            id: movieData.episode_id, 
-            title: movieData.title, 
-            openingText: movieData.opening_crawl, 
-            releaseDate: movieData.release_date }
-        })
-        setMovies(transformedMovies)
-      })
+  - Promise is returned by `fetch()`
+  - When dealing with promises you can create the `then()` chain or use `asynch` on your method and `await`. It does the same simply easier to read. 
+ 
+    ```
+        fetch('https://swapi.py4e.com/api/films/').then(
+          (response) => { return response.json() }).then((data) => {
+            const transformedMovies = data.results.map(movieData => {
+              return { 
+                id: movieData.episode_id, 
+                title: movieData.title, 
+                openingText: movieData.opening_crawl, 
+                releaseDate: movieData.release_date }
+            })
+            setMovies(transformedMovies)
+          })
+    ```
+ - With await
+      ```
 
-    With await
 
-    const response = await fetch('https://swapi.py4e.com/api/films/');
-    const data = await response.json();
-   
-        const transformedMovies = data.results.map(movieData => {
-          return { 
-            id: movieData.episode_id, 
-            title: movieData.title, 
-            openingText: movieData.opening_crawl, 
-            releaseDate: movieData.release_date }
-        })
+          const response = await fetch('https://swapi.py4e.com/api/films/');
+          const data = await response.json();
+        
+              const transformedMovies = data.results.map(movieData => {
+                return { 
+                  id: movieData.episode_id, 
+                  title: movieData.title, 
+                  openingText: movieData.opening_crawl, 
+                  releaseDate: movieData.release_date }
+              })
 
-        setMovies(transformedMovies)
-```
+              setMovies(transformedMovies)
+      ```
 
   #### Handlers & Data Sets
   - Its likely you will want to use a spinner or some animation when loading
@@ -884,10 +883,10 @@ const clickHandler = () => {
    - You dont have to perform all these inline in the return ofcourse 
 
   #### useEffect() and Requests
-    - Note we have alot of *side effects*. These can and should go into `useEffect()`
-    - useEffect is great to handle stuff on loading cycle *will change on depenacies []*
-    - As we dont have any state dependant changes for useEffect we'll implement a `useCallback(async() `
-    - note how you can pass `async()` *followed by any dependancies*
+  - Note we have alot of *side effects*. These can and should go into `useEffect()`
+  - useEffect is great to handle stuff on loading cycle *will change on depenacies []*
+  - As we dont have any state dependant changes for useEffect we'll implement a `useCallback(async() `
+  - note how you can pass `async()` *followed by any dependancies*
   
 ```
 
@@ -925,11 +924,22 @@ const clickHandler = () => {
 
 
   #### Post Request
-    - Sending post requests can be done by using *Firebase*
-    - Setup Firebase
-
-``
+  - Sending post requests can be done by using *Firebase*
+  - Setup Firebase and create a new project and db in *test mode*
+  - By copying the link to db you can send posts
+  - With a final node of `movies.json` it will create a new collection for you.
+  - You can use fetch and pass additional parameters post and decode response
+  - Javascript *utility* `JSON.stringify`
 ```
+  async function addMovieHandler(movie) {
+    const response = await
+      fetch('https://react-http-89102-default-rtdb.europe-west1.firebasedatabase.app/movies.json',
+        {
+          method: 'POST',
+          body: JSON.stringify,
+          headers: { 'Content-Type': 'application/json' }
+        }
+      );
 ```
 
 ---
