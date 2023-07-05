@@ -885,11 +885,48 @@ const clickHandler = () => {
 
   #### useEffect() and Requests
     - Note we have alot of *side effects*. These can and should go into `useEffect()`
-    - useEffect is great to handle stuff on loading cycle 
+    - useEffect is great to handle stuff on loading cycle *will change on depenacies []*
+    - As we dont have any state dependant changes for useEffect we'll implement a `useCallback(async() `
+    - note how you can pass `async()` *followed by any dependancies*
+  
+```
+
+  const fetchMoviesHandler = useCallback(async () => {
+    //Loading
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // With await
+      const response = await fetch('https://swapi.py4e.com/api/films/');
+      //statusCode !== 200
+      if (!response.ok) {
+        throw new Error("Status code: " + response.statusCode)
+      }
+
+      const data = await response.json();
+      const transformedMovies = data.results.map(movieData => {
+        return {
+          id: movieData.episode_id,
+          title: movieData.title,
+          openingText: movieData.opening_crawl,
+          releaseDate: movieData.release_date
+        }
+      })
+      setMovies(transformedMovies)
+    } catch (error) {
+      setError(error.message)
+    }
+    setIsLoading(false) // regardless we need to stop loading
+
+  },[])
+
+```
 
 
   #### Post Request
-    - [] Something
+    - Sending post requests can be done by using *Firebase*
+    - Setup Firebase
 
 ``
 ```
