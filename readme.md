@@ -922,8 +922,7 @@ const clickHandler = () => {
 
 ```
 
-
-  #### Post Request
+#### Post Request
   - Sending post requests can be done by using *Firebase*
   - Setup Firebase and create a new project and db in *test mode*
   - By copying the link to db you can send posts
@@ -944,7 +943,6 @@ const clickHandler = () => {
 
 ---
 
-
 #### Usefull node
 ````
 -save @fortawesome/free-solid-svg-icons                                   
@@ -952,6 +950,53 @@ const clickHandler = () => {
 >> npm i --save @fortawesome/free-brands-svg-icons
 ````
 ---
+
+### Building Custom Hooks
+
+#### What are "Custom Hooks"?
+
+- just regular functions that *contain statefull logic*
+- reuseable and in can be used with other hooks
+- put your own logic together
+- Remember: *you can only call state functions top level*
+
+#### Creating a Custom React Hook Function
+- *use""* naming is a requirement
+- same syntax as a normal function (its just a function)
+
+#### Using Custom Hooks
+- Remember you need to tie a state to your hook exported from your custom hook. Will get imported
+- To make this state available you can return it from your hook
+- Look how lean:
+
+```
+const ForwardCounter = () => {
+ const counter = useCounter(); 
+  return <Card>{counter}</Card>;
+};
+```
+
+#### Configuring Custom Hooks
+- **parameters** can make them configurable  
+- Setting a default param: `(forwards = true) ` 
+
+####  Onwards To A More Realistic Example
+#### Building a Custom Http Hook
+#### Using the Custom Http Hook
+#### Adjusting the Custom Hook Logic
+#### Using The Custom Hook In More Components
+#### Module Resources
+
+
+---
+
+```
+const ForwardCounter = () => {
+ const counter = useCounter(); 
+  return <Card>{counter}</Card>;
+};
+```
+
 #### Bugs
   - 
 ---
