@@ -1,54 +1,61 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback } from "react";
 /*
-  const [isLoading, setIsLoading] = useState(false);
+  two states load and error
+  custom hook takes no params
+  uses callback for request (config,applyData) 
+  return 3 state elements, 3rd being an 
 */
-const useHttp = (url = 'https://react-http-89102-default-rtdb.europe-west1.firebasedatabase.app/tasks.json') => {
+const useHttp = () => {
 
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        // const interval = setInterval(() => {
-        //     if (forwards) {
-        //         setCounter((prevCounter) => prevCounter + 1);
-        //     } else {setCounter((prevCounter) => prevCounter + 1)}
-        // }, 1000);
-        
-        const fetchTasks = async (taskText) => {
-            setIsLoading(true);
-            setError(null);
-            try {
-              const response = await fetch(
-                
-                url
-                
-              );
-        
-              if (!response.ok) {
-                throw new Error('Request failed!');
-              }
-        
-              const data = await response.json();
-        
-              const loadedTasks = [];
-        
-              for (const taskKey in data) {
-                loadedTasks.push({ id: taskKey, text: data[taskKey].text });
-              }
-              return [{loadedTasks:loadedTasks}];
+  // sendRequest();
+  //this looks aysnchronous
+  const sendRequest = useCallback(async (requestConfig, applyData) => {
 
-            //   setTasks(loadedTasks);
-            } catch (err) {
-              setError(err.message || 'Something went wrong!');
-            }
-            setIsLoading(false);
-            return [{isLoading:false}];
+    setIsLoading(true)
+    setError(null)
 
-          };
-    
-          
-    }, [fetchTasks]);//rerun everytime state changes
+    try {
 
-    return [{isLoading:isLoading}];
+       const response = await fetch(requestConfig.url, {
+        method: requestConfig.method ? requestConfig.method : "GET",
+        headers: requestConfig.headers ? requestConfig.headers : {},
+        body: requestConfig.body ?  JSON.stringify(requestConfig.body) : null
+      })
+
+      if (!response.ok) {
+
+        throw new Error("No response")
+
+      }
+
+      const data = await response.json();
+
+      if (!data) {
+
+        throw new Error("No data")
+
+      }
+
+      applyData(data) //is returned for fetchTask ?
+      setIsLoading(false)
+
+    } catch (err) {
+
+      setError(err.message || "Your a mong")
+      setError(null)
+
+    }
+
+
+
+  }, []);
+
+  return { isLoading, error, sendRequest };
 }
+
+
 export default useHttp
+

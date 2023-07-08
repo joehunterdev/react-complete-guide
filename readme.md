@@ -941,14 +941,7 @@ const clickHandler = () => {
       );
 ```
 
----
 
-#### Usefull node
-````
--save @fortawesome/free-solid-svg-icons                                   
->> npm i --save @fortawesome/free-regular-svg-icons
->> npm i --save @fortawesome/free-brands-svg-icons
-````
 ---
 
 ### Building Custom Hooks
@@ -961,14 +954,16 @@ const clickHandler = () => {
 - Remember: *you can only call state functions top level*
 
 #### Creating a Custom React Hook Function
+- Typically used to limit duplicated code
 - *use""* naming is a requirement
 - same syntax as a normal function (its just a function)
 
 #### Using Custom Hooks
-- Remember you need to tie a state to your hook exported from your custom hook. Will get imported
+- Remember you need to tie a state to your hook exported from your custom hook. Will get imported to caller. Think of it as the body.
 - To make this state available you can return it from your hook
-- Look how lean:
+- With custom hooks you are “stepping outside React” to work with some external system
 
+- Look how lean:
 ```
 const ForwardCounter = () => {
  const counter = useCounter(); 
@@ -981,11 +976,37 @@ const ForwardCounter = () => {
 - Setting a default param: `(forwards = true) ` 
 
 ####  Onwards To A More Realistic Example
+  - The example uses a bunch of functions we could refactor for simplicty. The logic is dependant on other react hooks 
+  and state. For this case we need a customHook
+  - export function as custom hook
+ -  but maintain state to handle in your render component
+ - i would guess that the instructor expects a component to just handle the request ?
+  - conditional display should be handled in component ? 
+
 #### Building a Custom Http Hook
+- useCallback: passing a callback to its child component to prevent the rendering of the child component. 
+- useEffect accepts a function that is **imperative** in nature and a list of dependencies. When its dependencies change it executes the passed function. Good for timers, logging after everything has rendered
+- useMemo: It recalculated the value only when one of its dependencies change
+
 #### Using the Custom Http Hook
 #### Adjusting the Custom Hook Logic
 #### Using The Custom Hook In More Components
-#### Module Resources
+
+#### Binding
+
+  - When envoking a callback browsers dont know how to address paramaters
+   - Binding is the same as a call back function and passing a parameter at the same time
+  `function greet(name) {
+  alert('Hi ' + name);
+}`
+- consider this function the browser *doesnt know which param should be sent*
+- for this we can pass in a callback function
+`
+someButton.addEventListener('click', function() {
+  greet('Max'); // yields 'Hi Max'
+});
+`
+- or use bind 
 
 
 ---
@@ -996,6 +1017,13 @@ const ForwardCounter = () => {
   return <Card>{counter}</Card>;
 };
 ```
+
+- Revise: the where and the whys of 
+*useEffect*, 
+*binding* & 
+*destructuring* 
+
+[Binding](../javascript/binding.js)
 
 #### Bugs
   - 
@@ -1031,3 +1059,10 @@ function add(a:number,b:number)
 - [Alternatives to React](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a)
 
 ---
+
+#### Usefull node
+````
+-save @fortawesome/free-solid-svg-icons                                   
+>> npm i --save @fortawesome/free-regular-svg-icons
+>> npm i --save @fortawesome/free-brands-svg-icons
+````
