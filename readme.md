@@ -483,11 +483,13 @@ const clickHandler = () => {
 - `useEffect((do after every component eval),[dependancies])`
   - your side affect goes into function 1 param / then specify your dependancies in function 2nd param
 - A good use of this would be _authenticated user status_ for a login system storing auth data after refresh
+
   - we could use efect to handle this so client doesnt need to login again
   - `localStorage.setItem('isLoggedIn','1')`
   - `useEffect((do after every component eval),[dependancies])` will run after component eval
   - Now in storage in browser you will find this new element
   - We can now check against this variable, but we would want to control when this run
+
     ```
     useEffect(() => {
         const storedUserLoggedInInformation = localStorage.getItem('isLoggedIn');
@@ -503,32 +505,38 @@ const clickHandler = () => {
   - You can pass dependacies to use effect() ` [setFormIsValid,enteredEmail,entererdPassword]`
   - It helps us ensure we have one code in one place which re-runs when dependancies change
   - Its also common to re-run logic when props / state change
-  - useEffect accepts a function that is **imperative** in nature and a list of dependencies. When its dependencies change it executes the passed function. Good for timers, logging after everything has rendered
+  - **useEffect** accepts a function that is **imperative** in nature and a list of dependencies. When its dependencies change it executes the passed function. Good for timers, logging after everything has rendered
+  - **Sideeffects**: If the component makes calculations that don't target the output value, then these calculations are named side-effects.
+
+
 #### What not to add as dependancy
 
-  - add everything as use effect as dependancy except:
-  - Dont need to add state updating functions
-      - Dont need to add "built-in" apis or functions
-      - DON'T need to add variables or functions  you might've defined OUTSIDE of your components
-      - add all "things" you use in your effect function if those "things" could change because your component (or some parent component) re-rendered.
-          ```import { useEffect, useState } from 'react';
+- add everything as use effect as dependancy except:
+- Dont need to add state updating functions
 
-                let myTimer;
+  - Dont need to add "built-in" apis or functions
+  - DON'T need to add variables or functions you might've defined OUTSIDE of your components
+  - add all "things" you use in your effect function if those "things" could change because your component (or some parent component) re-rendered.
 
-                const MyComponent = (props) => {
-                  const [timerIsActive, setTimerIsActive] = useState(false);
+    ````import { useEffect, useState } from 'react';
 
-                  const { timerDuration } = props; // using destructuring to pull out specific props values
+          let myTimer;
 
-                  useEffect(() => {
-                    if (!timerIsActive) {
-                      setTimerIsActive(true);
-                      myTimer = setTimeout(() => {
-                        setTimerIsActive(false);
-                      }, timerDuration);
-                    }
-                  }, [timerIsActive, timerDuration]);
-                };```
+          const MyComponent = (props) => {
+            const [timerIsActive, setTimerIsActive] = useState(false);
+
+            const { timerDuration } = props; // using destructuring to pull out specific props values
+
+            useEffect(() => {
+              if (!timerIsActive) {
+                setTimerIsActive(true);
+                myTimer = setTimeout(() => {
+                  setTimerIsActive(false);
+                }, timerDuration);
+              }
+            }, [timerIsActive, timerDuration]);
+          };```
+    ````
 
 - `timerIsActive` is added as a dependency because it's component state that may change when the component changes (e.g. because the state was updated)
 
@@ -655,45 +663,48 @@ const clickHandler = () => {
 - Note: instructor has used use effect to only run after state update
 
 ---
+
 ### Section 12 Food order app
-  - [../food-order-app/readme](Readme)
+
+- [../food-order-app/readme](Readme)
 
 ---
 
 ### Section 13 Food order app
 
-
 #### How react really works
-  - Essentially react doesnt care about the web it will work with any node. 
-  - React Dom has an interface to the web (Virtual Dom)
-  - **Context** (component wide data), **Props** (data from parent components), **State** (internal data) 
-    - whenever these change this will update the components. react then interacts with the ReactDom
-      - React first defines default state, then target state- Then passes on only the differences to make this change possible to the real dom
-  - Re-Evaluationg is not the same as re-rendering. Imagin if there are no changes to the dom this is just a re-evaluation
-    - Remember performance wise reaching out to the real dom is performance intensive process
+
+- Essentially react doesnt care about the web it will work with any node.
+- React Dom has an interface to the web (Virtual Dom)
+- **Context** (component wide data), **Props** (data from parent components), **State** (internal data)
+  - whenever these change this will update the components. react then interacts with the ReactDom
+    - React first defines default state, then target state- Then passes on only the differences to make this change possible to the real dom
+- Re-Evaluationg is not the same as re-rendering. Imagin if there are no changes to the dom this is just a re-evaluation
+  - Remember performance wise reaching out to the real dom is performance intensive process
 
 #### Component updates
-  - we can use state to make changes to dom. 
-  - everything will come down to a state being changed. Context and Props 
-  - for every state change of each component. react dom is re-activated this is only 
-  - the difference between two snapshots
-  - You can check for flashes in element chrome console
-  - update mechanisim is based on comparing differences
-  - To a child as were initializing the component it will be re-evaluated
-  - `<Demo clickHandler={false}/>` will still run in child component. This false value is a primitative that gets re-initialez
-    - We can specify the reloading of a component based on certain behaviour using .memo
-      - For functional components `export default React.memo(DemoOutput)` 
-    - `React.memo` essentially can put a filter to listen in for state changes in the case that `<Button onSomthing={nochange}>` in parent looks like this where no state relative to the child changes
-      - *This is not always worth it*. As memo still needs to generate **new props** and **re-render**. Good for larger apps. To cutt off an entire branch of components
-    - Rememver to do this evaluation it will be tricky when using ref types, Objects, Arrays etc. They are more difficult to evaluate to truthy in a comparison
-      - [Refs and Primative](https://academind.com/tutorials/reference-vs-primitive-values/)
-      - Passing (ref types) functions may be complicated. 
 
+- we can use state to make changes to dom.
+- everything will come down to a state being changed. Context and Props
+- for every state change of each component. react dom is re-activated this is only
+- the difference between two snapshots
+- You can check for flashes in element chrome console
+- update mechanisim is based on comparing differences
+- To a child as were initializing the component it will be re-evaluated
+- `<Demo clickHandler={false}/>` will still run in child component. This false value is a primitative that gets re-initialez
+  - We can specify the reloading of a component based on certain behaviour using .memo
+    - For functional components `export default React.memo(DemoOutput)`
+  - `React.memo` essentially can put a filter to listen in for state changes in the case that `<Button onSomthing={nochange}>` in parent looks like this where no state relative to the child changes
+    - _This is not always worth it_. As memo still needs to generate **new props** and **re-render**. Good for larger apps. To cutt off an entire branch of components
+  - Rememver to do this evaluation it will be tricky when using ref types, Objects, Arrays etc. They are more difficult to evaluate to truthy in a comparison
+    - [Refs and Primative](https://academind.com/tutorials/reference-vs-primitive-values/)
+    - Passing (ref types) functions may be complicated.
 
 #### useCallback
-  - hook to store a function across component execution
 
-```       let obj1 = {}
+- hook to store a function across component execution
+
+```let obj1 = {}
           undefined
           let obj2 = {}
           undefined
@@ -702,81 +713,92 @@ const clickHandler = () => {
           obj2 = obj1 // pointed to the obj1 place in memory
           {}
 ```
-  - Essentially this is the same as `useCallback` 
-  - `toggleParagraphHandler = useCallback(( )` knowing this method will never change, we can now store it for re-use
+
+- Essentially this is the same as `useCallback`
+- `toggleParagraphHandler = useCallback(( )` knowing this method will never change, we can now store it for re-use
 
 ```
   const toggleParagraphHandler = useCallback(( ) => {
     setShowParagraph ((prevShowParagraph) => !prevShowParagraph)
- },[dependaciesHere]) 
- 
+ },[dependaciesHere])
+
 ```
-  - Again by using `useCallback` we are passing the exact object (in memory) to `React.memo()` for comparison
-  - Depancies like functiions are **closures** when a function is defined js locks in all vars outside. js closes over and stores them at the time of closure.
-  - passing in the depndacy this will allow for rerunning of the enclosed function 
-  - Its important to understand closure and primative / ref types in JavaScript
-  - Two functions are objects and ARE never equal in javascript
-  - [Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+
+- Again by using `useCallback` we are passing the exact object (in memory) to `React.memo()` for comparison
+- Depancies like functiions are **closures** when a function is defined js locks in all vars outside. js closes over and stores them at the time of closure.
+- passing in the depndacy this will allow for rerunning of the enclosed function
+- Its important to understand closure and primative / ref types in JavaScript
+- Two functions are objects and ARE never equal in javascript
+- [Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 
 #### State
-  - Use state is ran once and handed of to be observed.
-  - For reevaluations no new state is created. react will only do statemanagemnt when needed.
-  - Child components may be reinitialed if removed from the dom. Then state will be re-initialized
-  - React doesnt act immediately it schedules state changes. It might feel instant ;) 
-    - multiple updates can occur at teh same time.
-    - Recommended: a good way to consider is using the function method `setShowParagraph((oreShowParagraph) => !prevshowParagraph)` This ensures that is looks for the latest state change. not component re-evaluation
-    - Procedurally a below func will not be executed the state schedule will happen first
-    - Updates in functions will work in batches. *State Batches* functions grouped together in order then in order fed to the dom in one go
+
+- Use state is ran once and handed of to be observed.
+- For reevaluations no new state is created. react will only do statemanagemnt when needed.
+- Child components may be reinitialed if removed from the dom. Then state will be re-initialized
+- React doesnt act immediately it schedules state changes. It might feel instant ;)
+  - multiple updates can occur at teh same time.
+  - Recommended: a good way to consider is using the function method `setShowParagraph((oreShowParagraph) => !prevshowParagraph)` This ensures that is looks for the latest state change. not component re-evaluation
+  - Procedurally a below func will not be executed the state schedule will happen first
+  - Updates in functions will work in batches. _State Batches_ functions grouped together in order then in order fed to the dom in one go
 
 #### Optimiztion with useMemo
-  - imagine we have like a sort function but thats very intensive. This function can be *memoized* with sort as return.
-  - Ofcourse we need to pass dependancies 
-  - levarage *destructuring* to pass just items as depndancy `const {items} = props;`
-  - now use memo will only run when "items" changes
 
-    ```
-      const {items} = props; // destructuring
+- imagine we have like a sort function but thats very intensive. This function can be _memoized_ with sort as return.
+- Ofcourse we need to pass dependancies
+- levarage _destructuring_ to pass just items as depndancy `const {items} = props;`
+- now use memo will only run when "items" changes
 
-      // memoiszed
-      const sortedList = useMemo(() => {
-        return props.items.sort((a, b) => a - b);
-      },[items])
+  ```
+    const {items} = props; // destructuring
 
-    ```
+    // memoiszed
+    const sortedList = useMemo(() => {
+      return props.items.sort((a, b) => a - b);
+    },[items])
+
+  ```
+
 - dont forget you will neeed to avoid problems with ref type comparisons so wrap you props sent in `useMemo` also.
 - this presumes in this scenario that the sort example function is a highly intensive process
 
 ---
-### Class Based Components
-  - Classes are just anothe way to handle react components. 
-  - This was the old react requirement (Pior 16.8)
-  - Instead of `return` we use `render()`
-  - Helps with error boundries
-  - Class based cant use react hooks
-  - use them for error boundries or if team is using classed based
- 
- #### Creating class
-  - 1. import `component` 
-  - 2. `extend` component
-  - 3. You can now use `this.`
 
- #### State in classes
-   - Methods you dont need to define type `const`
-   - Old react required classes for state
-   - *State is always*  an object in classes 
-   - Must *init via constructor*
-   - Must be *called state* 
-   - In your method you can overwrite old state: `this.setState({showUsers}) ;` Classes wont merge state for you
-   - You can actually define constants in `render()`
-   - Beware the `this` method can be tricky. You need to ensure that `this` referes to existing class using `bind()` method
-   - When adding constructur and extending classes you need to use `super()`
-   - 
- #### Side effects in classes
-  - You can use lifecycle methods like:
-  -  `componentDidMount()` on mounted will call `useEffect(...,[])` 
-  - `componentDidUpdate()` called when component is updated `useEffect(...,[somedepenadncy])`, 
-  - `componentWillMount()`essentially the clean up function called when unmounted `useEffect(() => {return () => {}.[]})`
-  - Work with `componentDidUpdate()` recieving two state params `prevProps` and `prevState`
+### Class Based Components
+
+- Classes are just anothe way to handle react components.
+- This was the old react requirement (Pior 16.8)
+- Instead of `return` we use `render()`
+- Helps with error boundries
+- Class based cant use react hooks
+- use them for error boundries or if team is using classed based
+
+#### Creating class
+
+- 1. import `component`
+- 2. `extend` component
+- 3. You can now use `this.`
+
+#### State in classes
+
+- Methods you dont need to define type `const`
+- Old react required classes for state
+- _State is always_ an object in classes
+- Must _init via constructor_
+- Must be _called state_
+- In your method you can overwrite old state: `this.setState({showUsers}) ;` Classes wont merge state for you
+- You can actually define constants in `render()`
+- Beware the `this` method can be tricky. You need to ensure that `this` referes to existing class using `bind()` method
+- When adding constructur and extending classes you need to use `super()`
+-
+
+#### Side effects in classes
+
+- You can use lifecycle methods like:
+- `componentDidMount()` on mounted will call `useEffect(...,[])`
+- `componentDidUpdate()` called when component is updated `useEffect(...,[somedepenadncy])`,
+- `componentWillMount()`essentially the clean up function called when unmounted `useEffect(() => {return () => {}.[]})`
+- Work with `componentDidUpdate()` recieving two state params `prevProps` and `prevState`
 
 ```
  // see how beautiful useEffect is in functional components heres classbased alternative
@@ -792,102 +814,112 @@ const clickHandler = () => {
 
 ```
 
-####  More lifecycle methods in classes
+#### More lifecycle methods in classes
 
-  - Imagine getting a bunch of users from a database. You wouldnt want to get them one by one. You can use `componentDidMount()` (load when component has mounted) and send http requests in here. 
-  - Dont forget componentDidMount will only run once
-  - `useEffect` will always execute when component is intially mounted
-  - *This is a differnt mental model to follow*
+- Imagine getting a bunch of users from a database. You wouldnt want to get them one by one. You can use `componentDidMount()` (load when component has mounted) and send http requests in here.
+- Dont forget componentDidMount will only run once
+- `useEffect` will always execute when component is intially mounted
+- _This is a differnt mental model to follow_
 
 #### Context and Classes
-  - 1. Context consumer can be used in classes and functional by `importing` and using `<Context>` You can only use one context
-  - 2.  `static contextType = UsersContext` you can only do this once
+
+- 1. Context consumer can be used in classes and functional by `importing` and using `<Context>` You can only use one context
+- 2.  `static contextType = UsersContext` you can only do this once
 
 #### Error Boundries
-  - Error boundries usually handle things out of your control. Server failures etc
-  - `throw new Error('Server error)` this is a useful to provde feedback
-  - Try catch can be tricky using components. Like try catch in a jsx. 
-  - For this we need use errorBoundries `componentDidCatch(err)` this can be created in a separate class. This could be wrapped around a component that needs to be *protected*. And pass props
-  - The dev server will provide full debug info but in production it will just show the error. 
-  - In general these boundaries are to ensure that you can handle issues in an elegant way. Without crashing your entire application
+
+- Error boundries usually handle things out of your control. Server failures etc
+- `throw new Error('Server error)` this is a useful to provde feedback
+- Try catch can be tricky using components. Like try catch in a jsx.
+- For this we need use errorBoundries `componentDidCatch(err)` this can be created in a separate class. This could be wrapped around a component that needs to be _protected_. And pass props
+- The dev server will provide full debug info but in production it will just show the error.
+- In general these boundaries are to ensure that you can handle issues in an elegant way. Without crashing your entire application
 
 ---
 
 ### Http Requests & DB
 
-  #### How not to db
-  - *Browser Side apps (React) does not talk directly to db* 
-  - **bad practice** as you would expose creds to users in browser
-  - Backend can be *nodejs app, PHP* like api
-  - [Tutorials]( https://academind.com/tutorials/) [http requests](https://codesandbox.io/s/http-requests-umvp4d)
+#### How not to db
 
-  #### Get Request
-  - *Axios* is good for handling request
-  - *Fetch API* built in javascript
-    - It can be as simple as a `fetch(url)` url and return extra option in callback
-      - Here your can target your response body. `response.success`
-    - You need to handle `fetches` response 
-  - http is aysnch it doesnt happen imediatly
+- _Browser Side apps (React) does not talk directly to db_
+- **bad practice** as you would expose creds to users in browser
+- Backend can be _nodejs app, PHP_ like api
+- [Tutorials](https://academind.com/tutorials/) [http requests](https://codesandbox.io/s/http-requests-umvp4d)
 
-  - Json Data is the most usefull
-  - After making the call we can handle json and add api body call to the state
+#### Get Request
 
-  #### Aysnch / await
-  - Promise is returned by `fetch()`
-  - When dealing with promises you can create the `then()` chain or use `asynch` on your method and `await`. It does the same simply easier to read. 
- 
-    ```
-        fetch('https://swapi.py4e.com/api/films/').then(
-          (response) => { return response.json() }).then((data) => {
-            const transformedMovies = data.results.map(movieData => {
-              return { 
-                id: movieData.episode_id, 
-                title: movieData.title, 
-                openingText: movieData.opening_crawl, 
-                releaseDate: movieData.release_date }
-            })
-            setMovies(transformedMovies)
+- _Axios_ is good for handling request
+- _Fetch API_ built in javascript
+  - It can be as simple as a `fetch(url)` url and return extra option in callback
+    - Here your can target your response body. `response.success`
+  - You need to handle `fetches` response
+- http is aysnch it doesnt happen imediatly
+
+- Json Data is the most usefull
+- After making the call we can handle json and add api body call to the state
+
+#### Aysnch / await
+
+- Promise is returned by `fetch()`
+- When dealing with promises you can create the `then()` chain or use `asynch` on your method and `await`. It does the same simply easier to read.
+
+  ```
+      fetch('https://swapi.py4e.com/api/films/').then(
+        (response) => { return response.json() }).then((data) => {
+          const transformedMovies = data.results.map(movieData => {
+            return {
+              id: movieData.episode_id,
+              title: movieData.title,
+              openingText: movieData.opening_crawl,
+              releaseDate: movieData.release_date }
           })
-    ```
- - With await
-      ```
+          setMovies(transformedMovies)
+        })
+  ```
+
+- With await
+
+  ```
 
 
-          const response = await fetch('https://swapi.py4e.com/api/films/');
-          const data = await response.json();
-        
-              const transformedMovies = data.results.map(movieData => {
-                return { 
-                  id: movieData.episode_id, 
-                  title: movieData.title, 
-                  openingText: movieData.opening_crawl, 
-                  releaseDate: movieData.release_date }
-              })
+      const response = await fetch('https://swapi.py4e.com/api/films/');
+      const data = await response.json();
 
-              setMovies(transformedMovies)
-      ```
+          const transformedMovies = data.results.map(movieData => {
+            return {
+              id: movieData.episode_id,
+              title: movieData.title,
+              openingText: movieData.opening_crawl,
+              releaseDate: movieData.release_date }
+          })
 
-  #### Handlers & Data Sets
-  - Its likely you will want to use a spinner or some animation when loading
-  - 1. Simple as defining is loaded state 
-  - 2. inside your fetch handler init this to true or false before and after. 
-  - 3. Finally wiht condition in your return
+          setMovies(transformedMovies)
+  ```
 
-  - Loading isnt the only state we could.. "Finding more.." *You always want to inform the user of the state of the application* 
+#### Handlers & Data Sets
 
-  #### HTTP Errors
-   - Technical or Internal issues can be both
-   - *Use try catch* when working with asynch await
-   - *Fectch api* will not generate an error
-   - See implementation [Error Handler](http-requests-and-db\src\App.js)
-   - You dont have to perform all these inline in the return ofcourse 
+- Its likely you will want to use a spinner or some animation when loading
+- 1. Simple as defining is loaded state
+- 2. inside your fetch handler init this to true or false before and after.
+- 3. Finally wiht condition in your return
 
-  #### useEffect() and Requests
-  - Note we have alot of *side effects*. These can and should go into `useEffect()`
-  - useEffect is great to handle stuff on loading cycle *will change on depenacies []*
-  - As we dont have any state dependant changes for useEffect we'll implement a `useCallback(async() `
-  - note how you can pass `async()` *followed by any dependancies*
-  
+- Loading isnt the only state we could.. "Finding more.." _You always want to inform the user of the state of the application_
+
+#### HTTP Errors
+
+- Technical or Internal issues can be both
+- _Use try catch_ when working with asynch await
+- _Fectch api_ will not generate an error
+- See implementation [Error Handler](http-requests-and-db\src\App.js)
+- You dont have to perform all these inline in the return ofcourse
+
+#### useEffect() and Requests
+
+- Note we have alot of _side effects_. These can and should go into `useEffect()`
+- useEffect is great to handle stuff on loading cycle _will change on depenacies []_
+- As we dont have any state dependant changes for useEffect we'll implement a `useCallback(async() `
+- note how you can pass `async()` _followed by any dependancies_
+
 ```
 
   const fetchMoviesHandler = useCallback(async () => {
@@ -923,12 +955,14 @@ const clickHandler = () => {
 ```
 
 #### Post Request
-  - Sending post requests can be done by using *Firebase*
-  - Setup Firebase and create a new project and db in *test mode*
-  - By copying the link to db you can send posts
-  - With a final node of `movies.json` it will create a new collection for you.
-  - You can use fetch and pass additional parameters post and decode response
-  - Javascript *utility* `JSON.stringify`
+
+- Sending post requests can be done by using _Firebase_
+- Setup Firebase and create a new project and db in _test mode_
+- By copying the link to db you can send posts
+- With a final node of `movies.json` it will create a new collection for you.
+- You can use fetch and pass additional parameters post and decode response
+- Javascript _utility_ `JSON.stringify`
+
 ```
   async function addMovieHandler(movie) {
     const response = await
@@ -941,184 +975,197 @@ const clickHandler = () => {
       );
 ```
 
-
 ---
 
 ### Building Custom Hooks
 
 #### What are "Custom Hooks"?
 
-- just regular functions that *contain statefull logic*
+- just regular functions that _contain statefull logic_
 - reuseable and in can be used with other hooks
 - put your own logic together
-- Remember: *you can only call state functions top level*
+- Remember: _you can only call state functions top level_
 
 #### Creating a Custom React Hook Function
+
 - Typically used to limit duplicated code
-- *use""* naming is a requirement
+- _use""_ naming is a requirement
 - same syntax as a normal function (its just a function)
 
 #### Using Custom Hooks
+
 - Remember you need to tie a state to your hook exported from your custom hook. Will get imported to caller. Think of it as the body.
 - To make this state available you can return it from your hook
 - With custom hooks you are “stepping outside React” to work with some external system
 
 - Look how lean:
+
 ```
 const ForwardCounter = () => {
- const counter = useCounter(); 
+ const counter = useCounter();
   return <Card>{counter}</Card>;
 };
 ```
 
 #### Configuring Custom Hooks
-- **parameters** can make them configurable  
-- Setting a default param: `(forwards = true) ` 
 
-####  Onwards To A More Realistic Example
-  - The example uses a bunch of functions we could refactor for simplicty. The logic is dependant on other react hooks 
+- **parameters** can make them configurable
+- Setting a default param: `(forwards = true) `
+
+#### Onwards To A More Realistic Example
+
+- The example uses a bunch of functions we could refactor for simplicty. The logic is dependant on other react hooks
   and state. For this case we need a customHook
-  - export function as custom hook
- -  but maintain state to handle in your render component
- - i would guess that the instructor expects a component to just handle the request ?
-  - conditional display should be handled in component ? 
+- export function as custom hook
+- but maintain state to handle in your render component
+- i would guess that the instructor expects a component to just handle the request ?
+- conditional display should be handled in component ?
 
 #### Building a Custom Http Hook
-- useCallback: passing a callback to its child component to prevent the rendering of the child component. 
+
+- useCallback: passing a callback to its child component to prevent the rendering of the child component.
 
 - useMemo: It recalculated the value only when one of its dependencies change
 
 #### Using the Custom Http Hook
+
 #### Adjusting the Custom Hook Logic
+
 #### Using The Custom Hook In More Components
 
 #### Binding
 
-  - When envoking a callback browsers dont know how to address paramaters
-   - Binding is the same as a call back function and passing a parameter at the same time
+- When envoking a callback browsers dont know how to address paramaters
+- Binding is the same as a call back function and passing a parameter at the same time
   `function greet(name) {
   alert('Hi ' + name);
 }`
-- consider this function the browser *doesnt know which param should be sent*
+- consider this function the browser _doesnt know which param should be sent_
 - for this we can pass in a callback function
-`
-someButton.addEventListener('click', function() {
+  `someButton.addEventListener('click', function() {
   greet('Max'); // yields 'Hi Max'
-});
-`
-- or use bind 
-
+});`
+- or use bind
 
 ---
 
 ```
 const ForwardCounter = () => {
- const counter = useCounter(); 
+ const counter = useCounter();
   return <Card>{counter}</Card>;
 };
 ```
 
-- Revise: the where and the whys of 
-*useEffect*, 
-*binding* & 
-*destructuring* 
+- Revise: the where and the whys of
+  _useEffect_,
+  _binding_ &
+  _destructuring_
 
 [Binding](../javascript/binding.js)
 
 #### Dealing With Form Submission & Getting User Input Values
-  - `preventDefault()` will halt http request
-  - `useRef` is usefull to track inputs `ref={nameInputRef}`
-    - Refs have a `.current.value` property
-    - Updating a variable everytime your component runs is 
-    - `nameInputRef.current.value` is bad. Dont manipulate the DOM
-  - Using state will give you more granualar change combined with (keystroke for example)
+
+- `preventDefault()` will halt http request
+- `useRef` is usefull to track inputs `ref={nameInputRef}`
+  - Refs have a `.current.value` property
+  - Updating a variable everytime your component runs is
+  - `nameInputRef.current.value` is bad. Dont manipulate the DOM
+- Using state will give you more granualar change combined with (keystroke for example)
 
 #### Adding Basic Validation
-  - Validate both server and client side
-  - Typically you want to check inputs are not empty
-   if not passed just `return` in your validation method will halt execution
+
+- Validate both server and client side
+- Typically you want to check inputs are not empty
+  if not passed just `return` in your validation method will halt execution
 
 #### Providing Validation Feedback
-  - You can init state for validation to `true` to avoid inmediate outputting error messages (this is cheating)
-  - You can levarage css classes to highlght form inputs etc
+
+- You can init state for validation to `true` to avoid inmediate outputting error messages (this is cheating)
+- You can levarage css classes to highlght form inputs etc
 
 #### Handling the "was touched" State
-  - To get around this *false* initalization we could creat an additonal state *touched* so we can check if the user has touched the input.
+
+- To get around this _false_ initalization we could creat an additonal state _touched_ so we can check if the user has touched the input.
 
 #### React To Lost Focus
-  - `onBlur` The best scenario is to actually inform the user before submitting that there is an error AFTER they have had a chance at editing
-  - When input loses focus we can initialize a function `onBlur={setNameTouched}`
-   - You can run validation in these onBlurs in these handlers also
-  - After input is valid an prior to submit we would also want to remove any error message and provide instant feedback. *Keystroke validation*
+
+- `onBlur` The best scenario is to actually inform the user before submitting that there is an error AFTER they have had a chance at editing
+- When input loses focus we can initialize a function `onBlur={setNameTouched}`
+- You can run validation in these onBlurs in these handlers also
+- After input is valid an prior to submit we would also want to remove any error message and provide instant feedback. _Keystroke validation_
 
 #### Refactoring & Deriving States
-  - Up to now we have rich level of events to make for a great user experience: `changeHandler, isValid, blurHandler ` valid and touched states are the most important
-  - This is a good point to refactor: enteredValidName for example can be simplified to just a const and we can then remove the state code 
-    `const enteredValidName = enteredName.trim() !=== ''`
-  - we can also trim things further up by combining isValid and touched states
-  - Finally empty your states. `setEnteredName()` and `isTouched()` if necessary
+
+- Up to now we have rich level of events to make for a great user experience: `changeHandler, isValid, blurHandler ` valid and touched states are the most important
+- This is a good point to refactor: enteredValidName for example can be simplified to just a const and we can then remove the state code
+  `const enteredValidName = enteredName.trim() !=== ''`
+- we can also trim things further up by combining isValid and touched states
+- Finally empty your states. `setEnteredName()` and `isTouched()` if necessary
 
 #### Managing The Overall Form Validity
-  - One input isnt enough to validate the whole form. 
-  - Form is valid can be considererd a way to allow for final submission. 
-     - Optionally you can disable submissions and buttons
-  - **Sideeffects**:  If the component makes calculations that don't target the output value, then these calculations are named side-effects.
 
-#### Assignment  Time to Practice: Forms
-  - Add second input to form
-  - copy div block and do for email get input, validate
-  - Validate form group only when all inputs are valid
+- One input isnt enough to validate the whole form.
+- Form is valid can be considererd a way to allow for final submission.
+  - Optionally you can disable submissions and buttons
+
+#### Assignment Time to Practice: Forms
+
+- Add second input to form
+- copy div block and do for email get input, validate
+- Validate form group only when all inputs are valid
 
 #### Re-Using The Custom Hook
-  - [Simple Input](https://github.com/joehunterdev/react-complete-guide/blob/forms-user-input/forms-user-input/src/components/SimpleInput.js) 
-    - How could we improve this
-  - We could create a input component passing props and state around to nail the overall form validity is inevitabale. 
-  - This is a case for a *Custom Hook*
-  - use-input: make inputs generric. 
-  - we can pass our `changeHandler, blurHandler` as functions 
-  - deconstruct in your component
-  - call `useInput(value => value.trim() != '')` passed value to be executed inside function
-  - return these `return {value:enteredValue,isValid:valueIsValid,valueChangeHandler`  in custom hook to expose to to the calling component
-   - in the return object we can also group togehter our resets
+
+- [Simple Input](https://github.com/joehunterdev/react-complete-guide/blob/forms-user-input/forms-user-input/src/components/SimpleInput.js)
+  - How could we improve this
+- We could create a input component passing props and state around to nail the overall form validity is inevitabale.
+- This is a case for a _Custom Hook_
+- use-input: make inputs generric.
+- we can pass our `changeHandler, blurHandler` as functions
+- deconstruct in your component
+- call `useInput(value => value.trim() != '')` passed value to be executed inside function
+- return these `return {value:enteredValue,isValid:valueIsValid,valueChangeHandler` in custom hook to expose to to the calling component
+- in the return object we can also group togehter our resets
+
 #### A Challenge For You!
-  -[] Validation individual inputs
-  -[] Inline infiered statement enteredValidName
-    -[] if email && name form is valid.
 
 Todo:
-  -[] set states (isChanged, blurHandler,isValid)
-  -[] onBlur / touched logic
-  -[] isForm valid
-  -[] isTouched
-  -[] form submit handler
-  -[] if !email && !name form is ivalid.
-  -[] handle error classes
-  -[] feedback messages
-  -[] Reset inputs
+
+- [] set states (isChanged, blurHandler,isValid)
+- [] onBlur / touched logic
+- [] isForm valid
+- [] isTouched
+- [] form submit handler
+- [] if !email && !name form is ivalid.
+- [] handle error classes
+- [] feedback messages
+- [] Reset inputs
   -[] if email && name form is valid. Boolean pattern
 
 #### Applying Our Hook & Knowledge To A New Form
+
 #### Summary
+
 #### Bonus: Using useReducer()
-
-
+[With Reducer](https://github.com/academind/react-complete-guide-code/blob/16-working-with-forms/code/12-finished/src/hooks/use-input.js)
+[Form Custom Hook Component](https://academind.com/tutorials/reactjs-a-custom-useform-hook/)
 ---
 
 ### Practice Project
-Time to add a database to the food application
 
- - Add form
-  - Checkout 
-  - name 
-  - Address
- - Add http request
- - Send to server
- - Validate
- - Fetch Meal data from backend
- - 
+Time to add a forms and database to the food application
+- Admin firebase
+- Add form
+- Checkout
+- name
+- Address
+- Add http request
+- Send to server
+- Validate
+- Fetch Meal data from backend
+
 
 ---
- 
 
 ### Array functions
 
@@ -1151,33 +1198,37 @@ function add(a:number,b:number)
 ---
 
 #### Usefull node
-````
--save @fortawesome/free-solid-svg-icons                                   
+
+```
+-save @fortawesome/free-solid-svg-icons
 >> npm i --save @fortawesome/free-regular-svg-icons
 >> npm i --save @fortawesome/free-brands-svg-icons
-````
+```
+
 ### Top 10 Javascript GEMS
 
 //dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay
 
-function ValidateEmail(mail) 
+function ValidateEmail(mail)
 {
- if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value))
-  {
-    return (true)
-  }
-    alert("You have entered an invalid email address!")
-    return (false)
+if (/^\w+([\.-]?\w+)_@\w+([\.-]?\w+)_(\.\w{2,3})+$/.test(myForm.emailAddr.value))
+{
+return (true)
+}
+alert("You have entered an invalid email address!")
+return (false)
 }
 
 RFC 2822 standard email validation
 Regular Expression Pattern (Ref: https://bit.ly/33cv2vn):
 
-/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|
-\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|
-\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:
+/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)_|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|
+\\[\x01-\x09\x0b\x0c\x0e-\x7f])_")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|
+\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]\*[a-z0-9]:
 (?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
 
 #### Bugs
-  - 
+
+-
+
 ---

@@ -9,6 +9,14 @@
 /styled-app
 /user-app
 /finance-dashboard
-
+*/public/
+*.svg
+.gitignore
+*WebVitals.js
+*Tests.js
+package-lock.json
 # !*/food-order-app/*
 food-order-app/public/*
+todo.md
+.test.js
+.dev.js
