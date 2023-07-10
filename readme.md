@@ -503,7 +503,7 @@ const clickHandler = () => {
   - You can pass dependacies to use effect() ` [setFormIsValid,enteredEmail,entererdPassword]`
   - It helps us ensure we have one code in one place which re-runs when dependancies change
   - Its also common to re-run logic when props / state change
-
+  - useEffect accepts a function that is **imperative** in nature and a list of dependencies. When its dependencies change it executes the passed function. Good for timers, logging after everything has rendered
 #### What not to add as dependancy
 
   - add everything as use effect as dependancy except:
@@ -985,7 +985,7 @@ const ForwardCounter = () => {
 
 #### Building a Custom Http Hook
 - useCallback: passing a callback to its child component to prevent the rendering of the child component. 
-- useEffect accepts a function that is **imperative** in nature and a list of dependencies. When its dependencies change it executes the passed function. Good for timers, logging after everything has rendered
+
 - useMemo: It recalculated the value only when one of its dependencies change
 
 #### Using the Custom Http Hook
@@ -1024,11 +1024,115 @@ const ForwardCounter = () => {
 *destructuring* 
 
 [Binding](../javascript/binding.js)
+<<<<<<< Updated upstream
+=======
+---
+### Forms and user Input
+ Module Introduction
+ What's So Complex About Forms?
+- Validation / Sanitization and user feedback make forms more complex than they appear
+- When to validate: 
+  - on submission: (allows prior valid value pre warning) (avoid warnings but maby presents feedback too late in submission)
+  - on input: allows the user to enter a valid value before warning (very usefull for untouched forms)
+  - or keystroke: (warns user on the fly)(applied only on invalid inputs)
+
+#### Dealing With Form Submission & Getting User Input Values
+  - `preventDefault()` will halt http request
+  - `useRef` is usefull to track inputs `ref={nameInputRef}`
+    - Refs have a `.current.value` property
+    - Updating a variable everytime your component runs is 
+    - `nameInputRef.current.value` is bad. Dont manipulate the DOM
+  - Using state will give you more granualar change combined with (keystroke for example)
+
+#### Adding Basic Validation
+  - Validate both server and client side
+  - Typically you want to check inputs are not empty
+   if not passed just `return` in your validation method will halt execution
+
+#### Providing Validation Feedback
+  - You can init state for validation to `true` to avoid inmediate outputting error messages (this is cheating)
+  - You can levarage css classes to highlght form inputs etc
+
+#### Handling the "was touched" State
+  - To get around this *false* initalization we could creat an additonal state *touched* so we can check if the user has touched the input.
+
+#### React To Lost Focus
+  - `onBlur` The best scenario is to actually inform the user before submitting that there is an error AFTER they have had a chance at editing
+  - When input loses focus we can initialize a function `onBlur={setNameTouched}`
+   - You can run validation in these onBlurs in these handlers also
+  - After input is valid an prior to submit we would also want to remove any error message and provide instant feedback. *Keystroke validation*
+
+#### Refactoring & Deriving States
+  - Up to now we have rich level of events to make for a great user experience: `changeHandler, isValid, blurHandler ` valid and touched states are the most important
+  - This is a good point to refactor: enteredValidName for example can be simplified to just a const and we can then remove the state code 
+    `const enteredValidName = enteredName.trim() !=== ''`
+  - we can also trim things further up by combining isValid and touched states
+  - Finally empty your states. `setEnteredName()` and `isTouched()` if necessary
+
+#### Managing The Overall Form Validity
+  - One input isnt enough to validate the whole form. 
+  - Form is valid can be considererd a way to allow for final submission. 
+     - Optionally you can disable submissions and buttons
+  - **Sideeffects**:  If the component makes calculations that don't target the output value, then these calculations are named side-effects.
+
+#### Assignment  Time to Practice: Forms
+  - Add second input to form
+  - copy div block and do for email get input, validate
+  - Validate form group only when all inputs are valid
+
+#### Re-Using The Custom Hook
+  - [Simple Input](https://github.com/joehunterdev/react-complete-guide/blob/forms-user-input/forms-user-input/src/components/SimpleInput.js) 
+    - How could we improve this
+  - We could create a input component passing props and state around to nail the overall form validity  
+  - This is a case for a *Custom Hook*
+  - use-input: make inputs generric. 
+  - we can pass our `changeHandler, blurHandler` as functions 
+  - deconstruct in your calling component
+  - call `useInput(value => value.trim() != '')` passed value to be executed inside function
+  - expose to to the calling component `return {value:enteredValue,isValid:valueIsValid,valueChangeHandler` 
+   - in the return object we can also group togehter our resets
+   
+#### A Challenge For You!
+Todo:
+  -[x] set states (isChanged, blurHandler,isValid)
+  -[x] onBlur / touched logic
+  -[x] isForm valid
+  -[x] isTouched
+  -[x] form submit handler
+  -[x] if !email && !name form is ivalid.
+  -[x] handle error classes
+  -[x] feedback messages
+  -[x] Reset inputs
+  -[x] if email && name form is valid. Boolean pattern
+
+#### Applying Our Hook & Knowledge To A New Form
+
+#### Summary
+#### Bonus: Using useReducer()
+- [Use Form Hook](https://academind.com/tutorials/reactjs-a-custom-useform-hook/)
+
+- [use Reducer](https://github.com/academind/react-complete-guide-code/blob/16-working-with-forms/code/12-finished/src/hooks/use-input.js)
+>>>>>>> Stashed changes
 
 #### Bugs
   - 
 ---
 
+### Practice Project
+Time to add a database to the food application
+
+ - Add form
+  - Checkout 
+  - name 
+  - Address
+ - Add http request
+ - Send to server
+ - Validate
+ - Fetch Meal data from backend
+ - 
+
+---
+ 
 
 ### Array functions
 
