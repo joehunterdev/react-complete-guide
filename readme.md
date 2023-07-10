@@ -1024,17 +1024,6 @@ const ForwardCounter = () => {
 *destructuring* 
 
 [Binding](../javascript/binding.js)
-<<<<<<< Updated upstream
-=======
----
-### Forms and user Input
- Module Introduction
- What's So Complex About Forms?
-- Validation / Sanitization and user feedback make forms more complex than they appear
-- When to validate: 
-  - on submission: (allows prior valid value pre warning) (avoid warnings but maby presents feedback too late in submission)
-  - on input: allows the user to enter a valid value before warning (very usefull for untouched forms)
-  - or keystroke: (warns user on the fly)(applied only on invalid inputs)
 
 #### Dealing With Form Submission & Getting User Input Values
   - `preventDefault()` will halt http request
@@ -1083,39 +1072,36 @@ const ForwardCounter = () => {
 #### Re-Using The Custom Hook
   - [Simple Input](https://github.com/joehunterdev/react-complete-guide/blob/forms-user-input/forms-user-input/src/components/SimpleInput.js) 
     - How could we improve this
-  - We could create a input component passing props and state around to nail the overall form validity  
+  - We could create a input component passing props and state around to nail the overall form validity is inevitabale. 
   - This is a case for a *Custom Hook*
   - use-input: make inputs generric. 
   - we can pass our `changeHandler, blurHandler` as functions 
-  - deconstruct in your calling component
+  - deconstruct in your component
   - call `useInput(value => value.trim() != '')` passed value to be executed inside function
-  - expose to to the calling component `return {value:enteredValue,isValid:valueIsValid,valueChangeHandler` 
+  - return these `return {value:enteredValue,isValid:valueIsValid,valueChangeHandler`  in custom hook to expose to to the calling component
    - in the return object we can also group togehter our resets
-   
 #### A Challenge For You!
+  -[] Validation individual inputs
+  -[] Inline infiered statement enteredValidName
+    -[] if email && name form is valid.
+
 Todo:
-  -[x] set states (isChanged, blurHandler,isValid)
-  -[x] onBlur / touched logic
-  -[x] isForm valid
-  -[x] isTouched
-  -[x] form submit handler
-  -[x] if !email && !name form is ivalid.
-  -[x] handle error classes
-  -[x] feedback messages
-  -[x] Reset inputs
-  -[x] if email && name form is valid. Boolean pattern
+  -[] set states (isChanged, blurHandler,isValid)
+  -[] onBlur / touched logic
+  -[] isForm valid
+  -[] isTouched
+  -[] form submit handler
+  -[] if !email && !name form is ivalid.
+  -[] handle error classes
+  -[] feedback messages
+  -[] Reset inputs
+  -[] if email && name form is valid. Boolean pattern
 
 #### Applying Our Hook & Knowledge To A New Form
-
 #### Summary
 #### Bonus: Using useReducer()
-- [Use Form Hook](https://academind.com/tutorials/reactjs-a-custom-useform-hook/)
 
-- [use Reducer](https://github.com/academind/react-complete-guide-code/blob/16-working-with-forms/code/12-finished/src/hooks/use-input.js)
->>>>>>> Stashed changes
 
-#### Bugs
-  - 
 ---
 
 ### Practice Project
@@ -1160,7 +1146,7 @@ function add(a:number,b:number)
 ### Updates
 
 - Create React App is dead, hooks are the future utilize: "Next" "Vite" or "Remix"
-- [Alternatives to React](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a)
+- [Alternatives to React App](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a)
 
 ---
 
@@ -1170,3 +1156,28 @@ function add(a:number,b:number)
 >> npm i --save @fortawesome/free-regular-svg-icons
 >> npm i --save @fortawesome/free-brands-svg-icons
 ````
+### Top 10 Javascript GEMS
+
+//dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay
+
+function ValidateEmail(mail) 
+{
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value))
+  {
+    return (true)
+  }
+    alert("You have entered an invalid email address!")
+    return (false)
+}
+
+RFC 2822 standard email validation
+Regular Expression Pattern (Ref: https://bit.ly/33cv2vn):
+
+/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|
+\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|
+\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:
+(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+
+#### Bugs
+  - 
+---
