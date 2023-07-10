@@ -1,10 +1,15 @@
-import SimpleInput from './components/SimpleInput';
+import React from 'react';
+import BasicForm from './components/BasicForm';
+import {StrictMode} from 'react';
 
 function App() {
   return (
+    <StrictMode>
     <div className="app">
-      <SimpleInput />
+      <BasicForm />
     </div>
+    </StrictMode>
+
   );
 }
 

@@ -1024,9 +1024,93 @@ const ForwardCounter = () => {
 *destructuring* 
 
 [Binding](../javascript/binding.js)
+---
+### Forms and user Input
+ Module Introduction
+ What's So Complex About Forms?
+- Validation / Sanitization and user feedback make forms more complex than they appear
+- When to validate: 
+  - on submission: (allows prior valid value pre warning) (avoid warnings but maby presents feedback too late in submission)
+  - on input: allows the user to enter a valid value before warning (very usefull for untouched forms)
+  - or keystroke: (warns user on the fly)(applied only on invalid inputs)
 
-#### Bugs
-  - 
+#### Dealing With Form Submission & Getting User Input Values
+  - `preventDefault()` will halt http request
+  - `useRef` is usefull to track inputs `ref={nameInputRef}`
+    - Refs have a `.current.value` property
+    - Updating a variable everytime your component runs is 
+    - `nameInputRef.current.value` is bad. Dont manipulate the DOM
+  - Using state will give you more granualar change combined with (keystroke for example)
+
+#### Adding Basic Validation
+  - Validate both server and client side
+  - Typically you want to check inputs are not empty
+   if not passed just `return` in your validation method will halt execution
+
+#### Providing Validation Feedback
+  - You can init state for validation to `true` to avoid inmediate outputting error messages (this is cheating)
+  - You can levarage css classes to highlght form inputs etc
+
+#### Handling the "was touched" State
+  - To get around this *false* initalization we could creat an additonal state *touched* so we can check if the user has touched the input.
+
+#### React To Lost Focus
+  - `onBlur` The best scenario is to actually inform the user before submitting that there is an error AFTER they have had a chance at editing
+  - When input loses focus we can initialize a function `onBlur={setNameTouched}`
+   - You can run validation in these onBlurs in these handlers also
+  - After input is valid an prior to submit we would also want to remove any error message and provide instant feedback. *Keystroke validation*
+
+#### Refactoring & Deriving States
+  - Up to now we have rich level of events to make for a great user experience: `changeHandler, isValid, blurHandler ` valid and touched states are the most important
+  - This is a good point to refactor: enteredValidName for example can be simplified to just a const and we can then remove the state code 
+    `const enteredValidName = enteredName.trim() !=== ''`
+  - we can also trim things further up by combining isValid and touched states
+  - Finally empty your states. `setEnteredName()` and `isTouched()` if necessary
+
+#### Managing The Overall Form Validity
+  - One input isnt enough to validate the whole form. 
+  - Form is valid can be considererd a way to allow for final submission. 
+     - Optionally you can disable submissions and buttons
+  - **Sideeffects**:  If the component makes calculations that don't target the output value, then these calculations are named side-effects.
+
+#### Assignment  Time to Practice: Forms
+  - Add second input to form
+  - copy div block and do for email get input, validate
+  - Validate form group only when all inputs are valid
+
+#### Re-Using The Custom Hook
+  - [Simple Input](https://github.com/joehunterdev/react-complete-guide/blob/forms-user-input/forms-user-input/src/components/SimpleInput.js) 
+    - How could we improve this
+  - We could create a input component passing props and state around to nail the overall form validity is inevitabale. 
+  - This is a case for a *Custom Hook*
+  - use-input: make inputs generric. 
+  - we can pass our `changeHandler, blurHandler` as functions 
+  - deconstruct in your component
+  - call `useInput(value => value.trim() != '')` passed value to be executed inside function
+  - return these `return {value:enteredValue,isValid:valueIsValid,valueChangeHandler`  in custom hook to expose to to the calling component
+   - in the return object we can also group togehter our resets
+#### A Challenge For You!
+  -[] Validation individual inputs
+  -[] Inline infiered statement enteredValidName
+    -[] if email && name form is valid.
+
+Todo:
+  -[] set states (isChanged, blurHandler,isValid)
+  -[] onBlur / touched logic
+  -[] isForm valid
+  -[] isTouched
+  -[] form submit handler
+  -[] if !email && !name form is ivalid.
+  -[] handle error classes
+  -[] feedback messages
+  -[] Reset inputs
+  -[] if email && name form is valid. Boolean pattern
+
+#### Applying Our Hook & Knowledge To A New Form
+#### Summary
+#### Bonus: Using useReducer()
+
+
 ---
 
 
@@ -1056,7 +1140,7 @@ function add(a:number,b:number)
 ### Updates
 
 - Create React App is dead, hooks are the future utilize: "Next" "Vite" or "Remix"
-- [Alternatives to React](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a)
+- [Alternatives to React App](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a)
 
 ---
 
@@ -1066,3 +1150,28 @@ function add(a:number,b:number)
 >> npm i --save @fortawesome/free-regular-svg-icons
 >> npm i --save @fortawesome/free-brands-svg-icons
 ````
+### Top 10 Javascript GEMS
+
+//dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay
+
+function ValidateEmail(mail) 
+{
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value))
+  {
+    return (true)
+  }
+    alert("You have entered an invalid email address!")
+    return (false)
+}
+
+RFC 2822 standard email validation
+Regular Expression Pattern (Ref: https://bit.ly/33cv2vn):
+
+/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|
+\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|
+\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:
+(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+
+#### Bugs
+  - 
+---
