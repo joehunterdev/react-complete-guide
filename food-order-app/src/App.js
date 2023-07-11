@@ -8,7 +8,8 @@ import Meals from "./Components/Meals/Meals";
 import Cart from "./Components/Cart/Cart";
 
 import { CartProvider } from "./store/cart-context";
-
+// import MealItemResponse from "./store/meal-items";
+import mealItemsArr from "./store/meal-items-arr";
 function App() {
 
   const cartItems = useContext(CartProvider)
@@ -22,7 +23,7 @@ function App() {
    console.log(cartItems)
   
   return (
-    <CartProvider>
+    <CartProvider mealItems={mealItemsArr}>
       {showModal && <Cart onToggleModalHandler={toggleModalHandler}   />} 
       <Header onToggleModalHandler={toggleModalHandler}></Header>
       <main>

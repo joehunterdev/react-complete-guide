@@ -1,8 +1,13 @@
-import mealItems from './meal-items';
-import { createContext, useReducer } from 'react';
 
+import mealItemsArr from "../store/meal-items-arr"
+import mealItems from './meal-items';
+// import MealItemResponse from './meal-items';
+
+import {createContext, useReducer, useEffect,useState } from 'react';
+import useHttp from '../hooks/use-http';
 export const CartContext = createContext(null);
 export const CartDispatchContext = createContext(null);
+
 
 const initialState = { items: [], totalAmount: 0 };
 
