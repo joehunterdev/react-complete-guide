@@ -1,19 +1,22 @@
 import MealItem from "./MealItem";
 import "bootstrap/dist/css/bootstrap.css";
-// import mealItems from "../../store/meal-items";
 import Section from "../UI/Container/Section";
 import useHttp from '../../hooks/use-http.js'
-import { useEffect, useState } from "react";
-// import mealItemsArr from "../../store/meal-items-arr";
+import { Fragment, useEffect, useState } from "react";
+import React, { useContext } from "react";
+import { Alert, Spinner } from 'react-bootstrap';
 
-const MealItems = ({mealItems}) => {
-  
 
-  if (!mealItems){
-    console.log("no meal items to ")
-    return
+
+// import { CartContext, CartProvider } from "../../store/cart-context";
+
+const MealItems = ({ mealItems }) => {
+
+  if (mealItems.length < 0) {
+    // throw new Error("No Meal Items found")
+
   }
-  
+
   return mealItems.map((meal) => (
 
     <MealItem
@@ -26,9 +29,10 @@ const MealItems = ({mealItems}) => {
     />
   ));
 
- }
+}
 
 const Meals = (props) => {
+  // const cartState = useContext(CartContext);
 
   //Get meals from use-https
   const { isLoading, error, sendRequest: fetchMeals } = useHttp(); // neatly unpack declare above top level
@@ -40,17 +44,25 @@ const Meals = (props) => {
       setMealItems(data)
     }
 
-    fetchMeals({url: process.env.REACT_APP_FIREBASE_URL}, mealItemsRes)
+    fetchMeals({ url: process.env.REACT_APP_FIREBASE_URL }, mealItemsRes)
 
   }, [fetchMeals])
 
-   return (
-    
-    <Section style={{ backgroundColor: '#eee' }}>
-     {isLoading && <p className="text-info text-center">Loading</p>}
-     {error && <p className="text-info text-center">Errors are</p>}
-     {mealItems &&  <MealItems mealItems={mealItems} />}
-    </Section>
+  return (
+    <Fragment>
+
+      {isLoading && !error && <div className="d-flex justify-content-center mb-3"><Spinner> </Spinner>  </div>}
+
+      {error && <Alert variant="danger"> <p className="text-center">{error} </p> </Alert>}
+
+      {mealItems.length > 0 &&
+        <Section className="d-flex justify-content-center">
+          {/* {mealItems.length > 0 &&  <MealItems mealItems={cartState.availableMeals[0]} />} */}
+          {/* {cartState.availableMeals[0]} */}
+          <MealItems mealItems={mealItems} />
+        </Section>
+      }
+    </Fragment>
   )
 };
 

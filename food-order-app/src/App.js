@@ -12,7 +12,7 @@ import { CartProvider } from "./store/cart-context";
 import mealItemsArr from "./store/meal-items-arr";
 function App() {
 
-  const cartItems = useContext(CartProvider)
+  // const cartItems = useContext(CartProvider)
 
   const [showModal, setShowModal] = useState(false);
 
@@ -20,10 +20,10 @@ function App() {
     setShowModal((prevShowModal) => !prevShowModal);
   };
 
-   console.log(cartItems)
+  //  console.log(cartItems)
   
   return (
-    <CartProvider mealItems={mealItemsArr}>
+    <CartProvider mealItemsProp={mealItemsArr}>
       {showModal && <Cart onToggleModalHandler={toggleModalHandler}   />} 
       <Header onToggleModalHandler={toggleModalHandler}></Header>
       <main>

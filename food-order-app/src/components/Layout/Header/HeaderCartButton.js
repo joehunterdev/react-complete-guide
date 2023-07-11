@@ -11,7 +11,6 @@ import './HeaderCartButton.css'
 //     });
 //     return ref.current;
 //   }
-
 const HeaderCartButton = (props) => {
 
     let [animation, setAnimation] = useState(false)
@@ -19,8 +18,8 @@ const HeaderCartButton = (props) => {
     const cartItems = useContext(CartContext);
     // const cartItemsRef = useRef(useContext(CartContext));
 
-
     const totalItems = cartItems.items.reduce((total, item) => total + item.amount, 0)
+    // console.log(cartItems)
 
     const animateClass = `btn ${animation ? "btn btn-primary" : 'btn btn-warning'}`;
     const isShake = `${animation ? "" : 'shake'}`;

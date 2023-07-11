@@ -1131,16 +1131,16 @@ const ForwardCounter = () => {
 
 Todo:
 
-- [] set states (isChanged, blurHandler,isValid)
-- [] onBlur / touched logic
-- [] isForm valid
-- [] isTouched
-- [] form submit handler
-- [] if !email && !name form is ivalid.
-- [] handle error classes
-- [] feedback messages
-- [] Reset inputs
-  -[] if email && name form is valid. Boolean pattern
+- [x] set states (isChanged, blurHandler,isValid)
+- [x] onBlur / touched logic
+- [x] isForm valid
+- [x] isTouched
+- [x] form submit handler
+- [x] if !email && !name form is ivalid.
+- [x] handle error classes
+- [x] feedback messages
+- [x] Reset inputs
+- [x] if email && name form is valid. Boolean pattern
 
 #### Applying Our Hook & Knowledge To A New Form
 
@@ -1153,16 +1153,7 @@ Todo:
 
 ### Practice Project
 
-Time to add a forms and database to the food application
-- Admin firebase
-- Add form
-- Checkout
-- name
-- Address
-- Add http request
-- Send to server
-- Validate
-- Fetch Meal data from backend
+[readme.md](/food-order-app/readme.md)
 
 
 ---
@@ -1226,6 +1217,9 @@ Regular Expression Pattern (Ref: https://bit.ly/33cv2vn):
 \\[\x01-\x09\x0b\x0c\x0e-\x7f])_")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|
 \[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]\*[a-z0-9]:
 (?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+
+
+[0-999].
 
 #### Bugs
 
