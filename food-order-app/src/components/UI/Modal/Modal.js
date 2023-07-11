@@ -50,11 +50,11 @@ const Modal = (props) => {
               >
               Close
             </button>
-              {props.showCheckOut && <button type="button"
+              {/* {props.showCheckOut && <button type="button"
               className={cx(globalStyles.btn, globalStyles['btn-success'])}>
               Order Now
             </button> }
-            {console.log(props.showCheckOut)}
+            {console.log(props.showCheckOut)} */}
           </div>
         </div>
       </div>

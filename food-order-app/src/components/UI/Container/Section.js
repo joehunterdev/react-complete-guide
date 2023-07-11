@@ -1,10 +1,10 @@
 import "bootstrap/dist/css/bootstrap.css";
-
+// className="h-100" style={{ backgroundColor:'#eee'}}
 const Section = ({ children }) => {
     return (
-        <section className="h-100" style={{ backgroundColor:'#eee'}}>
-            <div className="container h-100 py-5">
-                <div className="row d-flex justify-content-center align-items-center h-100">
+        <section>
+            <div className="container">
+                <div className="row d-flex align-items-center h-100">
                     <div className="col-12">
                         {children}
                     </div>

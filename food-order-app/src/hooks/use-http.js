@@ -42,8 +42,6 @@ const useHttp = () => {
     } catch (err) {
 
       setError(err.message || "Your a mong")
-      setError(null)
-
     }
 
 

@@ -1,21 +1,34 @@
 
-import mealItemsArr from "../store/meal-items-arr"
-import mealItems from './meal-items';
-// import MealItemResponse from './meal-items';
-
-import {createContext, useReducer, useEffect,useState } from 'react';
+import { createContext, useReducer, useEffect, useState } from 'react';
 import useHttp from '../hooks/use-http';
 export const CartContext = createContext(null);
 export const CartDispatchContext = createContext(null);
 
 
-const initialState = { items: [], totalAmount: 0 };
+let availableMeals = []
+const initialState = { items: [], totalAmount: 0, availableMeals:availableMeals};
 
 export function CartProvider({ children }) {
 
+  const { isLoading, error, sendRequest: fetchMeals } = useHttp(); // neatly unpack declare above top level
+  // const [mealItems,setMealItems] = useState({})
+
+
+  useEffect(() => {
+
+    const addToAvailableMeals = (data) => {
+      // availableMeals = [...availableMeals, data];
+      availableMeals.push(data)
+    }
+    fetchMeals({ url: process.env.REACT_APP_FIREBASE_URL }, addToAvailableMeals)
+
+  }, [fetchMeals])
+
+
+  // console.log(fetch(process.env.REACT_APP_FIREBASE_URL).response.mealItems);
   const [cart, dispatch] = useReducer(
     cartReducer,
-    initialState
+    initialState,
   );
 
   return (
@@ -29,8 +42,11 @@ export function CartProvider({ children }) {
 
 function cartReducer(state, action) {
 
-  //Todo: just pass item as {} from dispatch
-  let meal = mealItems.filter((mid) => mid.id === action.id);
+  // console.log(availableMeals)
+  // availableMeals = availableMeals[0]
+  //Todo: bug here better as 1d array
+  let meal = availableMeals[0].filter((mid) => mid.id === action.id);
+
   let price = meal.map((mid) => mid.price).toString();
   // let description = meal.map((mid) => mid.description).toString();
   let name = meal.map((mid) => mid.name).toString();
@@ -47,7 +63,7 @@ function cartReducer(state, action) {
           price: price,
           amount: action.amount,
           name: name,
-        }], totalAmount: state.totalAmount + price * action.amount
+        }], totalAmount: state.totalAmount + price * action.amount,availableMeals:availableMeals[0]
       };
 
     }
@@ -65,14 +81,15 @@ function cartReducer(state, action) {
           } else {
             return t;
           }
-        }), totalAmount: state.totalAmount + price * action.amount
+        }), totalAmount: state.totalAmount + price * action.amount,availableMeals:availableMeals[0]
       };
     }
 
     case 'deleted': {
       return {
         items: [...state.items.filter(t => t.id !== action.id)],
-        totalAmount: state.totalAmount - (price * action.amount)
+        totalAmount: state.totalAmount - (price * action.amount),
+        availableMeals:availableMeals[0]
       }
     }
 
