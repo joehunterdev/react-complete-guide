@@ -1200,7 +1200,7 @@ Todo:
     - old state
     - dispatched action
    - Should be a pure function **Same input to same output** no sideEffects
-   - Your reducer you then pass to your store (just a pointer) `const store = redux.createStore(counterReducer) /`
+   - Your reducer you then pass to your store (just a pointer) `const store = redux.createStore(counterReducer) `
    - `store.getState` gets the latest snapshot
   - Subscribe `store.subscribe(someMethod)`
   - Good practice to pass a default to `state = ''`
@@ -1210,7 +1210,8 @@ Todo:
        
 
 #### More Redux Basics
-  ```
+
+```
     const  redux = require('redux');
 
     const counterReducer = (state = {counter:0},action) => {
@@ -1235,13 +1236,16 @@ Todo:
     }
 
     store.subscribe(counterSubscriber)
-
     store.dispatch({type:'increment'})
 
-  ```
+```
+
 ####  Preparing a new Project
+  - Normally we'd init a project like so: `npm install redux react-redux`
 
 ####  Creating a Redux Store for React
+  - Create store 
+    - Actions: increment and decrement 
 
 ####  Providing the Store
 
@@ -1307,7 +1311,10 @@ function add(a:number,b:number)
 - [Alternatives to React App](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a)
 
 ---
-
+### Study Tips
+  - Dont stop untill you have tied up on video
+  - Practice in isolation if you get stuck. Break the problem down and test in stages.
+---
 #### Usefull node
 
 ```
@@ -1319,7 +1326,7 @@ function add(a:number,b:number)
 `npm init -y` (will answer all the default questions)
 `npm install redux`
 `node redux-demo.js` execute with node
-
+`npm install redux react-redux`
 
 ### Top 10 Javascript GEMS
 
