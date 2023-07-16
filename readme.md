@@ -1246,13 +1246,39 @@ Todo:
 ####  Creating a Redux Store for React
   - Create store 
     - Actions: increment and decrement 
+  - invove the *createStore method in file* below and export that!
+  [store/index]
+  ` const store = createStore(counterReducer) // default action
+    export default store
+  `
 
 ####  Providing the Store
+  - Typically store is implemented in highest level. index.js
+  - Import provider
+  - Redux doesnt know where to read from so import the file [store/store]
+
+  ```
+    import React from 'react';
+    import ReactDOM from 'react-dom/client';
+    import { Provider } from 'react-redux'
+    import store from './store'
+    import './index.css';
+    import App from './App';
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Provider store=""><App /></Provider>);
+
+  ```
 
 ####  Using Redux Data in React Components
+- In your functional compoinent we need to now import more hooks. `useSelector` or `useStore, connect` 
+- connect can be used as a wrapper 
+- `useSelector` will automatically setup a subscription for the component!!
+
 
 #### Dispatching Actions From Inside Components
-
+  - To dispatch an action we can utilize `useDispatch()` which will generate a function for use
+  
 #### Redux with Class-based Components
 
 #### Attaching Payloads to Actions
