@@ -1151,9 +1151,129 @@ Todo:
 [Form Custom Hook Component](https://academind.com/tutorials/reactjs-a-custom-useform-hook/)
 ---
 
-### Practice Project
+#### Practice Project
 
 [readme.md](/food-order-app/readme.md)
+
+---
+### Redux
+
+#### Module Introduction
+ - Redux is an alternative to context
+ - Is a flux-like state mangament
+
+#### Another Look At State In React Apps
+  - Local State
+    - State for single cmp
+      - EG: *Listening to user input field*
+        - Should be mangaged in cmp with `useState` / `useReducer`
+  - Cross Component state
+    - State that affects multiple components
+      - EG: *Open Close of a modal*
+        - Prop Chains/Drilling
+  - App wide state
+    - Affects the entire app (all / most of cmps)
+      - EG: *User Auth*
+        - Requires Prop Drilling     
+
+#### Redux vs React Context
+  - Redux gets around the problem posed by react of lots of nested context items. Or having one huge context provider
+  - *Good for large enterprise*
+  - Context is not optimized for *High Frequency changes*
+  - React themselves say that *context* its not good for *High Frequency Changes*
+
+#### How Redux Works
+  - Only have one store (central data)
+  - Dont directly need to manage this
+  - We get data out of the store by having components that have a *subscription*
+  - We have a generic reducer function that can manipulate this central store
+  - Components dispatch *Actions* are like triggers. When this change happens subscribed components get the update
+
+#### MUST READ: Redux createStore() is (not) deprecated
+- When using that function in your code, you might get a deprecation warning by your IDE or when running the app.
+- Recomended to use tool kit
+
+#### Exploring The Core Redux Concepts
+  - Redux needs node
+  - Doesnt need react to run
+  - Redux has a reducer function that takes 2 params. 
+    - old state
+    - dispatched action
+   - Should be a pure function **Same input to same output** no sideEffects
+   - Your reducer you then pass to your store (just a pointer) `const store = redux.createStore(counterReducer) /`
+   - `store.getState` gets the latest snapshot
+  - Subscribe `store.subscribe(someMethod)`
+  - Good practice to pass a default to `state = ''`
+  - Dispatch `store.dispatch({type:'increment'})`
+    - Dispatch is a method that dispatches an 
+       - action is an object that has a *type*
+       
+
+#### More Redux Basics
+  ```
+    const  redux = require('redux');
+
+    const counterReducer = (state = {counter:0},action) => {
+
+        
+        if(action.type === 'increment'){
+            return {counter:state.counter +1}
+        }
+        if(action.type === 'decrement'){
+            return {counter:state.counter +1}
+        }
+
+    }
+
+
+    const store = redux.createStore(counterReducer) // default action
+
+    const counterSubscriber = () => {
+        const latestState = store.getState()
+        console.log(latestState)
+
+    }
+
+    store.subscribe(counterSubscriber)
+
+    store.dispatch({type:'increment'})
+
+  ```
+####  Preparing a new Project
+
+####  Creating a Redux Store for React
+
+####  Providing the Store
+
+####  Using Redux Data in React Components
+
+#### Dispatching Actions From Inside Components
+
+#### Redux with Class-based Components
+
+#### Attaching Payloads to Actions
+
+####  Working with Multiple State Properties
+
+####  How To Work With Redux State Correctly
+
+####  Redux Challenges & Introducing Redux Toolkit
+
+####  Adding State Slices
+
+####  Connecting Redux Toolkit State
+
+####  Migrating Everything To Redux Toolkit
+
+####  Working with Multiple Slices
+
+####  Reading & Dispatching From A New Slice
+
+####  Splitting Our Code
+
+####  Summary
+
+####  Module Resources
 
 
 ---
@@ -1194,7 +1314,12 @@ function add(a:number,b:number)
 -save @fortawesome/free-solid-svg-icons
 >> npm i --save @fortawesome/free-regular-svg-icons
 >> npm i --save @fortawesome/free-brands-svg-icons
+
 ```
+`npm init -y` (will answer all the default questions)
+`npm install redux`
+`node redux-demo.js` execute with node
+
 
 ### Top 10 Javascript GEMS
 
