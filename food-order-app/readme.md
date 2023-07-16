@@ -63,10 +63,8 @@
 Time to add a forms and database to the food application
 
   - [x] Admin firebase
-
     - [x] Import initalState json
     - [x] Create some basic schema
-
   - [x] "Meals" Data To The Backend
     - [x] Make successfull Http
     - [x] Loading State
