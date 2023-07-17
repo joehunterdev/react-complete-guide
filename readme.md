@@ -8,6 +8,7 @@ _A javascript library for building user interfaces_
 - Makes rich interfaces easier. Declarative component focused approach
 - SPA Single Page Application
 - Beware that alot of _next gen_ es6 features will need to be setup to run in browser
+ 
 
 ### The basics: Component
 
@@ -18,7 +19,7 @@ _A javascript library for building user interfaces_
 - **Declarative aproach: Always defining end/target state** React figure out the actual javascript dom instructions
 - Imperative: giving clear step by step instructions
 - **Build on custom html elements**
-
+- Remember Javascript is dynamically typed
 - React Code will be transformed and optimized under hood
 - index.js is first to run
 - typically 2 react packages: react & react Dom (dom /)
@@ -1400,11 +1401,22 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
   - Now we dont need to worry about creating these action objects on our own or naming/dupe issues
   -Finally these actions can be exported  `export const counterActions = counterSlice.actions;` and imported in your component `import { counterActions } from '../store';
 `
-  - In your component you now pass a **Payload** param
+  - In your component you now pass a **Payload** param `dispatch({ type: counterActions.increase(5)})`
   
 ####  Working with Multiple Slices
+  - If we have a bunch of components we would like to use Redux with we need to create multiple slices
+  - You *only need one store*
+  - Just map your reducers as above
+  - access: `const counter = useSelector(state => state.counter.counter)`
+ - ` type:`! can now be removed from dispatch object
+####  Reading & Dispatching From A New 
 
-####  Reading & Dispatching From A New Slice
+  ##### Reducer Challenge
+  - [] Tap into store to show auth or user profile comp in app
+  - [] In head conditionally show items or not
+  - [] Dispatch action login / logout in appropriate places
+  - [] Beware we now have a two keys in reducer mapping  
+
 
 ####  Splitting Our Code
 
