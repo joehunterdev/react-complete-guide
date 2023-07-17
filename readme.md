@@ -1343,15 +1343,65 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
     }
 ```
   - [Refs and Prim Types](https://academind.com/tutorials/reference-vs-primitive-values/)
+
 ####  Redux Challenges & Introducing Redux Toolkit
-  - 
+  - unique *action identifiers* we need to define them properly to avoid issues.
+  - One option is to create a constant in your redux 
+    - `const INCREMENT = TRUE` and call that in your cmp
+  - Handling nested data can also be challengin
+  - Also you may endup with a large file in redux. 
+    - To break these down and other enhancments we can use *redux-toolkit*
+  - [Redux Toolkit](https://redux-toolkit.js.org/)
+  - `npm install @reduxjs/toolkit`
 
 ####  Adding State Slices
 
+  - `createSlice` is a good alternative to reducer
+    - provide it a slice of global state
+  - Here we can avoid the long if statements
+
+  ```
+  const counterSlice = createSlice({
+    name: 'counter',
+    initialState: initialCounterState,
+    reducers: {
+      increment(state) {
+        state.counter++;
+      },
+      decrement(state) {
+        state.counter--;
+      },
+      increase(state, action) {
+        state.counter = state.counter + action.payload;
+      },
+      toggleCounter(state) {
+        state.showCounter = !state.showCounter;
+      },
+    },
+  });
+  ```
+
+  - This handles the imutable issue when this toolkit library is used. Much easier :) 
+
+
 ####  Connecting Redux Toolkit State
+  - We still need to return our slice and dispatch actions to it
+   - `const store = createStore(counterSlice.reducer)` 
+   - We can also use `configureStore`which now allows us to specify a reducer
+   - Configure store will alow you to pass a **configuration object **
 
+   - [Toolkit Features](https://redux-toolkit.js.org/introduction/getting-started#whats-included)
+   - You could pass in the whole reducer or create a map of reducers
+   - or merge all your reducers into one
+   - Now how can we know what to dispatch ?
 ####  Migrating Everything To Redux Toolkit
-
+  - ` counter.createSlice` now is a bunch of object keys we can access
+  - these methods are called action creators
+  - Now we dont need to worry about creating these action objects on our own or naming/dupe issues
+  -Finally these actions can be exported  `export const counterActions = counterSlice.actions;` and imported in your component `import { counterActions } from '../store';
+`
+  - In your component you now pass a **Payload** param
+  
 ####  Working with Multiple Slices
 
 ####  Reading & Dispatching From A New Slice
@@ -1410,6 +1460,8 @@ function add(a:number,b:number)
 `npm install redux`
 `node redux-demo.js` execute with node
 `npm install redux react-redux`
+`npm install @reduxjs/toolkit` redux tool kit you dont need redux and the tool kit //    "redux": "^4.0.5",
+
 
 ### Top 10 Javascript GEMS
 

@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import classes from './Counter.module.css';
 import { useSelector, useDispatch, connect } from 'react-redux'
-
+import { counterActions } from '../store';
 const Counter = () => {
 
   const dispatch = useDispatch();
@@ -11,23 +11,23 @@ const Counter = () => {
 
   const toggleCounter = () => {
     
-    dispatch({ type: 'toggle' })
+    dispatch({ type: counterActions.toggleCounter })
 
   }
 
   const incrementHandler = () => {
 
-    dispatch({ type: 'increment' })
+    dispatch({ type: counterActions.increment })
 
   }
   const decrementHandler = () => {
 
-    dispatch({ type: 'decrement' })
+    dispatch({ type: counterActions.decrementHandler})
 
   }
-  const increaseBy5 = () => {
+  const increase = () => {
 
-    dispatch({ type: 'increase' , amount: 5})
+    dispatch({ type: counterActions.increase(5)})// Pass additional param called payload
 
   }
 
@@ -38,7 +38,7 @@ const Counter = () => {
       <div className={classes.value}>{showCounter && counter}</div>
       <button onClick={toggleCounter} >toggleCounter</button> 
       <button onClick={incrementHandler} >increment</button> 
-      <button onClick={increaseBy5} >increase by 5</button>
+      <button onClick={increase} >increase by x</button>
       <button onClick={decrementHandler} >Decrement</button>
     </main>
 
