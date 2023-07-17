@@ -1,6 +1,6 @@
 import classes from './Auth.module.css';
 import { useSelector, useDispatch } from 'react-redux'
-import { store, authActions } from '../store';
+import { store, authActions } from '../store/auth';
 // import store from '../store'; 
 //Todo:  action login
 

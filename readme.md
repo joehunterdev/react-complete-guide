@@ -1299,27 +1299,25 @@ const mapDispatchToProps = dispatch => {
     decrement: () => dispatch({ type: 'decrement' }),
   }
 }; 
-
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 ```
 
 #### Attaching Payloads to Actions
   - Sometimes your dispathc will want to carry extra data
   - `action.something` can be recieved in your store reducer and pass a value from component
-  - ```
-      if(action.type === 'increase'){
-        return {counter:state.counter + action.amount}
+
+     ```
+     if(action.type === 'increase'){
+            return {counter:state.counter + action.amount}
      }
+      ```
+    - Action payload is just an extra property
 
-  ```
-  - Action payload is just an extra property
-
-```
-  const increaseBy5 = () => {
-
-  dispatch({ type: 'increase' , amount: 5})
-}
-```
+    ```
+    const increaseBy5 = () => {
+    dispatch({ type: 'increase' , amount: 5})
+    }
+    ```
 
 ####  Working with Multiple State Properties
   - You can add addtional params to your redux reducer. Or better yet *for readablity*  initial state and pass that
@@ -1361,26 +1359,26 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
     - provide it a slice of global state
   - Here we can avoid the long if statements
 
-  ```
-  const counterSlice = createSlice({
-    name: 'counter',
-    initialState: initialCounterState,
-    reducers: {
-      increment(state) {
-        state.counter++;
+    ```
+    const counterSlice = createSlice({
+      name: 'counter',
+      initialState: initialCounterState,
+      reducers: {
+        increment(state) {
+          state.counter++;
+        },
+        decrement(state) {
+          state.counter--;
+        },
+        increase(state, action) {
+          state.counter = state.counter + action.payload;
+        },
+        toggleCounter(state) {
+          state.showCounter = !state.showCounter;
+        },
       },
-      decrement(state) {
-        state.counter--;
-      },
-      increase(state, action) {
-        state.counter = state.counter + action.payload;
-      },
-      toggleCounter(state) {
-        state.showCounter = !state.showCounter;
-      },
-    },
-  });
-  ```
+    });
+    ```
 
   - This handles the imutable issue when this toolkit library is used. Much easier :) 
 
@@ -1395,6 +1393,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
    - You could pass in the whole reducer or create a map of reducers
    - or merge all your reducers into one
    - Now how can we know what to dispatch ?
+   - `counterActions.decrement()` Dont forget this is a function call not a pointer
 ####  Migrating Everything To Redux Toolkit
   - ` counter.createSlice` now is a bunch of object keys we can access
   - these methods are called action creators
@@ -1411,14 +1410,15 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
  - ` type:`! can now be removed from dispatch object
 ####  Reading & Dispatching From A New 
 
-  ##### Reducer Challenge
-  - [] Tap into store to show auth or user profile comp in app
-  - [] In head conditionally show items or not
-  - [] Dispatch action login / logout in appropriate places
-  - [] Beware we now have a two keys in reducer mapping  
-
+  ##### Redux Challenge
+  - [x] Tap into store to show auth or user profile comp in app
+  - [x] In head conditionally show items or not
+  - [x] Dispatch action login / logout in appropriate places
+  - [x] Beware we now have a two keys in reducer mapping  
 
 ####  Splitting Our Code
+  - One approach is to separate each reducer in its own file and use index to bootstrap them together
+    - in your redux we can `export default counterSlice.reducer` and import that later `counterReducer`
 
 ####  Summary
 

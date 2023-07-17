@@ -1,6 +1,6 @@
 import classes from './Header.module.css';
 import { useDispatch,useSelector } from 'react-redux';
-import { authActions } from '../store';
+import { authActions } from '../store/auth';
 //Todo: if logged in 
 const Header = () => {
 
