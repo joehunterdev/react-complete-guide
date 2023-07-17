@@ -1280,14 +1280,71 @@ Todo:
   - To dispatch an action we can utilize `useDispatch()` which will generate a function for use
   
 #### Redux with Class-based Components
+- Hooks remember are not useable in components
+- You can use the `connect` (h.o.c) 
+  - import it then export it like so `export default connect()(Counter)` pass your function as a return 
+- To pass in props we need to setup sepecial methods to convert state to props
+
+```
+const mapStateToProps = state => {
+  return {
+    counter: state.counter
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    increment: () => dispatch({ type: 'increment' }),
+    decrement: () => dispatch({ type: 'decrement' }),
+  }
+}; 
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+```
 
 #### Attaching Payloads to Actions
+  - Sometimes your dispathc will want to carry extra data
+  - `action.something` can be recieved in your store reducer and pass a value from component
+  - ```
+      if(action.type === 'increase'){
+        return {counter:state.counter + action.amount}
+     }
+
+  ```
+  - Action payload is just an extra property
+
+```
+  const increaseBy5 = () => {
+
+  dispatch({ type: 'increase' , amount: 5})
+}
+```
 
 ####  Working with Multiple State Properties
+  - You can add addtional params to your redux reducer. Or better yet *for readablity*  initial state and pass that
+  - Redux *will replace the existing state* it wont merge meaning as you return your state you **must return the full object**
+  - *Typically this coult be a switch*
 
 ####  How To Work With Redux State Correctly
+  - **Never mutate the state** always overwrite it by *returning* a new object. 
+  - Because objs and arrays are reference objects
+  - (this is the orignal state your getting) can be hard to debug. UI may become out of sync
 
+```
+    if (action.type === 'increment') {
+    
+        //return state.counter ++  Dont do this (mututation)
+        //Return new object
+        return {
+            counter: state.counter + 1,
+            showCounter: state.showCounter
+        }
+
+    }
+```
+  - [Refs and Prim Types](https://academind.com/tutorials/reference-vs-primitive-values/)
 ####  Redux Challenges & Introducing Redux Toolkit
+  - 
 
 ####  Adding State Slices
 
