@@ -1343,7 +1343,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
     }
 ```
   - [Refs and Prim Types](https://academind.com/tutorials/reference-vs-primitive-values/)
-  
 ####  Redux Challenges & Introducing Redux Toolkit
   - 
 
