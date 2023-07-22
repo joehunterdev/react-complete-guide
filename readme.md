@@ -277,7 +277,7 @@ const clickHandler = () => {
 - [x] Cancel Button hides form again
 - [x] Seprate form jsx and "add new" button in NewExpense
 - [x] Return "add new button on form" when state is false
-  - _Instructor has handled display logic one level up in new expense_
+  - _Instructor has handled dis logic one level up in new expense_
 
 #### Dynamic Styles
 
@@ -1020,7 +1020,7 @@ const ForwardCounter = () => {
 - export function as custom hook
 - but maintain state to handle in your render component
 - i would guess that the instructor expects a component to just handle the request ?
-- conditional display should be handled in component ?
+- conditional dis should be handled in component ?
 
 #### Building a Custom Http Hook
 
@@ -1420,10 +1420,63 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
   - One approach is to separate each reducer in its own file and use index to bootstrap them together
     - in your redux we can `export default counterSlice.reducer` and import that later `counterReducer`
 
-####  Summary
+---
 
-####  Module Resources
+### Advanced Redux
 
+  #### Module Introduction
+
+  #### Redux & Side Effects (and Asynchronous Code)
+  - Reducers must be **pure**, **side-effect free**  **synchronous** functions 
+    - input (old state + action) -> output (new state)
+  - Where Should sideeffects go ?
+    - Components
+    - Action Creators
+
+  #### Refresher / Practice: Part 2
+  - [x] react redux install toolkit and react redux
+  - [x] Define state object
+  - [] Working cart buttons
+  - [] Hide show cart
+  - [x] add to cart
+  - [x] Update if part of cart just increase quantity
+    - can add more products
+  - +- controlls quantity
+    - [x] Remove item
+    - [x] Increase item
+
+  - [x] 1 past 0 = no items remove from cart
+  - UI slice / Cart Slice ?
+    - UI Handle cart are
+  - Add provider to somewhere high up (index.js)
+  - Use store/index.js to strap slices and export "store"
+  - Use *store* as convention
+
+  #### Refresher / Practice: Part 2
+
+  #### Redux & Async Code 
+
+  #### Frontend Code vs Backend Code
+
+  #### Where To Put Our Logic
+
+  #### Using useEffect with Redux
+
+  #### A Problem with useEffect()
+
+  #### Handling Http States & Feedback with Redux 
+
+  #### Using an Action Creator Thunk
+
+  #### Getting Started with Fetching Data
+
+  #### Finalizing the Fetching Logic
+
+  #### Exploring the Redux DevTools
+
+  #### Summary
+
+  #### Module Resources
 
 ---
 
@@ -1477,7 +1530,7 @@ function add(a:number,b:number)
 
 ### Top 10 Javascript GEMS
 
-//dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay
+//dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventRe
 
 function ValidateEmail(mail)
 {
