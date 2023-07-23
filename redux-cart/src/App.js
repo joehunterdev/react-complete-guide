@@ -25,6 +25,10 @@ function App() {
       return;
     }
 
+    if (cart.changed) {
+      dispatch(sendCartData(cart));
+    }
+    
     //Thunk Life
     dispatch(sendCartData(cart));
 
