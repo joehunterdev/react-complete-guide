@@ -5,6 +5,7 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState: {
         items: [],
+        changed: false,
     },
     reducers: {
 
@@ -23,11 +24,14 @@ const cartSlice = createSlice({
             );
 
             if (isItemInCart) {
+
                 state.items = state.items.map((t) =>
                     t.id === action.payload.id
                         ? { ...t, quantity: t.quantity += action.payload.quantity }
                         : t
                 );
+                state.changed = true;
+
             } else {
                 state.items = [...state.items, { ...action.payload, quantity: 1 }];
             }
@@ -49,56 +53,7 @@ const cartSlice = createSlice({
 
 });
 
-//Thunk
-//outside of slice
-export const sendCartData = (cart) => {
 
-    //recieves dispatch as an argrument
-    return async (dispatch) => {
-        //here we can now do things first ! 
-        dispatch(
-            uiActions.showNotification({
-                status: 'pending',
-                title: 'Sending...',
-                message: 'Sending cart data!',
-            })
-        )
-
-        const sendRequest = async () => {
-            const response = await fetch(
-                process.env.REACT_APP_FIREBASE_PUT_URL,
-                {
-                    method: 'PUT',
-                    body: JSON.stringify(cart),
-                }
-            );
-
-            if (!response.ok) {
-                throw new Error('Sending cart data failed.');
-            }
-        };
-
-        try {
-            await sendRequest();
-
-            dispatch(
-                uiActions.showNotification({
-                    status: 'success',
-                    title: 'Success!',
-                    message: 'Sent cart data successfully!',
-                })
-            );
-        } catch (error) {
-            dispatch(
-                uiActions.showNotification({
-                    status: 'error',
-                    title: 'Error!',
-                    message: 'Sending cart data failed!',
-                })
-            );
-        }
-    };
-}
 
 
 

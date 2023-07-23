@@ -6,7 +6,7 @@ const CartButton = (props) => {
   const dispatch = useDispatch();
 
   const cart = useSelector(state => state.cart)
-  console.log(cart.items)
+  // console.log(cart.items)
   let total = 0
 
   cart.items.map((t) => {

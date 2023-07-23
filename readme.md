@@ -1436,8 +1436,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
   #### Refresher / Practice: Part 2
   - [x] react redux install toolkit and react redux
   - [x] Define state object
-  - [] Working cart buttons
-  - [] Hide show cart
+  - [x] Working cart buttons
+  - [x] Hide show cart
   - [x] add to cart
   - [x] Update if part of cart just increase quantity
     - can add more products
@@ -1464,30 +1464,25 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
   - Its possible to write your own backend serverside
 
   #### Where To Put Our Logic
-    Mutating the state only with use effect
-    - Dont do:  
-      - `cart.totalQuantity = cart.totalQuantity +1`  
-    - Do :
-      `const newTotalQuantity = cart.totalQuantity +1`
-
+  - Mutating the state only with use effect
+    - Dont:  `cart.totalQuantity = cart.totalQuantity +1`  
+    - Do :`const newTotalQuantity = cart.totalQuantity +1`
   - A Fat: Reducers, Actions or Component
-   - Where to put logic ?
+  - Where to put logic ?
     - Synchronous *side-effect free* ei **data transformations** ? 
       - (prefer reducers)
-    - Ayscnc code or code with sideeffects ? 
-      - Action Creators or Components
-      - New Use reducers
+   - Ayscnc code or code with sideeffects ? 
+     - Action Creators or Components
+     - New Use reducers
 
   #### Using useEffect with Redux
-    - We could now listen in for changes to the cart and `useSelector()`
-    - This we then pass as a dependacy to `useEffect()` triggering it to run only when needed
-    - `PUT` Request will overwrite data
-
-  #### A Problem with useEffect()
+   - We could now listen in for changes to the cart and `useSelector()`
+   - This we then pass as a dependacy to `useEffect()` triggering it to run only when needed
+   - `PUT` Request will overwrite data. Will just create a list of data (sends data snapshot)
 
   #### Handling Http States & Feedback with Redux 
-    - [x] Integrate `Fetch` + `useEffect` Firebase into your project
-    - [x] Notifications: cmp
+   - [x] Integrate `Fetch` + `useEffect` Firebase into your project
+   - [x] Notifications: cmp
 
   #### Using an Action Creator Thunk
   - An alternative to side affect is the **action creator**
@@ -1497,16 +1492,22 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
   - Redux is prepared for *action creators that return functions*
   - This is an alternative to the logic we have used in cmp. its nice to keep things lean
 
-  #### Getting Started with Fetching Data
-  - 
-
-  #### Finalizing the Fetching Logic
+  #### Fetching Data
+  - Lets put `fetch` in a an asynch to capture errors
+  - Reux supporst `async` returns
+  - Lets use a separate `useEffect` to get data when the app starts
+  - We dont want to request data and send again when cart items is passed as dep in app.js
+  - We can set a parameter to define if state has changed `changed:true` 
+    - Dont send if we havent changed anything locally 
+  - You will need to handle the eventuality if there are no items
+  - [x] Check all is working
+    - [x] Missing has changed for notifications
 
   #### Exploring the Redux DevTools
+  - Redux Dev tools: With toolkit installed this will work with the chrome extension
+  - You can *time travel* with redux dev tools to see previous states
 
-  #### Summary
-
-  #### Module Resources
+ 
 
 ---
 
