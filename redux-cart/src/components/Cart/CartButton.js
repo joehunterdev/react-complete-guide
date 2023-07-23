@@ -15,7 +15,6 @@ const CartButton = (props) => {
 
   const cartDisplayHandler = () => {
      dispatch(uiActions.toggleCart())
-     
   }
 
   return (

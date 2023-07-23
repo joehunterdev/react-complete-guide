@@ -7,25 +7,10 @@ const cartSlice = createSlice({
       },
     reducers: {
 
-        // addToCart(state, action) {
-
-        //     //if no data return nothing
-        //     if (Number.isNaN(action.payload)) return;
-
-        //     const isItemInCart = state.items.find(
-        //         (t) => t.id === action.payload.id
-        //     );
-
-        //     if (isItemInCart) {
-        //         state.items = state.items.map((t) =>
-        //             t.id === action.payload.id
-        //                 ? { ...t, quantity: t.quantity + 1 }
-        //                 : t
-        //         );
-        //     } else {
-        //         state.items = [...state.items, { ...action.payload, quantity: 1 }];
-        //     }
-        // },
+        replaceCart(state, action) {
+            // state.totalQuantity = action.payload.totalQuantity;
+            state.items = action.payload.items;
+        },
 
         updateCart(state, action) {
 
@@ -46,26 +31,6 @@ const cartSlice = createSlice({
                 state.items = [...state.items, { ...action.payload, quantity: 1 }];
             }
         },
-
-        // decreaseItemAmount(state, action) {
-            
-        //     if(typeof action.payload != 'object') return;
-
-        //     const isItemInCart = state.items.find(
-        //         (t) => t.id === action.payload.id
-        //     );
-            
-        //     if (isItemInCart) {
-        //         state.items = state.items.map((t) =>
-        //             t.id === action.payload.id
-        //                 ? { ...t, quantity: t.quantity - 1 }
-        //                 : t
-        //         );
-        //     } else {
-        //         state.items = [...state.items, { ...action.payload, quantity: 1 }];
-        //     }
-        // },
-
 
         deleteFromCart: (state, action) => {
             if (Number.isNaN(action.payload)) return;

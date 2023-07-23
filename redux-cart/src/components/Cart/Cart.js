@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 
 const CartList = () => {
   const cart = useSelector(state => state.cart)
+  
   return cart.items.map((item) => (
     <CartItem key={item.id}
       item={{ id: item.id, title: item.title, quantity: item.quantity, total: item.quantity * item.price, price: item.price }}></CartItem>
@@ -14,8 +15,10 @@ const CartList = () => {
 
 const Cart = (props) => {
 
-  const ui = useSelector(state => state.ui)
+  console.log(props.cartItems.items);
 
+  const ui = useSelector(state => state.ui)
+  
   return (
     <Fragment>
       {ui.isShown &&

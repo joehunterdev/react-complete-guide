@@ -1455,16 +1455,39 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
   #### Refresher / Practice: Part 2
 
   #### Redux & Async Code 
+  - Never put *side effect* or any *asynch code* in the reducer
+    - We can put these: 
+      1. inside components (ef useEffect)
+      2. action creators
 
   #### Frontend Code vs Backend Code
+  - Its possible to write your own backend serverside
 
   #### Where To Put Our Logic
+    Mutating the state only with use effect
+    - Dont do:  
+      - `cart.totalQuantity = cart.totalQuantity +1`  
+    - Do :
+      `const newTotalQuantity = cart.totalQuantity +1`
+
+  - A Fat: Reducers, Actions or Component
+   - Where to put logic ?
+    - Synchronous *side-effect free* ei **data transformations** ? 
+      - (prefer reducers)
+    - Ayscnc code or code with sideeffects ? 
+      - Action Creators or Components
+      - New Use reducers
 
   #### Using useEffect with Redux
+    - We could now listen in for changes to the cart and `useSelector()`
+    - This we then pass as a dependacy to `useEffect()` triggering it to run only when needed
+    - `PUT` Request will overwrite data
 
   #### A Problem with useEffect()
 
   #### Handling Http States & Feedback with Redux 
+    - [x] Integrate `Fetch` + `useEffect` Firebase into your project
+    - [x] Notifications: cmp
 
   #### Using an Action Creator Thunk
 

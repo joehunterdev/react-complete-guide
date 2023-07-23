@@ -8,9 +8,13 @@ const uiSlice = createSlice({
         toggleCart(state) {
             state.isShown = !state.isShown
         },
-        // hideCart(state) {
-        //     state.isShown = false
-        // }
+        showNotification(state, action) {
+            state.notification = {
+              status: action.payload.status,
+              title: action.payload.title,
+              message: action.payload.message,
+            };
+          },
     },
 });
 
