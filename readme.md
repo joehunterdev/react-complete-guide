@@ -1490,8 +1490,15 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
     - [x] Notifications: cmp
 
   #### Using an Action Creator Thunk
+  - An alternative to side affect is the **action creator**
+  - A thunk is an *action that delays an action till later*
+    - returns a functions that eventually returns another function
+  - `await` means wait for promise
+  - Redux is prepared for *action creators that return functions*
+  - This is an alternative to the logic we have used in cmp. its nice to keep things lean
 
   #### Getting Started with Fetching Data
+  - 
 
   #### Finalizing the Fetching Logic
 
