@@ -1507,7 +1507,115 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
   - Redux Dev tools: With toolkit installed this will work with the chrome extension
   - You can *time travel* with redux dev tools to see previous states
 
- 
+---
+git fetch
+git checkout origin/master -- E:\www\react-complete-guide\package.json
+
+#### Spa and Router
+
+#### Module Introduction
+- 
+  - 
+  - ``
+  - ````````
+  - []()
+- []
+- [] 
+- 
+#### Routing: Multiple Pages in Single-Page Applications
+- Is essentially linking pages in one
+- Multiple pages in one
+
+#### Project Setup & Installing React Router
+- Url changes define changes in application
+- Good for complex interfaces
+- Simply add client side code to make visible html changes
+- `npm install react-router-dom` 
+- [React Router](https://reactrouter.com/en/main)
+
+#### Defining Routes
+- You can use `createBrowserRouter` and pass objects with a `path` & an `element`  
+
+#### Adding a Second Route
+
+#### Exploring an Alternative Way of Defining Routes
+
+#### Navigating between Pages with Links
+
+#### Layouts & Nested Routes
+
+#### Showing Error Pages with errorElement
+
+#### Working with Navigation Links (NavLink)
+
+#### Navigating Programmatically
+
+#### Defining & Using Dynamic Routes
+
+#### Adding Links for Dynamic Routes
+
+#### Understanding Relative & Absolute Paths
+
+#### Working with Index Routes
+
+#### Onwards to a new Project Setup - P2
+
+#### Time to Practice: Problem
+
+#### Time to Practice: Solution
+
+#### Data Fetching with a loader()
+
+#### Using Data From A Loader In The Route Component
+
+#### More loader() Data Usage
+
+#### Where Should loader() Code Be Stored?
+
+#### When Are loader() Functions Executed?
+
+#### Reflecting The Current Navigation State in the UI
+
+#### Returning Responses in loader()s
+
+#### Which Kind Of Code Goes Into loader()s?
+
+#### Error Handling with Custom Errors
+
+#### Extracting Error Data & Throwing Responses
+
+#### The json() Utility Function P3
+
+#### Dynamic Routes & loader()s
+
+#### The useRouteLoaderData() Hook & Accessing Data From Other Routes
+
+#### Planning Data Submission
+
+#### Working with action() Functions
+
+#### Submitting Data Programmatically
+
+#### Updating the UI State Based on the Submission Status
+
+#### Validating User Input & Outputting Validation Errors
+
+#### Reusing Actions via Request Methods
+
+#### Behind-the-Scenes Work with useFetcher()
+
+#### Deferring Data Fetching with defer()
+
+#### Controlling Which Data Should Be Deferred
+
+#### Module Summary
+
+#### Upgrading from React Router v5
+
+#### Module Resources
+
+#### Old Lectures
+
 
 ---
 
@@ -1557,6 +1665,7 @@ function add(a:number,b:number)
 `node redux-demo.js` execute with node
 `npm install redux react-redux`
 `npm install @reduxjs/toolkit` redux tool kit you dont need redux and the tool kit //    "redux": "^4.0.5",
+`npm install react-router-dom` 
 
 
 ### Top 10 Javascript GEMS
