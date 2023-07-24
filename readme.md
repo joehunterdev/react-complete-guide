@@ -1549,7 +1549,7 @@ const router = createBrowserRouter([{
 
 function App() {
 
-  return <RouterProvider router={router} />
+  return <Routecd rProvider router={router} />
 
 } 
 
@@ -1561,6 +1561,10 @@ export default App;
   - Instead of passing an object you can use elements `createRoutesFromElements`
   
 #### Navigating between Pages with Links
+  - We dont want to re-load scripts and sending new requests
+  1. `import { Link } from 'react-router-dom';`
+  2. `<Link to="/products">`
+    - Listens to events and prevents default creating new http
 
 #### Layouts & Nested Routes
 
