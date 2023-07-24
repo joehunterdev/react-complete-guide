@@ -1599,9 +1599,16 @@ export default App;
 
 #### Adding Links for Dynamic Routes
   - We can add `to` attribute to our `<Link>` passing dynamic value
-  
-#### Understanding Relative & Absolute Paths
 
+#### Understanding Relative & Absolute Paths
+  - Within our `createBrowserRouter` we change our path handling. You can choose either / rel or abs
+    - remember */ forward slash means **absolute** path*
+  1. specify our parent`/root` and 
+  2. *remove* `/` for children to allow for creating a base url. 
+  3. We can now visit `localhost:roots/products`
+
+  - `<Link>` also has another prop `relative='path||route'` 
+ 
 #### Working with Index Routes
 
 #### Onwards to a new Project Setup - P2
