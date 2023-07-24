@@ -1535,11 +1535,31 @@ git checkout origin/master -- E:\www\react-complete-guide\package.json
 
 #### Defining Routes
 - You can use `createBrowserRouter` and pass objects with a `path` & an `element`  
+- With *route definition objects*
 
-#### Adding a Second Route
+```
+import {RouterProvider, createBrowserRouter} from 'react-router-dom'
+import Home from './pages/Home';
+import Products from './pages/Products';
+
+const router = createBrowserRouter([{
+  path:'/', element:<Home/>},
+  { path:'/prodcts', element:<Products />}
+, {}])
+
+function App() {
+
+  return <RouterProvider router={router} />
+
+} 
+
+export default App;
+
+```
 
 #### Exploring an Alternative Way of Defining Routes
-
+  - Instead of passing an object you can use elements `createRoutesFromElements`
+  
 #### Navigating between Pages with Links
 
 #### Layouts & Nested Routes
