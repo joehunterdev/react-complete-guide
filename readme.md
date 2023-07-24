@@ -1610,6 +1610,7 @@ export default App;
   - `<Link>` also has another prop `relative='path||route'` 
  
 #### Working with Index Routes
+  - We can simply do in our route defintion object  `/`  or `index:true`
 
 #### Onwards to a new Project Setup - P2
 
