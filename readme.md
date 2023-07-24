@@ -1585,11 +1585,17 @@ export default App;
   - `end` prop helps handle the end of the route to handle active feedback. 
 
 #### Navigating Programmatically
-- `useNavigate` incase you need to refresh the page 
-
+- `useNavigate` incase you need to refresh the page programatically.
 
 #### Defining & Using Dynamic Routes
-
+  - What if these had different paths /product1 , /product2 to one cmp *we wouldnt want to add all of these hardcoded*  
+  - One approach is to enter a more paths 
+  - We could add a route then some links , 
+  - Good for defining different data we want to render same cmp. 
+  - We can levarage path *params* by adding a colon 
+     1. `'/product/:productId'`
+     2. `import {useParams}` in your cmp
+     3. `params.productId`
 
 #### Adding Links for Dynamic Routes
 
