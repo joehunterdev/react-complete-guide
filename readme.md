@@ -1585,8 +1585,11 @@ export default App;
   - `end` prop helps handle the end of the route to handle active feedback. 
 
 #### Navigating Programmatically
+- `useNavigate` incase you need to refresh the page 
+
 
 #### Defining & Using Dynamic Routes
+
 
 #### Adding Links for Dynamic Routes
 
