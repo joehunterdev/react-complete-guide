@@ -1598,7 +1598,8 @@ export default App;
      3. `params.productId`
 
 #### Adding Links for Dynamic Routes
-
+  - We can add `to` attribute to our `<Link>` passing dynamic value
+  
 #### Understanding Relative & Absolute Paths
 
 #### Working with Index Routes
