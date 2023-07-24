@@ -1580,6 +1580,9 @@ export default App;
     - add an `errorElement` to your `routeDefinitionObject`
 
 #### Working with Navigation Links (NavLink)
+  - React router dom is our friend
+  - We can also use `NavLink` and use `isActive` `className={(isActive) => }` - It by default checks if path is the same ;) 
+  - `end` prop helps handle the end of the route to handle active feedback. 
 
 #### Navigating Programmatically
 

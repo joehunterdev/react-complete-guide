@@ -16,6 +16,7 @@ function MainNavigation() {
               // style={({ isActive }) => ({
               //   textAlign: isActive ? 'center' : 'left',
               // })}
+              //handles ending of url for feedback
               end
             >
               Home
