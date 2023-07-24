@@ -1549,7 +1549,7 @@ const router = createBrowserRouter([{
 
 function App() {
 
-  return <Routecd rProvider router={router} />
+  return <Router rProvider router={router} />
 
 } 
 
@@ -1575,7 +1575,9 @@ export default App;
   - This way we can have path dependant layout methods
 
 #### Showing Error Pages with errorElement
-  - Vistors cannot be trusted. So lets create a default fall back page
+  - Vistors cannot be trusted. 
+  - So lets create a default fall back page if the route doesnt exist
+    - add an `errorElement` to your `routeDefinitionObject`
 
 #### Working with Navigation Links (NavLink)
 
