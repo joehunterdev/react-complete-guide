@@ -1567,8 +1567,15 @@ export default App;
     - Listens to events and prevents default creating new http
 
 #### Layouts & Nested Routes
+  - We can create a layout component containing some main navigation and include it in our app
+  - We can use a wrapping layout component to wrap all out routes together
+  - You can add a parent `root` to wrap child routes (like menus)
+  - This layout cmp can levarage `outlet` from 'react-router-dom'
+    *Used in parent route elements to render their child route elements. *
+  - This way we can have path dependant layout methods
 
 #### Showing Error Pages with errorElement
+  - Vistors cannot be trusted. So lets create a default fall back page
 
 #### Working with Navigation Links (NavLink)
 
