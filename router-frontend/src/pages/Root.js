@@ -4,12 +4,12 @@ import MainNavigation from '../components/MainNavigation';
 function RootLayout() {
  
    return (
-    <>
+    <div className='container py-3'>
       <MainNavigation />
       <main>
         <Outlet />
       </main>
-    </>
+    </div>
   );
 }
 

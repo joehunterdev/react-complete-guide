@@ -473,6 +473,8 @@ const clickHandler = () => {
 ### Handling Side Effects, Reducers and Context hook
 
 #### Sideffects useEffect hook
+- **useEffect** is a tool that lets us interact with the outside world but not affect the rendering or performance of the component 
+- **useCallback** Useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders
 
 - The main job of react is to _Render UI_ & _React to User Input_ To handle side effects.
 - Good for code to be executed in response to something
@@ -714,6 +716,7 @@ const clickHandler = () => {
           obj2 = obj1 // pointed to the obj1 place in memory
           {}
 ```
+- **Memoization** is an optimization technique for accelerating computer programs by caching the results of heavy function
 
 - Essentially this is the same as `useCallback`
 - `toggleParagraphHandler = useCallback(( )` knowing this method will never change, we can now store it for re-use
@@ -1627,13 +1630,13 @@ export default App;
   - [x]     - EditEventPage
 
 - []  2. Add routing & route definitions for these five pages
-- []     - / => HomePage
-- []     - /events => EventsPage
+- [x]     - / => HomePage
+- [x]     - /events => EventsPage
 - []     - /events/<some-id> => EventDetailPage
 - []     - /events/new => NewEventPage
 - []     - /events/<some-id>/edit => EditEventPage
 
-- []  3. Add a root layout that adds the <MainNavigation> component above all page components
+- [c]  3. Add a root layout that adds the <MainNavigation> component above all page components
 - []  4. Add properly working links to the MainNavigation
 - []  5. Ensure that the links in MainNavigation receive an "active" class when active
 - []  6. Output a list of dummy events to the EventsPage
@@ -1747,7 +1750,15 @@ function add(a:number,b:number)
 `npm install @reduxjs/toolkit` redux tool kit you dont need redux and the tool kit //    "redux": "^4.0.5",
 `npm install react-router-dom` 
 
+#  for macOS and Linux
+`rm -rf node_modules`
+`rm -f package-lock.json`
+`rm -f yarn.lock`
+# 👇️ clean npm cache
+`npm cache clean --force`
 
+# 👇️ install packages
+`npm install`
 ### Top 10 Javascript GEMS
 
 //dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventRe
