@@ -1656,13 +1656,9 @@ export default App;
 #### Using Data From A Loader In The Route Component
   - `useLoaderData`
 
-#### More loader() Data Usage
+#### Where & When Should loader() Code Be Stored?
 -  You cant use loader in an above component 
-
-#### Where Should loader() Code Be Stored?
-  - Refactor and test app with loader
-
-#### When Are loader() Functions Executed?
+- Refactor and test app with loader
 - These loaders can be quite heavy. So a common recomendation
 is to put loader in the component where you want to use it. and export it as say `somethingLoader`
 - later import into your app `{loader as eventsLoader}` then use that in your route definition object loader
