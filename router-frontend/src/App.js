@@ -9,13 +9,14 @@ import ErrorPage from './pages/ErrorPage';
 import EventsRootLayout from './pages/EventsRoot';
 // import EventsPage from './pages/EventsPage';
 import HomePage from './pages/HomePage';
-import EventDetailPage from './pages/EventDetailPage';
+import EventDetailPage, {loader as eventDetailLoader }from './pages/EventDetailPage';
 // import React, { useEffect, useState } from 'react';
 // import useHttp from './hooks/use-http';
 import NewEventPage from './pages/NewEventPage';
 import EditEventPage from './pages/EditEventsPage';
 import EventsPage, { loader as eventsLoader } from './pages/Events';
 // import ErrorPage from './pages/ErrorPage';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
             element: <EventsPage />,
             loader: eventsLoader,
           },
-          { path: ':eventId', element: <EventDetailPage /> },
+          { path: ':eventId', element: <EventDetailPage />, loader: eventDetailLoader },
           { path: 'new', element: <NewEventPage /> },
           { path: ':eventId/edit', element: <EditEventPage /> },
         ],

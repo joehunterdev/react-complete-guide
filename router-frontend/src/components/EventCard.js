@@ -7,7 +7,7 @@ import { NavLink, Link } from 'react-router-dom'
 
 //Todo: events router
  
-function EventsList(props) {
+function EventCard(props) {
   //Heres how we would nav programatically
   // const navigate = useNavigate();
 
@@ -44,5 +44,5 @@ function EventsList(props) {
 
     )
 }
-export default EventsList
+export default EventCard
 

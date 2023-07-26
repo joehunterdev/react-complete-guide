@@ -1695,7 +1695,9 @@ is to put loader in the component where you want to use it. and export it as say
   - You can type less code and you dont need to later parse. The router can handle this for you
 
 #### Dynamic Routes & loader()s
-
+  - After defining route you can pass another loader
+  - loader has two params `request` / `params`
+  - You cant use hooks in loader so you need these params to get say the `id` param in url
 #### The useRouteLoaderData() Hook & Accessing Data From Other Routes
 
 #### Planning Data Submission
