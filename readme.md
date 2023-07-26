@@ -1754,6 +1754,9 @@ which we use in conjuntcion with `useRouteloaderData`
     - Suspense is imported from `react`
 
 #### Controlling Which Data Should Be Deferred
+  - in our loader we can now pass multiple loader actions
+  - inside return we can now use `Await` twice and we can define a fallback prop `fallback={<p>Loading...</p>}`
+  - You can insure loader waits by using `await loadEvent)()` this is like a lever to tell react to wait for this to finish before rendering
 
 #### Module Summary
 
