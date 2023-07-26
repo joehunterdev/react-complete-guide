@@ -1671,8 +1671,14 @@ is to put loader in the component where you want to use it. and export it as say
   - You can tap into this in your jsx `{navigation.state ==='loading' && <p>Loading...</p>}`
    
 #### Returning Responses in loader()s
+  - From loader you can return a response object
+  - This a special `response` constructor that can be created client side
+  - Why not just return response. With react routers response object you dont need to manually extract data from the response
+  - Levarage this *special type of return object*
 
 #### Which Kind Of Code Goes Into loader()s?
+  - You can use any browser api in loader. APIS cookies etcw
+  - But you **Cannot** use hooks
 
 #### Error Handling with Custom Errors
 

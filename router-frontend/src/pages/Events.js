@@ -4,8 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 function EventsPage() {
 
     const events = useLoaderData();
-    console.log("Hi im enents");
-    return (
+     return (
         <>
             <div style={{ textAlign: 'center' }}>
                 {/* {isLoading && <p>Loading...</p>}
