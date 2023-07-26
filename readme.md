@@ -1741,8 +1741,17 @@ which we use in conjuntcion with `useRouteloaderData`
   - good when dont want to actuall navigate to the page to which the loader belongs 
   - using this you can submit form without transitioning    `<fetcher.Form method="post" className={classes.newsletter}>`
   - you can acces the data easily: `fetcher.data` and levarage `useEffect`
-  -
+
 #### Deferring Data Fetching with defer()
+  - Meaning you can delay loading of a script to the end. 
+  - What if you wanted to show parts of the page before the http response has been loaded
+  - We can avoid await in our loader and use `defer` to which we can bundle all our http requests
+  - `loadEvents()` can now be called inside our loader
+    - if there was no promise = *theres nothing to defer*
+  - In addition we an import `await` 
+    - `<Await resolve={events}>` will track what has changed this will be called by router 
+    - this needs to be wrapped in a `Suspense` which works as a *fallback* while events are being fetched
+    - Suspense is imported from `react`
 
 #### Controlling Which Data Should Be Deferred
 
