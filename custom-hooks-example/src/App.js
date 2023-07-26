@@ -29,13 +29,12 @@ function App() {
  
       fetchTasks({ url: baseUrl }, taskList) //call back here
 
-       //optional return or cleanup
     }, [fetchTasks])//dependancies
-
 
     const taskAddHandler = (task) => {
         setTasks((prevTasks) => prevTasks.concat(task));
     };
+
     return (
         <React.Fragment>
             <NewTask onAddTask={taskAddHandler} />

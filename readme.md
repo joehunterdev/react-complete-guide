@@ -1645,17 +1645,27 @@ export default App;
 - [x]  BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
  likeley this will go back to defining parent 
 
-#### Time to Practice: Solution
-
 #### Data Fetching with a loader()
+  - Rendering lots of request before loading the pages is not ideal.
+  - It can be better to tell *router* to call this
+  - Helps with fetching data and handling different states
+  - loader executes before the route is rendered
+  - loader can be used with *async* to get around useing *then*
+  - **aysnc** **await** always returns a *promise*
 
 #### Using Data From A Loader In The Route Component
+  - `useLoaderData`
 
 #### More loader() Data Usage
+-  You cant use loader in an above component 
 
 #### Where Should loader() Code Be Stored?
+  - Refactor and test app with loader
 
 #### When Are loader() Functions Executed?
+- These loaders can be quite heavy. So a common recomendation
+is to put loader in the component where you want to use it. and export it as say `somethingLoader`
+- later import into your app `{loader as eventsLoader}` then use that in your route definition object loader
 
 #### Reflecting The Current Navigation State in the UI
 
