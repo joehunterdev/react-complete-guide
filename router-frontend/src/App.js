@@ -13,10 +13,10 @@ import EventDetailPage, {loader as eventDetailLoader }from './pages/EventDetailP
 // import React, { useEffect, useState } from 'react';
 // import useHttp from './hooks/use-http';
 import NewEventPage from './pages/NewEventPage';
-import EditEventPage from './pages/EditEventsPage';
 import EventsPage, { loader as eventsLoader } from './pages/Events';
+import EditEventPage from './pages/EditEvent';
 // import ErrorPage from './pages/ErrorPage';
-
+ 
 const router = createBrowserRouter([
   {
     path: '/',
@@ -33,9 +33,19 @@ const router = createBrowserRouter([
             element: <EventsPage />,
             loader: eventsLoader,
           },
-          { path: ':eventId', element: <EventDetailPage />, loader: eventDetailLoader },
+          {
+            path: ':eventId',
+            id: 'event-detail',
+            loader: eventDetailLoader,
+            children: [
+              {
+                index: true,
+                element: <EventDetailPage />,
+              },
+              { path: 'edit', element: <EditEventPage /> },
+            ],
+          },
           { path: 'new', element: <NewEventPage /> },
-          { path: ':eventId/edit', element: <EditEventPage /> },
         ],
       },
     ],

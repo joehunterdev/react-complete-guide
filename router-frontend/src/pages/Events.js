@@ -1,4 +1,4 @@
-import EventsList from '../components/EventsList.old';
+import EventsList from '../components/EventsList';
 import { useLoaderData,json } from 'react-router-dom';
 
 function EventsPage() {

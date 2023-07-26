@@ -1699,6 +1699,8 @@ is to put loader in the component where you want to use it. and export it as say
   - loader has two params `request` / `params`
   - You cant use hooks in loader so you need these params to get say the `id` param in url
 #### The useRouteLoaderData() Hook & Accessing Data From Other Routes
+- We can share loaders between routes
+by adding it to a wrapper route
 
 #### Planning Data Submission
 
