@@ -1,49 +1,36 @@
-import { Fragment, useCallback } from "react";
 import { useState, useEffect } from "react";
 import EventsList from "../components/EventsList";
-
+import useHttp from "../hooks/use-http";
+import EventsNavigation from '../components/EventsNavigation';
 const EventsPage = () => {
 
   const [events, setEvents] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const { isLoading, error, sendRequest: fetchEvents } = useHttp(); // neatly unpack declare above top level
 
-  const fetchEventsHandler = useCallback(async () => {
-    //Loading
-    setIsLoading(true);
-    setError(null);
+  //make successfull useHttp request
+  //transform 
+  useEffect(() => {
 
-    try {
-      // With await
-      const response = await fetch('http://localhost:8080/events');
-      //statusCode !== 200
-      if (!response.ok) {
-        throw new Error("Status code: " + response.statusCode)
-      }
-      const data = await response.json();
+    const eventList = (data) => {
 
-      const transformedEvents = data.events.map(eventData => {
+      const loadedEvents = data.events.map(eventData => {
         //this seems a bit redundant
         return { id: eventData.id, title: eventData.title, description: eventData.description };
       })
-      setEvents(transformedEvents)
-
-    } catch (error) {
-
-      setError(error.message)
+      setEvents(loadedEvents)
     }
-    setIsLoading(false) // regardless we need to stop loading
-  }, [])
 
-  useEffect(() => {
-    fetchEventsHandler();
-  }, [fetchEventsHandler])
-  console.log(events)
+    fetchEvents({ url: 'http://localhost:8080/events/' }, eventList) //call back here
+
+    //optional return or cleanup
+  }, [fetchEvents])//dependancies
+
   return (
     <div className="row d_flex">
+        <EventsNavigation />
 
       {isLoading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {/* {error && <p>{error}</p>} */}
       {events.map(event =>
         <EventsList
           key={event.id}
@@ -53,6 +40,7 @@ const EventsPage = () => {
           date={event.date}
           image={event.image}
         />
+
       )
       }
     </div>
