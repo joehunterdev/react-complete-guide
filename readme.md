@@ -1664,7 +1664,12 @@ is to put loader in the component where you want to use it. and export it as say
 - later import into your app `{loader as eventsLoader}` then use that in your route definition object loader
 
 #### Reflecting The Current Navigation State in the UI
-
+  - We can use `useNavigation` to detext what state the transition of data  is.
+    - idle
+    - loading
+    - submitting
+  - You can tap into this in your jsx `{navigation.state ==='loading' && <p>Loading...</p>}`
+   
 #### Returning Responses in loader()s
 
 #### Which Kind Of Code Goes Into loader()s?
