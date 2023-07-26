@@ -1733,10 +1733,15 @@ which we use in conjuntcion with `useRouteloaderData`
   - Notice we now can levarge our existing `newEventAction` as we only want to change a few things to implement an edit
   - We could create two events like `post` and `patch`
   - By changing the request method we can use the same action changing the `request.method` and `url`
-  
+  - A convention is to define request method in uppercase `PATCH`
 
 #### Behind-the-Scenes Work with useFetcher()
-
+  - Newlsetter cmp is included everywhere which poses the problem of accessing its action app wide
+  - We can utilize `fetcher.form` which will do the same except it doesnt init route transition
+  - good when dont want to actuall navigate to the page to which the loader belongs 
+  - using this you can submit form without transitioning    `<fetcher.Form method="post" className={classes.newsletter}>`
+  - you can acces the data easily: `fetcher.data` and levarage `useEffect`
+  -
 #### Deferring Data Fetching with defer()
 
 #### Controlling Which Data Should Be Deferred

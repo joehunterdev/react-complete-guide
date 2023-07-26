@@ -20,6 +20,7 @@ import EventsPage, { loader as eventsLoader } from './pages/Events';
 import EditEventPage from './pages/EditEvent';
 // import ErrorPage from './pages/ErrorPage';
 import { action as manipulateEventAction } from './components/EventForm';
+import NewsletterPage, { action as newsletterAction } from './pages/Newsletter';
 
 const router = createBrowserRouter([
   {
@@ -52,11 +53,19 @@ const router = createBrowserRouter([
                 element: <EditEventPage />,
                 action: manipulateEventAction,
               },
-              { path: 'edit', element: <EditEventPage /> },
             ],
           },
-          { path: 'new', element: <NewEventPage />, action: newEventAction },
+          {
+            path: 'new',
+            element: <NewEventPage />,
+            action: manipulateEventAction,
+          },
         ],
+      },
+      {
+        path: 'newsletter',
+        element: <NewsletterPage />,
+        action: newsletterAction,
       },
     ],
   },
