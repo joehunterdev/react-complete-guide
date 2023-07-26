@@ -1700,13 +1700,26 @@ is to put loader in the component where you want to use it. and export it as say
   - You cant use hooks in loader so you need these params to get say the `id` param in url
 #### The useRouteLoaderData() Hook & Accessing Data From Other Routes
 - We can share loaders between routes
-by adding it to a wrapper route
+by adding it to a wrapper route or parent element
+- Route definistins can have specific id's
+which we use in conjuntcion with `useRouteloaderData`
+
 
 #### Planning Data Submission
-
+  - We can use actions to send data
 #### Working with action() Functions
+  - We can use `action:` as a param to send in router
+  -  Again in actions we have access to browser api stuff but no hooks
+  -You will need to use the `Form` component. It will take this data and *send it to your action* It will omit the browser default (sending to backend) 
+  - You will need to define your method 
+  - You can tap into `request.formData()`
+  - or use `data.get('title')`
 
 #### Submitting Data Programmatically
+  - Note you can define actions on your form. The beauty of `<Form action='some-action'` is you can submit your form to external or different form acitons.
+  - We can then use our `useSubmit` hook to capture this submission
+    - It will take a form data obj param
+    - 
 
 #### Updating the UI State Based on the Submission Status
 

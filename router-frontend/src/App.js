@@ -9,14 +9,17 @@ import ErrorPage from './pages/ErrorPage';
 import EventsRootLayout from './pages/EventsRoot';
 // import EventsPage from './pages/EventsPage';
 import HomePage from './pages/HomePage';
-import EventDetailPage, {loader as eventDetailLoader }from './pages/EventDetailPage';
+import EventDetailPage, {
+  loader as eventDetailLoader,
+  action as deleteEventAction,
+} from './pages/EventDetail';
+import NewEventPage, {action as newEventAction } from './pages/NewEventPage';
 // import React, { useEffect, useState } from 'react';
 // import useHttp from './hooks/use-http';
-import NewEventPage from './pages/NewEventPage';
 import EventsPage, { loader as eventsLoader } from './pages/Events';
 import EditEventPage from './pages/EditEvent';
 // import ErrorPage from './pages/ErrorPage';
- 
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -41,16 +44,18 @@ const router = createBrowserRouter([
               {
                 index: true,
                 element: <EventDetailPage />,
+                action: deleteEventAction,
               },
               { path: 'edit', element: <EditEventPage /> },
             ],
           },
-          { path: 'new', element: <NewEventPage /> },
+          { path: 'new', element: <NewEventPage />, action: newEventAction },
         ],
       },
     ],
   },
 ]);
+
 
 function App() {
 
