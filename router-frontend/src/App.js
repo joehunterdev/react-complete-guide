@@ -15,11 +15,12 @@ import EventDetailPage from './pages/EventDetailPage';
 import NewEventPage from './pages/NewEventPage';
 import EditEventPage from './pages/EditEventsPage';
 import EventsPage, { loader as eventsLoader } from './pages/Events';
-
+// import ErrorPage from './pages/ErrorPage';
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       {

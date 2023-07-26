@@ -1681,9 +1681,15 @@ is to put loader in the component where you want to use it. and export it as say
   - But you **Cannot** use hooks
 
 #### Error Handling with Custom Errors
-
+  - On way is (in response) `return { isError: true, message: 'Failed to fetch events.' };`
+  - When you throw error reouter will return closest error element
+    - Error element can be use to *show any error* in route related code
+  -  `errorElement: <ErrorPage />,`
+  
 #### Extracting Error Data & Throwing Responses
-
+  1. `throw new Response(JSON.stringify({ message: 'Failed to fetch events.' }))`
+  2. You can catch these errors `const error = useRouteError();`
+  
 #### The json() Utility Function P3
 
 #### Dynamic Routes & loader()s
