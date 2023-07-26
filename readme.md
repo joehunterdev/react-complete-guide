@@ -1725,8 +1725,15 @@ which we use in conjuntcion with `useRouteloaderData`
     - `const isSubmitting = navigation.state === 'submitting';`
 
 #### Validating User Input & Outputting Validation Errors
-
+  - You can do this in actions by returning the response first 
+  - `useActionData` is our friend here to pick up the response for use in our form
+  - Then later in your from your can acces `data.errors`
+  
 #### Reusing Actions via Request Methods
+  - Notice we now can levarge our existing `newEventAction` as we only want to change a few things to implement an edit
+  - We could create two events like `post` and `patch`
+  - By changing the request method we can use the same action changing the `request.method` and `url`
+  
 
 #### Behind-the-Scenes Work with useFetcher()
 
