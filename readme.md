@@ -1687,10 +1687,12 @@ is to put loader in the component where you want to use it. and export it as say
   -  `errorElement: <ErrorPage />,`
   
 #### Extracting Error Data & Throwing Responses
-  1. `throw new Response(JSON.stringify({ message: 'Failed to fetch events.' }))`
+  1. `throw new Response(JSON.stringify({ message: 'Failed to fetch events.',status:response.status}))`
   2. You can catch these errors `const error = useRouteError();`
-  
+
 #### The json() Utility Function P3
+  - React router has utilities to handle responses in `json()` 
+  - You can type less code and you dont need to later parse. The router can handle this for you
 
 #### Dynamic Routes & loader()s
 
