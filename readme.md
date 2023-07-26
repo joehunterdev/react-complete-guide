@@ -1719,9 +1719,10 @@ which we use in conjuntcion with `useRouteloaderData`
   - Note you can define actions on your form. The beauty of `<Form action='some-action'` is you can submit your form to external or different form acitons.
   - We can then use our `useSubmit` hook to capture this submission
     - It will take a form data obj param
-    - 
 
 #### Updating the UI State Based on the Submission Status
+  - We can levarage `useNavigation` to extract eg all the data submitted and status of the transition to provide feedback to the user. 
+    - `const isSubmitting = navigation.state === 'submitting';`
 
 #### Validating User Input & Outputting Validation Errors
 
