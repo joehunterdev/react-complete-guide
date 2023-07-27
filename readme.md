@@ -1811,13 +1811,23 @@ which we use in conjuntcion with `useRouteloaderData`
 
 #### Attaching Auth Tokens to Outgoing Requests
 
+
 #### Adding User Logout
+  - We can use a path and a pass router action to clear the auth token 
+  - *no element: required*
 
 #### Updating the UI Based on Auth Status
+  - We could use context and router to maintain this token app wide
+  - Or use loader to refresh tokens in the background
+  -  `loader:tokenLoader,` we created earlier in utils
+  - Within in a sub cmp we can use `useRouteLoaderData` to see it exists
+  - Finally render your buttons conditionally
 
 #### Important: loader()s must return null or any other value
 
 #### Adding Route Protection
+ - Again we can utilize a loader `checkAuthLoader` say for example and include this on protected routes
+ 
 
 #### Adding Automatic Logout
 
