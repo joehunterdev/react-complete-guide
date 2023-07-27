@@ -1836,7 +1836,9 @@ which we use in conjuntcion with `useRouteloaderData`
   - then levarage `useSubmit` hook to check if a form has been sent
     - `useSubmit` Programatically send a form
 #### Managing the Token Expiration
-
+  - The timer needs to be referenced to a timestamp created in the token
+    `const expiration = new Date(expiration.getHours() +  1);  localStorage.setItem('expiration', expiration.toISOString());`
+    
 #### Module Resources
 
 ---

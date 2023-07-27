@@ -9,13 +9,21 @@ function RootLayout() {
   useEffect(() => {
 
     if (!token) {
-      return
+      return 
     }
 
+    if(token === 'EXPIRED'){
+      submit(null, { action: '/logout', method: 'post' })
+    }
     setTimeout(() => { submit(null, { action: '/logout', method: 'post' }) }, 1 * 60 * 60 * 1000);
 
   }, [token, submit])
 
+  const tokenDuration = getTokenDuration();
+
+  if(tokenDuration){
+    return 'EXPIRED'
+  }
 
   return (
     <>
