@@ -1758,14 +1758,46 @@ which we use in conjuntcion with `useRouteloaderData`
   - inside return we can now use `Await` twice and we can define a fallback prop `fallback={<p>Loading...</p>}`
   - You can insure loader waits by using `await loadEvent)()` this is like a lever to tell react to wait for this to finish before rendering
 
-#### Module Summary
+### Authentication
 
-#### Upgrading from React Router v5
+#### Module Introduction
+  - Avoid faking sending auth
+
+#### How Authentication Works
+   - Serverside Sessions:
+    - Store auth on server mapped to client. CLient send identifier along with requests 
+    - Require tight coupling between client and server
+
+   - Authentication token:
+    - After user is authed we create but dont store a permission token
+    - Client sends token along with request to resources 
+    - JSW json web token
+
+#### Project Setup & Route Setup
+
+#### Working with Query Parameters
+
+#### Implementing the Auth Action
+
+#### Validating User Input & Outputting Validation Errors
+
+#### Adding User Login
+
+#### Attaching Auth Tokens to Outgoing Requests
+
+#### Adding User Logout
+
+#### Updating the UI Based on Auth Status
+
+#### Important: loader()s must return null or any other value
+
+#### Adding Route Protection
+
+#### Adding Automatic Logout
+
+#### Managing the Token Expiration
 
 #### Module Resources
-
-#### Old Lectures
-
 
 ---
 
