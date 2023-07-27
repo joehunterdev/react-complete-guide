@@ -1827,10 +1827,14 @@ which we use in conjuntcion with `useRouteloaderData`
 
 #### Adding Route Protection
  - Again we can utilize a loader `checkAuthLoader` say for example and include this on protected routes
- 
+
 
 #### Adding Automatic Logout
-
+  - Logout user out after xmins and clear token
+  - One option is to `useEffect` in our root layour and run the checks. This component needs to be high up in the tree	
+  - We can import our `useLoaderData` to get the data to check for token
+  - then levarage `useSubmit` hook to check if a form has been sent
+    - `useSubmit` Programatically send a form
 #### Managing the Token Expiration
 
 #### Module Resources

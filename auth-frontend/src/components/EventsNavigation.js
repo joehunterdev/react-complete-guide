@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-
+import {useRouteLoaderData} from 'react-router-dom'
 import classes from './EventsNavigation.module.css';
 
 function EventsNavigation() {
