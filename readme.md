@@ -1764,6 +1764,7 @@ which we use in conjuntcion with `useRouteloaderData`
   - Avoid faking sending auth
 
 #### How Authentication Works
+
    - Serverside Sessions:
     - Store auth on server mapped to client. CLient send identifier along with requests 
     - Require tight coupling between client and server
@@ -1772,16 +1773,41 @@ which we use in conjuntcion with `useRouteloaderData`
     - After user is authed we create but dont store a permission token
     - Client sends token along with request to resources 
     - JSW json web token
+   - Flow
+    - Request- > Server -> Response (token) -> Client (browser)
+
+  - Full stack apps typically dont have coupling to server / client
+  - React apps are typically decoupled from server
 
 #### Project Setup & Route Setup
+  - [x] Have way of getting to auth page in router
 
 #### Working with Query Parameters
-
+  - We can utilize  `<Link to="?mode=${mode}> `
+  - `useSearchParams` will give us access to query params
+  - `const isLogin = searchParams.get('mode') === 'login';`
+  
 #### Implementing the Auth Action
+  - This is a case for router actions
 
 #### Validating User Input & Outputting Validation Errors
+  - Here we can levarage `const data = useActionData();`
+    - We can then use `data.errors` to access and validate accordingly
 
 #### Adding User Login
+  - Store token just before redirect 
+  - We have lots of ways of storing the token
+    - We can use all browser features
+    - `localStorage.setItem('token', token);`
+  - Payload Token
+    ```
+    method: request.method,
+      headers:{
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    ```
+    - You can then see this **token** in *devtools -> application*
+    - For organization we can create a cmp for storing this in `utils` folder
 
 #### Attaching Auth Tokens to Outgoing Requests
 
