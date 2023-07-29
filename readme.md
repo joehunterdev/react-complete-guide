@@ -1854,9 +1854,15 @@ which we use in conjuntcion with `useRouteloaderData`
   #### Understanding Lazy Loading
   - Loading code only when its needed
 
-  #### Adding Lazy Loading
+  #### Adding Lazy Loading & Code For Production
+  - You can levarage import as it is actually a function that returns a *promise*
+  - You can write cmp as functions. its only valid if it returns *jsx*
+    - `import('./pages/Blog').then(module => module.loader()) ` directly in your router for ex
+  - 1. Use Special **lazy** function
+    - `const BlogPage = lazy(() => import('./pages/Blog'))`
+  - 2. Wrap your element in `<Suspense fallback={<p>Whoopie</p>`
 
-  #### Building the Code For Production
+  *You can inspect in devtools -> network*
 
   #### Deployment Example
 
