@@ -1850,6 +1850,7 @@ which we use in conjuntcion with `useRouteloaderData`
   - Build For Production
     - Bundled optimized, minimized code
   - Upload Code to Production
+  - Configure server
 
   #### Understanding Lazy Loading
   - Loading code only when its needed
@@ -1865,10 +1866,28 @@ which we use in conjuntcion with `useRouteloaderData`
   *You can inspect in devtools -> network*
 
   #### Deployment Example
+    - A react SPA application is a **static website** (only html, css & javascript) 
+      - All client side
+      - No static service required
+    - Can install something like firebase tools 
+      - Login via ssh
+      - Init will connect you to a firebase project
+      - Ultimatley this ends with a deploy cmd 
+      - Has a disable cmd `firebase: hosting:disable`
+  
+    - **GitHub actions**: allows you to automate your build, test, and deployment pipeline. 
 
   #### Server-side Routing & Required Configuration
+    - Dont forget the router needs a url to be configured 
+    - Take it for granted users will add in strange urls 
 
-  #### Module Resources
+#### How do I prepare React app for deployment?
+    Serving the Same Build from Different Paths​
+      1. Add homepage to package.json ​
+      2. Install gh-pages and add deploy to scripts in package.json ​
+      3. Deploy the site by running npm run deploy ​
+      4. For a project page, ensure your project's settings use gh-pages ​
+      5. Optionally, configure the domain​
 
 ---
 
