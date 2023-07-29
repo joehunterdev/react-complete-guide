@@ -1839,7 +1839,30 @@ which we use in conjuntcion with `useRouteloaderData`
   - The timer needs to be referenced to a timestamp created in the token
     `const expiration = new Date(expiration.getHours() +  1);  localStorage.setItem('expiration', expiration.toISOString());`
     
-#### Module Resources
+---
+
+### Deployment
+
+  #### Deployment Steps
+  - Test
+  - Optimize 
+    - Side effects and memo etc are other optimization techniques
+  - Build For Production
+    - Bundled optimized, minimized code
+  - Upload Code to Production
+
+  #### Understanding Lazy Loading
+  - Loading code only when its needed
+
+  #### Adding Lazy Loading
+
+  #### Building the Code For Production
+
+  #### Deployment Example
+
+  #### Server-side Routing & Required Configuration
+
+  #### Module Resources
 
 ---
 
