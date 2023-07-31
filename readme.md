@@ -1882,12 +1882,128 @@ which we use in conjuntcion with `useRouteloaderData`
     - Take it for granted users will add in strange urls 
 
 #### How do I prepare React app for deployment?
-    Serving the Same Build from Different Paths​
-      1. Add homepage to package.json ​
-      2. Install gh-pages and add deploy to scripts in package.json ​
-      3. Deploy the site by running npm run deploy ​
-      4. For a project page, ensure your project's settings use gh-pages ​
-      5. Optionally, configure the domain​
+Serving the Same Build from Different Paths​
+
+  1. Add homepage to package.json ​
+  2. Install gh-pages and add deploy to scripts in package.json ​
+  3. Deploy the site by running npm run deploy ​
+  4. For a project page, ensure your project's settings use gh-pages ​
+  5. Optionally, configure the domain​
+
+dev: runs next dev to start Next.js in development mode.
+build: runs next build to build the application for production usage.
+start: runs next start to start a Next.js production server.
+lint: runs next lint to set up Next.js' built-in ESLint configuration.
+
+---
+
+### Next Js
+
+  #### Module Introduction
+   - Is a framwork for building react
+
+  #### What is NextJS?
+  - Its a framework for production. Particularly for full stack. To *enhance* your react dev
+  - Makes it easier to integrate react features. Solves common problems. 
+  - [https://nextjs.org/](Site)
+  - Framworks are typically bigger than a library and have rules and strucure
+
+  #### Key Feature # Built-in Server-side Rendering (Improved SEO!)
+  - Built in server side rendering
+    - Will render whole dom on server.
+    - Good for seo and initial load
+    
+  Client Side issues:
+  - Notice page flicker on refresh (client side rendering)
+  - Search engines See page content
+
+  #### Key Feature # Simplified Routing with File-based Routing
+    - Routing doesn exist officially in react.
+    - With next we can create a folder structure and it will create routes for us
+    - Less code, less work and more intuitive
+
+  #### Key Feature # Build Fullstack Apps
+    - Easily add your backend serverside code to your apps
+    - Storeing data, getting data, authenticating is easily added using react
+
+  #### Creating a New Next.js Project & 
+    - Create you react app 
+    - `npx create-next-app`
+    - `npm run build`
+    - `npm run start` 
+
+  #### Analyzing the Created Project
+  - There is no index page. This page is dynamically rendered
+  - Pages is the most important directory 
+
+  #### Adding First Pages
+    - Api we can delete
+      1. `npx create-next-app next`
+      2. `npm run dev`
+    - Aside from index you can just create files in the pages directory
+    - You can *omit* `import react js`
+    
+  #### Adding Nested Paths & Pages (Nested Routes)
+
+  #### Creating Dynamic Pages (with Parameters)
+
+  #### Extracting Dynamic Parameter Values
+
+
+
+
+  #### Linking Between Pages
+
+  #### Onwards to a bigger Project!
+
+  #### Preparing the Project Pages
+
+  #### Outputting a List of Meetups
+
+  #### Adding the New Meetup Form
+
+  #### The "_app.js" File & Layout Wrapper
+
+  #### Using Programmatic (Imperative) Navigation
+
+  #### Adding Custom Components & CSS Modules
+
+  #### How Pre-rendering Works & Which Problem We Face
+
+  #### Data Fetching for Static Pages
+
+  #### More on Static Site Generation (SSG)
+
+  #### Exploring Server-side Rendering (SSR) with "getServerSideProps"
+
+  #### Working with Params for SSG Data 
+  
+
+
+  #### Preparing Paths with "getStaticPaths" & Working With Fallback Pages
+
+  #### Introducing API Routes
+
+  #### Working with MongoDB
+
+  #### Sending Http Requests To Our API Routes
+
+  #### Getting Data From The Database
+
+  #### Getting Meetup Details Data & Preparing Pages
+
+  #### Adding "head" Metadata
+
+  #### Deploying Next.js Projects
+
+  #### Using Fallback Pages & Re-deploying
+
+
+  #### Summary
+
+  Start
+  #### Module Resources
+
 
 ---
 
