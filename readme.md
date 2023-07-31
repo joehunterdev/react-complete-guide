@@ -1942,12 +1942,19 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
       2. `npm run dev`
     - Aside from index you can just create files in the pages directory
     - You can *omit* `import react js`
-    
+
   #### Adding Nested Paths & Pages (Nested Routes)
+    - We can levarage subfolders and indexes *path segments*
+    - urls should reflect your folder structure
 
   #### Creating Dynamic Pages (with Parameters)
+    - Hardcoding identifier is not ideal better to make dynamic
+    - Square `[newsId].js` infront of filename tells next this is a dynamic page
 
   #### Extracting Dynamic Parameter Values
+    - Can use wrappers or imports
+      - `import {useRouter} from 'next/router'`
+      - `console.log(router.query.newsId);`
 
 
 
@@ -2065,7 +2072,7 @@ function add(a:number,b:number)
 # 👇️ install packages
 `npm install`
 ### Top 10 Javascript GEMS
-
+[newsId].js
 //dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventRe
 
 function ValidateEmail(mail)
