@@ -1956,11 +1956,14 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
       - `import {useRouter} from 'next/router'`
       - `console.log(router.query.newsId);`
 
-
-
-
   #### Linking Between Pages
-
+    - `<li><a href="/news/newsone">First news item</a></li>`
+      - This works but requires *new request* (page refresh) NOT SPA
+      - All our state would be lost in this scenario
+    - Use
+     - `<Link href="/news/newsone">First news item</Link>`
+     - `import Link from 'next/link'`
+     - This will work for seo and is a SPA
   #### Onwards to a bigger Project!
 
   #### Preparing the Project Pages
