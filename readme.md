@@ -1810,7 +1810,7 @@ which we use in conjuntcion with `useRouteloaderData`
     - For organization we can create a cmp for storing this in `utils` folder
 
 #### Attaching Auth Tokens to Outgoing Requests
-
+  - ? Missing
 
 #### Adding User Logout
   - We can use a path and a pass router action to clear the auth token 
@@ -1931,6 +1931,8 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
     - `npx create-next-app`
     - `npm run build`
     - `npm run start` 
+    - *Import alias* is defining a rout or alias to pull impots from allowing you to simply `@components/Button`
+
 
   #### Analyzing the Created Project
   - There is no index page. This page is dynamically rendered
@@ -1950,6 +1952,7 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
   #### Creating Dynamic Pages (with Parameters)
     - Hardcoding identifier is not ideal better to make dynamic
     - Square `[newsId].js` infront of filename tells next this is a dynamic page
+    - This also works for folders []
 
   #### Extracting Dynamic Parameter Values
     - Can use wrappers or imports
@@ -1964,11 +1967,18 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
      - `<Link href="/news/newsone">First news item</Link>`
      - `import Link from 'next/link'`
      - This will work for seo and is a SPA
+
   #### Onwards to a bigger Project!
+    - Send meetups to backend
+    - fetch and display meetups
+    - detail page dynamic page pull from slug (md5)
 
   #### Preparing the Project Pages
 
   #### Outputting a List of Meetups
+   - Components work as always
+   - Nothing new: Pages componenets will not be loaded as pages automatically including components 
+  
 
   #### Adding the New Meetup Form
 
@@ -1988,9 +1998,9 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
 
   #### Working with Params for SSG Data 
   
-
-
   #### Preparing Paths with "getStaticPaths" & Working With Fallback Pages
+
+
 
   #### Introducing API Routes
 
@@ -2007,7 +2017,7 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
   #### Deploying Next.js Projects
 
   #### Using Fallback Pages & Re-deploying
-
+n
 
   #### Summary
 
