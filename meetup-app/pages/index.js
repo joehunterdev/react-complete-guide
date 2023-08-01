@@ -41,17 +41,16 @@ function HomePage(props) {
 //     return {props:{meetups: DUMMY_MEETUPS}}
 // }
 
-//levarages caching
-export async function  getStaticProps() {
-
-    const meetupId = context.params.meetupId;
-    console.log(meetupId)
+//levarages caching runs at build time
+export async function getStaticProps() {
     // fetch data from an API
     return {
-        props: {
-            meetups: DUMMY_MEETUPS
-        },
-        revalidate: 10 //at least every 10 seconds
-    };
-}
+      props: {
+        meetups: DUMMY_MEETUPS
+      },
+      revalidate: 1
+    }; 
+  }
+
+
 export default HomePage;

@@ -2185,8 +2185,22 @@ export async function  getServerSideProps(context) {
   - This will get you an error  **getStaticPath**
 
 #### Preparing Paths with "getStaticPaths" & Working With Fallback Pages
+  - `getStaticProps` data is pregenerated. Meaning it needs to generate alll pages at build time
+  - So we need to pregenerate all those ids ahead of time
+  - We can use `getStaticPaths` to do this to describe all *dynamic segment values*
 
-
+```
+export async function getStaticPaths() {
+    return{
+        paths: [{params: {meetupId: 'm1'}}],
+    }
+}
+```
+- The fallback key will tell next to generate the page on the fly if it doesnt exist
+  - `fallback: true` will generate the page on the fly
+  - `fallback: 'blocking'` will generate the page on the fly but will wait for the page to be generated
+  - `fallback: false` will generate all pages at build time
+- We can *define* some paths not all if we desire. As a fallback we can use `notFound: true` to return a 404
 
 #### Introducing API Routes
 
