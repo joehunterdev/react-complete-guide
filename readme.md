@@ -2136,10 +2136,47 @@ Client Side issues:
   - this will run on the server and not the client
   - *Always return an object*. (same as props in your component)
   - Now working with props. ` meetups={props.meetups}` gets around 2nd component cycle and is not available to client
-  
+
 #### More on Static Site Generation (SSG)
+  - `npm run build` will generate static pages
+  - `npm run start` will run the server
+
+```
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+●  (SSG)     automatically generated as static HTML + JSON (uses getStaticProps) good for meetup id page
+   (ISR)     incremental static regeneration (uses revalidate in getStaticProps)
+```
+
+- This has threats and opportunities
+  - SEO is great
+  - Performance is great
+  - But data is not always up to date
+
+- If data does change frequently we can levarage `revalidate: 10` increamental static generation
+  - This is the n* of seconds after which a page re-generation can occur
 
 #### Exploring Server-side Rendering (SSR) with "getServerSideProps"
+  - Sometimes you want to rerender the page on **Every Request**
+
+```
+//runs on server after deployment
+//can even add credentials here
+export async function  getServerSideProps(context) {
+    const req = context.req;
+    const res = context.res;
+    return {props:{meetups: DUMMY_MEETUPS}}
+}
+
+```
+
+- You can pass **context** as a param  
+  - `context.req` is the request
+  - `context.res` is the response
+  - `context.params` is the params
+  - `context.query` is the query params
+
+- Sadly you will need to *wait* for the page to load
+- if *dont* need quick render and dont need *access to req object*. **Use Props**
 
 #### Working with Params for SSG Data
 

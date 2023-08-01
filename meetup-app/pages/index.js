@@ -32,13 +32,23 @@ function HomePage(props) {
     // }, []);
     return <MeetupList meetups={props.meetups} />;
 }
-export function getStaticProps() {
+
+// //runs on server after deployment
+// //can even add credentials here
+// export async function  getServerSideProps(context) {
+//     const req = context.req;
+//     const res = context.res;
+//     return {props:{meetups: DUMMY_MEETUPS}}
+// }
+
+//levarages caching
+export async function  getStaticProps() {
     // fetch data from an API
     return {
         props: {
             meetups: DUMMY_MEETUPS
         },
-        revalidate: 1
+        revalidate: 10 //at least every 10 seconds
     };
 }
 export default HomePage;
