@@ -1932,6 +1932,7 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
     - `npm run build`
     - `npm run start` 
     - *Import alias* is defining a rout or alias to pull impots from allowing you to simply `@components/Button`
+    - Css modules are included by default in next
 
 
   #### Analyzing the Created Project
