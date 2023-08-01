@@ -1985,7 +1985,8 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
   - Best place to use as a layout wrapper at top level (Rather than indidual pages)
 
   #### Using Programmatic (Imperative) Navigation
-
+  - This is the equivalent to using Link
+  - `router.push('/' + props.id);` will change url for you
   #### Adding Custom Components & CSS Modules
 
   #### How Pre-rendering Works & Which Problem We Face

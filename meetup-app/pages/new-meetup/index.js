@@ -2,6 +2,7 @@ import NewMeetupForm from '../../components/meetups/NewMeetupForm';
 
 function NewMeetupPage(){
     function addMeetupHandler (eventData) {
+
         // fetch('/api/new-meetup', {
         //     method: 'POST',
         //     body: JSON.stringify({
