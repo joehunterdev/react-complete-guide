@@ -1974,16 +1974,15 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
     - fetch and display meetups
     - detail page dynamic page pull from slug (md5)
 
-  #### Preparing the Project Pages
-
   #### Outputting a List of Meetups
    - Components work as always
    - Nothing new: Pages componenets will not be loaded as pages automatically including components 
   
-
   #### Adding the New Meetup Form
+   - Lets import out list cmp and levarage `Link from 'next/'`
 
   #### The "_app.js" File & Layout Wrapper
+  - Best place to use as a layout wrapper at top level (Rather than indidual pages)
 
   #### Using Programmatic (Imperative) Navigation
 
@@ -2018,7 +2017,7 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
   #### Deploying Next.js Projects
 
   #### Using Fallback Pages & Re-deploying
-n
+
 
   #### Summary
 
