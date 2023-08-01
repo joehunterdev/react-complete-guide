@@ -1,11 +1,10 @@
-import { Fragment } from "react";
+import { useEffect } from "react";
+import MetupDetail from "../../components/meetups/MeetupDetail";
 
-function MeetupDetails() {
-    return <Fragment>
-        <img src='https://es.wikipedia.org/wiki/M%C3%A1laga#/media/Archivo:Da_Gibralfaro_(cropped).jpg' alt="Some alt" />
-        <h1>A First Meetup</h1>
-        <address>Some address 5, 12345 Some City</address>
-        <p>The meetup</p>
-    </Fragment>
+function MeetupDetail(){
+    //we could useEffect here with empty depenancy array to only run once 
+    //and fetch data from API
+    return <MetupDetail image="https://es.wikipedia.org/wiki/M%C3%A1laga#/media/Archivo:Da_Gibralfaro_(cropped).jpg" title="A First Meetup" address="Some address 5, 12345 Some City" description="This is a first meetup!" />
 }
-export default MeetupDetails;
+
+export default MeetupDetail;

@@ -1,0 +1,10 @@
+.detail{
+        width:90%;
+        margin: 2rem auto;
+        max-width: 40rem;
+        text-align: center;
+
+}
+.detail img {
+     width:100%;
+}

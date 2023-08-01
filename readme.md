@@ -8,7 +8,6 @@ _A javascript library for building user interfaces_
 - Makes rich interfaces easier. Declarative component focused approach
 - SPA Single Page Application
 - Beware that alot of _next gen_ es6 features will need to be setup to run in browser
- 
 
 ### The basics: Component
 
@@ -473,7 +472,8 @@ const clickHandler = () => {
 ### Handling Side Effects, Reducers and Context hook
 
 #### Sideffects useEffect hook
-- **useEffect** is a tool that lets us interact with the outside world but not affect the rendering or performance of the component 
+
+- **useEffect** is a tool that lets us interact with the outside world but not affect the rendering or performance of the component
 - **useCallback** Useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders
 
 - The main job of react is to _Render UI_ & _React to User Input_ To handle side effects.
@@ -510,7 +510,6 @@ const clickHandler = () => {
   - Its also common to re-run logic when props / state change
   - **useEffect** accepts a function that is **imperative** in nature and a list of dependencies. When its dependencies change it executes the passed function. Good for timers, logging after everything has rendered
   - **Sideeffects**: If the component makes calculations that don't target the output value, then these calculations are named side-effects.
-
 
 #### What not to add as dependancy
 
@@ -716,6 +715,7 @@ const clickHandler = () => {
           obj2 = obj1 // pointed to the obj1 place in memory
           {}
 ```
+
 - **Memoization** is an optimization technique for accelerating computer programs by caching the results of heavy function
 
 - Essentially this is the same as `useCallback`
@@ -1151,8 +1151,10 @@ Todo:
 #### Summary
 
 #### Bonus: Using useReducer()
+
 [With Reducer](https://github.com/academind/react-complete-guide-code/blob/16-working-with-forms/code/12-finished/src/hooks/use-input.js)
 [Form Custom Hook Component](https://academind.com/tutorials/reactjs-a-custom-useform-hook/)
+
 ---
 
 #### Practice Project
@@ -1160,58 +1162,64 @@ Todo:
 [readme.md](/food-order-app/readme.md)
 
 ---
+
 ### Redux
 
 #### Module Introduction
- - Redux is an alternative to context
- - Is a flux-like state mangament
+
+- Redux is an alternative to context
+- Is a flux-like state mangament
 
 #### Another Look At State In React Apps
-  - Local State
-    - State for single cmp
-      - EG: *Listening to user input field*
-        - Should be mangaged in cmp with `useState` / `useReducer`
-  - Cross Component state
-    - State that affects multiple components
-      - EG: *Open Close of a modal*
-        - Prop Chains/Drilling
-  - App wide state
-    - Affects the entire app (all / most of cmps)
-      - EG: *User Auth*
-        - Requires Prop Drilling     
+
+- Local State
+  - State for single cmp
+    - EG: _Listening to user input field_
+      - Should be mangaged in cmp with `useState` / `useReducer`
+- Cross Component state
+  - State that affects multiple components
+    - EG: _Open Close of a modal_
+      - Prop Chains/Drilling
+- App wide state
+  - Affects the entire app (all / most of cmps)
+    - EG: _User Auth_
+      - Requires Prop Drilling
 
 #### Redux vs React Context
-  - Redux gets around the problem posed by react of lots of nested context items. Or having one huge context provider
-  - *Good for large enterprise*
-  - Context is not optimized for *High Frequency changes*
-  - React themselves say that *context* its not good for *High Frequency Changes*
+
+- Redux gets around the problem posed by react of lots of nested context items. Or having one huge context provider
+- _Good for large enterprise_
+- Context is not optimized for _High Frequency changes_
+- React themselves say that _context_ its not good for _High Frequency Changes_
 
 #### How Redux Works
-  - Only have one store (central data)
-  - Dont directly need to manage this
-  - We get data out of the store by having components that have a *subscription*
-  - We have a generic reducer function that can manipulate this central store
-  - Components dispatch *Actions* are like triggers. When this change happens subscribed components get the update
+
+- Only have one store (central data)
+- Dont directly need to manage this
+- We get data out of the store by having components that have a _subscription_
+- We have a generic reducer function that can manipulate this central store
+- Components dispatch _Actions_ are like triggers. When this change happens subscribed components get the update
 
 #### MUST READ: Redux createStore() is (not) deprecated
+
 - When using that function in your code, you might get a deprecation warning by your IDE or when running the app.
 - Recomended to use tool kit
 
 #### Exploring The Core Redux Concepts
-  - Redux needs node
-  - Doesnt need react to run
-  - Redux has a reducer function that takes 2 params. 
-    - old state
-    - dispatched action
-   - Should be a pure function **Same input to same output** no sideEffects
-   - Your reducer you then pass to your store (just a pointer) `const store = redux.createStore(counterReducer) `
-   - `store.getState` gets the latest snapshot
-  - Subscribe `store.subscribe(someMethod)`
-  - Good practice to pass a default to `state = ''`
-  - Dispatch `store.dispatch({type:'increment'})`
-    - Dispatch is a method that dispatches an 
-       - action is an object that has a *type*
-       
+
+- Redux needs node
+- Doesnt need react to run
+- Redux has a reducer function that takes 2 params.
+  - old state
+  - dispatched action
+- Should be a pure function **Same input to same output** no sideEffects
+- Your reducer you then pass to your store (just a pointer) `const store = redux.createStore(counterReducer) `
+- `store.getState` gets the latest snapshot
+- Subscribe `store.subscribe(someMethod)`
+- Good practice to pass a default to `state = ''`
+- Dispatch `store.dispatch({type:'increment'})`
+  - Dispatch is a method that dispatches an
+    - action is an object that has a _type_
 
 #### More Redux Basics
 
@@ -1220,7 +1228,7 @@ Todo:
 
     const counterReducer = (state = {counter:0},action) => {
 
-        
+
         if(action.type === 'increment'){
             return {counter:state.counter +1}
         }
@@ -1244,49 +1252,53 @@ Todo:
 
 ```
 
-####  Preparing a new Project
-  - Normally we'd init a project like so: `npm install redux react-redux`
+#### Preparing a new Project
 
-####  Creating a Redux Store for React
-  - Create store 
-    - Actions: increment and decrement 
-  - invove the *createStore method in file* below and export that!
+- Normally we'd init a project like so: `npm install redux react-redux`
+
+#### Creating a Redux Store for React
+
+- Create store
+  - Actions: increment and decrement
+- invove the _createStore method in file_ below and export that!
   [store/index]
-  ` const store = createStore(counterReducer) // default action
-    export default store
-  `
+  `const store = createStore(counterReducer) // default action
+  export default store`
 
-####  Providing the Store
-  - Typically store is implemented in highest level. index.js
-  - Import provider
-  - Redux doesnt know where to read from so import the file [store/store]
+#### Providing the Store
 
-  ```
-    import React from 'react';
-    import ReactDOM from 'react-dom/client';
-    import { Provider } from 'react-redux'
-    import store from './store'
-    import './index.css';
-    import App from './App';
+- Typically store is implemented in highest level. index.js
+- Import provider
+- Redux doesnt know where to read from so import the file [store/store]
 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<Provider store=""><App /></Provider>);
+```
+  import React from 'react';
+  import ReactDOM from 'react-dom/client';
+  import { Provider } from 'react-redux'
+  import store from './store'
+  import './index.css';
+  import App from './App';
 
-  ```
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(<Provider store=""><App /></Provider>);
 
-####  Using Redux Data in React Components
-- In your functional compoinent we need to now import more hooks. `useSelector` or `useStore, connect` 
-- connect can be used as a wrapper 
+```
+
+#### Using Redux Data in React Components
+
+- In your functional compoinent we need to now import more hooks. `useSelector` or `useStore, connect`
+- connect can be used as a wrapper
 - `useSelector` will automatically setup a subscription for the component!!
 
-
 #### Dispatching Actions From Inside Components
-  - To dispatch an action we can utilize `useDispatch()` which will generate a function for use
-  
+
+- To dispatch an action we can utilize `useDispatch()` which will generate a function for use
+
 #### Redux with Class-based Components
+
 - Hooks remember are not useable in components
-- You can use the `connect` (h.o.c) 
-  - import it then export it like so `export default connect()(Counter)` pass your function as a return 
+- You can use the `connect` (h.o.c)
+  - import it then export it like so `export default connect()(Counter)` pass your function as a return
 - To pass in props we need to setup sepecial methods to convert state to props
 
 ```
@@ -1301,40 +1313,44 @@ const mapDispatchToProps = dispatch => {
     increment: () => dispatch({ type: 'increment' }),
     decrement: () => dispatch({ type: 'decrement' }),
   }
-}; 
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 ```
 
 #### Attaching Payloads to Actions
-  - Sometimes your dispathc will want to carry extra data
-  - `action.something` can be recieved in your store reducer and pass a value from component
 
-     ```
-     if(action.type === 'increase'){
-            return {counter:state.counter + action.amount}
-     }
-      ```
-    - Action payload is just an extra property
+- Sometimes your dispathc will want to carry extra data
+- `action.something` can be recieved in your store reducer and pass a value from component
 
-    ```
-    const increaseBy5 = () => {
-    dispatch({ type: 'increase' , amount: 5})
-    }
-    ```
+  ```
+  if(action.type === 'increase'){
+         return {counter:state.counter + action.amount}
+  }
+  ```
 
-####  Working with Multiple State Properties
-  - You can add addtional params to your redux reducer. Or better yet *for readablity*  initial state and pass that
-  - Redux *will replace the existing state* it wont merge meaning as you return your state you **must return the full object**
-  - *Typically this coult be a switch*
+  - Action payload is just an extra property
 
-####  How To Work With Redux State Correctly
-  - **Never mutate the state** always overwrite it by *returning* a new object. 
-  - Because objs and arrays are reference objects
-  - (this is the orignal state your getting) can be hard to debug. UI may become out of sync
+  ```
+  const increaseBy5 = () => {
+  dispatch({ type: 'increase' , amount: 5})
+  }
+  ```
+
+#### Working with Multiple State Properties
+
+- You can add addtional params to your redux reducer. Or better yet _for readablity_ initial state and pass that
+- Redux _will replace the existing state_ it wont merge meaning as you return your state you **must return the full object**
+- _Typically this coult be a switch_
+
+#### How To Work With Redux State Correctly
+
+- **Never mutate the state** always overwrite it by _returning_ a new object.
+- Because objs and arrays are reference objects
+- (this is the orignal state your getting) can be hard to debug. UI may become out of sync
 
 ```
     if (action.type === 'increment') {
-    
+
         //return state.counter ++  Dont do this (mututation)
         //Return new object
         return {
@@ -1344,201 +1360,227 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 
     }
 ```
-  - [Refs and Prim Types](https://academind.com/tutorials/reference-vs-primitive-values/)
 
-####  Redux Challenges & Introducing Redux Toolkit
-  - unique *action identifiers* we need to define them properly to avoid issues.
-  - One option is to create a constant in your redux 
-    - `const INCREMENT = TRUE` and call that in your cmp
-  - Handling nested data can also be challengin
-  - Also you may endup with a large file in redux. 
-    - To break these down and other enhancments we can use *redux-toolkit*
-  - [Redux Toolkit](https://redux-toolkit.js.org/)
-  - `npm install @reduxjs/toolkit`
+- [Refs and Prim Types](https://academind.com/tutorials/reference-vs-primitive-values/)
 
-####  Adding State Slices
+#### Redux Challenges & Introducing Redux Toolkit
 
-  - `createSlice` is a good alternative to reducer
-    - provide it a slice of global state
-  - Here we can avoid the long if statements
+- unique _action identifiers_ we need to define them properly to avoid issues.
+- One option is to create a constant in your redux
+  - `const INCREMENT = TRUE` and call that in your cmp
+- Handling nested data can also be challengin
+- Also you may endup with a large file in redux.
+  - To break these down and other enhancments we can use _redux-toolkit_
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- `npm install @reduxjs/toolkit`
 
-    ```
-    const counterSlice = createSlice({
-      name: 'counter',
-      initialState: initialCounterState,
-      reducers: {
-        increment(state) {
-          state.counter++;
-        },
-        decrement(state) {
-          state.counter--;
-        },
-        increase(state, action) {
-          state.counter = state.counter + action.payload;
-        },
-        toggleCounter(state) {
-          state.showCounter = !state.showCounter;
-        },
+#### Adding State Slices
+
+- `createSlice` is a good alternative to reducer
+  - provide it a slice of global state
+- Here we can avoid the long if statements
+
+  ```
+  const counterSlice = createSlice({
+    name: 'counter',
+    initialState: initialCounterState,
+    reducers: {
+      increment(state) {
+        state.counter++;
       },
-    });
-    ```
+      decrement(state) {
+        state.counter--;
+      },
+      increase(state, action) {
+        state.counter = state.counter + action.payload;
+      },
+      toggleCounter(state) {
+        state.showCounter = !state.showCounter;
+      },
+    },
+  });
+  ```
 
-  - This handles the imutable issue when this toolkit library is used. Much easier :) 
+- This handles the imutable issue when this toolkit library is used. Much easier :)
 
+#### Connecting Redux Toolkit State
 
-####  Connecting Redux Toolkit State
-  - We still need to return our slice and dispatch actions to it
-   - `const store = createStore(counterSlice.reducer)` 
-   - We can also use `configureStore`which now allows us to specify a reducer
-   - Configure store will alow you to pass a **configuration object **
+- We still need to return our slice and dispatch actions to it
+- `const store = createStore(counterSlice.reducer)`
+- We can also use `configureStore`which now allows us to specify a reducer
+- Configure store will alow you to pass a **configuration object **
 
-   - [Toolkit Features](https://redux-toolkit.js.org/introduction/getting-started#whats-included)
-   - You could pass in the whole reducer or create a map of reducers
-   - or merge all your reducers into one
-   - Now how can we know what to dispatch ?
-   - `counterActions.decrement()` Dont forget this is a function call not a pointer
-####  Migrating Everything To Redux Toolkit
-  - ` counter.createSlice` now is a bunch of object keys we can access
-  - these methods are called action creators
-  - Now we dont need to worry about creating these action objects on our own or naming/dupe issues
-  -Finally these actions can be exported  `export const counterActions = counterSlice.actions;` and imported in your component `import { counterActions } from '../store';
+- [Toolkit Features](https://redux-toolkit.js.org/introduction/getting-started#whats-included)
+- You could pass in the whole reducer or create a map of reducers
+- or merge all your reducers into one
+- Now how can we know what to dispatch ?
+- `counterActions.decrement()` Dont forget this is a function call not a pointer
+
+#### Migrating Everything To Redux Toolkit
+
+- ` counter.createSlice` now is a bunch of object keys we can access
+- these methods are called action creators
+- Now we dont need to worry about creating these action objects on our own or naming/dupe issues
+  -Finally these actions can be exported `export const counterActions = counterSlice.actions;` and imported in your component `import { counterActions } from '../store';
 `
-  - In your component you now pass a **Payload** param `dispatch({ type: counterActions.increase(5)})`
-  
-####  Working with Multiple Slices
-  - If we have a bunch of components we would like to use Redux with we need to create multiple slices
-  - You *only need one store*
-  - Just map your reducers as above
-  - access: `const counter = useSelector(state => state.counter.counter)`
- - ` type:`! can now be removed from dispatch object
-####  Reading & Dispatching From A New 
+- In your component you now pass a **Payload** param `dispatch({ type: counterActions.increase(5)})`
 
-  ##### Redux Challenge
-  - [x] Tap into store to show auth or user profile comp in app
-  - [x] In head conditionally show items or not
-  - [x] Dispatch action login / logout in appropriate places
-  - [x] Beware we now have a two keys in reducer mapping  
+#### Working with Multiple Slices
 
-####  Splitting Our Code
-  - One approach is to separate each reducer in its own file and use index to bootstrap them together
-    - in your redux we can `export default counterSlice.reducer` and import that later `counterReducer`
+- If we have a bunch of components we would like to use Redux with we need to create multiple slices
+- You _only need one store_
+- Just map your reducers as above
+- access: `const counter = useSelector(state => state.counter.counter)`
+- ` type:`! can now be removed from dispatch object
+
+#### Reading & Dispatching From A New
+
+##### Redux Challenge
+
+- [x] Tap into store to show auth or user profile comp in app
+- [x] In head conditionally show items or not
+- [x] Dispatch action login / logout in appropriate places
+- [x] Beware we now have a two keys in reducer mapping
+
+#### Splitting Our Code
+
+- One approach is to separate each reducer in its own file and use index to bootstrap them together
+  - in your redux we can `export default counterSlice.reducer` and import that later `counterReducer`
 
 ---
 
 ### Advanced Redux
 
-  #### Module Introduction
+#### Module Introduction
 
-  #### Redux & Side Effects (and Asynchronous Code)
-  - Reducers must be **pure**, **side-effect free**  **synchronous** functions 
-    - input (old state + action) -> output (new state)
-  - Where Should sideeffects go ?
-    - Components
-    - Action Creators
+#### Redux & Side Effects (and Asynchronous Code)
 
-  #### Refresher / Practice: Part 2
-  - [x] react redux install toolkit and react redux
-  - [x] Define state object
-  - [x] Working cart buttons
-  - [x] Hide show cart
-  - [x] add to cart
-  - [x] Update if part of cart just increase quantity
-    - can add more products
-  - +- controlls quantity
-    - [x] Remove item
-    - [x] Increase item
+- Reducers must be **pure**, **side-effect free** **synchronous** functions
+  - input (old state + action) -> output (new state)
+- Where Should sideeffects go ?
+  - Components
+  - Action Creators
 
-  - [x] 1 past 0 = no items remove from cart
-  - UI slice / Cart Slice ?
-    - UI Handle cart are
-  - Add provider to somewhere high up (index.js)
-  - Use store/index.js to strap slices and export "store"
-  - Use *store* as convention
+#### Refresher / Practice: Part 2
 
-  #### Refresher / Practice: Part 2
+- [x] react redux install toolkit and react redux
+- [x] Define state object
+- [x] Working cart buttons
+- [x] Hide show cart
+- [x] add to cart
+- [x] Update if part of cart just increase quantity
+  - can add more products
+- +- controlls quantity
 
-  #### Redux & Async Code 
-  - Never put *side effect* or any *asynch code* in the reducer
-    - We can put these: 
-      1. inside components (ef useEffect)
-      2. action creators
+  - [x] Remove item
+  - [x] Increase item
 
-  #### Frontend Code vs Backend Code
-  - Its possible to write your own backend serverside
+- [x] 1 past 0 = no items remove from cart
+- UI slice / Cart Slice ?
+  - UI Handle cart are
+- Add provider to somewhere high up (index.js)
+- Use store/index.js to strap slices and export "store"
+- Use _store_ as convention
 
-  #### Where To Put Our Logic
-  - Mutating the state only with use effect
-    - Dont:  `cart.totalQuantity = cart.totalQuantity +1`  
-    - Do :`const newTotalQuantity = cart.totalQuantity +1`
-  - A Fat: Reducers, Actions or Component
-  - Where to put logic ?
-    - Synchronous *side-effect free* ei **data transformations** ? 
-      - (prefer reducers)
-   - Ayscnc code or code with sideeffects ? 
-     - Action Creators or Components
-     - New Use reducers
+#### Refresher / Practice: Part 2
 
-  #### Using useEffect with Redux
-   - We could now listen in for changes to the cart and `useSelector()`
-   - This we then pass as a dependacy to `useEffect()` triggering it to run only when needed
-   - `PUT` Request will overwrite data. Will just create a list of data (sends data snapshot)
+#### Redux & Async Code
 
-  #### Handling Http States & Feedback with Redux 
-   - [x] Integrate `Fetch` + `useEffect` Firebase into your project
-   - [x] Notifications: cmp
+- Never put _side effect_ or any _asynch code_ in the reducer
+  - We can put these:
+    1. inside components (ef useEffect)
+    2. action creators
 
-  #### Using an Action Creator Thunk
-  - An alternative to side affect is the **action creator**
-  - A thunk is an *action that delays an action till later*
-    - returns a functions that eventually returns another function
-  - `await` means wait for promise
-  - Redux is prepared for *action creators that return functions*
-  - This is an alternative to the logic we have used in cmp. its nice to keep things lean
+#### Frontend Code vs Backend Code
 
-  #### Fetching Data
-  - Lets put `fetch` in a an asynch to capture errors
-  - Reux supporst `async` returns
-  - Lets use a separate `useEffect` to get data when the app starts
-  - We dont want to request data and send again when cart items is passed as dep in app.js
-  - We can set a parameter to define if state has changed `changed:true` 
-    - Dont send if we havent changed anything locally 
-  - You will need to handle the eventuality if there are no items
-  - [x] Check all is working
-    - [x] Missing has changed for notifications
+- Its possible to write your own backend serverside
 
-  #### Exploring the Redux DevTools
-  - Redux Dev tools: With toolkit installed this will work with the chrome extension
-  - You can *time travel* with redux dev tools to see previous states
+#### Where To Put Our Logic
+
+- Mutating the state only with use effect
+  - Dont: `cart.totalQuantity = cart.totalQuantity +1`
+  - Do :`const newTotalQuantity = cart.totalQuantity +1`
+- A Fat: Reducers, Actions or Component
+- Where to put logic ?
+  - Synchronous _side-effect free_ ei **data transformations** ?
+    - (prefer reducers)
+- Ayscnc code or code with sideeffects ?
+  - Action Creators or Components
+  - New Use reducers
+
+#### Using useEffect with Redux
+
+- We could now listen in for changes to the cart and `useSelector()`
+- This we then pass as a dependacy to `useEffect()` triggering it to run only when needed
+- `PUT` Request will overwrite data. Will just create a list of data (sends data snapshot)
+
+#### Handling Http States & Feedback with Redux
+
+- [x] Integrate `Fetch` + `useEffect` Firebase into your project
+- [x] Notifications: cmp
+
+#### Using an Action Creator Thunk
+
+- An alternative to side affect is the **action creator**
+- A thunk is an _action that delays an action till later_
+  - returns a functions that eventually returns another function
+- `await` means wait for promise
+- Redux is prepared for _action creators that return functions_
+- This is an alternative to the logic we have used in cmp. its nice to keep things lean
+
+#### Fetching Data
+
+- Lets put `fetch` in a an asynch to capture errors
+- Reux supporst `async` returns
+- Lets use a separate `useEffect` to get data when the app starts
+- We dont want to request data and send again when cart items is passed as dep in app.js
+- We can set a parameter to define if state has changed `changed:true`
+  - Dont send if we havent changed anything locally
+- You will need to handle the eventuality if there are no items
+- [x] Check all is working
+  - [x] Missing has changed for notifications
+
+#### Exploring the Redux DevTools
+
+- Redux Dev tools: With toolkit installed this will work with the chrome extension
+- You can _time travel_ with redux dev tools to see previous states
 
 ---
+
 git fetch
 git checkout origin/master -- E:\www\react-complete-guide\package.json
 
 #### Spa and Router
 
 #### Module Introduction
-- 
-  - 
+
+- -
   - ``
-  - ````````
+  - ```
+
+    ```
   - []()
 - []
-- [] 
-- 
+- []
+-
+
 #### Routing: Multiple Pages in Single-Page Applications
+
 - Is essentially linking pages in one
 - Multiple pages in one
 
 #### Project Setup & Installing React Router
+
 - Url changes define changes in application
 - Good for complex interfaces
 - Simply add client side code to make visible html changes
-- `npm install react-router-dom` 
+- `npm install react-router-dom`
 - [React Router](https://reactrouter.com/en/main)
 
 #### Defining Routes
-- You can use `createBrowserRouter` and pass objects with a `path` & an `element`  
-- With *route definition objects*
+
+- You can use `createBrowserRouter` and pass objects with a `path` & an `element`
+- With _route definition objects_
 
 ```
 import {RouterProvider, createBrowserRouter} from 'react-router-dom'
@@ -1554,341 +1596,398 @@ function App() {
 
   return <Router rProvider router={router} />
 
-} 
+}
 
 export default App;
 
 ```
 
 #### Exploring an Alternative Way of Defining Routes
-  - Instead of passing an object you can use elements `createRoutesFromElements`
-  
+
+- Instead of passing an object you can use elements `createRoutesFromElements`
+
 #### Navigating between Pages with Links
-  - We dont want to re-load scripts and sending new requests
-  1. `import { Link } from 'react-router-dom';`
-  2. `<Link to="/products">`
+
+- We dont want to re-load scripts and sending new requests
+
+1. `import { Link } from 'react-router-dom';`
+2. `<Link to="/products">`
+
+
     - Listens to events and prevents default creating new http
 
 #### Layouts & Nested Routes
-  - We can create a layout component containing some main navigation and include it in our app
-  - We can use a wrapping layout component to wrap all out routes together
-  - You can add a parent `root` to wrap child routes (like menus)
-  - This layout cmp can levarage `outlet` from 'react-router-dom'
-    *Used in parent route elements to render their child route elements. *
-  - This way we can have path dependant layout methods
+
+- We can create a layout component containing some main navigation and include it in our app
+- We can use a wrapping layout component to wrap all out routes together
+- You can add a parent `root` to wrap child routes (like menus)
+- This layout cmp can levarage `outlet` from 'react-router-dom'
+  _Used in parent route elements to render their child route elements. _
+- This way we can have path dependant layout methods
 
 #### Showing Error Pages with errorElement
-  - Vistors cannot be trusted. 
-  - So lets create a default fall back page if the route doesnt exist
-    - add an `errorElement` to your `routeDefinitionObject`
+
+- Vistors cannot be trusted.
+- So lets create a default fall back page if the route doesnt exist
+  - add an `errorElement` to your `routeDefinitionObject`
 
 #### Working with Navigation Links (NavLink)
-  - React router dom is our friend
-  - We can also use `NavLink` and use `isActive` `className={(isActive) => }` - It by default checks if path is the same ;) 
-  - `end` prop helps handle the end of the route to handle active feedback. 
+
+- React router dom is our friend
+- We can also use `NavLink` and use `isActive` `className={(isActive) => }` - It by default checks if path is the same ;)
+- `end` prop helps handle the end of the route to handle active feedback.
 
 #### Navigating Programmatically
+
 - `useNavigate` incase you need to refresh the page programatically.
 
 #### Defining & Using Dynamic Routes
-  - What if these had different paths /product1 , /product2 to one cmp *we wouldnt want to add all of these hardcoded*  
-  - One approach is to enter a more paths 
-  - We could add a route then some links , 
-  - Good for defining different data we want to render same cmp. 
-  - We can levarage path *params* by adding a colon 
-     1. `'/product/:productId'`
-     2. `import {useParams}` in your cmp
-     3. `params.productId`
+
+- What if these had different paths /product1 , /product2 to one cmp _we wouldnt want to add all of these hardcoded_
+- One approach is to enter a more paths
+- We could add a route then some links ,
+- Good for defining different data we want to render same cmp.
+- We can levarage path _params_ by adding a colon
+  1.  `'/product/:productId'`
+  2.  `import {useParams}` in your cmp
+  3.  `params.productId`
 
 #### Adding Links for Dynamic Routes
-  - We can add `to` attribute to our `<Link>` passing dynamic value
+
+- We can add `to` attribute to our `<Link>` passing dynamic value
 
 #### Understanding Relative & Absolute Paths
-  - Within our `createBrowserRouter` we change our path handling. You can choose either / rel or abs
-    - remember */ forward slash means **absolute** path*
-  1. specify our parent`/root` and 
-  2. *remove* `/` for children to allow for creating a base url. 
-  3. We can now visit `localhost:roots/products`
 
-  - `<Link>` also has another prop `relative='path||route'` 
- 
+- Within our `createBrowserRouter` we change our path handling. You can choose either / rel or abs
+  - remember _/ forward slash means **absolute** path_
+
+1. specify our parent`/root` and
+2. _remove_ `/` for children to allow for creating a base url.
+3. We can now visit `localhost:roots/products`
+
+- `<Link>` also has another prop `relative='path||route'`
+
 #### Working with Index Routes
-  - We can simply do in our route defintion object  `/`  or `index:true`
+
+- We can simply do in our route defintion object `/` or `index:true`
 
 #### Onwards to a new Project Setup - P2
-  - Backend Front End Project
-  - You will need to open both separatly and keep both host running
-  - setup route, links etc see docs 
+
+- Backend Front End Project
+- You will need to open both separatly and keep both host running
+- setup route, links etc see docs
 
 #### Time to Practice: Problem
- Challenge / Exercise
-- [x]  1. Add five new (dummy) page components (content can be simple <h1> elements)
+
+Challenge / Exercise
+
+- [x] 1.  Add five new (dummy) page components (content can be simple <h1> elements)
+
   - [x]     - HomePage
   - [x]     - EventsPage
   - [x]     - EventDetailPage
   - [x]     - NewEventPage
   - [x]     - EditEventPage
 
-- [x]  2. Add routing & route definitions for these five pages
+- [x] 2.  Add routing & route definitions for these five pages
 - [x]     - / => HomePage
 - [x]     - /events => EventsPage
 - [x]     - /events/<some-id> => EventDetailPage
 - [x]     - /events/new => NewEventPage
 - [x]     - /events/<some-id>/edit => EditEventPage
 
-- [c]  3. Add a root layout that adds the <MainNavigation> component above all page components
-- [x]  4. Add properly working links to the MainNavigation
-- []  5. Ensure that the links in MainNavigation receive an "active" class when active
-- [x]  6. Output a list of dummy events to the EventsPage
+- [c] 3. Add a root layout that adds the <MainNavigation> component above all page components
+- [x] 4.  Add properly working links to the MainNavigation
+- [] 5. Ensure that the links in MainNavigation receive an "active" class when active
+- [x] 6.  Output a list of dummy events to the EventsPage
 - [x]     Every list item should include a link to the respective EventDetailPage
-- [x]  7. Output the ID of the selected event on the EventDetailPage
-- [x]  BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
- likeley this will go back to defining parent 
+- [x] 7.  Output the ID of the selected event on the EventDetailPage
+- [x] BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
+      likeley this will go back to defining parent
 
 #### Data Fetching with a loader()
-  - Rendering lots of request before loading the pages is not ideal.
-  - It can be better to tell *router* to call this
-  - Helps with fetching data and handling different states
-  - loader executes before the route is rendered
-  - loader can be used with *async* to get around useing *then*
-  - **aysnc** **await** always returns a *promise*
+
+- Rendering lots of request before loading the pages is not ideal.
+- It can be better to tell _router_ to call this
+- Helps with fetching data and handling different states
+- loader executes before the route is rendered
+- loader can be used with _async_ to get around useing _then_
+- **aysnc** **await** always returns a _promise_
 
 #### Using Data From A Loader In The Route Component
-  - `useLoaderData`
+
+- `useLoaderData`
 
 #### Where & When Should loader() Code Be Stored?
--  You cant use loader in an above component 
+
+- You cant use loader in an above component
 - Refactor and test app with loader
 - These loaders can be quite heavy. So a common recomendation
-is to put loader in the component where you want to use it. and export it as say `somethingLoader`
+  is to put loader in the component where you want to use it. and export it as say `somethingLoader`
 - later import into your app `{loader as eventsLoader}` then use that in your route definition object loader
 
 #### Reflecting The Current Navigation State in the UI
-  - We can use `useNavigation` to detext what state the transition of data  is.
-    - idle
-    - loading
-    - submitting
-  - You can tap into this in your jsx `{navigation.state ==='loading' && <p>Loading...</p>}`
-   
+
+- We can use `useNavigation` to detext what state the transition of data is.
+  - idle
+  - loading
+  - submitting
+- You can tap into this in your jsx `{navigation.state ==='loading' && <p>Loading...</p>}`
+
 #### Returning Responses in loader()s
-  - From loader you can return a response object
-  - This a special `response` constructor that can be created client side
-  - Why not just return response. With react routers response object you dont need to manually extract data from the response
-  - Levarage this *special type of return object*
+
+- From loader you can return a response object
+- This a special `response` constructor that can be created client side
+- Why not just return response. With react routers response object you dont need to manually extract data from the response
+- Levarage this _special type of return object_
 
 #### Which Kind Of Code Goes Into loader()s?
-  - You can use any browser api in loader. APIS cookies etcw
-  - But you **Cannot** use hooks
+
+- You can use any browser api in loader. APIS cookies etcw
+- But you **Cannot** use hooks
 
 #### Error Handling with Custom Errors
-  - On way is (in response) `return { isError: true, message: 'Failed to fetch events.' };`
-  - When you throw error reouter will return closest error element
-    - Error element can be use to *show any error* in route related code
-  -  `errorElement: <ErrorPage />,`
-  
+
+- On way is (in response) `return { isError: true, message: 'Failed to fetch events.' };`
+- When you throw error reouter will return closest error element
+  - Error element can be use to _show any error_ in route related code
+- `errorElement: <ErrorPage />,`
+
 #### Extracting Error Data & Throwing Responses
-  1. `throw new Response(JSON.stringify({ message: 'Failed to fetch events.',status:response.status}))`
-  2. You can catch these errors `const error = useRouteError();`
+
+1. `throw new Response(JSON.stringify({ message: 'Failed to fetch events.',status:response.status}))`
+2. You can catch these errors `const error = useRouteError();`
 
 #### The json() Utility Function P3
-  - React router has utilities to handle responses in `json()` 
-  - You can type less code and you dont need to later parse. The router can handle this for you
+
+- React router has utilities to handle responses in `json()`
+- You can type less code and you dont need to later parse. The router can handle this for you
 
 #### Dynamic Routes & loader()s
-  - After defining route you can pass another loader
-  - loader has two params `request` / `params`
-  - You cant use hooks in loader so you need these params to get say the `id` param in url
-#### The useRouteLoaderData() Hook & Accessing Data From Other Routes
-- We can share loaders between routes
-by adding it to a wrapper route or parent element
-- Route definistins can have specific id's
-which we use in conjuntcion with `useRouteloaderData`
 
+- After defining route you can pass another loader
+- loader has two params `request` / `params`
+- You cant use hooks in loader so you need these params to get say the `id` param in url
+
+#### The useRouteLoaderData() Hook & Accessing Data From Other Routes
+
+- We can share loaders between routes
+  by adding it to a wrapper route or parent element
+- Route definistins can have specific id's
+  which we use in conjuntcion with `useRouteloaderData`
 
 #### Planning Data Submission
-  - We can use actions to send data
+
+- We can use actions to send data
+
 #### Working with action() Functions
-  - We can use `action:` as a param to send in router
-  -  Again in actions we have access to browser api stuff but no hooks
-  -You will need to use the `Form` component. It will take this data and *send it to your action* It will omit the browser default (sending to backend) 
-  - You will need to define your method 
-  - You can tap into `request.formData()`
-  - or use `data.get('title')`
+
+- We can use `action:` as a param to send in router
+- Again in actions we have access to browser api stuff but no hooks
+  -You will need to use the `Form` component. It will take this data and _send it to your action_ It will omit the browser default (sending to backend)
+- You will need to define your method
+- You can tap into `request.formData()`
+- or use `data.get('title')`
 
 #### Submitting Data Programmatically
-  - Note you can define actions on your form. The beauty of `<Form action='some-action'` is you can submit your form to external or different form acitons.
-  - We can then use our `useSubmit` hook to capture this submission
-    - It will take a form data obj param
+
+- Note you can define actions on your form. The beauty of `<Form action='some-action'` is you can submit your form to external or different form acitons.
+- We can then use our `useSubmit` hook to capture this submission
+  - It will take a form data obj param
 
 #### Updating the UI State Based on the Submission Status
-  - We can levarage `useNavigation` to extract eg all the data submitted and status of the transition to provide feedback to the user. 
-    - `const isSubmitting = navigation.state === 'submitting';`
+
+- We can levarage `useNavigation` to extract eg all the data submitted and status of the transition to provide feedback to the user.
+  - `const isSubmitting = navigation.state === 'submitting';`
 
 #### Validating User Input & Outputting Validation Errors
-  - You can do this in actions by returning the response first 
-  - `useActionData` is our friend here to pick up the response for use in our form
-  - Then later in your from your can acces `data.errors`
-  
+
+- You can do this in actions by returning the response first
+- `useActionData` is our friend here to pick up the response for use in our form
+- Then later in your from your can acces `data.errors`
+
 #### Reusing Actions via Request Methods
-  - Notice we now can levarge our existing `newEventAction` as we only want to change a few things to implement an edit
-  - We could create two events like `post` and `patch`
-  - By changing the request method we can use the same action changing the `request.method` and `url`
-  - A convention is to define request method in uppercase `PATCH`
+
+- Notice we now can levarge our existing `newEventAction` as we only want to change a few things to implement an edit
+- We could create two events like `post` and `patch`
+- By changing the request method we can use the same action changing the `request.method` and `url`
+- A convention is to define request method in uppercase `PATCH`
 
 #### Behind-the-Scenes Work with useFetcher()
-  - Newlsetter cmp is included everywhere which poses the problem of accessing its action app wide
-  - We can utilize `fetcher.form` which will do the same except it doesnt init route transition
-  - good when dont want to actuall navigate to the page to which the loader belongs 
-  - using this you can submit form without transitioning    `<fetcher.Form method="post" className={classes.newsletter}>`
-  - you can acces the data easily: `fetcher.data` and levarage `useEffect`
+
+- Newlsetter cmp is included everywhere which poses the problem of accessing its action app wide
+- We can utilize `fetcher.form` which will do the same except it doesnt init route transition
+- good when dont want to actuall navigate to the page to which the loader belongs
+- using this you can submit form without transitioning `<fetcher.Form method="post" className={classes.newsletter}>`
+- you can acces the data easily: `fetcher.data` and levarage `useEffect`
 
 #### Deferring Data Fetching with defer()
-  - Meaning you can delay loading of a script to the end. 
-  - What if you wanted to show parts of the page before the http response has been loaded
-  - We can avoid await in our loader and use `defer` to which we can bundle all our http requests
-  - `loadEvents()` can now be called inside our loader
-    - if there was no promise = *theres nothing to defer*
-  - In addition we an import `await` 
-    - `<Await resolve={events}>` will track what has changed this will be called by router 
-    - this needs to be wrapped in a `Suspense` which works as a *fallback* while events are being fetched
-    - Suspense is imported from `react`
+
+- Meaning you can delay loading of a script to the end.
+- What if you wanted to show parts of the page before the http response has been loaded
+- We can avoid await in our loader and use `defer` to which we can bundle all our http requests
+- `loadEvents()` can now be called inside our loader
+  - if there was no promise = _theres nothing to defer_
+- In addition we an import `await`
+  - `<Await resolve={events}>` will track what has changed this will be called by router
+  - this needs to be wrapped in a `Suspense` which works as a _fallback_ while events are being fetched
+  - Suspense is imported from `react`
 
 #### Controlling Which Data Should Be Deferred
-  - in our loader we can now pass multiple loader actions
-  - inside return we can now use `Await` twice and we can define a fallback prop `fallback={<p>Loading...</p>}`
-  - You can insure loader waits by using `await loadEvent)()` this is like a lever to tell react to wait for this to finish before rendering
+
+- in our loader we can now pass multiple loader actions
+- inside return we can now use `Await` twice and we can define a fallback prop `fallback={<p>Loading...</p>}`
+- You can insure loader waits by using `await loadEvent)()` this is like a lever to tell react to wait for this to finish before rendering
 
 ### Authentication
 
 #### Module Introduction
-  - Avoid faking sending auth
+
+- Avoid faking sending auth
 
 #### How Authentication Works
 
-   - Serverside Sessions:
-    - Store auth on server mapped to client. CLient send identifier along with requests 
-    - Require tight coupling between client and server
+- Serverside Sessions:
+- Store auth on server mapped to client. CLient send identifier along with requests
+- Require tight coupling between client and server
 
-   - Authentication token:
-    - After user is authed we create but dont store a permission token
-    - Client sends token along with request to resources 
-    - JSW json web token
-   - Flow
-    - Request- > Server -> Response (token) -> Client (browser)
+- Authentication token:
+- After user is authed we create but dont store a permission token
+- Client sends token along with request to resources
+- JSW json web token
+- Flow
+- Request- > Server -> Response (token) -> Client (browser)
 
-  - Full stack apps typically dont have coupling to server / client
-  - React apps are typically decoupled from server
+- Full stack apps typically dont have coupling to server / client
+- React apps are typically decoupled from server
 
 #### Project Setup & Route Setup
-  - [x] Have way of getting to auth page in router
+
+- [x] Have way of getting to auth page in router
 
 #### Working with Query Parameters
-  - We can utilize  `<Link to="?mode=${mode}> `
-  - `useSearchParams` will give us access to query params
-  - `const isLogin = searchParams.get('mode') === 'login';`
-  
+
+- We can utilize `<Link to="?mode=${mode}> `
+- `useSearchParams` will give us access to query params
+- `const isLogin = searchParams.get('mode') === 'login';`
+
 #### Implementing the Auth Action
-  - This is a case for router actions
+
+- This is a case for router actions
 
 #### Validating User Input & Outputting Validation Errors
-  - Here we can levarage `const data = useActionData();`
-    - We can then use `data.errors` to access and validate accordingly
+
+- Here we can levarage `const data = useActionData();`
+  - We can then use `data.errors` to access and validate accordingly
 
 #### Adding User Login
-  - Store token just before redirect 
-  - We have lots of ways of storing the token
-    - We can use all browser features
-    - `localStorage.setItem('token', token);`
-  - Payload Token
-    ```
-    method: request.method,
-      headers:{
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-      }
-    ```
-    - You can then see this **token** in *devtools -> application*
-    - For organization we can create a cmp for storing this in `utils` folder
+
+- Store token just before redirect
+- We have lots of ways of storing the token
+  - We can use all browser features
+  - `localStorage.setItem('token', token);`
+- Payload Token
+  ```
+  method: request.method,
+    headers:{
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+  ```
+  - You can then see this **token** in _devtools -> application_
+  - For organization we can create a cmp for storing this in `utils` folder
 
 #### Attaching Auth Tokens to Outgoing Requests
-  - ? Missing
+
+- ? Missing
 
 #### Adding User Logout
-  - We can use a path and a pass router action to clear the auth token 
-  - *no element: required*
+
+- We can use a path and a pass router action to clear the auth token
+- _no element: required_
 
 #### Updating the UI Based on Auth Status
-  - We could use context and router to maintain this token app wide
-  - Or use loader to refresh tokens in the background
-  -  `loader:tokenLoader,` we created earlier in utils
-  - Within in a sub cmp we can use `useRouteLoaderData` to see it exists
-  - Finally render your buttons conditionally
+
+- We could use context and router to maintain this token app wide
+- Or use loader to refresh tokens in the background
+- `loader:tokenLoader,` we created earlier in utils
+- Within in a sub cmp we can use `useRouteLoaderData` to see it exists
+- Finally render your buttons conditionally
 
 #### Important: loader()s must return null or any other value
 
 #### Adding Route Protection
- - Again we can utilize a loader `checkAuthLoader` say for example and include this on protected routes
 
+- Again we can utilize a loader `checkAuthLoader` say for example and include this on protected routes
 
 #### Adding Automatic Logout
-  - Logout user out after xmins and clear token
-  - One option is to `useEffect` in our root layour and run the checks. This component needs to be high up in the tree	
-  - We can import our `useLoaderData` to get the data to check for token
-  - then levarage `useSubmit` hook to check if a form has been sent
-    - `useSubmit` Programatically send a form
+
+- Logout user out after xmins and clear token
+- One option is to `useEffect` in our root layour and run the checks. This component needs to be high up in the tree
+- We can import our `useLoaderData` to get the data to check for token
+- then levarage `useSubmit` hook to check if a form has been sent
+  - `useSubmit` Programatically send a form
+
 #### Managing the Token Expiration
-  - The timer needs to be referenced to a timestamp created in the token
-    `const expiration = new Date(expiration.getHours() +  1);  localStorage.setItem('expiration', expiration.toISOString());`
-    
+
+- The timer needs to be referenced to a timestamp created in the token
+  `const expiration = new Date(expiration.getHours() +  1);  localStorage.setItem('expiration', expiration.toISOString());`
+
 ---
 
 ### Deployment
 
-  #### Deployment Steps
-  - Test
-  - Optimize 
-    - Side effects and memo etc are other optimization techniques
-  - Build For Production
-    - Bundled optimized, minimized code
-  - Upload Code to Production
-  - Configure server
+#### Deployment Steps
 
-  #### Understanding Lazy Loading
-  - Loading code only when its needed
+- Test
+- Optimize
+  - Side effects and memo etc are other optimization techniques
+- Build For Production
+  - Bundled optimized, minimized code
+- Upload Code to Production
+- Configure server
 
-  #### Adding Lazy Loading & Code For Production
-  - You can levarage import as it is actually a function that returns a *promise*
-  - You can write cmp as functions. its only valid if it returns *jsx*
-    - `import('./pages/Blog').then(module => module.loader()) ` directly in your router for ex
-  - 1. Use Special **lazy** function
-    - `const BlogPage = lazy(() => import('./pages/Blog'))`
-  - 2. Wrap your element in `<Suspense fallback={<p>Whoopie</p>`
+#### Understanding Lazy Loading
 
-  *You can inspect in devtools -> network*
+- Loading code only when its needed
 
-  #### Deployment Example
-    - A react SPA application is a **static website** (only html, css & javascript) 
+#### Adding Lazy Loading & Code For Production
+
+- You can levarage import as it is actually a function that returns a _promise_
+- You can write cmp as functions. its only valid if it returns _jsx_
+  - `import('./pages/Blog').then(module => module.loader()) ` directly in your router for ex
+- 1. Use Special **lazy** function
+  - `const BlogPage = lazy(() => import('./pages/Blog'))`
+- 2. Wrap your element in `<Suspense fallback={<p>Whoopie</p>`
+
+_You can inspect in devtools -> network_
+
+#### Deployment Example
+
+    - A react SPA application is a **static website** (only html, css & javascript)
       - All client side
       - No static service required
-    - Can install something like firebase tools 
+    - Can install something like firebase tools
       - Login via ssh
       - Init will connect you to a firebase project
-      - Ultimatley this ends with a deploy cmd 
+      - Ultimatley this ends with a deploy cmd
       - Has a disable cmd `firebase: hosting:disable`
-  
-    - **GitHub actions**: allows you to automate your build, test, and deployment pipeline. 
 
-  #### Server-side Routing & Required Configuration
-    - Dont forget the router needs a url to be configured 
-    - Take it for granted users will add in strange urls 
+    - **GitHub actions**: allows you to automate your build, test, and deployment pipeline.
+
+#### Server-side Routing & Required Configuration
+
+    - Dont forget the router needs a url to be configured
+    - Take it for granted users will add in strange urls
 
 #### How do I prepare React app for deployment?
+
 Serving the Same Build from Different Paths​
 
-  1. Add homepage to package.json ​
-  2. Install gh-pages and add deploy to scripts in package.json ​
-  3. Deploy the site by running npm run deploy ​
-  4. For a project page, ensure your project's settings use gh-pages ​
-  5. Optionally, configure the domain​
+1. Add homepage to package.json ​
+2. Install gh-pages and add deploy to scripts in package.json ​
+3. Deploy the site by running npm run deploy ​
+4. For a project page, ensure your project's settings use gh-pages ​
+5. Optionally, configure the domain​
 
 dev: runs next dev to start Next.js in development mode.
 build: runs next build to build the application for production usage.
@@ -1899,68 +1998,80 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
 
 ### Next Js
 
-  #### Module Introduction
-   - Is a framwork for building react
+#### Module Introduction
 
-  #### What is NextJS?
-  - Its a framework for production. Particularly for full stack. To *enhance* your react dev
-  - Makes it easier to integrate react features. Solves common problems. 
-  - [https://nextjs.org/](Site)
-  - Framworks are typically bigger than a library and have rules and strucure
+- Is a framwork for building react
 
-  #### Key Feature # Built-in Server-side Rendering (Improved SEO!)
-  - Built in server side rendering
-    - Will render whole dom on server.
-    - Good for seo and initial load
-    
-  Client Side issues:
-  - Notice page flicker on refresh (client side rendering)
-  - Search engines See page content
+#### What is NextJS?
 
-  #### Key Feature # Simplified Routing with File-based Routing
+- Its a framework for production. Particularly for full stack. To _enhance_ your react dev
+- Makes it easier to integrate react features. Solves common problems.
+- [https://nextjs.org/](Site)
+- Framworks are typically bigger than a library and have rules and strucure
+
+#### Key Feature # Built-in Server-side Rendering (Improved SEO!)
+
+- Built in server side rendering
+  - Will render whole dom on server.
+  - Good for seo and initial load
+
+Client Side issues:
+
+- Notice page flicker on refresh (client side rendering)
+- Search engines See page content
+
+#### Key Feature # Simplified Routing with File-based Routing
+
     - Routing doesn exist officially in react.
     - With next we can create a folder structure and it will create routes for us
     - Less code, less work and more intuitive
 
-  #### Key Feature # Build Fullstack Apps
+#### Key Feature # Build Fullstack Apps
+
     - Easily add your backend serverside code to your apps
     - Storeing data, getting data, authenticating is easily added using react
 
-  #### Creating a New Next.js Project & 
-    - Create you react app 
+#### Creating a New Next.js Project &
+
+    - Create you react app
     - `npx create-next-app`
     - `npm run build`
-    - `npm run start` 
+    - `npm run start`
     - *Import alias* is defining a rout or alias to pull impots from allowing you to simply `@components/Button`
     - Css modules are included by default in next
 
+#### Analyzing the Created Project
 
-  #### Analyzing the Created Project
-  - There is no index page. This page is dynamically rendered
-  - Pages is the most important directory 
+- There is no index page. This page is dynamically rendered
+- Pages is the most important directory
 
-  #### Adding First Pages
+#### Adding First Pages
+
     - Api we can delete
       1. `npx create-next-app next`
       2. `npm run dev`
     - Aside from index you can just create files in the pages directory
     - You can *omit* `import react js`
 
-  #### Adding Nested Paths & Pages (Nested Routes)
+#### Adding Nested Paths & Pages (Nested Routes)
+
     - We can levarage subfolders and indexes *path segments*
     - urls should reflect your folder structure
 
-  #### Creating Dynamic Pages (with Parameters)
+#### Creating Dynamic Pages (with Parameters)
+
     - Hardcoding identifier is not ideal better to make dynamic
     - Square `[newsId].js` infront of filename tells next this is a dynamic page
     - This also works for folders []
 
-  #### Extracting Dynamic Parameter Values
+#### Extracting Dynamic Parameter Values
+
     - Can use wrappers or imports
       - `import {useRouter} from 'next/router'`
       - `console.log(router.query.newsId);`
 
-  #### Linking Between Pages
+#### Linking Between Pages
+
     - `<li><a href="/news/newsone">First news item</a></li>`
       - This works but requires *new request* (page refresh) NOT SPA
       - All our state would be lost in this scenario
@@ -1969,61 +2080,94 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
      - `import Link from 'next/link'`
      - This will work for seo and is a SPA
 
-  #### Onwards to a bigger Project!
+#### Onwards to a bigger Project!
+
     - Send meetups to backend
     - fetch and display meetups
     - detail page dynamic page pull from slug (md5)
 
-  #### Outputting a List of Meetups
-   - Components work as always
-   - Nothing new: Pages componenets will not be loaded as pages automatically including components 
+#### Outputting a List of Meetups
+
+- Components work as always
+- Nothing new: Pages componenets will not be loaded as pages automatically including components
+
+#### Adding the New Meetup Form
+
+- Lets import out list cmp and levarage `Link from 'next/'`
+
+#### The "\_app.js" File & Layout Wrapper
+
+- Best place to use as a layout wrapper at top level (Rather than indidual pages)
+
+#### Using Programmatic (Imperative) Navigation
+
+- This is the equivalent to using Link
+- `router.push('/' + props.id);` will change url for you
+
+#### Adding Custom Components & CSS Modules
+
+- importing css modules works as expected
+
+#### How Pre-rendering Works & Which Problem We Face
+
+- Now at top level we could useEffect here with empty depenancy array to only run once
+  and fetch data from API
+- This will have two render cmp cycles.
+
+```
+   useEffect(() => {
+           //send http request and fetch data async
+           setLoadedMeetups(DUMMY_MEETUPS)
+       }, []);
+   ```
+
+- Note: Will create issues for SEO as page content wont prerender this data for which we have to wait
+
+#### Data Fetching for Static Pages
+-  Request -> Some-route -> return pre rendererd page -> hydrate react with data
+- Two Methods for prerender:
+ - Static Generation (typically should use)
+   - `npm build production`
+   - pre rendered page
+ - Server Side Rendering
+
+ - if you need to add adata to a page component you can export a function that will only work in '/pages' folder
+  - `export getStaticProps()` can be async
+  - this will run on the server and not the client
+  - *Always return an object*. (same as props in your component)
+  - Now working with props. ` meetups={props.meetups}` gets around 2nd component cycle and is not available to client
   
-  #### Adding the New Meetup Form
-   - Lets import out list cmp and levarage `Link from 'next/'`
+#### More on Static Site Generation (SSG)
 
-  #### The "_app.js" File & Layout Wrapper
-  - Best place to use as a layout wrapper at top level (Rather than indidual pages)
+#### Exploring Server-side Rendering (SSR) with "getServerSideProps"
 
-  #### Using Programmatic (Imperative) Navigation
-  - This is the equivalent to using Link
-  - `router.push('/' + props.id);` will change url for you
-  #### Adding Custom Components & CSS Modules
+#### Working with Params for SSG Data
 
-  #### How Pre-rendering Works & Which Problem We Face
-
-  #### Data Fetching for Static Pages
-
-  #### More on Static Site Generation (SSG)
-
-  #### Exploring Server-side Rendering (SSR) with "getServerSideProps"
-
-  #### Working with Params for SSG Data 
-  
-  #### Preparing Paths with "getStaticPaths" & Working With Fallback Pages
+#### Preparing Paths with "getStaticPaths" & Working With Fallback Pages
 
 
 
-  #### Introducing API Routes
+#### Introducing API Routes
 
-  #### Working with MongoDB
+#### Working with MongoDB
 
-  #### Sending Http Requests To Our API Routes
+#### Sending Http Requests To Our API Routes
 
-  #### Getting Data From The Database
+#### Getting Data From The Database
 
-  #### Getting Meetup Details Data & Preparing Pages
+#### Getting Meetup Details Data & Preparing Pages
 
-  #### Adding "head" Metadata
+#### Adding "head" Metadata
 
-  #### Deploying Next.js Projects
+#### Deploying Next.js Projects
 
-  #### Using Fallback Pages & Re-deploying
+#### Using Fallback Pages & Re-deploying
 
 
-  #### Summary
+#### Summary
 
-  Start
-  #### Module Resources
+Start
+#### Module Resources
 
 
 ---
@@ -2045,8 +2189,10 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
 
 Allows us to define types, avoiding potential issues like contactenating to strings together "1"+"2" instead of computing them as integers.Usefull for large teams and large volumes of code. This stricter typing will allow bugs to be detected (in ide) before run time.
 
-```
+````
+
 function add(a:number,b:number)
+
 ```
 
 ---
@@ -2064,9 +2210,11 @@ function add(a:number,b:number)
 #### Usefull node
 
 ```
+
 -save @fortawesome/free-solid-svg-icons
->> npm i --save @fortawesome/free-regular-svg-icons
->> npm i --save @fortawesome/free-brands-svg-icons
+
+> > npm i --save @fortawesome/free-regular-svg-icons
+> > npm i --save @fortawesome/free-brands-svg-icons
 
 ```
 `npm init -y` (will answer all the default questions)
@@ -2074,7 +2222,7 @@ function add(a:number,b:number)
 `node redux-demo.js` execute with node
 `npm install redux react-redux`
 `npm install @reduxjs/toolkit` redux tool kit you dont need redux and the tool kit //    "redux": "^4.0.5",
-`npm install react-router-dom` 
+`npm install react-router-dom`
 
 #  for macOS and Linux
 `rm -rf node_modules`
@@ -2115,3 +2263,4 @@ Regular Expression Pattern (Ref: https://bit.ly/33cv2vn):
 -
 
 ---
+```
