@@ -43,6 +43,9 @@ function HomePage(props) {
 
 //levarages caching
 export async function  getStaticProps() {
+
+    const meetupId = context.params.meetupId;
+    console.log(meetupId)
     // fetch data from an API
     return {
         props: {

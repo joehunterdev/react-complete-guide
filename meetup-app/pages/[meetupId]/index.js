@@ -1,10 +1,13 @@
-import { useEffect } from "react";
+import { getStaticProps } from "next";
 import MetupDetail from "../../components/meetups/MeetupDetail";
 
-function MeetupDetail(){
-    //we could useEffect here with empty depenancy array to only run once 
-    //and fetch data from API
+function MeetupDetail() {
+    //we can asume this doesnt change so much    
     return <MetupDetail image="https://es.wikipedia.org/wiki/M%C3%A1laga#/media/Archivo:Da_Gibralfaro_(cropped).jpg" title="A First Meetup" address="Some address 5, 12345 Some City" description="This is a first meetup!" />
+}
+
+export async function getStaticProps() {   
+    return {props: {meetupData: {image:'https://', title:"Sometitle", address:"Your addy", description:"Desc"}}}
 }
 
 export default MeetupDetail;

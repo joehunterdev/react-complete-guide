@@ -2179,6 +2179,10 @@ export async function  getServerSideProps(context) {
 - if *dont* need quick render and dont need *access to req object*. **Use Props**
 
 #### Working with Params for SSG Data
+  - We can use getStatic props inside our detail cmp
+  - We need to get the id however to pass back to a `getStaticProps`
+  - We can use `context.params` to get the id-- `const meetupId = context.params.meetupId;`
+  - This will get you an error  **getStaticPath**
 
 #### Preparing Paths with "getStaticPaths" & Working With Fallback Pages
 
