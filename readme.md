@@ -2203,8 +2203,31 @@ export async function getStaticPaths() {
 - We can *define* some paths not all if we desire. As a fallback we can use `notFound: true` to return a 404
 
 #### Introducing API Routes
+ - We can use front and backend together using routes.
+ - These handle http requests
+ - API routes are **NOT** about returning components
+ - From request we can get header, body and method.
+
+```
+ function handler(req,res){
+
+    if(req.method === 'POST'){
+         const data = req.body;
+        //const {title, image, address, description} = data;
+        const {title,image,addres,description} = data;
+
+    }
+}
+export default handler;
+```
 
 #### Working with MongoDB
+  - Lets used mongo db cloud db
+  - You will need to setup a cluster user with privladges then hit connect and get your creds.
+  - add your pw to connection string
+  - if your dbname does not exist it will be created on the fly
+  - collections are like tables 
+  - documents are like rows
 
 #### Sending Http Requests To Our API Routes
 
@@ -2218,10 +2241,8 @@ export async function getStaticPaths() {
 
 #### Using Fallback Pages & Re-deploying
 
-
 #### Summary
 
-Start
 #### Module Resources
 
 
