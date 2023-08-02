@@ -1,22 +1,24 @@
 import NewMeetupForm from '../../components/meetups/NewMeetupForm';
+import { useRouter } from 'next/router';
 
 function NewMeetupPage(){
-    function addMeetupHandler (enteredMeetupData) {
 
-        // fetch('/api/new-meetup', {
-        //     method: 'POST',
-        //     body: JSON.stringify({
-        //         title: 'A First Meetup',
-        //         image: 'https://es.wikipedia.org/wiki/M%C3%A1laga#/media/Archivo:Da_Gibralfaro_(cropped).jpg',
-        //         address: 'Some address 5, 12345 Some City',
-        //         description: 'This is a first meetup!'
-        //     }),
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
-        console.log(enteredMeetupData);
+    const router = useRouter();
+
+    async function addMeetupHandler(enteredMeetupData) {
+      const response = await fetch('/api/new-meetup', {
+        method: 'POST',
+        body: JSON.stringify(enteredMeetupData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      const data = await response.json();
+      console.log(data);
+      router.push('/');
     }
+
     return <NewMeetupForm onAddMeetup={addMeetupHandler} /> 
 }
 

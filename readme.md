@@ -2233,8 +2233,17 @@ export default handler;
 
 
 #### Sending Http Requests To Our API Routes
+  - Can use fetch or axios
+  - We can call request to our api folder 
+  - Next will trigger handler for us
+  - if whitelisting is correct etc this should work
 
 #### Getting Data From The Database
+  - We can use mongo db to get data calling internal api is a bit redundant
+  - You can import client side or server side code
+    - Bundle size may vary
+  - The object key is not a simple integer its a an object
+  - Static Props **are pregenerated**
 
 #### Getting Meetup Details Data & Preparing Pages
 

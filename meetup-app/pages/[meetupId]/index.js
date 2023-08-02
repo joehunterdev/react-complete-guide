@@ -1,4 +1,3 @@
-import { getStaticProps } from "next";
 import MetupDetail from "../../components/meetups/MeetupDetail";
 
 function MeetupDetail() {
