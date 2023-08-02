@@ -2228,6 +2228,9 @@ export default handler;
   - if your dbname does not exist it will be created on the fly
   - collections are like tables 
   - documents are like rows
+  - dont forget to close cnx
+  - handle response based on status codes
+
 
 #### Sending Http Requests To Our API Routes
 
