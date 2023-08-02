@@ -1,17 +1,67 @@
-import MetupDetail from "../../components/meetups/MeetupDetail";
+import { MongoClient, ObjectId } from 'mongodb';
+//beweare this path was broke sends return data into an infinite loop
+import MeetupDetail from '../../components/meetups/MeetupDetail';
 
-function MeetupDetail() {
-    //we can asume this doesnt change so much    
-    return <MetupDetail image="https://es.wikipedia.org/wiki/M%C3%A1laga#/media/Archivo:Da_Gibralfaro_(cropped).jpg" title="A First Meetup" address="Some address 5, 12345 Some City" description="This is a first meetup!" />
+function MeetupDetails(props) {
+  return (
+    <MeetupDetail
+      image={props.meetupData.image}
+      title={props.meetupData.title}
+      address={props.meetupData.address}
+      description={props.meetupData.description}
+    />
+  );
 }
+
 export async function getStaticPaths() {
-    return{
-        fallback: false,//true would try to generate page on the fly
-        paths: [{params: {meetupId: 'm1'}},{params: {meetupId: 'm2'}}],
-    }
-}
-export async function getStaticProps() {   
-    return {props: {meetupData: {image:'https://', title:"Sometitle", address:"Your addy", description:"Desc"}}}
+  const client = await MongoClient.connect(
+    process.env.REACT_APP_MONGO_URL
+  );
+  const db = client.db();
+
+  const meetupsCollection = db.collection('meetups');
+
+  const meetups = await meetupsCollection.find({}, { _id: 1 }).toArray();
+
+  client.close();
+
+  return {
+    fallback: false,
+    paths: meetups.map((meetup) => ({
+      params: { meetupId: meetup._id.toString() },
+    })),
+  };
 }
 
-export default MeetupDetail;
+export async function getStaticProps(context) {
+  // fetch data for a single meetup
+
+  const meetupId = context.params.meetupId;
+
+  const client = await MongoClient.connect(
+    process.env.REACT_APP_MONGO_URL
+  );
+  const db = client.db();
+
+  const meetupsCollection = db.collection('meetups');
+
+  const selectedMeetup = await meetupsCollection.findOne({
+    _id: new ObjectId(meetupId),
+  });
+
+  client.close();
+
+  return {
+    props: {
+      meetupData: {
+        id: selectedMeetup._id.toString(),
+        title: selectedMeetup.title,
+        address: selectedMeetup.address,
+        image: selectedMeetup.image,
+        description: selectedMeetup.description,
+      },
+    },
+  };
+}
+
+export default MeetupDetails;

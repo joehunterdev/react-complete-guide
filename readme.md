@@ -2246,8 +2246,14 @@ export default handler;
   - Static Props **are pregenerated**
 
 #### Getting Meetup Details Data & Preparing Pages
+  - to get the id for `getStaticPaths` we just need our id `const meetups = await meetupsCollection.find({}, {_id: 1}).toArray();`
+  - we can then map these to the path objects
+  - We can find our data using `findOne` and will return the 
+  - to readd out objectId we need to import `ObjectId` then wrap this in the request function
+  - expose your propss in the getProps to its component
 
 #### Adding "head" Metadata
+  - Its wise to check you have meta data 
 
 #### Deploying Next.js Projects
 
