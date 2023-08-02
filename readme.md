@@ -1263,7 +1263,7 @@ Todo:
 - invove the _createStore method in file_ below and export that!
   [store/index]
   `const store = createStore(counterReducer) // default action
-  export default store`
+export default store`
 
 #### Providing the Store
 
@@ -1559,7 +1559,9 @@ git checkout origin/master -- E:\www\react-complete-guide\package.json
   - ```
 
     ```
+
   - []()
+
 - []
 - []
 -
@@ -1613,8 +1615,7 @@ export default App;
 1. `import { Link } from 'react-router-dom';`
 2. `<Link to="/products">`
 
-
-    - Listens to events and prevents default creating new http
+   - Listens to events and prevents default creating new http
 
 #### Layouts & Nested Routes
 
@@ -2119,27 +2120,29 @@ Client Side issues:
            //send http request and fetch data async
            setLoadedMeetups(DUMMY_MEETUPS)
        }, []);
-   ```
+```
 
 - Note: Will create issues for SEO as page content wont prerender this data for which we have to wait
 
 #### Data Fetching for Static Pages
--  Request -> Some-route -> return pre rendererd page -> hydrate react with data
-- Two Methods for prerender:
- - Static Generation (typically should use)
-   - `npm build production`
-   - pre rendered page
- - Server Side Rendering
 
- - if you need to add adata to a page component you can export a function that will only work in '/pages' folder
-  - `export getStaticProps()` can be async
-  - this will run on the server and not the client
-  - *Always return an object*. (same as props in your component)
-  - Now working with props. ` meetups={props.meetups}` gets around 2nd component cycle and is not available to client
+- Request -> Some-route -> return pre rendererd page -> hydrate react with data
+- Two Methods for prerender:
+- Static Generation (typically should use)
+  - `npm build production`
+  - pre rendered page
+- Server Side Rendering
+
+- if you need to add adata to a page component you can export a function that will only work in '/pages' folder
+- `export getStaticProps()` can be async
+- this will run on the server and not the client
+- _Always return an object_. (same as props in your component)
+- Now working with props. ` meetups={props.meetups}` gets around 2nd component cycle and is not available to client
 
 #### More on Static Site Generation (SSG)
-  - `npm run build` will generate static pages
-  - `npm run start` will run the server
+
+- `npm run build` will generate static pages
+- `npm run start` will run the server
 
 ```
 ○  (Static)  automatically rendered as static HTML (uses no initial props)
@@ -2148,15 +2151,17 @@ Client Side issues:
 ```
 
 - This has threats and opportunities
+
   - SEO is great
   - Performance is great
   - But data is not always up to date
 
 - If data does change frequently we can levarage `revalidate: 10` increamental static generation
-  - This is the n* of seconds after which a page re-generation can occur
+  - This is the n\* of seconds after which a page re-generation can occur
 
 #### Exploring Server-side Rendering (SSR) with "getServerSideProps"
-  - Sometimes you want to rerender the page on **Every Request**
+
+- Sometimes you want to rerender the page on **Every Request**
 
 ```
 //runs on server after deployment
@@ -2169,25 +2174,28 @@ export async function  getServerSideProps(context) {
 
 ```
 
-- You can pass **context** as a param  
+- You can pass **context** as a param
+
   - `context.req` is the request
   - `context.res` is the response
   - `context.params` is the params
   - `context.query` is the query params
 
-- Sadly you will need to *wait* for the page to load
-- if *dont* need quick render and dont need *access to req object*. **Use Props**
+- Sadly you will need to _wait_ for the page to load
+- if _dont_ need quick render and dont need _access to req object_. **Use Props**
 
 #### Working with Params for SSG Data
-  - We can use getStatic props inside our detail cmp
-  - We need to get the id however to pass back to a `getStaticProps`
-  - We can use `context.params` to get the id-- `const meetupId = context.params.meetupId;`
-  - This will get you an error  **getStaticPath**
+
+- We can use getStatic props inside our detail cmp
+- We need to get the id however to pass back to a `getStaticProps`
+- We can use `context.params` to get the id-- `const meetupId = context.params.meetupId;`
+- This will get you an error **getStaticPath**
 
 #### Preparing Paths with "getStaticPaths" & Working With Fallback Pages
-  - `getStaticProps` data is pregenerated. Meaning it needs to generate alll pages at build time
-  - So we need to pregenerate all those ids ahead of time
-  - We can use `getStaticPaths` to do this to describe all *dynamic segment values*
+
+- `getStaticProps` data is pregenerated. Meaning it needs to generate alll pages at build time
+- So we need to pregenerate all those ids ahead of time
+- We can use `getStaticPaths` to do this to describe all _dynamic segment values_
 
 ```
 export async function getStaticPaths() {
@@ -2196,17 +2204,19 @@ export async function getStaticPaths() {
     }
 }
 ```
+
 - The fallback key will tell next to generate the page on the fly if it doesnt exist
   - `fallback: true` will generate the page on the fly
   - `fallback: 'blocking'` will generate the page on the fly but will wait for the page to be generated
   - `fallback: false` will generate all pages at build time
-- We can *define* some paths not all if we desire. As a fallback we can use `notFound: true` to return a 404
+- We can _define_ some paths not all if we desire. As a fallback we can use `notFound: true` to return a 404
 
 #### Introducing API Routes
- - We can use front and backend together using routes.
- - These handle http requests
- - API routes are **NOT** about returning components
- - From request we can get header, body and method.
+
+- We can use front and backend together using routes.
+- These handle http requests
+- API routes are **NOT** about returning components
+- From request we can get header, body and method.
 
 ```
  function handler(req,res){
@@ -2222,38 +2232,49 @@ export default handler;
 ```
 
 #### Working with MongoDB
-  - Lets used mongo db cloud db
-  - You will need to setup a cluster user with privladges then hit connect and get your creds.
-  - add your pw to connection string
-  - if your dbname does not exist it will be created on the fly
-  - collections are like tables 
-  - documents are like rows
-  - dont forget to close cnx
-  - handle response based on status codes
 
+- Lets used mongo db cloud db
+- You will need to setup a cluster user with privladges then hit connect and get your creds.
+- add your pw to connection string
+- if your dbname does not exist it will be created on the fly
+- collections are like tables
+- documents are like rows
+- dont forget to close cnx
+- handle response based on status codes
 
 #### Sending Http Requests To Our API Routes
-  - Can use fetch or axios
-  - We can call request to our api folder 
-  - Next will trigger handler for us
-  - if whitelisting is correct etc this should work
+
+- Can use fetch or axios
+- We can call request to our api folder
+- Next will trigger handler for us
+- if whitelisting is correct etc this should work
 
 #### Getting Data From The Database
-  - We can use mongo db to get data calling internal api is a bit redundant
-  - You can import client side or server side code
-    - Bundle size may vary
-  - The object key is not a simple integer its a an object
-  - Static Props **are pregenerated**
+
+- We can use mongo db to get data calling internal api is a bit redundant
+- You can import client side or server side code
+  - Bundle size may vary
+- The object key is not a simple integer its a an object
+- Static Props **are pregenerated**
 
 #### Getting Meetup Details Data & Preparing Pages
-  - to get the id for `getStaticPaths` we just need our id `const meetups = await meetupsCollection.find({}, {_id: 1}).toArray();`
-  - we can then map these to the path objects
-  - We can find our data using `findOne` and will return the 
-  - to readd out objectId we need to import `ObjectId` then wrap this in the request function
-  - expose your propss in the getProps to its component
+
+- to get the id for `getStaticPaths` we just need our id `const meetups = await meetupsCollection.find({}, {_id: 1}).toArray();`
+- we can then map these to the path objects
+- We can find our data using `findOne` and will return the
+- to readd out objectId we need to import `ObjectId` then wrap this in the request function
+- expose your propss in the getProps to its component
 
 #### Adding "head" Metadata
-  - Its wise to check you have meta data 
+
+- Its wise to check you have meta data
+- We can import the `head` component from next
+- the simply wrap your page cmp 
+``` 
+  <Fragment> <Head>
+  <title>React Redux</title></Head> </Fragment>
+```
+- This can ofcourse be dynamic should you wish
 
 #### Deploying Next.js Projects
 
@@ -2262,7 +2283,6 @@ export default handler;
 #### Summary
 
 #### Module Resources
-
 
 ---
 
@@ -2358,3 +2378,4 @@ Regular Expression Pattern (Ref: https://bit.ly/33cv2vn):
 
 ---
 ```
+````
