@@ -2277,9 +2277,23 @@ export default handler;
 - This can ofcourse be dynamic should you wish
 
 #### Deploying Next.js Projects
+  - A good tool is vercel
+  - its made to be extremely simple
+  - you can use github or gitlab and deploy it
+  - visit personal access tokens and create a new token
+  - add the admin repo hook
+  - copy token on prompt
+  - vercel will run build cmd's for you
+    - see package json -> build "next build"
+  - You will need to give vercel access to your repository
+  - You may need to config a project furhter
+  - Back in mongo. Network access **allow from anywhere**
 
 #### Using Fallback Pages & Re-deploying
-
+  - We only set the right pages to generate at build time
+  - You can set `fallback` to `blocking` 
+  - verecel will deploy on changes on push
+  
 #### Summary
 
 #### Module Resources
