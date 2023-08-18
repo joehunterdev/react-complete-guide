@@ -2300,6 +2300,40 @@ export default handler;
 
 ---
 
+### Module Introduction
+
+#### Preparing the Demo Project
+
+#### Using CSS Transitions
+
+#### Using CSS Animations
+
+#### CSS Transition & Animations Limitations
+
+#### Using ReactTransitionGroup
+
+#### Using the Transition Component
+
+#### Wrapping the Transition Component
+
+#### Animation Timings
+
+#### Transition Events
+
+#### The CSSTransition Component
+
+#### Customizing CSS Classnames
+
+#### Animating Lists
+
+#### Alternative Animation Packages
+
+#### Wrap Up
+
+#### Module Resources
+
+---
+
 ### Array functions
 
 [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
@@ -2317,10 +2351,8 @@ export default handler;
 
 Allows us to define types, avoiding potential issues like contactenating to strings together "1"+"2" instead of computing them as integers.Usefull for large teams and large volumes of code. This stricter typing will allow bugs to be detected (in ide) before run time.
 
-````
-
+```
 function add(a:number,b:number)
-
 ```
 
 ---
@@ -2331,6 +2363,7 @@ function add(a:number,b:number)
 - [Alternatives to React App](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a)
 
 ---
+
 ### Study Tips
   - Dont stop untill you have tied up on video
   - Practice in isolation if you get stuck. Break the problem down and test in stages.

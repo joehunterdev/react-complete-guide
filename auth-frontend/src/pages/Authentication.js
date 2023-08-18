@@ -30,7 +30,6 @@ export async function action({ request }) {
   }
 
   if(!response.ok){
-
     throw json({message:"Could not authenticate user."},{status:500})
   }
   const resData = await response.json();
@@ -39,7 +38,7 @@ export async function action({ request }) {
   localStorage.setItem('token', token);
   const expiration = new Date(expiration.getHours() +  1);
   localStorage.setItem('expiration', expiration.toISOString());
-  
+
   return redirect("/")
 
 }
