@@ -2300,37 +2300,117 @@ export default handler;
 
 ---
 
-### Module Introduction
+### Animating React Apps
 
-#### Preparing the Demo Project
+  #### Project Setup & Overview
+   
+   - `npm install` `npm run dev`
 
-#### Using CSS Transitions
+  #### Animating with CSS Transitions
+  --
 
-#### Using CSS Animations
+  #### Animating with CSS Animations
+  --
 
-#### CSS Transition & Animations Limitations
+  #### Introducing Framer Motion
+  --
 
-#### Using ReactTransitionGroup
+  #### Framer Motion Basics & Fundamentals
+  --
 
-#### Using the Transition Component
+  #### Animating Between Conditional Values
+  --
 
-#### Wrapping the Transition Component
+  #### Adding Entry Animations
+  --
 
-#### Animation Timings
+  #### Animating Element Disappearances / Removal
+  --
 
-#### Transition Events
+  #### Making Elements "Pop" With Hover Animations
+  --
 
-#### The CSSTransition Component
+  #### Reusing Animation States
+  --
 
-#### Customizing CSS Classnames
+  #### Nested Animations & Variants
+  --
 
-#### Animating Lists
+  #### Animating Staggered Lists
+  --
 
-#### Alternative Animation Packages
+  #### Animating Colors & Working with Keyframes
+  --
 
-#### Wrap Up
+  #### Imperative Animations
+  --
 
-#### Module Resources
+  #### Animating Layout Changes
+  --
+
+  #### Orchestrating Multi-Element Animations
+  1--
+
+  #### Combining Animations With Layout Animations
+  --
+
+  #### Animating Shared Elements
+  --
+
+  #### Re-triggering Animations via Keys
+  --
+
+  #### Scroll-based Animations
+  --
+
+  #### Alternative: Working with ReactTransitionGroup
+  --
+
+  #### Module Introduction - With ReactTransitionGroup
+  --
+
+  #### Preparing the Demo Project
+  --
+
+  #### Using CSS Transitions
+  --
+
+  #### Using CSS Animations
+  --
+
+  #### CSS Transition & Animations Limitations
+  --
+
+  #### Using ReactTransitionGroup
+  --
+
+  #### Using the Transition Component
+  --
+
+  #### Wrapping the Transition Component
+  --
+
+  #### Animation Timings
+  --
+
+  #### Transition Events
+  --
+
+  #### The CSSTransition Component
+  --
+
+  #### Customizing CSS Classnames
+  --
+
+  #### Animating Lists
+  --
+
+  #### Alternative Animation Packages
+  --
+
+  #### Wrap Up
+  --
+
 
 ---
 
@@ -2367,6 +2447,7 @@ function add(a:number,b:number)
 ### Study Tips
   - Dont stop untill you have tied up on video
   - Practice in isolation if you get stuck. Break the problem down and test in stages.
+
 ---
 #### Usefull node
 
@@ -2416,8 +2497,12 @@ Regular Expression Pattern (Ref: https://bit.ly/33cv2vn):
 \[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]\*[a-z0-9]:
 (?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
 
+## regex
 
-[0-999].
+[0-999]. -> ##
+[0-999]min -> ##
+
+[0-9][0-9][0-9].
 
 #### Bugs
 
