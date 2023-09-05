@@ -2303,14 +2303,19 @@ export default handler;
 ### Animating React Apps
 
   #### Project Setup & Overview
-   
+   - ** is a vite project
    - `npm install` `npm run dev`
+   - Vite needs .jsx extension
 
   #### Animating with CSS Transitions
-  --
+  - We can ofcourse use template literals and switch a classname 
+  ```   {`challenge-item-details ${isExpanded ? 'expanded':''}   ```
+  - Css for animation: `transition: transform 0.2s ease-out;` This typically will be enough.
 
   #### Animating with CSS Animations
-  --
+  - Slide up + Fade in for example is more complex
+  - We can use `@keyframes` to define our animation with its name that then can be applied to our element
+  -` animation: slide-up-fade-in 0.3s;`
 
   #### Introducing Framer Motion
   --
