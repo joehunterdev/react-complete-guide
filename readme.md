@@ -2341,7 +2341,12 @@ export default handler;
     - Defaults **inital** `initial={{opacity: 0, y: -30}}` 
 
   #### Animating Element Disappearances / Removal
-  - Defaults **exit** `initial={{opacity: 0, y: -30}}` 
+  - Defaults **exit** `ext={{opacity: 0, y: -30}}` 
+  - Issues ofcourse can be having conditionals that remove elements from the dom 
+  - We can use `AnimatePresence` as a **wrapper** to handle this- `import {AnimatePresence} from 'framer-motion'`
+    - This will run the exit animation *Before* removing 
+
+
 
   #### Making Elements "Pop" With Hover Animations
   --
