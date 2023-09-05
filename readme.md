@@ -2352,8 +2352,8 @@ export default handler;
   - We can use while to make the button `pop`
 
   #### Reusing Animation States
-  --
-
+  - `const hiddenAnimationState = {opacity: 0, y: -30}`
+  - Variants is good for definition and re-using
   #### Nested Animations & Variants
   --
 
