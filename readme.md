@@ -2318,10 +2318,19 @@ export default handler;
   -` animation: slide-up-fade-in 0.3s;`
 
   #### Introducing Framer Motion
-  --
+  - We can use `framer-motion` to animate elements that are removed from dom
+  - Disapearance and Ui and complecixty can be handled by libraries
+  - `npm install framer-motion`
+  - It has a lot of features
 
   #### Framer Motion Basics & Fundamentals
-  --
+  - Lets dive into some coding examples: '/framer-motion'
+    - to use motion you need to `import {motion}`
+    - You need to use the motion component ```<motion.div id="box" animate={{ x, y, rotate }} transition={{duration:3}}/>```
+    - when you set the prop it is passed to the motion component
+    - It gives this natural look and feel. 
+    - THis *physics* aproach feels natural
+    - **The keys can be avoided and shortened (standard js feature)**
 
   #### Animating Between Conditional Values
   --
@@ -2341,7 +2350,7 @@ export default handler;
   #### Nested Animations & Variants
   --
 
-  #### Animating Staggered Lists
+  #### Animating Staggered Lists 05/09/2023
   --
 
   #### Animating Colors & Working with Keyframes
