@@ -2354,8 +2354,10 @@ export default handler;
   #### Reusing Animation States
   - `const hiddenAnimationState = {opacity: 0, y: -30}`
   - Variants is good for definition and re-using
+
   #### Nested Animations & Variants
-  --
+  - can also be used to trigger states deep within a component
+  - framer animnation will wait for one animation to finish. Which can be problematic for delays and redundancy
 
   #### Animating Staggered Lists 05/09/2023
   --
