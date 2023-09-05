@@ -2360,7 +2360,7 @@ export default handler;
   - framer animnation will wait for one animation to finish. Which can be problematic for delays and redundancy
 
   #### Animating Staggered Lists 05/09/2023
-  --
+  - Animating step by step you can define the stagger key with params in the parent elemnent.
 
   #### Animating Colors & Working with Keyframes
   --
