@@ -2349,7 +2349,7 @@ export default handler;
 
 
   #### Making Elements "Pop" With Hover Animations
-  --
+  - We can use while to make the button `pop`
 
   #### Reusing Animation States
   --
