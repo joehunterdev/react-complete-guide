@@ -2336,10 +2336,12 @@ export default handler;
   --
 
   #### Adding Entry Animations
-  --
+  - To handle a close of our modal we can tap into `framer-motion`
+  - Remeber when modifying we now dont have any state that handles (appearance/disapearance)
+    - Defaults **inital** `initial={{opacity: 0, y: -30}}` 
 
   #### Animating Element Disappearances / Removal
-  --
+  - Defaults **exit** `initial={{opacity: 0, y: -30}}` 
 
   #### Making Elements "Pop" With Hover Animations
   --
