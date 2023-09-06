@@ -2385,7 +2385,7 @@ export default handler;
     - We can do this by passing a key to the parent item
 
   #### Scroll-based Animations
-  --
+  - We can create special scroll y behavious and pass them to. for the syle prop
 
   #### Alternative: Working with ReactTransitionGroup
   --

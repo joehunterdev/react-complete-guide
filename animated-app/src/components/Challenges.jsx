@@ -18,7 +18,6 @@ export default function Challenges() {
       if (prevId === id) {
         return null;
       }
-
       return id;
     });
   }
