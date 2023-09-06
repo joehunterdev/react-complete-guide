@@ -3,7 +3,7 @@ import { useContext, useRef, useState } from "react";
 import { ChallengesContext } from "../store/challenges-context.jsx";
 import Modal from "./Modal.jsx";
 import images from "../assets/images.js";
-import { motion, useAnimate,stagger } from "framer-motion";
+import { motion, useAnimate, stagger } from "framer-motion";
 export default function NewChallenge({ onDone }) {
   const title = useRef();
   const description = useRef();
@@ -32,11 +32,15 @@ export default function NewChallenge({ onDone }) {
       !challenge.image
     ) {
       animate(
-        "input, textarea",
+        "input,textarea",
         {
-          x: [-10,0,10,0]
+          x: [-10, 0, 10, 0],
         },
-        { type: "spring", duration:0.2,delay:stagger(0.08) }
+        {
+          type: "spring",
+          duration: 0.2,
+          delay: stagger(0.08),
+        }
       );
       return;
     }
