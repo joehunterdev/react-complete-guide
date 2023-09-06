@@ -2333,7 +2333,6 @@ export default handler;
     - **The keys can be avoided and shortened (standard js feature)**
 
   #### Animating Between Conditional Values
-  --
 
   #### Adding Entry Animations
   - To handle a close of our modal we can tap into `framer-motion`
@@ -2345,8 +2344,6 @@ export default handler;
   - Issues ofcourse can be having conditionals that remove elements from the dom 
   - We can use `AnimatePresence` as a **wrapper** to handle this- `import {AnimatePresence} from 'framer-motion'`
     - This will run the exit animation *Before* removing 
-
-
 
   #### Making Elements "Pop" With Hover Animations
   - We can use while to make the button `pop`
@@ -2363,7 +2360,8 @@ export default handler;
   - Animating step by step you can define the stagger key with params in the parent elemnent.
 
   #### Animating Colors & Working with Keyframes
-  --
+  - `,backgroundColor: '#ff0080'`
+  - visible:scale can be an array `[0.8,1.2]`
 
   #### Imperative Animations
   --
@@ -2402,6 +2400,12 @@ export default handler;
   --
 
   #### CSS Transition & Animations Limitations
+
+
+
+
+
+
   --
 
   #### Using ReactTransitionGroup
