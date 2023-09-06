@@ -2369,10 +2369,10 @@ export default handler;
   - we can use ref to pass to our animate method as scopre
 
   #### Animating Layout Changes
-  - 
+  - Lets animate a list removal
 
   #### Orchestrating Multi-Element Animations
-  1--
+  -
 
   #### Combining Animations With Layout Animations
   --
@@ -2381,7 +2381,8 @@ export default handler;
   --
 
   #### Re-triggering Animations via Keys
-  --
+  -- Animations themselves can be retriggered saving additional code
+    - We can do this by passing a key to the parent item
 
   #### Scroll-based Animations
   --
