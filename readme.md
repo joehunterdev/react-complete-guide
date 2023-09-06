@@ -2364,10 +2364,12 @@ export default handler;
   - visible:scale can be an array `[0.8,1.2]`
 
   #### Imperative Animations
-  --
+  - we can pass a class identifier as an argument
+  - Stagger can be passed as a type
+  - we can use ref to pass to our animate method as scopre
 
   #### Animating Layout Changes
-  --
+  - 
 
   #### Orchestrating Multi-Element Animations
   1--
@@ -2399,7 +2401,7 @@ export default handler;
   #### Using CSS Animations
   --
 
-  #### CSS Transition & Animations Limitations
+  #### CSS Transition & Animations Limitations 06/09/2023
 
 
 
