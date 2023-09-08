@@ -2388,7 +2388,7 @@ export default handler;
   - We can create special scroll y behavious and pass them to. for the syle prop
 
   #### Alternative: Working with ReactTransitionGroup
-  --
+  - 
 
   #### Module Introduction - With ReactTransitionGroup
   --
@@ -2440,6 +2440,72 @@ export default handler;
 
   #### Wrap Up
   --
+
+---
+
+
+---
+
+## Module Introduction
+  - The advantages of using of context:
+    - is to avoid additional library
+    - stay just within react world
+    - can shrink bundle
+
+  #### In this section
+
+    `````
+    
+    1) npm install --save react@latest react-dom@latest
+
+    2) Update index.js:
+
+    Replace
+
+    ReactDOM.render(
+        <Provider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>, document.getElementById('root'));
+    with
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
+        <Provider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>);
+
+    `````
+
+  #### Starting Project & Why You Would Replace Redux
+    - There are two approaches
+
+  #### Alternative: Using the Context API
+
+  #### Toggling Favorites with the Context API
+
+  #### Context API Summary (and why NOT to use it instead of Redux)
+
+  #### Getting Started with a Custom Hook as a Store
+
+  #### Finishing the Store Hook
+
+  #### Creating a Concrete Store
+
+  #### Using the Custom Store
+
+  #### Custom Hook Store Summary
+
+  #### Optimizing the Custom Hook Store
+
+  #### Bonus: Managing Multiple State Slices with the Custom Store Hook
+
+  #### Wrap Up
+
+  #### Module Resources
 
 
 ---
