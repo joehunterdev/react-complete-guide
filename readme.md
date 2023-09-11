@@ -2506,7 +2506,8 @@ export default handler;
   #### Optimizing the Custom Hook Store
 
   #### Bonus: Managing Multiple State Slices with the Custom Store Hook
-
+    - In most cases redux is fine
+    
   #### Wrap Up
 
   #### Module Resources
