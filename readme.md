@@ -2488,10 +2488,14 @@ export default handler;
   #### Toggling Favorites with the Context API
 
   #### Context API Summary (and why NOT to use it instead of Redux)
+    - Context is its good for low *frequency updates*
 
   #### Getting Started with a Custom Hook as a Store
+    - Context api is made for some states like authentication
 
   #### Finishing the Store Hook
+  
+    - For hight frequency states we do have alt to redux
 
   #### Creating a Concrete Store
 

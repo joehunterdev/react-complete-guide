@@ -1,12 +1,10 @@
 import React from 'react';
-// import { useDispatch } from 'react-redux';
 import { useContext } from 'react';
 import Card from '../UI/Card';
 import './ProductItem.css';
 import { ProductsContext } from '../../context/products-context';
 
 const ProductItem = props => {
-  // const dispatch = useDispatch();
   
   const toggleFav = useContext(ProductsContext).toggleFav;
 

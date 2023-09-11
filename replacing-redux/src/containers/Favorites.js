@@ -6,9 +6,7 @@ import './Products.css';
 import { ProductsContext } from '../context/products-context';
 
 const Favorites = props => {
-  // const favoriteProducts = useSelector(state =>
-  //   state.shop.products.filter(p => p.isFavorite)
-  // );
+
   const favoriteProducts = useContext(ProductsContext).products.filter(p => p.isFavorite);
   let content = <p className="placeholder">Got no favorites yet!</p>;
   if (favoriteProducts.length > 0) {
