@@ -31,6 +31,7 @@ export default function NewChallenge({ onDone }) {
       !challenge.deadline.trim() ||
       !challenge.image
     ) {
+
       animate(
         "input,textarea",
         {
@@ -42,9 +43,9 @@ export default function NewChallenge({ onDone }) {
           delay: stagger(0.08),
         }
       );
+
       return;
     }
-
     onDone();
     addChallenge(challenge);
   }

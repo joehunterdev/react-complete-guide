@@ -48,9 +48,7 @@ export default props => {
   };
 
   return (
-    <ProductsContext.Provider
-      value={{ products: productsList, toggleFav: toggleFavorite }}
-    >
+    <ProductsContext.Provider value={{ products: productsList, toggleFav: toggleFavorite }}>
       {props.children}
     </ProductsContext.Provider>
   );
