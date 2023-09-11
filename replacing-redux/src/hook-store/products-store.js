@@ -2,9 +2,14 @@ import { initStore } from './store';
 
 const configureStore = () => {
   const actions = {
+
     TOGGLE_FAV: (curState, productId) => {
+      console.log(productId)
+
       const prodIndex = curState.products.findIndex(p => p.id === productId);
+
       const newFavStatus = !curState.products[prodIndex].isFavorite;
+
       const updatedProducts = [...curState.products];
       updatedProducts[prodIndex] = {
         ...curState.products[prodIndex],
@@ -19,7 +24,7 @@ const configureStore = () => {
         id: 'p1',
         title: 'Red Scarf',
         description: 'A pretty red scarf.',
-        isFavorite: false
+        isFavorite: true
       },
       {
         id: 'p2',

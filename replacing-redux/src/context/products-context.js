@@ -38,6 +38,7 @@ export default props => {
     setProductsList(currentProdList => {
       const prodIndex = currentProdList.findIndex(p => p.id === productId);
       const newFavStatus = !currentProdList[prodIndex].isFavorite;
+      console.log(newFavStatus)
       const updatedProducts = [...currentProdList];
       updatedProducts[prodIndex] = {
         ...currentProdList[prodIndex],
