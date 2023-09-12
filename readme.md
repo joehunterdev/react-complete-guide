@@ -2595,8 +2595,14 @@ export default handler;
   - the beauty of rendering inside your test is it will actually render connected components
   - this is technically called an **integration test**
   - this linkage isnt something you need to test in isolation
+
 ####   Testing Asynchronous Code
+  - Ofcourse the issue arrises when checking for text rendered by async code that changes will not happen inmediatley
+  - `findAllByRole` will return a promise. Meaning it will *wait* use `await` & `async () => `
+
 ####   Working With Mocks
+  - We ofc would not want to send requests to a real server
+  - We can use `jest.mock` to mock the module
 ####   Summary & Further Resources
 ####   Module Resources
 

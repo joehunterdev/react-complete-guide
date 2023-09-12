@@ -59,7 +59,7 @@ describe('Greeting component', () => {
         // //Assert
         // expect(pElement).not.toBeInTheDocument();
 
-        expect(pElement).toBeNull();
+        expect(pElement).toBe(null);
 
     })
     // test()
