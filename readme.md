@@ -2589,8 +2589,12 @@ export default handler;
 ####   Grouping Tests Together With Test Suites
 
 ####   Testing User Interaction & State
-   - its good to verbally name sequentially of events.. *Greeting cmp renders hello world*
+   - its good to have your test verbally output events.. *Greeting cmp renders hello world*
 ####   Testing Connected Components
+
+  - the beauty of rendering inside your test is it will actually render connected components
+  - this is technically called an **integration test**
+  - this linkage isnt something you need to test in isolation
 ####   Testing Asynchronous Code
 ####   Working With Mocks
 ####   Summary & Further Resources
