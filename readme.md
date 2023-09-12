@@ -2585,8 +2585,11 @@ export default handler;
 
 ####   Writing Our First Test
   - **A**rrange, **A**ct,  **A**ssert 
+
 ####   Grouping Tests Together With Test Suites
+
 ####   Testing User Interaction & State
+   - its good to verbally name sequentially of events.. *Greeting cmp renders hello world*
 ####   Testing Connected Components
 ####   Testing Asynchronous Code
 ####   Working With Mocks
