@@ -2512,6 +2512,67 @@ export default handler;
 
   #### Module Resources
 
+---
+
+### Testing
+
+###   Module Introduction
+
+#### What & Why?
+
+   - Manual Testing
+    - Preview & Test in the browser
+    - See what the *user* sees
+    - Hard to test all combinations of issues
+
+   - Automated Testing 
+     - Coded tests 
+     - Test all of your apps building blocks at once
+    
+
+####  Understanding Different Kinds Of Tests
+
+  - Unit Tests
+    - Individual units of code
+    - 12 to 100's 
+
+  - Integration Tests
+    - Test multiple units together
+    - Prove they work together
+
+  - End-to-End (E2E) Tests
+    - Test complete scenarios
+    - Typically only contain a few
+    - Important but can be done manually
+
+####   What To Test & How To Test
+
+  - What:
+    - Test different things
+    - Unit Tests: smallest building
+
+  - How:
+    - Test cucess and error cases (edge cases)
+
+
+####   Understanding the Technical Setup & Involved Tools
+  - Tools:
+    - Jest
+    - React Testing Library
+    - Cypress
+  - These are already installed in create react app 
+  - See jest package.json
+
+####   Running a First Test
+  - add *.text.js* as convention in your filename
+####   Writing Our First Test
+####   Grouping Tests Together With Test Suites
+####   Testing User Interaction & State
+####   Testing Connected Components
+####   Testing Asynchronous Code
+####   Working With Mocks
+####   Summary & Further Resources
+####   Module Resources
 
 ---
 
