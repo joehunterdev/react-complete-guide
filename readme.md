@@ -2564,8 +2564,27 @@ export default handler;
   - See jest package.json
 
 ####   Running a First Test
-  - add *.text.js* as convention in your filename
+  - add *.text.js* as convention in your 
+  
+  ```
+    //import for testing
+    import App from './App';
+    //@param description, anonymous function
+    test('renders learn react link', () => {
+      render(<App />);
+      const linkElement = screen.getByText(/learn react/i); //regex
+      expect(linkElement).toBeInTheDocument(); //is in doc
+    });
+
+  ```
+  - `npm test` will run all tests
+  - `a` will run all 
+  - Tests run on watch mode (with npm test active)
+  - Import any needed react libs & tool
+  - Expect is a global function that takes a value
+
 ####   Writing Our First Test
+  - **A**rrange, **A**ct,  **A**ssert 
 ####   Grouping Tests Together With Test Suites
 ####   Testing User Interaction & State
 ####   Testing Connected Components
@@ -2621,12 +2640,14 @@ function add(a:number,b:number)
 > > npm i --save @fortawesome/free-brands-svg-icons
 
 ```
+`npm test`
 `npm init -y` (will answer all the default questions)
 `npm install redux`
 `node redux-demo.js` execute with node
 `npm install redux react-redux`
 `npm install @reduxjs/toolkit` redux tool kit you dont need redux and the tool kit //    "redux": "^4.0.5",
 `npm install react-router-dom`
+`npm install --save react@latest react-dom@latest`
 
 #  for macOS and Linux
 `rm -rf node_modules`
