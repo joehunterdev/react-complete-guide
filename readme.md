@@ -2603,6 +2603,13 @@ export default handler;
 ####   Working With Mocks
   - We ofc would not want to send requests to a real server
   - We can use `jest.mock` to mock the module
+  - fetch is build into the browser (we dont need to test this)
+  - this is a very common scenario to simulate that jest has built in functions for this
+  - Fetch:
+    ```window.fetch = jest.fn();
+      window.fetch.mockResolvedValueOnce({populate:MockValues});//mocking fetch
+    ```
+
 ####   Summary & Further Resources
 ####   Module Resources
 
