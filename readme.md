@@ -2611,6 +2611,10 @@ export default handler;
     ```
 
 ####   Summary & Further Resources
+[Jest Test](https://jestjs.io/)
+[React Lib Tests](https://testing-library.com/docs/react-testing-library/intro/)
+[React Testing Hook](https://react-hooks-testing-library.com/) 
+
 ####   Module Resources
 
 ---
