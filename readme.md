@@ -2658,6 +2658,16 @@ export default handler;
     - browser friendly code
    
   #### Exploring the Base Types
+    - `let age: number;` *explicitly* define a type
+    - Primitive types
+      - number
+      - string
+      - boolean
+      - null 
+      - undefined
+    - Complex 
+      - object
+      - array
 
   #### Working with Array & Object Types
 
