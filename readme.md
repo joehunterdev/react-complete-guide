@@ -2084,7 +2084,7 @@ Client Side issues:
 #### Onwards to a bigger Project!
 
     - Send meetups to backend
-    - fetch and display meetups
+    - fetch and dis meetups
     - detail page dynamic page pull from slug (md5)
 
 #### Outputting a List of Meetups
@@ -2402,12 +2402,7 @@ export default handler;
   #### Using CSS Animations
   --
 
-  #### CSS Transition & Animations Limitations 06/09/2023
-
-
-
-
-
+  #### CSS Transition & Animations Limitations
 
   --
 
@@ -2610,10 +2605,11 @@ export default handler;
       window.fetch.mockResolvedValueOnce({populate:MockValues});//mocking fetch
     ```
 
-####   Summary & Further Resources
+####  Summary & Further Resources
 [Jest Test](https://jestjs.io/)
 [React Lib Tests](https://testing-library.com/docs/react-testing-library/intro/)
 [React Testing Hook](https://react-hooks-testing-library.com/) 
+
 
 ####   Module Resources
 
@@ -2634,11 +2630,78 @@ export default handler;
 
 ### TypeScript
 
-Allows us to define types, avoiding potential issues like contactenating to strings together "1"+"2" instead of computing them as integers.Usefull for large teams and large volumes of code. This stricter typing will allow bugs to be detected (in ide) before run time.
+  #### Module Introduction
 
-```
-function add(a:number,b:number)
-```
+  #### What & Why?
+  - A *superset* of javascript 
+    - extending javascript with these extra types
+    - Does **not** run in browser
+  - Allows us to define types, avoiding potential issues like contactenating to strings together "1"+"2" instead of computing them as integers.
+  - Usefull for **large teams** and large volumes of code. 
+  - This stricter typing will allow bugs to be detected (in ide) before run time.
+
+    ```
+     function add(a:number,b:number)
+    ```
+
+  #### Installing & Using TypeScript
+
+   - `npm init -y` (y for default)
+   - `npm install typescript`
+ 
+    - We can now use `tsc` to compile our code
+    - `npx tsc` will compile all files
+    - `npx tsc --init` will create a tsconfig.json file
+    - `npx tsc -w` will watch for changes
+    - `npx tsc with-typescript.ts`*Compile a single file for browser*
+    - generate *a new .js* for you
+    - browser friendly code
+   
+  #### Exploring the Base Types
+
+  #### Working with Array & Object Types
+
+  #### Understanding Type Inference
+
+  #### Using Union Types
+
+  #### Understanding Type Aliases
+
+  #### Functions & Function Types
+
+  #### Diving Into Generics
+
+  #### A Closer Look At Generics
+
+  #### Creating a React + TypeScript Project
+
+  #### Working with Components & TypeScript 20-09-2023
+
+  #### Working with Props & TypeScript
+
+  #### Adding a Data Model
+
+  #### Time to Practice: Exercise Time!
+
+  #### Form Submissions In TypeScript Projects
+
+  #### Working with refs & useRef
+
+  #### Working with "Function Props"
+
+  #### Managing State & TypeScript
+
+  #### Adding Styling
+
+  #### Time to Practice: Removing a Todo
+
+  #### The Context API & TypeScript
+
+  #### Summary
+
+  #### Bonus: Exploring tsconfig.json
+
+  #### Module Resources
 
 ---
 
@@ -2672,7 +2735,8 @@ function add(a:number,b:number)
 `npm install @reduxjs/toolkit` redux tool kit you dont need redux and the tool kit //    "redux": "^4.0.5",
 `npm install react-router-dom`
 `npm install --save react@latest react-dom@latest`
-
+   - `npm init -y` (y for default)
+   - `npm install typescript`
 #  for macOS and Linux
 `rm -rf node_modules`
 `rm -f package-lock.json`
