@@ -71,6 +71,7 @@ function print(value:any){
 }
 
 // Generics
+// Typesafe yet flexible
 // function insertAtBeggin(array:any[], value:any){ // could add num type for value but any is more flexible
 //     const  newArray = [value, ...array]; // spread operator
 //     return newArray;
