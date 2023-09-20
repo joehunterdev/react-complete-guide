@@ -44,5 +44,8 @@ let people: {
 }[]; //store and array of objects with these properties
 // we can get advanced by combining features/types
 
-let course = 'React - The Complete Guide'; // infered avoids extra code
+// let course = 'React - The Complete Guide'; // infered avoids extra code
+
+let course: string|number = 'React - The Complete Guide'; // union type
+
 course = 1234; // throws error

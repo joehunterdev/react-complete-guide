@@ -2709,6 +2709,9 @@ export default handler;
   - Use inference *whenever possbile*
 
   #### Using Union Types
+    - Sometimes we may need to use multiple types 
+      - a *Union Type*
+    - `let course: string|number = 'React - The Complete Guide'; //union type`
 
   #### Understanding Type Aliases
 
