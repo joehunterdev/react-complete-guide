@@ -2671,7 +2671,38 @@ export default handler;
 
   #### Working with Array & Object Types
 
+  ```
+    let hobbies: string[]; // array type
+    hobbies = ['sports', 'cooking'];
+
+    // object type implicit
+    // let person; any type can also be implicit
+
+    let person:{
+        name: string;
+        age: number;
+    }; 
+
+    person = {
+        name: 'Joe',
+        age: 24
+    }
+
+    // person = {
+    //     isEmployee:true //wrong type will throw error
+    // }
+
+    //Define people type but as array
+    // we can get advanced by combining features/types
+    let people: {
+        name: string;
+        age: number;
+    }[];
+
+  ```
+
   #### Understanding Type Inference
+  
 
   #### Using Union Types
 
