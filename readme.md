@@ -2672,6 +2672,7 @@ export default handler;
   #### Working with Array & Object Types
 
   ```
+  
     let hobbies: string[]; // array type
     hobbies = ['sports', 'cooking'];
 
@@ -2702,7 +2703,7 @@ export default handler;
   ```
 
   #### Understanding Type Inference
-  
+
 
   #### Using Union Types
 

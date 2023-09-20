@@ -38,8 +38,9 @@ person = {
 // }
 
 //Define people type but as array
-// we can get advanced by combining features/types
 let people: {
     name: string;
     age: number;
-}[];
+}[]; //store and array of objects with these properties
+
+// we can get advanced by combining features/types
