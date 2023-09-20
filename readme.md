@@ -2672,7 +2672,7 @@ export default handler;
   #### Working with Array & Object Types
 
   ```
-  
+
     let hobbies: string[]; // array type
     hobbies = ['sports', 'cooking'];
 
@@ -2694,16 +2694,19 @@ export default handler;
     // }
 
     //Define people type but as array
-    // we can get advanced by combining features/types
     let people: {
         name: string;
         age: number;
-    }[];
+    }[]; //store and array of objects with these properties
+    // we can get advanced by combining features/types
 
   ```
 
   #### Understanding Type Inference
 
+  - By default typescript will try to infer as many types as possible 
+  - `let course = 'React - The Complete Guide'; // infered avoids extra code`
+  - Use inference *whenever possbile*
 
   #### Using Union Types
 

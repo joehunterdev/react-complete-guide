@@ -42,5 +42,7 @@ let people: {
     name: string;
     age: number;
 }[]; //store and array of objects with these properties
-
 // we can get advanced by combining features/types
+
+let course = 'React - The Complete Guide'; // infered avoids extra code
+course = 1234; // throws error
