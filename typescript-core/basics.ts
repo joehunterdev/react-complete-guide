@@ -18,15 +18,21 @@ isInstructor = true;
 
 let hobbies: string[]; // array type
 
+//Type Alias for reuse 
+type Person = {
+    name: string;
+    age: number;
+}
+
 hobbies = ['sports', 'cooking'];
 
 // object type
 // let person; any type can also be implicit
 
-let person:{
-    name: string;
-    age: number;
-}; 
+// let person:{
+//     name: string;
+//     age: number;
+// }; 
 
 person = {
     name: 'Joe',
@@ -37,14 +43,16 @@ person = {
 //     isEmployee:true //wrong type will throw error
 // }
 
-//Define people type but as array
-let people: {
-    name: string;
-    age: number;
-}[]; //store and array of objects with these properties
-// we can get advanced by combining features/types
+// //Define people type but as array
+// let people: {
+//     name: string;
+//     age: number;
+// }[]; //store and array of objects with these properties
+// // we can get advanced by combining features/types
 
 // let course = 'React - The Complete Guide'; // infered avoids extra code
+
+let people: Person[]; //store and array of objects with these properties
 
 let course: string|number = 'React - The Complete Guide'; // union type
 

@@ -2709,11 +2709,17 @@ export default handler;
   - Use inference *whenever possbile*
 
   #### Using Union Types
+
     - Sometimes we may need to use multiple types 
       - a *Union Type*
     - `let course: string|number = 'React - The Complete Guide'; //union type`
 
   #### Understanding Type Aliases
+
+  - The more ts code we write the higher the chances for repitition
+  - We can use *type aliases* to avoid this (people/person)
+  - Define a *base type*
+  - `type Person = { name: string;    age: number;} let people: Person[]; `
 
   #### Functions & Function Types
 
