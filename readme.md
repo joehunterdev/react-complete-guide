@@ -2733,14 +2733,9 @@ export default handler;
   #### Diving Into Generics
     -  Generics are a way to create reusable components
     -  Typesafe yet flexible
-
+    -  "generic type placeholder" (T in the previous lecture)
     - ````
       // Generics
-      // Typesafe yet flexible
-      // function insertAtBeggin(array:any[], value:any){ // could add num type for value but any is more flexible
-      //     const  newArray = [value, ...array]; // spread operator
-      //     return newArray;
-      // }
       function insertAtBeggin<T>(array:T[], value:T){ // angle brackets for generics were saying that all T's are the same type on exec
         
           const  newArray = [value, ...array]; // spread operator
@@ -2754,7 +2749,7 @@ export default handler;
       updatedArray[0].split(''); // error as split is not a number method
       ````
   #### A Closer Look At Generics
-  
+
       Generic Types ("Generics") can be tricky to wrap your head around.
 
       But indeed, we are working with them all the time - one of the most prominent examples is an array.
@@ -2776,6 +2771,7 @@ export default handler;
       You could also write the above example liks this:
 
       `let numbers: Array<number> = [1, 2, 3];`
+
       Here we have the angle brackets (<>) again! But this time NOT to create our own type (as we did it in the previous lecture) but instead to tell TypeScript which actual type should be used for the "generic type placeholder" (T in the previous lecture).
 
       Just as shown in the last lecture, TypeScript would be able to infer this as well - we rely on that when we just write:
@@ -2793,6 +2789,16 @@ export default handler;
       So we can not just use the angle brackets to define a generic type but also to USE a generic type and explicitly set the placeholder type that should be used - sometimes this is required if TypeScript is not able to infer the (correct) type. We'll see this later in this course section!
 
   #### Creating a React + TypeScript Project
+    - You can google react app with typescript
+    - `npx create-react-app react-with-typescript --template typescript`
+    - Will create ts subfolder
+    - `npm start` will run the app
+    - Project will now consume ts and compile it to js
+    - Package json is mostly same + typescript and a bunch of @type dependencies
+    - tsconfig.json is the main config file
+    - `npm install --save @types/react-router-dom` for example
+    - For better dev we need translation from the react/dom js libraries
+      - Not all libraries need *translations*
 
   #### Working with Components & TypeScript 20-09-2023
 
@@ -2852,6 +2858,7 @@ export default handler;
 `node redux-demo.js` execute with node
 `npm install redux react-redux`
 `npm install @reduxjs/toolkit` redux tool kit you dont need redux and the tool kit //    "redux": "^4.0.5",
+`npx create-react-app react-typescript-app --template typescript`
 `npm install react-router-dom`
 `npm install --save react@latest react-dom@latest`
    - `npm init -y` (y for default)
