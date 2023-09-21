@@ -2865,10 +2865,27 @@ export default handler;
       `this using bind and defining `
   #### The Context API & TypeScript
 
-  #### Summary
 
+  #### Summary
+  - Learn more at (Learn More)[https://typescriptlang.org]
   #### Bonus: Exploring tsconfig.json
 
+  The tsconfig.json file corresponds to the configuration of the TypeScript compiler (tsc).
+
+    These links could give you details about these attributes:
+    (Handbook)[http://www.typescriptlang.org/docs/handbook/tsconfig-json.html]
+    (Schema)[http://json.schemastore.org/tsconfig]
+    
+    - Here are some hints:
+      - *target*: the language used for the compiled output
+      - *module*: the module manager used in the compiled output. system is for SystemJS, commonjs for CommonJS.
+      - *moduleResolution*: the strategy used to resolve module declaration files (.d.ts files). With the node approach, they are loaded from the node_modules folder like a module (require('module-name'))
+      - *sourceMap*: generate or not source map files to debug directly your application TypeScript files in the browser,
+      - *emitDecoratorMetadata*: emit or not design-type metadata for decorated declarations in source,
+      - *experimentalDecorators*: enables or not experimental support for ES7 decorators,
+      - *removeComments*: remove comments or not
+      - *noImplicitAny*: allow or not the use of variables / parameters without types (implicit)
+      
   #### Module Resources
 
 ---
