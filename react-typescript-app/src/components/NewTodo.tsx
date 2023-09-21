@@ -1,6 +1,6 @@
 import {useRef} from 'react'
 
-const NewTodo = () => {
+const NewTodo: React.FC<{onAddTodo: (text:string) => void }> = (props) => {
     // We need to be implicit agaain for ts because of type definintion
     const todoTextInputRef = useRef<HTMLInputElement>(null);
     const submitHandler = (event: React.FormEvent) => {
@@ -12,7 +12,7 @@ const NewTodo = () => {
             return;
         }
 
-        
+        props.onAddTodo?.(entererdText);
     }
     
     return (
