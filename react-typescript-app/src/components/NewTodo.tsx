@@ -1,27 +1,33 @@
-import {useRef} from 'react'
+import { useRef, useContext } from 'react';
+
+import { TodosContext } from '../store/todos-context';
 import classes from './NewTodo.module.css';
-const NewTodo: React.FC<{onAddTodo: (text:string) => void }> = (props) => {
-    // We need to be implicit agaain for ts because of type definintion
-    const todoTextInputRef = useRef<HTMLInputElement>(null);
-    const submitHandler = (event: React.FormEvent) => {
-        event.preventDefault();
-        const entererdText = todoTextInputRef.current!.value;
 
-        if(entererdText.trim().length === 0){
-            // throw an error
-            return;
-        }
+const NewTodo: React.FC = () => {
+  const todosCtx = useContext(TodosContext);
 
-        props.onAddTodo?.(entererdText);
+  const todoTextInputRef = useRef<HTMLInputElement>(null);
+
+  const submitHandler = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const enteredText = todoTextInputRef.current!.value;
+
+    if (enteredText.trim().length === 0) {
+      // throw an error
+      return;
     }
-    
-    return (
-        <form onSubmit={submitHandler} className={classes.form}>
-            <label htmlFor="text">Todo Text</label>
-            <input type="text" id="text" ref={todoTextInputRef} />
-            <button>Add Todo</button>
-        </form>
-    );
-}
+
+    todosCtx.addTodo(enteredText);
+  };
+
+  return (
+    <form onSubmit={submitHandler} className={classes.form}>
+      <label htmlFor='text'>Todo text</label>
+      <input type='text' id='text' ref={todoTextInputRef} />
+      <button>Add Todo</button>
+    </form>
+  );
+};
 
 export default NewTodo;
