@@ -2814,8 +2814,16 @@ export default handler;
     - We need to let typescript know how to handle this prop internally
     - different FCs can have different prop definitions
     - This will give us nice autocompletion 
-    -
+
   #### Adding a Data Model
+     - A model is where we can define what the data should look like
+     - We can create subfolder with the a todo.ts not tsx as its not a cmp
+     - Could be a class or interface
+       - Define properties first for TS class. As We dont *need*  to use constructor in model. We can jump straight into the properties
+       - We can create this later to make sure it consumes data
+     - You can also use your classname as a type `React.FC<{ items: Todo[] }>`
+     - Using these models we are defining clear structure and shape of data
+     - Meaning alots of errors can be solved before runtime
 
   #### Time to Practice: Exercise Time!
 

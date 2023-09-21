@@ -76,8 +76,8 @@ function print(value:any){
 //     const  newArray = [value, ...array]; // spread operator
 //     return newArray;
 // }
+
 function insertAtBeggin<T>(array:T[], value:T){ // angle brackets for generics were saying that all T's are the same type on exec
-   
     const  newArray = [value, ...array]; // spread operator
     return newArray;
 }
@@ -86,4 +86,4 @@ const demoArray = [1,2,3]
 
 const updatedArray = insertAtBeggin(demoArray, -1); // inserted at beggining -1 is infered as number
 
-updatedArray[0].split(''); // error as split is not a number method
+updatedArray[0].split(''); //error as split is not a number method
