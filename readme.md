@@ -2826,7 +2826,8 @@ export default handler;
      - Meaning alots of errors can be solved before runtime
 
   #### Time to Practice: Exercise Time!
-
+    - Outsource todo cmp and configure correct type of cmp
+    - We can use a model to define the shape of our data
   #### Form Submissions In TypeScript Projects
 
   #### Working with refs & useRef
