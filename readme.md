@@ -2852,11 +2852,17 @@ export default handler;
   #### Managing State & TypeScript
     - We now can manage the state to which again we pass a generic type
        - `React.useState<Todo[]>([])`
-
+  
   #### Adding Styling
 
   #### Time to Practice: Removing a Todo
-
+    - Remove todo by clicking on them
+      - We can use filter to remove an item from an array
+    - We can achieve by setting parameters with anonymous function
+    - onRemoveTodo: (id:string) => void }
+    - `<TodoItem key={item.id} text={item.text} onRemoveTodo={props.onRemoveTodo.bind(null,item.id)} />`
+    - Then later using bind to pass the id
+      `this using bind and defining `
   #### The Context API & TypeScript
 
   #### Summary
