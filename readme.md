@@ -2828,9 +2828,19 @@ export default handler;
   #### Time to Practice: Exercise Time!
     - Outsource todo cmp and configure correct type of cmp
     - We can use a model to define the shape of our data
+
   #### Form Submissions In TypeScript Projects
+    - `event: React.FormEvent` can be used to define the type of event
 
   #### Working with refs & useRef
+    - We need to be implicit agaain for ts because of type definintion
+    - Along with this we need to define a default value (null)
+     - `const todoTextInputRef = useRef<HTMLInputElement>(null);`
+    - `current?` tries to access value else store null
+      - if you know this value is not null you can use `!` to tell ts this is not null `current!`
+      - `?` try to get me the value and if null store null
+      - `!` Im certain that this wont be null so give me the non null value
+        regular expressions 
 
   #### Working with "Function Props"
 
