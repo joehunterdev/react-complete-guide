@@ -2844,11 +2844,14 @@ export default handler;
 
   #### Working with "Function Props"
     - Remember we can pass pointers at functions as props to our components
-    - NewTodo should now be a functional component. To which we actually pass a function or pointer `props.onAddTodo?.(enteredText);` 
+    - NewTodo should now be a functional component.
+    ` React.FC<{onAddTodo: (text:string) => void }>` To which we actually pass a function or pointer `props.onAddTodo?.(enteredText);` 
       - Our type needs to be defined as anonymos: `onAddTodo: (text: string) => void;` 
       - Remember this anonymous function expects an argument 
 
   #### Managing State & TypeScript
+    - We now can manage the state to which again we pass a generic type
+       - `React.useState<Todo[]>([])`
 
   #### Adding Styling
 
