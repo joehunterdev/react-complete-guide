@@ -2734,6 +2734,7 @@ export default handler;
     -  Generics are a way to create reusable components
     -  Typesafe yet flexible
     -  "generic type placeholder" (T in the previous lecture)
+    -  Work with whatever type  <T>  is defined as on execution `function insertAtBeggin<T>(array:T[], value:T)`
     - ````
       // Generics
       function insertAtBeggin<T>(array:T[], value:T){ // angle brackets for generics were saying that all T's are the same type on exec
@@ -2792,7 +2793,6 @@ export default handler;
     - You can google react app with typescript
     - `npx create-react-app react-with-typescript --template typescript`
     - Will create ts subfolder
-    - `npm start` will run the app
     - Project will now consume ts and compile it to js
     - Package json is mostly same + typescript and a bunch of @type dependencies
     - tsconfig.json is the main config file
@@ -2800,10 +2800,21 @@ export default handler;
     - For better dev we need translation from the react/dom js libraries
       - Not all libraries need *translations*
 
-  #### Working with Components & TypeScript 20-09-2023
+  #### Working with Components & TypeScript
+    - 
 
   #### Working with Props & TypeScript
-
+    - We get additional ide support for props warnings and types
+      - After defining our type the `<Todos />` will now flag red as ts knows were missing a type as its not being used correctly
+    - tsconfig.js can define strictness
+    - `items:string[] ` is a custom prop
+    - FC is functional component. this will give us the correct type for props
+      - Pass params `<{ items: string[] }>` uses curly brackets 
+    - Plugin in a concrete value to be used. As we dont want it to infer the type for props
+    - We need to let typescript know how to handle this prop internally
+    - different FCs can have different prop definitions
+    - This will give us nice autocompletion 
+    -
   #### Adding a Data Model
 
   #### Time to Practice: Exercise Time!
@@ -2863,6 +2874,8 @@ export default handler;
 `npm install --save react@latest react-dom@latest`
    - `npm init -y` (y for default)
    - `npm install typescript`
+ `npx create-react-app react-with-typescript --template typescript`
+
 #  for macOS and Linux
 `rm -rf node_modules`
 `rm -f package-lock.json`
