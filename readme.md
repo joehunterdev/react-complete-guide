@@ -1997,6 +1997,54 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
 
 ---
 
+### React Query / Tansack: Handling HTTP request
+
+#### Module Introduction
+
+#### Project Setup 
+
+#### Module Introduction
+
+#### Project Setup & Overview
+
+####  React Query: What & Why?
+
+####  Installing & Using Tanstack Query - And Seeing Why It's Great!
+
+####  Understanding & Configuring Query Behaviors - Cache & Stale Data
+
+####  Dynamic Query Functions & Query Keys
+
+####  The Query Configuration Object & Aborting Requests
+
+####  Enabled & Disabled Queries
+
+####  Changing Data with Mutations
+
+####  Fetching More Data & Testing the Mutation
+
+####  Acting on Mutation Success & Invalidating Queries
+
+####  A Challenge! The Problem
+
+####  A Challenge! The Solution
+
+####  Disabling Automatic Refetching After Invalidations
+
+####  Enhancing the Demo App & Repeating Mutation Concepts
+
+####  React Query Advantages In Action
+
+####  Updating Data with Mutations
+
+####  Optimistic Updating
+
+####  Using the Query Key As Query Function Input
+
+####  React Query & React Router
+
+---
+
 ### Next Js
 
 #### Module Introduction
@@ -2868,6 +2916,7 @@ export default handler;
 
   #### Summary
   - Learn more at (Learn More)[https://typescriptlang.org]
+
   #### Bonus: Exploring tsconfig.json
 
   The tsconfig.json file corresponds to the configuration of the TypeScript compiler (tsc).
@@ -2895,11 +2944,33 @@ export default handler;
 - Create React App is dead, hooks are the future utilize: "Next" "Vite" or "Remix"
 - [Alternatives to React App](https://blog.bitsrc.io/the-future-of-react-why-create-react-app-is-deprecated-and-hooks-are-the-future-83e8a)
 
+### Roundup
+  - Practice ! apply your knowledge
+  - Demos and dummy projects
+  - re-build course projects
+  - come dummy businesses ideas and websites
+  - google for react examples
+
+  #### explore the react ecosystem
+    - gatsby.js
+      - features like static site generation, image optimization, and automatic routing, making it a comprehensive tool for web development.
+    - preact
+      -  (react with smaller footprint)
+    - react native
+      - for mobile apps 
+      - also options for desktop
+    - https://acad.link/nextjs
+    - React Native: https://acad.link/react-native
+    - Mern https://acad.link/mern
+
 ---
 
 ### Study Tips
   - Dont stop untill you have tied up on video
   - Practice in isolation if you get stuck. Break the problem down and test in stages.
+
+  #### Weakpoints
+    - Specifically <t> components and props generic types in ts
 
 ---
 #### Usefull node
