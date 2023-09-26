@@ -2040,7 +2040,10 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
   - `useQuery` takes a `staleTime` param
     - You can make sure no unecessary requests are made
     - `gcTime` garbage cleanup
-
+  - To pass a param into useQuery can write anonymouse function 
+  - We now need a different key for each event
+  - Using `useRef` will be tricky as it *doesnt* trigger the function to re-execute
+  - ? only access if undefined
   ####  Dynamic Query Functions & Query Keys
 
   ####  The Query Configuration Object & Aborting Requests
