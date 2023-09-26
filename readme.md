@@ -2048,10 +2048,14 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
   ####  Dynamic Query Functions & Query Keys
   - An object is created on the fly and passed to useQuery
   - to handle this we need to use destructuring and pass an object as param
-  - `queryFn: ({signal}) => fetchEvents({signal,searchTerm}),` anoynmous define object and pass it in
+
   ####  The Query Configuration Object & Aborting Requests
+  - `queryFn: ({signal}) => fetchEvents({signal,searchTerm}),` anoynmous define object and pass it in
 
   ####  Enabled & Disabled Queries
+  - The query as you notice will run by default (not affected by garbage or stale)
+  - We can disable this by passing `enabled:false` to useQuery
+  - We can fix this by emptying object in use state and checking that this state is `!== undefined`
 
   ####  Changing Data with Mutations
 
