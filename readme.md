@@ -1547,8 +1547,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 
 ---
 
-git fetch
-git checkout origin/master -- E:\www\react-complete-guide\package.json
+`git fetch`
+`git checkout origin/master -- E:\www\react-complete-guide\package.json`
 
 #### Spa and Router
 
@@ -2028,12 +2028,18 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
     });
 
   ```
+
   - We need to add a special *provider* 
     - Import and instantiate then wrap your app in it
   - Note: if you now inspect network and close and reopen tab you will find events automatically reloads
   - If we now change some data in the background tanstack will **automatically update the data**
 
   ####  Understanding & Configuring Query Behaviors - Cache & Stale Data
+  - Multiple requests happen in the background to check for stale data and cached
+   - *Throttling* limiting the bandwidth available to users (dev tools show 3g)
+  - `useQuery` takes a `staleTime` param
+    - You can make sure no unecessary requests are made
+    - `gcTime` garbage cleanup
 
   ####  Dynamic Query Functions & Query Keys
 
@@ -2047,7 +2053,7 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
 
   ####  Acting on Mutation Success & Invalidating Queries
 
-  
+
 
   ####  A Challenge! The Problem
 
