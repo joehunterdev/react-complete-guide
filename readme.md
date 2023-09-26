@@ -2044,8 +2044,11 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
   - We now need a different key for each event
   - Using `useRef` will be tricky as it *doesnt* trigger the function to re-execute
   - ? only access if undefined
-  ####  Dynamic Query Functions & Query Keys
 
+  ####  Dynamic Query Functions & Query Keys
+  - An object is created on the fly and passed to useQuery
+  - to handle this we need to use destructuring and pass an object as param
+  - `queryFn: ({signal}) => fetchEvents({signal,searchTerm}),` anoynmous define object and pass it in
   ####  The Query Configuration Object & Aborting Requests
 
   ####  Enabled & Disabled Queries
