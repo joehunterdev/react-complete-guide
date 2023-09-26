@@ -1997,53 +1997,78 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
 
 ---
 
-### React Query / Tansack: Handling HTTP request
+### React Query / Tanstack: Handling HTTP request
 
-#### Module Introduction
+  #### Module Introduction
+  - 
+  #### Project Setup 
 
-#### Project Setup 
+  #### Module Introduction
 
-#### Module Introduction
+  #### Project Setup & Overview
+  
+  ####  React Query: What & Why?
+    - Alternative to fetch and useEffect
+      - where we have to manage trigger fetch
 
-#### Project Setup & Overview
+  - Is a good way to perform http requests
+  - State, Caching and stale data handling 
+  
+  ####  Installing & Using Tanstack Query - And Seeing Why It's Great!
+  - `npm install @tanstack/react-query@beta`
+  - Tanstack itself *does NOT send HTTP* requests. You have to write the code that handles this
+  - Tanstack then manages **data,errors,caching**
+  - useQuery function requires a **promise** & a **key** for reuse
+    - This key can be an array 
 
-####  React Query: What & Why?
+  ```
+    const {data,isPending,isError,error} = useQuery({
+      queryKey: ['events'],
+      queryFn: () => fetchEvents
+    });
 
-####  Installing & Using Tanstack Query - And Seeing Why It's Great!
+  ```
+  - We need to add a special *provider* 
+    - Import and instantiate then wrap your app in it
+  - Note: if you now inspect network and close and reopen tab you will find events automatically reloads
+  - If we now change some data in the background tanstack will **automatically update the data**
 
-####  Understanding & Configuring Query Behaviors - Cache & Stale Data
+  ####  Understanding & Configuring Query Behaviors - Cache & Stale Data
 
-####  Dynamic Query Functions & Query Keys
+  ####  Dynamic Query Functions & Query Keys
 
-####  The Query Configuration Object & Aborting Requests
+  ####  The Query Configuration Object & Aborting Requests
 
-####  Enabled & Disabled Queries
+  ####  Enabled & Disabled Queries
 
-####  Changing Data with Mutations
+  ####  Changing Data with Mutations
 
-####  Fetching More Data & Testing the Mutation
+  ####  Fetching More Data & Testing the Mutation
 
-####  Acting on Mutation Success & Invalidating Queries
+  ####  Acting on Mutation Success & Invalidating Queries
 
-####  A Challenge! The Problem
+  
 
-####  A Challenge! The Solution
+  ####  A Challenge! The Problem
 
-####  Disabling Automatic Refetching After Invalidations
+  ####  A Challenge! The Solution
 
-####  Enhancing the Demo App & Repeating Mutation Concepts
+  ####  Disabling Automatic Refetching After Invalidations
 
-####  React Query Advantages In Action
+  ####  Enhancing the Demo App & Repeating Mutation Concepts
 
-####  Updating Data with Mutations
+  ####  React Query Advantages In Action
 
-####  Optimistic Updating
+  ####  Updating Data with Mutations
 
-####  Using the Query Key As Query Function Input
+  ####  Optimistic Updating
 
-####  React Query & React Router
+  ####  Using the Query Key As Query Function Input
+
+  ####  React Query & React Router
 
 ---
+
 
 ### Next Js
 
@@ -2971,6 +2996,7 @@ export default handler;
 
   #### Weakpoints
     - Specifically <t> components and props generic types in ts
+    - Functions asynch & promise
 
 ---
 #### Usefull node
