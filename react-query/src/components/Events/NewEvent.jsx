@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-
 import Modal from "../UI/Modal.jsx";
 import EventForm from "./EventForm.jsx";
 import { useMutation } from "@tanstack/react-query";
@@ -32,12 +31,9 @@ export default function NewEvent() {
           </>
         )}
       </EventForm>
-      {isError && (
-        <ErrorBlock
-          title="An error occurred"
-          message={error.info?.message || "Failed to fetch events"}
-        />
-      )}
+      {isError &&
+      <ErrorBlock title="An error occurred" message={error.info?.message || 'Failed to fetch events'} />
+}
     </Modal>
   );
 }
