@@ -2071,14 +2071,21 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
           mutate({ event: formData });
         }
   ```
-   - 
-  
+ 
   
 
   ####  Fetching More Data & Testing the Mutation
 
   ####  Acting on Mutation Success & Invalidating Queries
+  - use `onSuccess` to trigger a function after mutation
+  - We would want to do this where we fecth our data. But not dependant on page reload
+  - We can use `invalidateQueries` to trigger a refetch with help of the `QueryClient`
+    - this takes an {} 
+    - `{queryKey: ['events']}` invalidate all queries that include this key
+  - lets make the `queryClient = new QueryClient();` external and import it to be able to separatley trigger 
 
+
+ 
   ####  A Challenge! The Problem
 
   ####  A Challenge! The Solution
