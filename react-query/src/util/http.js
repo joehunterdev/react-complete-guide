@@ -1,7 +1,8 @@
 import { QueryClient } from '@tanstack/react-query';
 export const queryClient = new QueryClient();
 
-export async function fetchEvent({ id, signal }) {
+export async function fetchEvent({signal,id}) {
+
   const response = await fetch(`http://localhost:3000/events/${id}`, { signal });
 
   if (!response.ok) {
@@ -13,12 +14,15 @@ export async function fetchEvent({ id, signal }) {
 
   const { event } = await response.json();
 
+  console.log("id " + id);
+  console.log("signal " + signal);
+
   return event;
 }
 
 export async function fetchEvents({ signal, searchTerm }) {
-    console.log(searchTerm);
-    let url = 'http://localhost:3000/events';
+
+  let url = 'http://localhost:3000/events';
   
     if (searchTerm) {
       url += '?search=' + searchTerm;
@@ -34,7 +38,10 @@ export async function fetchEvents({ signal, searchTerm }) {
     }
   
     const { events } = await response.json();
-  
+
+    // console.log("searchterm " + searchTerm);
+    // console.log("signal " + signal);
+
     return events;
   }
 
