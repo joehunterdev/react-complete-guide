@@ -2082,11 +2082,20 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
   - We can use `invalidateQueries` to trigger a refetch with help of the `QueryClient`
     - this takes an {} 
     - `{queryKey: ['events']}` invalidate all queries that include this key
+    - takes an `exact: false` also
   - lets make the `queryClient = new QueryClient();` external and import it to be able to separatley trigger 
 
 
  
   ####  A Challenge! The Problem
+    1. View details -> Make sure details page is loaded
+    2. add new fetchEvent + Delete 
+    3.  use this funk to fetch data inside event details cmp (you will need the id of this event, get that via usePaarms hook) 
+    4. Output data into events details page
+    5. needs title, image (url), image name, 
+    6. Add a delete button use the delete function to delete this event trigger 
+    7. or use with useMutation implement mututation to remove items
+
 
   ####  A Challenge! The Solution
 
