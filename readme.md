@@ -2028,7 +2028,6 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
     });
 
   ```
-
   - We need to add a special *provider* 
     - Import and instantiate then wrap your app in it
   - Note: if you now inspect network and close and reopen tab you will find events automatically reloads
@@ -2059,11 +2058,26 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
 
   ####  Changing Data with Mutations
 
+  - Mutations are a way to change data typically with a post request
+   - `useMutation` takes a configuration 
+   - `mutationFn: createNewEvent,` could be be doesnt have to be an anoy function
+   - we can pass form data to mutate
+    ``` 
+        const { mutate, isPending, isError, error } = useMutation({
+          mutationFn: createNewEvent,
+        });
+
+        function handleSubmit(formData) {
+          mutate({ event: formData });
+        }
+  ```
+   - 
+  
+  
+
   ####  Fetching More Data & Testing the Mutation
 
   ####  Acting on Mutation Success & Invalidating Queries
-
-
 
   ####  A Challenge! The Problem
 
@@ -3013,8 +3027,11 @@ export default handler;
   #### Weakpoints
     - Specifically <t> components and props generic types in ts
     - Functions asynch & promise
+    - Anonymous functions
+    - obj.? & obj.! meaning
 
 ---
+
 #### Usefull node
 
 ```
