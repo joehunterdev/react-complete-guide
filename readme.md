@@ -2116,7 +2116,14 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
   ####  Updating Data with Mutations
 
   ####  Optimistic Updating
-
+    - *optimistic updating* is that we update the ui before the request is 
+      - `onMutate`
+      - you will need to cancel queries first to ensure data is up to date
+    - At this stage the backend data will not be updated as it could be flagged as erroneous. Sp we need to `getQueryData` to get the data before the mutation
+    - `onError` we can use this to rollback the data but we must use a return statement in our onMutate to make this available 
+    - `context.previousEvent`
+    - `onSettled`  
+      - when mutations is finished, refetch
   ####  Using the Query Key As Query Function Input
 
   ####  React Query & React Router
