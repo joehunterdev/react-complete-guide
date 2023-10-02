@@ -2090,19 +2090,26 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
     2. Add new [x] fetchEvent + [x] Delete to http
     3. fetchEvent: inside eventDetails cmp 
         3.5. [x] add conditional to only fetch if no data
-    4. [x] useParams: (you will need the id of this event, get that via usePaarms hook) 
+    4. [x] useParams: (you will need the id of this event, get that via useParms hook) 
     4. [x] Output data into events details page
       4.5 [x] Get image needs title, image (url), image name, 
     6. Add a delete button 
-     6.5 use the delete function to delete this event trigger 
-    7. or use with useMutation implement mututation to remove items
-    8. [x]  Fix search function 
+      6.5 use the delete function to delete this event trigger 
+    7. or use useMutation implement mututation to remove items
+      - Wait till query has finished then redirect to home page
+    8. [x] Test search function 
+    9. [] Time format for `<time dateTime`
 
   ####  A Challenge! The Solution
 
   ####  Disabling Automatic Refetching After Invalidations
+    - Just because we have invalidated the query doesnt mean we want to refetch 
+      - `refetchType:none`
+    - We can also use `refetchOnWindowFocus:false` to disable refetching on window focus
+    - 
 
   ####  Enhancing the Demo App & Repeating Mutation Concepts
+    - **Alias** assingment destructuring `{mutate,isPending:isPendingDeletion }`
 
   ####  React Query Advantages In Action
 

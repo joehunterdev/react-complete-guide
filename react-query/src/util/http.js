@@ -14,8 +14,8 @@ export async function fetchEvent({signal,id}) {
 
   const { event } = await response.json();
 
-  console.log("id " + id);
-  console.log("signal " + signal);
+  // console.log("id " + id);
+  // console.log("signal " + signal);
 
   return event;
 }
@@ -83,6 +83,7 @@ export async function createNewEvent(eventData) {
 }
 
 export async function deleteEvent({ id }) {
+
   const response = await fetch(`http://localhost:3000/events/${id}`, {
     method: 'DELETE',
   });
@@ -93,8 +94,7 @@ export async function deleteEvent({ id }) {
     error.info = await response.json();
     throw error;
   }
-
-  return response.json();
+   return response.json();
 }
 
 // export async function deleteEvent({ id }) {
