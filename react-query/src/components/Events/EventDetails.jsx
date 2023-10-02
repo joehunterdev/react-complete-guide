@@ -70,11 +70,11 @@ export default function EventDetails() {
       {data && (
         <article id="event-details">
           <header>
-            <nav>
-             <h1>{data.title} </h1>
-               <button onClick={handleStartDelete}>Delete</button>
-              <button to="/edit">Edit</button>
-            </nav>
+          <h1>{data.title}</h1>
+          <nav>
+            <button onClick={handleStartDelete}>Delete</button>
+            <Link to="edit">Edit</Link>
+          </nav>
           </header>
           <div id="event-details-content">
             <img src={`http://localhost:3000/${data.image}`} alt="" width="50px" />
