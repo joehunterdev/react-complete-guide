@@ -2133,7 +2133,13 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
       - Uses spread `...queryKey[1]`
 
   ####  React Query & React Router
-   - Note we are using react router in this application for mutuation
+   - Note: we are using react router in this application for routing
+    - Remember *loaders* & *actions*
+      - Load content before rendering
+   - We still need to keep our useQuery in our cmp as this will levarage the *cache*!
+   - Add loader to route definition object
+     - `import EditEvent, {loader as editEventLoader} ` &  `element: <EditEvent />,loader: editEventLoader,`
+   
 ---
 
 
