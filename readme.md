@@ -2124,10 +2124,16 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
     - `context.previousEvent`
     - `onSettled`  
       - when mutations is finished, refetch
+
   ####  Using the Query Key As Query Function Input
+    - We are currently showing all events. What if we just wanted to show some
+    - Tweaking query to find return only some items
+    - Anonymous function `queryFn: ({signal}) => fetchEvents({signal,max:3}),`
+    - Signal comes from react query and already contains this key. Its enough to reuse
+      - Uses spread `...queryKey[1]`
 
   ####  React Query & React Router
-
+   - Note we are using react router in this application for mutuation
 ---
 
 
