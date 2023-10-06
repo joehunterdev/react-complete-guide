@@ -2049,8 +2049,8 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
   - to handle this we need to use destructuring and pass an object as param
 
   ####  The Query Configuration Object & Aborting Requests
-  - `queryFn: ({signal}) => fetchEvents({signal,searchTerm}),` anoynmous define object and pass it in
-
+  - `queryFn: ({signal,queryKey}) => fetchEvents({signal,...queryKey[1]}),` 
+  anoynmous define object and pass it in
   ####  Enabled & Disabled Queries
   - The query as you notice will run by default (not affected by garbage or stale)
   - We can disable this by passing `enabled:false` to useQuery
@@ -2139,6 +2139,10 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
    - We still need to keep our useQuery in our cmp as this will levarage the *cache*!
    - Add loader to route definition object
      - `import EditEvent, {loader as editEventLoader} ` &  `element: <EditEvent />,loader: editEventLoader,`
+   - Were not limited to fetching we can also *mutate*
+   - Transform to simple key data pair
+      - `  Object.fromEntries(formData)`
+   - use query helps with caching
    
 ---
 
@@ -3073,6 +3077,7 @@ export default handler;
     - Anonymous functions
     - obj.? & obj.! meaning
 
+
 ---
 
 #### Usefull node
@@ -3097,8 +3102,9 @@ export default handler;
    - `npm init -y` (y for default)
    - `npm install typescript`
  `npx create-react-app react-with-typescript --template typescript`
+ `npm run dev` for vite
 
-#  for macOS and Linux
+#  for macOS a nd Linux
 `rm -rf node_modules`
 `rm -f package-lock.json`
 `rm -f yarn.lock`
