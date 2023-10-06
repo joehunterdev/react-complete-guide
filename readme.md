@@ -1680,31 +1680,6 @@ export default App;
 
 #### Time to Practice: Problem
 
-Challenge / Exercise
-
-- [x] 1.  Add five new (dummy) page components (content can be simple <h1> elements)
-
-  - [x]     - HomePage
-  - [x]     - EventsPage
-  - [x]     - EventDetailPage
-  - [x]     - NewEventPage
-  - [x]     - EditEventPage
-
-- [x] 2.  Add routing & route definitions for these five pages
-- [x]     - / => HomePage
-- [x]     - /events => EventsPage
-- [x]     - /events/<some-id> => EventDetailPage
-- [x]     - /events/new => NewEventPage
-- [x]     - /events/<some-id>/edit => EditEventPage
-
-- [c] 3. Add a root layout that adds the <MainNavigation> component above all page components
-- [x] 4.  Add properly working links to the MainNavigation
-- [] 5. Ensure that the links in MainNavigation receive an "active" class when active
-- [x] 6.  Output a list of dummy events to the EventsPage
-- [x]     Every list item should include a link to the respective EventDetailPage
-- [x] 7.  Output the ID of the selected event on the EventDetailPage
-- [x] BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
-      likeley this will go back to defining parent
 
 #### Data Fetching with a loader()
 
@@ -1964,21 +1939,21 @@ _You can inspect in devtools -> network_
 
 #### Deployment Example
 
-    - A react SPA application is a **static website** (only html, css & javascript)
-      - All client side
-      - No static service required
-    - Can install something like firebase tools
-      - Login via ssh
-      - Init will connect you to a firebase project
-      - Ultimatley this ends with a deploy cmd
-      - Has a disable cmd `firebase: hosting:disable`
+  - A react SPA application is a **static website** (only html, css & javascript)
+    - All client side
+    - No static service required
+  - Can install something like firebase tools
+    - Login via ssh
+    - Init will connect you to a firebase project
+    - Ultimatley this ends with a deploy cmd
+    - Has a disable cmd `firebase: hosting:disable`
 
-    - **GitHub actions**: allows you to automate your build, test, and deployment pipeline.
+  - **GitHub actions**: allows you to automate your build, test, and deployment pipeline.
 
 #### Server-side Routing & Required Configuration
 
-    - Dont forget the router needs a url to be configured
-    - Take it for granted users will add in strange urls
+  - Dont forget the router needs a url to be configured
+  - Take it for granted users will add in strange urls
 
 #### How do I prepare React app for deployment?
 
@@ -2052,6 +2027,7 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
   - `queryFn: ({signal,queryKey}) => fetchEvents({signal,...queryKey[1]}),` 
   anoynmous define object and pass it in
   ####  Enabled & Disabled Queries
+
   - The query as you notice will run by default (not affected by garbage or stale)
   - We can disable this by passing `enabled:false` to useQuery
   - We can fix this by emptying object in use state and checking that this state is `!== undefined`
@@ -2062,21 +2038,22 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
    - `useMutation` takes a configuration 
    - `mutationFn: createNewEvent,` could be be doesnt have to be an anoy function
    - we can pass form data to mutate
-    ``` 
-        const { mutate, isPending, isError, error } = useMutation({
-          mutationFn: createNewEvent,
-        });
+  
+``` 
+      const { mutate, isPending, isError, error } = useMutation({
+        mutationFn: createNewEvent,
+      });
 
-        function handleSubmit(formData) {
-          mutate({ event: formData });
-        }
-  ```
- 
+      function handleSubmit(formData) {
+        mutate({ event: formData });
+      }
+``` 
   
 
   ####  Fetching More Data & Testing the Mutation
 
   ####  Acting on Mutation Success & Invalidating Queries
+
   - use `onSuccess` to trigger a function after mutation
   - We would want to do this where we fecth our data. But not dependant on page reload
   - We can use `invalidateQueries` to trigger a refetch with help of the `QueryClient`
@@ -2086,63 +2063,64 @@ lint: runs next lint to set up Next.js' built-in ESLint configuration.
   - lets make the `queryClient = new QueryClient();` external and import it to be able to separatley trigger 
  
   ####  A Challenge! The Problem
-    1. View details -> Make sure details page is loaded
-    2. Add new [x] fetchEvent + [x] Delete to http
-    3. fetchEvent: inside eventDetails cmp 
-        3.5. [x] add conditional to only fetch if no data
-    4. [x] useParams: (you will need the id of this event, get that via useParms hook) 
-    4. [x] Output data into events details page
-      4.5 [x] Get image needs title, image (url), image name, 
-    6. Add a delete button 
-      6.5 use the delete function to delete this event trigger 
-    7. or use useMutation implement mututation to remove items
-      - Wait till query has finished then redirect to home page
-    8. [x] Test search function 
-    9. [] Time format for `<time dateTime`
+
+  1. View details -> Make sure details page is loaded
+  2. Add new [x] fetchEvent + [x] Delete to http
+  3. fetchEvent: inside eventDetails cmp 
+      3.5. [x] add conditional to only fetch if no data
+  4. [x] useParams: (you will need the id of this event, get that via useParms hook) 
+  4. [x] Output data into events details page
+    4.5 [x] Get image needs title, image (url), image name, 
+  6. Add a delete button 
+    6.5 use the delete function to delete this event trigger 
+  7. or use useMutation implement mututation to remove items
+    - Wait till query has finished then redirect to home page
+  8. [x] Test search function 
+  9. [] Time format for `<time dateTime`
 
   ####  A Challenge! The Solution
 
   ####  Disabling Automatic Refetching After Invalidations
-    - Just because we have invalidated the query doesnt mean we want to refetch 
-      - `refetchType:none`
-    - We can also use `refetchOnWindowFocus:false` to disable refetching on window focus
-    - 
+  
+   - Just because we have invalidated the query doesnt mean we want to refetch 
+    - `refetchType:none`
+  - We can also use `refetchOnWindowFocus:false` to disable refetching on window focus
 
   ####  Enhancing the Demo App & Repeating Mutation Concepts
-    - **Alias** assingment destructuring `{mutate,isPending:isPendingDeletion }`
+  - **Alias** assingment destructuring `{mutate,isPending:isPendingDeletion }`
 
   ####  React Query Advantages In Action
 
   ####  Updating Data with Mutations
 
   ####  Optimistic Updating
-    - *optimistic updating* is that we update the ui before the request is 
-      - `onMutate`
-      - you will need to cancel queries first to ensure data is up to date
-    - At this stage the backend data will not be updated as it could be flagged as erroneous. Sp we need to `getQueryData` to get the data before the mutation
-    - `onError` we can use this to rollback the data but we must use a return statement in our onMutate to make this available 
-    - `context.previousEvent`
-    - `onSettled`  
-      - when mutations is finished, refetch
+  - *optimistic updating* is that we update the ui before the request is 
+    - `onMutate`
+    - you will need to cancel queries first to ensure data is up to date
+  - At this stage the backend data will not be updated as it could be flagged as erroneous. Sp we need to `getQueryData` to get the data before the mutation
+  - `onError` we can use this to rollback the data but we must use a return statement in our onMutate to make this available 
+  - `context.previousEvent`
+  - `onSettled`  
+    - when mutations is finished, refetch
 
   ####  Using the Query Key As Query Function Input
-    - We are currently showing all events. What if we just wanted to show some
-    - Tweaking query to find return only some items
-    - Anonymous function `queryFn: ({signal}) => fetchEvents({signal,max:3}),`
-    - Signal comes from react query and already contains this key. Its enough to reuse
-      - Uses spread `...queryKey[1]`
+  - We are currently showing all events. What if we just wanted to show some
+  - Tweaking query to find return only some items
+  - Anonymous function `queryFn: ({signal}) => fetchEvents({signal,max:3}),`
+  - Signal comes from react query and already contains this key. Its enough to reuse
+    - Uses spread `...queryKey[1]`
 
   ####  React Query & React Router
-   - Note: we are using react router in this application for routing
-    - Remember *loaders* & *actions*
-      - Load content before rendering
-   - We still need to keep our useQuery in our cmp as this will levarage the *cache*!
-   - Add loader to route definition object
-     - `import EditEvent, {loader as editEventLoader} ` &  `element: <EditEvent />,loader: editEventLoader,`
-   - Were not limited to fetching we can also *mutate*
-   - Transform to simple key data pair
-      - `  Object.fromEntries(formData)`
-   - use query helps with caching
+  - Note: we are using react router in this application for routing
+  - Remember *loaders* & *actions*
+    - Load content before rendering
+  - We still need to keep our useQuery in our cmp as this will levarage the *cache*!
+  - Add loader to route definition object
+    - `import EditEvent, {loader as editEventLoader} ` &  `element: <EditEvent />,loader: editEventLoader,`
+  - Were not limited to fetching we can also *mutate*
+  - Transform to simple key data pair
+    - `  Object.fromEntries(formData)`
+  - use query helps with caching
    
 ---
 
@@ -2173,23 +2151,23 @@ Client Side issues:
 
 #### Key Feature # Simplified Routing with File-based Routing
 
-    - Routing doesn exist officially in react.
-    - With next we can create a folder structure and it will create routes for us
-    - Less code, less work and more intuitive
+  - Routing doesn exist officially in react.
+  - With next we can create a folder structure and it will create routes for us
+  - Less code, less work and more intuitive
 
 #### Key Feature # Build Fullstack Apps
 
-    - Easily add your backend serverside code to your apps
-    - Storeing data, getting data, authenticating is easily added using react
+  - Easily add your backend serverside code to your apps
+  - Storeing data, getting data, authenticating is easily added using react
 
 #### Creating a New Next.js Project &
 
-    - Create you react app
-    - `npx create-next-app`
-    - `npm run build`
-    - `npm run start`
-    - *Import alias* is defining a rout or alias to pull impots from allowing you to simply `@components/Button`
-    - Css modules are included by default in next
+  - Create you react app
+  - `npx create-next-app`
+  - `npm run build`
+  - `npm run start`
+  - *Import alias* is defining a rout or alias to pull impots from allowing you to simply `@components/Button`
+  - Css modules are included by default in next
 
 #### Analyzing the Created Project
 
@@ -2198,44 +2176,44 @@ Client Side issues:
 
 #### Adding First Pages
 
-    - Api we can delete
-      1. `npx create-next-app next`
-      2. `npm run dev`
-    - Aside from index you can just create files in the pages directory
-    - You can *omit* `import react js`
+  - Api we can delete
+    1. `npx create-next-app next`
+    2. `npm run dev`
+  - Aside from index you can just create files in the pages directory
+  - You can *omit* `import react js`
 
 #### Adding Nested Paths & Pages (Nested Routes)
 
-    - We can levarage subfolders and indexes *path segments*
-    - urls should reflect your folder structure
+  - We can levarage subfolders and indexes *path segments*
+  - urls should reflect your folder structure
 
 #### Creating Dynamic Pages (with Parameters)
 
-    - Hardcoding identifier is not ideal better to make dynamic
-    - Square `[newsId].js` infront of filename tells next this is a dynamic page
-    - This also works for folders []
+  - Hardcoding identifier is not ideal better to make dynamic
+  - Square `[newsId].js` infront of filename tells next this is a dynamic page
+  - This also works for folders []
 
 #### Extracting Dynamic Parameter Values
 
-    - Can use wrappers or imports
-      - `import {useRouter} from 'next/router'`
-      - `console.log(router.query.newsId);`
+  - Can use wrappers or imports
+    - `import {useRouter} from 'next/router'`
+    - `console.log(router.query.newsId);`
 
 #### Linking Between Pages
 
-    - `<li><a href="/news/newsone">First news item</a></li>`
-      - This works but requires *new request* (page refresh) NOT SPA
-      - All our state would be lost in this scenario
-    - Use
-     - `<Link href="/news/newsone">First news item</Link>`
-     - `import Link from 'next/link'`
-     - This will work for seo and is a SPA
+  - `<li><a href="/news/newsone">First news item</a></li>`
+    - This works but requires *new request* (page refresh) NOT SPA
+    - All our state would be lost in this scenario
+  - Use
+    - `<Link href="/news/newsone">First news item</Link>`
+    - `import Link from 'next/link'`
+    - This will work for seo and is a SPA
 
 #### Onwards to a bigger Project!
 
-    - Send meetups to backend
-    - fetch and dis meetups
-    - detail page dynamic page pull from slug (md5)
+  - Send meetups to backend
+  - fetch and dis meetups
+  - detail page dynamic page pull from slug (md5)
 
 #### Outputting a List of Meetups
 
@@ -2940,79 +2918,80 @@ export default handler;
       So we can not just use the angle brackets to define a generic type but also to USE a generic type and explicitly set the placeholder type that should be used - sometimes this is required if TypeScript is not able to infer the (correct) type. We'll see this later in this course section!
 
   #### Creating a React + TypeScript Project
-    - You can google react app with typescript
-    - `npx create-react-app react-with-typescript --template typescript`
-    - Will create ts subfolder
-    - Project will now consume ts and compile it to js
-    - Package json is mostly same + typescript and a bunch of @type dependencies
-    - tsconfig.json is the main config file
-    - `npm install --save @types/react-router-dom` for example
-    - For better dev we need translation from the react/dom js libraries
-      - Not all libraries need *translations*
+
+  - You can google react app with typescript
+  - `npx create-react-app react-with-typescript --template typescript`
+  - Will create ts subfolder
+  - Project will now consume ts and compile it to js
+  - Package json is mostly same + typescript and a bunch of @type dependencies
+  - tsconfig.json is the main config file
+  - `npm install --save @types/react-router-dom` for example
+  - For better dev we need translation from the react/dom js libraries
+    - Not all libraries need *translations*
 
   #### Working with Components & TypeScript
-    - 
 
   #### Working with Props & TypeScript
-    - We get additional ide support for props warnings and types
-      - After defining our type the `<Todos />` will now flag red as ts knows were missing a type as its not being used correctly
-    - tsconfig.js can define strictness
-    - `items:string[] ` is a custom prop
-    - FC is functional component. this will give us the correct type for props
-      - Pass params `<{ items: string[] }>` uses curly brackets 
-    - Plugin in a concrete value to be used. As we dont want it to infer the type for props
-    - We need to let typescript know how to handle this prop internally
-    - different FCs can have different prop definitions
-    - This will give us nice autocompletion 
+  - We get additional ide support for props warnings and types
+    - After defining our type the `<Todos />` will now flag red as ts knows were missing a type as its not being used correctly
+  - tsconfig.js can define strictness
+  - `items:string[] ` is a custom prop
+  - FC is functional component. this will give us the correct type for props
+    - Pass params `<{ items: string[] }>` uses curly brackets 
+  - Plugin in a concrete value to be used. As we dont want it to infer the type for props
+  - We need to let typescript know how to handle this prop internally
+  - different FCs can have different prop definitions
+  - This will give us nice autocompletion 
 
   #### Adding a Data Model
-     - A model is where we can define what the data should look like
-     - We can create subfolder with the a todo.ts not tsx as its not a cmp
-     - Could be a class or interface
-       - Define properties first for TS class. As We dont *need*  to use constructor in model. We can jump straight into the properties
-       - We can create this later to make sure it consumes data
-     - You can also use your classname as a type `React.FC<{ items: Todo[] }>`
-     - Using these models we are defining clear structure and shape of data
-     - Meaning alots of errors can be solved before runtime
+  - A model is where we can define what the data should look like
+  - We can create subfolder with the a todo.ts not tsx as its not a cmp
+  - Could be a class or interface
+    - Define properties first for TS class. As We dont *need*  to use constructor in model. We can jump straight into the properties
+    - We can create this later to make sure it consumes data
+  - You can also use your classname as a type `React.FC<{ items: Todo[] }>`
+  - Using these models we are defining clear structure and shape of data
+  - Meaning alots of errors can be solved before runtime
 
   #### Time to Practice: Exercise Time!
-    - Outsource todo cmp and configure correct type of cmp
-    - We can use a model to define the shape of our data
+  - Outsource todo cmp and configure correct type of cmp
+  - We can use a model to define the shape of our data
 
   #### Form Submissions In TypeScript Projects
-    - `event: React.FormEvent` can be used to define the type of event
+   - `event: React.FormEvent` can be used to define the type of event
 
   #### Working with refs & useRef
-    - We need to be implicit agaain for ts because of type definintion
-    - Along with this we need to define a default value (null)
-     - `const todoTextInputRef = useRef<HTMLInputElement>(null);`
-    - `current?` tries to access value else store null
-      - if you know this value is not null you can use `!` to tell ts this is not null `current!`
-      - `?` try to get me the value and if null store null
-      - `!` Im certain that this wont be null so give me the non null value
-        regular expressions 
+  - We need to be implicit agaain for ts because of type definintion
+  - Along with this we need to define a default value (null)
+    - `const todoTextInputRef = useRef<HTMLInputElement>(null);`
+  - `current?` tries to access value else store null
+    - if you know this value is not null you can use `!` to tell ts this is not null `current!`
+    - `?` try to get me the value and if null store null
+    - `!` Im certain that this wont be null so give me the non null value
+      regular expressions 
 
   #### Working with "Function Props"
-    - Remember we can pass pointers at functions as props to our components
-    - NewTodo should now be a functional component.
-    ` React.FC<{onAddTodo: (text:string) => void }>` To which we actually pass a function or pointer `props.onAddTodo?.(enteredText);` 
-      - Our type needs to be defined as anonymos: `onAddTodo: (text: string) => void;` 
-      - Remember this anonymous function expects an argument 
+  - Remember we can pass pointers at functions as props to our components
+  - NewTodo should now be a functional component.
+  ` React.FC<{onAddTodo: (text:string) => void }>` To which we actually pass a function or pointer `props.onAddTodo?.(enteredText);` 
+    - Our type needs to be defined as anonymos: `onAddTodo: (text: string) => void;` 
+    - Remember this anonymous function expects an argument 
 
   #### Managing State & TypeScript
-    - We now can manage the state to which again we pass a generic type
-       - `React.useState<Todo[]>([])`
+  - We now can manage the state to which again we pass a generic type
+      - `React.useState<Todo[]>([])`
   
   #### Adding Styling
 
   #### Time to Practice: Removing a Todo
-    - Remove todo by clicking on them
-      - We can use filter to remove an item from an array
-    - We can achieve by setting parameters with anonymous function
-    - onRemoveTodo: (id:string) => void }
-    - `<TodoItem key={item.id} text={item.text} onRemoveTodo={props.onRemoveTodo.bind(null,item.id)} />`
-    - Then later using bind to pass the id
-      `this using bind and defining `
+  - Remove todo by clicking on them
+    - We can use filter to remove an item from an array
+  - We can achieve by setting parameters with anonymous function
+  - onRemoveTodo: (id:string) => void }
+  - `<TodoItem key={item.id} text={item.text} onRemoveTodo={props.onRemoveTodo.bind(null,item.id)} />`
+  - Then later using bind to pass the id
+    `this using bind and defining `
+
   #### The Context API & TypeScript
 
 
@@ -3023,19 +3002,20 @@ export default handler;
 
   The tsconfig.json file corresponds to the configuration of the TypeScript compiler (tsc).
 
-    These links could give you details about these attributes:
-    (Handbook)[http://www.typescriptlang.org/docs/handbook/tsconfig-json.html]
-    (Schema)[http://json.schemastore.org/tsconfig]
+  These links could give you details about these attributes:
+  (Handbook)[http://www.typescriptlang.org/docs/handbook/tsconfig-json.html]
+  (Schema)[http://json.schemastore.org/tsconfig]
     
-    - Here are some hints:
-      - *target*: the language used for the compiled output
-      - *module*: the module manager used in the compiled output. system is for SystemJS, commonjs for CommonJS.
-      - *moduleResolution*: the strategy used to resolve module declaration files (.d.ts files). With the node approach, they are loaded from the node_modules folder like a module (require('module-name'))
-      - *sourceMap*: generate or not source map files to debug directly your application TypeScript files in the browser,
-      - *emitDecoratorMetadata*: emit or not design-type metadata for decorated declarations in source,
-      - *experimentalDecorators*: enables or not experimental support for ES7 decorators,
-      - *removeComments*: remove comments or not
-      - *noImplicitAny*: allow or not the use of variables / parameters without types (implicit)
+  Here are some hints:
+
+  - *target*: the language used for the compiled output
+  - *module*: the module manager used in the compiled output. system is for SystemJS, commonjs for CommonJS.
+  - *moduleResolution*: the strategy used to resolve module declaration files (.d.ts files). With the node approach, they are loaded from the node_modules folder like a module (require('module-name'))
+  - *sourceMap*: generate or not source map files to debug directly your application TypeScript files in the browser,
+  - *emitDecoratorMetadata*: emit or not design-type metadata for decorated declarations in source,
+  - *experimentalDecorators*: enables or not experimental support for ES7 decorators,
+  - *removeComments*: remove comments or not
+  - *noImplicitAny*: allow or not the use of variables / parameters without types (implicit)
       
   #### Module Resources
 
@@ -3054,29 +3034,28 @@ export default handler;
   - google for react examples
 
   #### explore the react ecosystem
-    - gatsby.js
-      - features like static site generation, image optimization, and automatic routing, making it a comprehensive tool for web development.
-    - preact
-      -  (react with smaller footprint)
-    - react native
-      - for mobile apps 
-      - also options for desktop
-    - https://acad.link/nextjs
-    - React Native: https://acad.link/react-native
-    - Mern https://acad.link/mern
+  - gatsby.js
+    - features like static site generation, image optimization, and automatic routing, making it a comprehensive tool for web development.
+  - preact
+    -  (react with smaller footprint)
+  - react native
+    - for mobile apps 
+    - also options for desktop
+  - https://acad.link/nextjs
+  - React Native: https://acad.link/react-native
+  - Mern https://acad.link/mern
 
 ---
 
 ### Study Tips
-  - Dont stop untill you have tied up on video
-  - Practice in isolation if you get stuck. Break the problem down and test in stages.
+- Dont stop untill you have tied up on video
+- Practice in isolation if you get stuck. Break the problem down and test in stages.
 
   #### Weakpoints
-    - Specifically <t> components and props generic types in ts
-    - Functions asynch & promise
-    - Anonymous functions
-    - obj.? & obj.! meaning
-
+  - Specifically <t> components and props generic types in ts
+  - Functions asynch & promise
+  - Anonymous functions
+  - obj.? & obj.! meaning
 
 ---
 
@@ -3091,61 +3070,49 @@ export default handler;
 
 ```
 `npm test`
-`npm init -y` (will answer all the default questions)
-`npm install redux`
-`node redux-demo.js` execute with node
-`npm install redux react-redux`
-`npm install @reduxjs/toolkit` redux tool kit you dont need redux and the tool kit //    "redux": "^4.0.5",
-`npx create-react-app react-typescript-app --template typescript`
-`npm install react-router-dom`
-`npm install --save react@latest react-dom@latest`
-   - `npm init -y` (y for default)
-   - `npm install typescript`
- `npx create-react-app react-with-typescript --template typescript`
- `npm run dev` for vite
 
-#  for macOS a nd Linux
+`npm init -y` (will answer all the default questions)
+
+`npm install redux`
+
+`node redux-demo.js` execute with node
+
+`npm install redux react-redux`
+
+`npm install @reduxjs/toolkit` redux tool kit you dont need redux and the tool kit //    "redux": "^4.0.5",
+
+`npx create-react-app react-typescript-app --template typescript`
+
+`npm install react-router-dom`
+
+`npm install --save react@latest react-dom@latest`
+
+`npm init -y` (y for default)
+
+`npm install typescript`
+
+`npx create-react-app react-with-typescript --template typescript`
+
+`npm run dev` for vite
+
+for macOS a nd Linux
+
 `rm -rf node_modules`
 `rm -f package-lock.json`
 `rm -f yarn.lock`
-# 👇️ clean npm cache
+
+ clean npm cache
+
 `npm cache clean --force`
 
-# 👇️ install packages
+install packages
+
 `npm install`
-### Top 10 Javascript GEMS
-[newsId].js
-//dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventRe
 
-function ValidateEmail(mail)
-{
-if (/^\w+([\.-]?\w+)_@\w+([\.-]?\w+)_(\.\w{2,3})+$/.test(myForm.emailAddr.value))
-{
-return (true)
-}
-alert("You have entered an invalid email address!")
-return (false)
-}
-
-RFC 2822 standard email validation
-Regular Expression Pattern (Ref: https://bit.ly/33cv2vn):
-
-/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)_|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|
-\\[\x01-\x09\x0b\x0c\x0e-\x7f])_")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|
-\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]\*[a-z0-9]:
-(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
-
-## regex
-
+#### regex
+Format udemy course titles
 [0-999]. -> ##
 [0-999]min -> ##
 
 [0-9][0-9][0-9].
 
-#### Bugs
-
--
-
----
-```
-````
