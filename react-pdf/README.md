@@ -7,6 +7,10 @@
     - how much markup can be pulled in and will work ?
       - Works but seems like an ugly solution https://www.npmjs.com/package/react-pdf-html
     - [x] can styling be integrated directly from stylesheet ?
+        - [] Box-Shadows: no ?
+        - [x] Circular border ?
+        - [x] Custom fonts ? Yes
+        - [x] Transparen background ? Yes
         - Yes, but not all styles work. In react dom yes but not in pdf doc
     - flex box works / horizontal aligned divs
     - Fix custom fonts
@@ -14,11 +18,11 @@
         - Has built in page breaks wrapper engine 
 
     - Strucuture this doc
-        - Header
-            - Profile image
-            - My name
-            - Subtitle 1
-            - Subtitle 2
+        - [ ] Header
+            - [x] Profile image
+            - [x] My name
+            - [ ] Subtitle 1 Custom Bold font
+            - [ ] Subtitle 2 Custom Font
         - About me block
         - Experiences block
             - Vertically stacked experiences ?

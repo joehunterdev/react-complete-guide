@@ -2685,9 +2685,10 @@ export default handler;
     - Cypress
   - These are already installed in create react app 
   - See jest package.json
+  - babel requied for jsx
 
 ####   Running a First Test
-  - add *.text.js* as convention in your 
+  - add *.test.js* as convention in your 
   
   ```
     //import for testing
@@ -3108,7 +3109,7 @@ for macOS a nd Linux
 install packages
 
 `npm install`
-
+`npm config get prefix`
 #### regex
 Format udemy course titles
 [0-999]. -> ##

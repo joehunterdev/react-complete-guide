@@ -53,9 +53,13 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
   },
+  pdfViewer: {
+    width: "100%",
+    height: "100vh",
+  }
 });
 const Test = () => (
-  <Document >
+  <Document>
     <Page size="A4" style={{backgroundColor:"green"}}>
       <View  style={{backgroundColor:"green"}}>
         <Text>
@@ -84,8 +88,4 @@ const Test = () => (
 );
 
 export default Test;
-// ReactPDF.render(<Test />);
-// ReactPDF.renderToStream(<Quixote />).then((stream) => {
-//   const url = URL.createObjectURL(stream);
-//   window.open(url);
-// });
+
