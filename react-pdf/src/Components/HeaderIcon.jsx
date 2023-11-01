@@ -1,8 +1,6 @@
-import { Link, Image, Text, View, StyleSheet } from "@react-pdf/renderer";
+import { Link, Image, View, StyleSheet } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
-  headingPrimary: {},
-  headingSecondary: {},
   iconBackgroundCircle: {
     backgroundColor: "black",
     alignItems: "center",

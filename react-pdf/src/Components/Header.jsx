@@ -1,12 +1,32 @@
 import React from "react";
-import { View, StyleSheet, Image, Text } from "@react-pdf/renderer";
+import { View, StyleSheet, Image, Text, Font } from "@react-pdf/renderer";
 import ProfileImage from "../assets/image/cv-square.jpg";
 import headerBackground from "../assets/image/code-bkg.jpg";
 import HeaderIcon from "./HeaderIcon";
+
+//TODO Move to HeaderIcon.jsx
 import FacebookIcon from "../assets/image/facebook.png";
 import GitHubIcon from "../assets/image/github.png";
 import LinkedInIcon from "../assets/image/linkedin.png";
 
+//Primary Bold Font
+import TitilliumWebBlack from "../assets/fonts/TitilliumWeb-Black.ttf";
+
+Font.register({
+  family: "TitilliumWeb-Black",
+  src: TitilliumWebBlack,
+});
+
+//Secondary title font
+import TitilliumWebSemiBold from "../assets/fonts/TitilliumWeb-SemiBold.ttf";
+
+Font.register({
+  family: "TitilliumWeb-SemiBold",
+  src: TitilliumWebSemiBold,
+});
+
+
+// Define your styles
 const styles = StyleSheet.create({
   container: {
     display: "flex",
@@ -18,11 +38,17 @@ const styles = StyleSheet.create({
     overflow:"hidden",
     height:"200px",
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    flexGrow: 1,
+  headingPrimary: {
+    fontSize: 20,
+    fontWeight: "700",
     textAlign: "center",
+    fontFamily: "TitilliumWeb-Black",
+  },
+  headingSecondary: {
+    fontSize: 10,
+    fontWeight: "400",
+    textAlign: "center",
+    fontFamily: "TitilliumWeb-SemiBold",
   },
   borderCircle: {
     borderRadius: "75%",
@@ -48,6 +74,7 @@ const styles = StyleSheet.create({
    },
 });
 
+// Define your component
 const Header = () => (
   <>
   <View style={styles.headerBackgroundContainer}>
@@ -59,18 +86,18 @@ const Header = () => (
     </View>
     <View>
       <View>
-        <Text style={{ fontSize: 24, fontWeight: "bold", textAlign: "center" }}>
+        <Text style={styles.headingPrimary}>
           Joe Hunter
         </Text>
       </View>
       <View>
-        <Text style={{ fontSize: 16, textAlign: "center" }}>Web Developer</Text>
+        <Text style={styles.headingSecondary}>Web Developer</Text>
       </View>
       <View style={{ marginTop: 10 }}>
         <View style={{ flexDirection: "row", justifyContent: "center" }}>
-          <HeaderIcon platformName="GitHub" url="https://github.com/joehunterdev" icon={GitHubIcon} imageUrl="https://img.icons8.com/material/200/03f8bd/facebook.png"/>
+          {/* <HeaderIcon platformName="GitHub" url="https://github.com/joehunterdev" icon={GitHubIcon} imageUrl="https://img.icons8.com/material/200/03f8bd/facebook.png"/>
           <HeaderIcon platformName="Facebook" url="https://www.facebook.com/joe.hunter.dev" icon={FacebookIcon} imageUrl='https://img.icons8.com/material/96/03f8bd/facebook.png' />
-          <HeaderIcon platformName="LinkedIn" url="https://www.linkedin.com/in/joseph-hunter-594832220/" icon={LinkedInIcon} imageUrl='https://img.icons8.com/material/96/03f8bd/linkedin.png' /> 
+          <HeaderIcon platformName="LinkedIn" url="https://www.linkedin.com/in/joseph-hunter-594832220/" icon={LinkedInIcon} imageUrl='https://img.icons8.com/material/96/03f8bd/linkedin.png' />  */}
         </View>
       </View>
     </View>
