@@ -104,11 +104,6 @@ export default function EditEvent() {
 
 export function loader({ params }) {
 
-  // if(params.id === undefined) 
-  // return null;
-
-  // console.log(params);
-
   return queryClient.fetchQuery({
     queryKey: ["events", { search: params.id }],
     queryFn: ({ signal }) => fetchEvent({ signal, id:params.id }),

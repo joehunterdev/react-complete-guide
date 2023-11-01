@@ -12,6 +12,7 @@ export default function EventDetails() {
 
   const navigate = useNavigate();
   const { id } = useParams();
+
   //fetch
   const { data } = useQuery({
     queryKey: ["events", { search: id }],
@@ -31,6 +32,7 @@ export default function EventDetails() {
   // queryFn:  fetchEvent,
   // staleTime: 1000 * 60 * 5, // 5 minutes
   // gcTime: 1000,
+  
   const deleteHandler = (event) => {
     mutate({ event: event.target.id });
     console.log(event.target.id); //id={id} onClick={deleteHandler}
