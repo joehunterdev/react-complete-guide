@@ -3,49 +3,56 @@
 ### TODO
 - [] Alias on cv / curriculum seo
 - [ ] Remove unwanted from repo 
-- [] Custom JH favicon
-- [] Meta other 
+- [ ] Custom JH favicon
+- [ ] Meta other 
 - [ ] Global styles
     - [] Black style
     - [] White/Printeable
-    - [] Link color
+    - [ ] Link color
 - [ ] Layout 
     - [] Chronological
     - [] Skills Based
     - [] Standard Typical C.V. 
+    - [ ] Left col for title, period & Company ?
+
 - [] Language Logic and how to handle this
-    - [] Const with template vars ?
+    - [ ] Const with template vars ?
+    - [ ] Figure how to do this language switch
+    - [ ] React Router ?
 - [x] Load content fetch useEffect / useCallback
 - [ ] Page
     - [ ]Custom background 
-    - [] Flexbox is to continue implementing should we continue building
+    - !Flexbox is to continue implementing should we continue building
 - [ ] Header
-    - [ ] Custom Background
+    - [x] Custom Background
     - [x] Profile image
     - [x] My name
     - [x] Subtitle 1 Custom Bold font
     - [x] Subtitle 2 Custom Font
-- [ ] About me block ?
+- [x] About me block ?
     - [x] Main text
-    - [ ] Contact info 
+    - [x] Contact info 
 - [ ] Experiences block
-    - [ ] 3 col flexbox 
+    - [x] 3 col flexbox 
         - List See if we get styling similar to website with icons + stcking
         - Strongs ?
-            - [ ]  This is some text. Some of it is` <Text style={{ fontFamily: 'italic font' }}`
-        - [] Vertically stacked experience summary ? x3 
-            - [] Icons
-    - Education block
-    - Skills block
+            - [x]  This is some text. Some of it is` <Text style={{ fontFamily: 'italic font' }}`
+        - [x] Vertically stacked experience summary ? x3 
+            - [x] Icons
+    - [] Education block
+        - [x] 3 Col flexbox
+        - [ ] Add awards ?
+    - Skills block ?
+
 - [] Data fetching
      - [x] Setup a json api 
         - [x] Curriculum to json 
             - [x] Jquery to generate json
         - [x] Fix CORS issues (Only Get)
      - [x] Setup a custom use-http.js / or useCallback directly 
-     - [] Clean up data before hand in desc '",\n,"   " '
+     - [ ] Clean up data before hand in desc '",\n,"   " '
      - [] Md to json ?
-        - [ ] I dont think feedback to user is a big concern but its neat
+        - [x] I dont think feedback to user is a big concern but its neat
     - Generic text filter function utils
 
 ### Techincal debt: 
@@ -55,20 +62,20 @@
         - [ ] zoom pdf renderer 100% (defaultScale={1} ? Sure i saw this working before)
         - [x] Issue when rendering and failing in bkg
             - Open new tab may fix issue
-            - [ ] Capture errors from the pdf renderer (errror boundary) 
-            - []  pull/scrape html from the web because of cors issues. 
-        -
+            - [] Capture errors from the pdf renderer (errror boundary) 
+            - [x] ~~pull/scrape html from the web because of cors issues.~~
+        - [] Render in browser rather than serverside ?
 
 ### BUGS :
     - <VIEW /> Look at rendering methods to fix this
     - [] Render crash see notes below
+
 ### Design Review:
 Most importantly skim over all of requirements and follow up with adjustments
     - [ ] Borders
     - [ ] Font sizes
     - [ ] Image Relative Sizing
     - [ ] Element positioning like contact info
-    - [] Global Styles
 
 ### Threat Analysis:
     - [x] Background image

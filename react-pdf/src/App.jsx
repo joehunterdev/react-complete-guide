@@ -9,9 +9,6 @@ import {
   StyleSheet,
   Text,
 } from "@react-pdf/renderer";
-
-// import {Wrap} from '@react-pdf/layout'
-
 import Header from "./Components/Header";
 import AboutMe from "./Components/AboutMe";
 import Experience from "./Components/Experience";
@@ -19,6 +16,7 @@ import Experience from "./Components/Experience";
 import TitilliumWebBlack from "./assets/fonts/TitilliumWeb-Black.ttf";
 import useHttp from "./hooks/use-http";
 import DownloadButton from "./Components/DownloadButton";
+import Education from "./Components/Education";
 
 Font.register({
   family: "TitilliumWeb-Black",
@@ -94,6 +92,8 @@ const App = () => {
                 summary={experience.summary}
               />
             ))}
+            <Text style={styles.headingPrimary}>Education</Text>
+            <Education education={education} />
           </Page>
         </Document>
       </PDFViewer>
