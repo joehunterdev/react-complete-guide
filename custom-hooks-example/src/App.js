@@ -5,11 +5,12 @@ import useHttp from './hooks/use-http';
 const baseUrl = 'https://react-http-89102-default-rtdb.europe-west1.firebasedatabase.app/tasks.json'
  
 /*
- destructure useHttp
- handle data transformation here in useEffect
+destructure useHttp
+handle data transformation here in useEffect
 useeffect usess a taks object as dependancy for which it has itsz own call back method to pull and
 //use effects have cleanup methods
 */
+
 function App() {
  
     const [tasks, setTasks] = useState([]);

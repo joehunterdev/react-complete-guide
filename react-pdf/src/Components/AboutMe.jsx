@@ -1,23 +1,52 @@
 import React from "react";
-import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
+import { Text, View, Link, StyleSheet, Font } from "@react-pdf/renderer";
+import { cleanText } from "../util/utils";
+import ContactInfo from "./ContactInfo";
+//Primary Bold Font
+import TitilliumWebBlack from "../assets/fonts/TitilliumWeb-Black.ttf";
+
+Font.register({
+  family: "TitilliumWeb-Black",
+  src: TitilliumWebBlack,
+});
+
+//Secondary title font
+import TitilliumWebSemiBold from "../assets/fonts/TitilliumWeb-SemiBold.ttf";
+
+Font.register({
+  family: "TitilliumWeb-SemiBold",
+  src: TitilliumWebSemiBold,
+});
 
 const styles = StyleSheet.create({
-  text: {
+  container: {
+    flexDirection: "row",
+    padding: 4,
+  },
+  containerAbout: {
+    flex: 2.7, // This will take up 1/3 of the space
+    textAlign: "left",
+  },
+
+  textBody: {
     fontSize: 12,
-    marginBottom: 5,
+  },
+  headingPrimary: {
+    fontSize: 20,
+    fontWeight: "700",
+    fontFamily: "TitilliumWeb-Black",
   },
 });
 
-const AboutMe = () => {
+const AboutMe = ({ aboutDescription, contactInfo }) => {
   return (
-    <Text>
-      Web developer specializing in front end development. Experienced with all
-      stages of the development cycle for dynamic web projects. Well-versed in
-      numerous languages including HTML5, PHP, JavaScript, CSS, MySQL. With a
-      strong background in project management and as a team player. More details
-      about my projects and experiences can be found here joehunter.es on my
-      website.
-    </Text>
+    <View style={styles.container}>
+      <View style={styles.containerAbout}>
+        <Text style={styles.headingPrimary}>About me</Text>
+        <Text style={styles.textBody}>{cleanText(aboutDescription)}</Text>
+      </View>
+      <ContactInfo contactInfo={contactInfo} />
+    </View>
   );
 };
 
