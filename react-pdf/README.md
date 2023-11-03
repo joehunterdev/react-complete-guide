@@ -21,7 +21,8 @@
     - [ ] React Router ?
 - [x] Load content fetch useEffect / useCallback
 - [ ] Page
-    - [ ]Custom background 
+    - [x]Custom background 
+        - [] Works however have to manually insert this background for each page
     - !Flexbox is to continue implementing should we continue building
 - [ ] Header
     - [x] Custom Background

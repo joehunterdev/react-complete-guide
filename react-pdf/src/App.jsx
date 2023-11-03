@@ -8,6 +8,7 @@ import {
   Font,
   StyleSheet,
   Text,
+  Image,
 } from "@react-pdf/renderer";
 import Header from "./Components/Header";
 import AboutMe from "./Components/AboutMe";
@@ -17,7 +18,7 @@ import TitilliumWebBlack from "./assets/fonts/TitilliumWeb-Black.ttf";
 import useHttp from "./hooks/use-http";
 import DownloadButton from "./Components/DownloadButton";
 import Education from "./Components/Education";
-
+import BackgroundImage from "./assets/image/background.png";
 Font.register({
   family: "TitilliumWeb-Black",
   src: TitilliumWebBlack,
@@ -36,6 +37,18 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textAlign: "center",
     fontFamily: "TitilliumWeb-SemiBold",
+  },
+
+  container: {
+    display: "flex",
+    position: "absolute",
+    width: "100%",
+    color: "#fff",
+  },
+  pageBackgroundContainer: {
+    overflow: "hidden",
+    position: "absolute",  
+    height: "850px",
   },
 });
 
@@ -69,10 +82,13 @@ const App = () => {
     <div className="App">
       {error && <p>{error}</p>}
       {isLoading && <p>Loading...</p>}
-
       <PDFViewer style={{ width: "100%", height: "100vh" }} scale={1.2}>
         <Document>
-          <Page size="A4">
+          <Page size="A4" style={{ top: "0px", ...styles.container }}>
+            <View style={styles.pageBackgroundContainer} wrap>
+              <Image src={BackgroundImage} style={{height:"120%"}}  />
+              <Image src={BackgroundImage} />
+            </View>
             <Header />
             <AboutMe
               aboutDescription={aboutDescription}
@@ -81,7 +97,6 @@ const App = () => {
             <View>
               <Text style={styles.headingPrimary}>Professional Experience</Text>
             </View>
-
             {experiences.map((experience) => (
               <Experience
                 key={experience.id + experience.company}
