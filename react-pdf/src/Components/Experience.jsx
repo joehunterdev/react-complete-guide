@@ -2,6 +2,9 @@ import React from "react";
 import { Text, View, Image, StyleSheet } from "@react-pdf/renderer";
 import { cleanText } from "../util/utils";
 import { Font } from "@react-pdf/renderer";
+import  SourceCode from "../assets/image/source-code.png";
+import  Services from "../assets/image/services.png";
+import  Console from "../assets/image/console.png";
 
 // Font.register({
 //   family: "TitilliumWeb-SemiBold",
@@ -48,7 +51,11 @@ const styles = StyleSheet.create({
   },
   containerCols: {
     flexDirection: "row",
-    padding: 8,
+    paddingTop:0,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom:10,
+
   },
   col: {
     flexGrow: 4,
@@ -78,7 +85,7 @@ const styles = StyleSheet.create({
     fontFamily: "TitilliumWeb-Black",
   },
   description: {
-    padding: 4,
+    padding: 10,
   },
   textPeriod: {
     fontSize: 10,
@@ -120,7 +127,8 @@ const Experience = ({ period, title, company, description, summary }) => {
           <View style={styles.containerListHeading}>
             <Text>Design:</Text>
             <Image
-              src="https://img.icons8.com/material/200/ffffff/source-code.png"
+              // src="https://img.icons8.com/material/200/ffffff/source-code.png"
+              src={SourceCode}
               style={styles.icon}
             />
           </View>
@@ -137,7 +145,9 @@ const Experience = ({ period, title, company, description, summary }) => {
           <View style={styles.containerListHeading}>
             <Text>Solutions:</Text>
             <Image
-              src="https://img.icons8.com/material/200/ffffff/services.png"
+              // src="https://img.icons8.com/material/200/ffffff/services.png"
+               src={Services}
+
               style={styles.icon}
             />
           </View>
@@ -154,7 +164,8 @@ const Experience = ({ period, title, company, description, summary }) => {
           <View style={styles.containerListHeading}>
             <Text>Management:</Text>
             <Image
-              src="https://img.icons8.com/material/200/ffffff/console.png"
+              // src="https://img.icons8.com/material/200/ffffff/console.png"
+              src={Console}
               style={styles.icon}
             />
           </View>
