@@ -1,10 +1,9 @@
 import React from "react";
 import { View, StyleSheet, Image, Text, Font } from "@react-pdf/renderer";
-import ProfileImage from "../assets/image/cv-square.jpg";
+import ProfileImage from "../assets/image/cv-square_300x300.jpg";
 import headerBackground from "../assets/image/code-bkg.jpg";
 import HeaderIcon from "./HeaderIcon";
 
-//TODO Move to HeaderIcon.jsx
 import FacebookIcon from "../assets/image/facebook.png";
 import GitHubIcon from "../assets/image/github.png";
 import LinkedInIcon from "../assets/image/linkedin.png";

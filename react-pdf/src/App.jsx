@@ -17,6 +17,8 @@ import Experience from "./Components/Experience";
 import TitilliumWebBlack from "./assets/fonts/TitilliumWeb-Black.ttf";
 import useHttp from "./hooks/use-http";
 import DownloadButton from "./Components/DownloadButton";
+import { useTranslation } from "react-i18next";
+import i18n from "./util/il8next";
 import Education from "./Components/Education";
 import BackgroundImage from "./assets/image/background.png";
 import Certificates from "./Components/Certificates";
@@ -57,6 +59,12 @@ const styles = StyleSheet.create({
 });
 
 const App = () => {
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
   const [experiences, setExperiences] = useState([]);
   const [aboutDescription, setAboutDescription] = useState("");
   const [contactInfo, setContactInfo] = useState([]);
@@ -87,7 +95,10 @@ const App = () => {
   return (
     <div className="App">
       {error && <p>{error}</p>}
+      
       {isLoading && <p>Loading...</p>}
+      <button onClick={() => changeLanguage('en')}>English</button>
+      <button onClick={() => changeLanguage('es')}>Español</button>
       <PDFViewer style={{ width: "100%", height: "100vh" }} scale={1.2}>
         <Document>
           <Page size="A4" style={{ top: "0px", ...styles.container }}>
@@ -103,7 +114,7 @@ const App = () => {
               contactInfo={contactInfo}
             />
             <View>
-              <Text style={styles.headingPrimary}>Professional Experience</Text>
+              <Text style={styles.headingPrimary}>{t("professionalExperience")}</Text>
             </View>
             {experiences.map((experience) => (
               <Experience

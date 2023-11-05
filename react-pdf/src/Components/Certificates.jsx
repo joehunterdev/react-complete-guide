@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Image, StyleSheet } from "@react-pdf/renderer";
 import { getFilenameFromUrl } from "../util/utils";
-
+import Trophy from "../assets/image/trophy.png";
 const styles = StyleSheet.create({
   containerCertificates: {
     margin: 10,
@@ -43,7 +43,8 @@ const Certificates = ({ certification }) => {
             style={styles.certImage}
           />
           <Image
-            src="https://img.icons8.com/material/200/D8D8D8/trophy.png"
+            // src="https://img.icons8.com/material/200/D8D8D8/trophy.png"
+            src={Trophy}
             style={styles.icon}
           />
         </View>
