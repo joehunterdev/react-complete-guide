@@ -7,17 +7,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     border: "2px solid #03f8bd",
     borderRadius: "75%",
-    height: "50px",
-    width: "50px",
+    height: "30px",
+    width: "30px",
+    zIndex: 9999,
   },
   linkSocial: {
     color: "white",
     textDecoration: "none",
     fontSize: 10,
-    marginRight: 5,
-    marginTop:-5,
+    marginRight: 3,
+    zIndex: 9999,
   },
-  iconSocial: { color: "#fff", width: 25, height: 25 },
+  iconSocial: { color: "#fff", width: 20, height: 20 },
 });
 const HeaderIcon = ({ url, imageUrl, platformName, icon }) => {
   return (

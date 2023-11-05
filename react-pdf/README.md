@@ -5,15 +5,18 @@
 - [ ] Remove unwanted from repo 
 - [ ] Custom JH favicon
 - [ ] Meta other 
-- [ ] Global styles
+- [] Global styles
+- [x] Background image is distorted 
+    - !840 height is about right
+- [] Pull in remote images
     - [] Black style
     - [] White/Printeable
-    - [ ] Link color
-- [ ] Layout 
+    - [x] Link color
+- [x] Layout 
     - [] Chronological
     - [] Skills Based
     - [] Standard Typical C.V. 
-    - [ ] Left col for title, period & Company ?
+    - [x] Left col for title, period & Company ?
 
 - [] Language Logic and how to handle this
     - [ ] Const with template vars ?
@@ -34,6 +37,7 @@
     - [x] Main text
     - [x] Contact info 
 - [ ] Experiences block
+    - [ ] Main Heading block
     - [x] 3 col flexbox 
         - List See if we get styling similar to website with icons + stcking
         - Strongs ?
@@ -42,7 +46,9 @@
             - [x] Icons
     - [] Education block
         - [x] 3 Col flexbox
-        - [ ] Add awards ?
+        - [x] Add awards and
+        - [x] Style awards  ?
+            - Move Certs up ?
     - Skills block ?
 
 - [] Data fetching
@@ -52,31 +58,41 @@
         - [x] Fix CORS issues (Only Get)
      - [x] Setup a custom use-http.js / or useCallback directly 
      - [ ] Clean up data before hand in desc '",\n,"   " '
+     - [] Use PHP and data atts to generate data feed
      - [] Md to json ?
         - [x] I dont think feedback to user is a big concern but its neat
-    - Generic text filter function utils
+
+    - [x] Generic text filter function utils
+
+ - [ ] Language handling !
+    - [ ] Params from url to language switch integration
+    - [ ] Lang file
+    - [ ] Re Template
 
 ### Techincal debt: 
         - [x] Repeatedly Downloading Pdfs and then opening them
             - render in browser !
                 - See test.jsx <PDFViewer> and rendewr app cmp normally
-        - [ ] zoom pdf renderer 100% (defaultScale={1} ? Sure i saw this working before)
+        - [] zoom pdf renderer 100% (defaultScale={1} ? Sure i saw this working before)
         - [x] Issue when rendering and failing in bkg
             - Open new tab may fix issue
             - [] Capture errors from the pdf renderer (errror boundary) 
             - [x] ~~pull/scrape html from the web because of cors issues.~~
-        - [] Render in browser rather than serverside ?
+        - [] Render in browser rather than serverside , download button ?
 
 ### BUGS :
     - <VIEW /> Look at rendering methods to fix this
     - [] Render crash see notes below
+    - [] Background image throws error when adding page color bkg ?
 
 ### Design Review:
 Most importantly skim over all of requirements and follow up with adjustments
-    - [ ] Borders
-    - [ ] Font sizes
-    - [ ] Image Relative Sizing
-    - [ ] Element positioning like contact info
+    - [x] Borders
+         - [] Drop shadow
+         - [x] Card
+    - [x] Font sizes
+    - [x] Image Relative Sizing
+    - [x] Element positioning like contact info
 
 ### Threat Analysis:
     - [x] Background image
@@ -88,13 +104,14 @@ Most importantly skim over all of requirements and follow up with adjustments
       - Works but seems like an ugly solution https://www.npmjs.com/package/react-pdf-html
     - [x] can styling be integrated directly from stylesheet ?
         - [x] Box-Shadows: no ?
-        - [x] Circular border ?
+        - [x] Circular border ? yes
         - [x] Custom fonts ? Yes
         - [x] Transparen background ? Yes
         - Yes, but not all styles work. In react dom yes but not in pdf doc
     - flex box works / horizontal aligned divs
     - [x] How to fit across various pages
         - Has built in page breaks wrapper engine set wrap={false}
+         
 
 ###  BUG Render Crash  :
 

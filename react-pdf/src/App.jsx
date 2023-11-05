@@ -19,6 +19,7 @@ import useHttp from "./hooks/use-http";
 import DownloadButton from "./Components/DownloadButton";
 import Education from "./Components/Education";
 import BackgroundImage from "./assets/image/background.png";
+import Certificates from "./Components/Certificates";
 Font.register({
   family: "TitilliumWeb-Black",
   src: TitilliumWebBlack,
@@ -26,6 +27,9 @@ Font.register({
 
 // Define your styles
 const styles = StyleSheet.create({
+  // page:{
+  //   backgroundColor: "#606060",
+  // },
   headingPrimary: {
     fontSize: 20,
     fontWeight: "700",
@@ -47,7 +51,7 @@ const styles = StyleSheet.create({
   },
   pageBackgroundContainer: {
     overflow: "hidden",
-    position: "absolute",  
+    position: "absolute",
     height: "850px",
   },
 });
@@ -57,6 +61,7 @@ const App = () => {
   const [aboutDescription, setAboutDescription] = useState("");
   const [contactInfo, setContactInfo] = useState([]);
   const [education, setEducation] = useState([]);
+  const [certification, setCertification] = useState([]);
 
   const { isLoading, error, sendRequest: fetchData } = useHttp(); // neatly unpack declare above top level
 
@@ -68,6 +73,7 @@ const App = () => {
       setAboutDescription(data.about);
       setContactInfo(data.contactInfo);
       setEducation(data.education);
+      setCertification(data.certification[0]); //Why first object suddenly ? State releated ?
     };
 
     fetchData(
@@ -86,8 +92,10 @@ const App = () => {
         <Document>
           <Page size="A4" style={{ top: "0px", ...styles.container }}>
             <View style={styles.pageBackgroundContainer} wrap>
-              <Image src={BackgroundImage} style={{height:"120%"}}  />
-              <Image src={BackgroundImage} />
+              <Image
+                src={BackgroundImage}
+                style={{ height: "840px", width: "794px" }}
+              />
             </View>
             <Header />
             <AboutMe
@@ -108,7 +116,8 @@ const App = () => {
               />
             ))}
             <Text style={styles.headingPrimary}>Education</Text>
-            <Education education={education} />
+            <Education education={education} certification={certification} />
+            <Certificates certification={certification} />
           </Page>
         </Document>
       </PDFViewer>

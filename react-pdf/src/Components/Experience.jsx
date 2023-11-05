@@ -1,19 +1,54 @@
 import React from "react";
 import { Text, View, Image, StyleSheet } from "@react-pdf/renderer";
 import { cleanText } from "../util/utils";
+import { Font } from "@react-pdf/renderer";
+
+// Font.register({
+//   family: "TitilliumWeb-SemiBold",
+//   src: "https://fonts.gstatic.com/s/titilliumweb/v9/NaPDcZTIAOhVxoMyOr9n_E7ffAzHKIw.ttf",
+//   fontWeight: "400",
+// });
+
+// Font.register({
+//   family: "TitilliumWeb-Black",
+//   src: "https://fonts.gstatic.com/s/titilliumweb/v9/NaPDcZTIAOhVxoMyOr9n_E7ffAzHKIw.ttf",
+//   fontWeight: "900",
+// });
+
+import TitilliumWebBlack from "../assets/fonts/TitilliumWeb-Black.ttf";
+
+Font.register({
+  family: "TitilliumWeb-Black",
+  src: TitilliumWebBlack,
+});
+
+//Secondary title font
+import TitilliumWebSemiBold from "../assets/fonts/TitilliumWeb-SemiBold.ttf";
+
+Font.register({
+  family: "TitilliumWeb-SemiBold",
+  src: TitilliumWebSemiBold,
+  // fontWeight: 600,
+});
+
 const styles = StyleSheet.create({
   body: {
     fontSize: 12,
     marginBottom: 5,
-    color: "#ccc",
+    fontFamily: "TitilliumWeb-SemiBold",
+    fontWeight: 600,
+    // letterSpacing: 0.7,
+    // lineHeight: 1,
   },
   containerExperience: {
     margin: 10,
-    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
     fontSize: 12,
+    //padding: 4,
   },
   containerCols: {
     flexDirection: "row",
+    padding: 8,
   },
   col: {
     flexGrow: 4,
@@ -22,27 +57,59 @@ const styles = StyleSheet.create({
     paddingRight: 14,
     flexDirection: "row",
     justifyContent: "space-between",
+    fontFamily: "TitilliumWeb-SemiBold",
+    fontWeight: 400,
   },
   icon: {
-    width: 25,
-    height: 25,
+    width: 18,
+    fontWeight: 400,
   },
   listColumnInner: {
     paddingLeft: "2%",
+    fontSize: 11,
+    fontWeight: 400,
+  },
+  containerPositionHeading: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 10,
+    backgroundColor: "rgba(3, 248, 189, 0.9)",
+    fontFamily: "TitilliumWeb-Black",
+  },
+  description: {
+    padding: 4,
+  },
+  textPeriod: {
+    fontSize: 10,
+    fontWeight: "100",
+    fontFamily: "TitilliumWeb-SemiBold",
+  },
+  textTitle: {
+    fontSize: 20,
+    fontWeight: "700",
+    fontFamily: "TitilliumWeb-Black",
+  },
+  textCompany: {
+    fontSize: 12,
+    fontWeight: "200",
+    fontFamily: "TitilliumWeb-Black",
   },
 });
-//TODO: Save these icons locally
-//https://img.icons8.com/material/200/03f8bd/source-code.png
-//https://img.icons8.com/material/200/03f8bd/services.png
-//https://img.icons8.com/material/200/03f8bd/console.png
 
-const Experience = ({ period, title, companyName, description, summary }) => {
+const Experience = ({ period, title, company, description, summary }) => {
   return (
     <View style={styles.containerExperience} wrap={false}>
-      <View style={styles.postionInfo}>
-        <Text style={styles.text}>{period}</Text>
-        <Text style={styles.text}>{title}</Text>
-        <Text style={styles.text}>{companyName}</Text>
+      <View style={styles.containerPositionHeading}>
+        <View style={{ width: "190px" }}>
+          <Text style={styles.textPeriod}>{period}</Text>
+        </View>
+        <View style={{ width: "260px", textAlign: "center" }}>
+          <Text style={styles.textTitle}> {title}</Text>
+        </View>
+        <View style={{ width: "190px", textAlign: "right" }}>
+          <Text style={styles.textCompany}>{company}</Text>
+        </View>
       </View>
       <View style={styles.description}>
         <Text style={styles.body}>{cleanText(description)}</Text>
@@ -53,13 +120,16 @@ const Experience = ({ period, title, companyName, description, summary }) => {
           <View style={styles.containerListHeading}>
             <Text>Design:</Text>
             <Image
-              src="https://img.icons8.com/material/200/03f8bd/source-code.png"
+              src="https://img.icons8.com/material/200/ffffff/source-code.png"
               style={styles.icon}
             />
           </View>
           <View style={styles.listColumnInner}>
             {summary.design.map((item, index) => (
-              <Text key={index + companyName}>{item}</Text>
+              <Text key={index}>
+                <Text style={{ marginHorizontal: 8 }}>• </Text>
+                {item}
+              </Text>
             ))}
           </View>
         </View>
@@ -67,13 +137,16 @@ const Experience = ({ period, title, companyName, description, summary }) => {
           <View style={styles.containerListHeading}>
             <Text>Solutions:</Text>
             <Image
-              src="https://img.icons8.com/material/200/03f8bd/services.png"
+              src="https://img.icons8.com/material/200/ffffff/services.png"
               style={styles.icon}
             />
           </View>
           <View style={styles.listColumnInner}>
             {summary.solutions.map((item, index) => (
-              <Text key={index + companyName}>{item}</Text>
+              <Text key={index}>
+                <Text style={{ marginHorizontal: 8 }}>• </Text>
+                {item}
+              </Text>
             ))}
           </View>
         </View>
@@ -81,13 +154,16 @@ const Experience = ({ period, title, companyName, description, summary }) => {
           <View style={styles.containerListHeading}>
             <Text>Management:</Text>
             <Image
-              src="https://img.icons8.com/material/200/03f8bd/console.png"
+              src="https://img.icons8.com/material/200/ffffff/console.png"
               style={styles.icon}
             />
           </View>
           <View style={styles.listColumnInner}>
             {summary.management.map((item, index) => (
-              <Text key={index + companyName}>{item}</Text>
+              <Text key={index}>
+                <Text style={{ marginHorizontal: 8 }}>• </Text>
+                {item}
+              </Text>
             ))}
           </View>
         </View>
