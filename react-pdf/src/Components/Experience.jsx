@@ -97,7 +97,7 @@ const Experience = ({ period, title, company, description, summary }) => {
         <View style={{ width: "190px" }}>
           <Text style={styles.textPeriod}>{period}</Text>
         </View>
-        <View style={{ width: "260px", textAlign: "center" }}>
+        <View style={{ width: "300px", textAlign: "center" }}>
           <Text style={styles.textTitle}> {title}</Text>
         </View>
         <View style={{ width: "190px", textAlign: "right" }}>
