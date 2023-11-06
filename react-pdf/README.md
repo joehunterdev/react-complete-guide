@@ -8,6 +8,7 @@
 - [] Global styles
 - [x] Background image is distorted 
     - !840 height is about right
+    - What is the height of pdf ¿
 - [] Pull in remote images
     - [] Black style
     - [] White/Printeable
@@ -124,3 +125,7 @@ Increase memory limit: If you're using Node.js to serve your application, you ca
 Use a PDF.js viewer: PDF.js is a JavaScript library that renders PDFs in the browser using HTML5 and JavaScript, without the need for a server. It's more efficient and might solve your issue.
 
 Remember to always test your application in multiple browsers and devices to ensure the best performance and compatibility.
+
+*Imperative programming* tells us how to do i
+*Declarative programming* describes what you’re trying to accomplish without defining how to do it.
+
