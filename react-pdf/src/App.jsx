@@ -1,4 +1,5 @@
 import "./App.css";
+import "./index.css";
 import { useState, useEffect } from "react";
 import {
   PDFViewer,
@@ -90,12 +91,14 @@ const App = () => {
 
   return (
     <div className="App">
-      {error && <p>{error}</p>}
+      <div className="container content-center">
+            {error && <p>{error}</p>}
+            {isLoading && <p>Loading...</p>}
+            <button className="btn btn-primary" onClick={() => changeLanguage("en")}>English</button>
+            <button className="btn btn-primary" onClick={() => changeLanguage("es")}>Español</button>
+      </div>
 
-      {isLoading && <p>Loading...</p>}
-      <button onClick={() => changeLanguage("en")}>English</button>
-      <button onClick={() => changeLanguage("es")}>Español</button>
-      <PDFViewer style={{ width: "100%", height: "100vh" }} scale={1.2}>
+      <PDFViewer style={{ width: "100%", height: "100vh", borderColor:0 }} scale={1.2}>
         <Document>
           <Page size="A4" style={{ top: "0px", ...styles.container }}>
             <View style={styles.pageBackgroundContainer} wrap>

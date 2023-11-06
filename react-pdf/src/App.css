@@ -41,4 +41,9 @@
   color: #888;
 }
 
-
+.feedback {
+  margin: 2em;
+  font-size: 0.8em;
+  color: #888;
+  text-align: center;
+}
