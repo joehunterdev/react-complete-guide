@@ -22,6 +22,8 @@ import { useTranslation } from "react-i18next";
 import i18n from "./util/il8next";
 import Education from "./Components/Education";
 import BackgroundImage from "./assets/image/background.png";
+import ProfileImage from "./assets/image/cv-square_300x300.jpg";
+
 import Certificates from "./Components/Certificates";
 Font.register({
   family: "TitilliumWeb-Black",
@@ -30,7 +32,7 @@ Font.register({
 
 // Define your styles
 const styles = StyleSheet.create({
-  // page:{
+  // page: {
   //   backgroundColor: "#606060",
   // },
   headingPrimary: {
@@ -88,7 +90,7 @@ const App = () => {
     const url = `https://joehunter.es/data/api.php?page=curriculum-${language}`; // construct the URL
     fetchData({ url }, assignData);
   }, [fetchData, i18n.language]); // depend on fetchData and the current language
-
+  //BUG FIX: Cant render backgrounds on multiple pages issues lies int he height or background image inclusion in general
   return (
     <div className="App">
       <div className="container content-center">
@@ -108,17 +110,13 @@ const App = () => {
         </button>
       </div>
       {experiences.length > 0 && (
-        <PDFViewer
-          style={{ width: "100%", height: "100vh", borderColor: 0 }}
-          scale={1.2}
-        >
+        <PDFViewer style={{ width: "100%", height: "100vh"}}>
           <Document>
-            <Page size="A4" style={{ top: "0px", ...styles.container }}>
-              <View style={styles.pageBackgroundContainer} wrap>
+            <Page size="A4" style={{ top: "0px", ...styles.container }} >
+              <View style={styles.pageBackgroundContainer}>
                 <Image
                   src={BackgroundImage}
-                  style={{ height: "840px", width: "794px" }}
-                />
+                 />
               </View>
               <Header />
               <AboutMe
@@ -137,6 +135,14 @@ const App = () => {
                 description={experiences[0].description}
                 summary={experiences[0].summary}
               />
+            </Page>
+            <Page >
+              <View style={styles.pageBackgroundContainer}>
+                <Image
+                  src={BackgroundImage}
+                 />
+              </View>
+              <Text style={{ color: "black" }}> Page 2 </Text>
               <Experience
                 period={experiences[1].period}
                 title={experiences[1].title}
@@ -158,6 +164,14 @@ const App = () => {
                 description={experiences[3].description}
                 summary={experiences[3].summary}
               />
+              </Page>
+              <Page size="A4" style={{ ...styles.container }}>
+              <View style={styles.pageBackgroundContainer}>
+                <Image
+                  src={BackgroundImage}
+                  // style={{ height: "830px", width: "794px" }}
+                />
+              </View>
               <Experience
                 period={experiences[4].period}
                 title={experiences[4].title}

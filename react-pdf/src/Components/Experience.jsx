@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
 const Experience = ({ period, title, company, description, summary }) => {
   const { t, i18n } = useTranslation();
   return (
-    <View style={styles.containerExperience} wrap={false}>
+    <View style={styles.containerExperience}>
       <View style={styles.containerPositionHeading}>
         <View style={{ width: "190px" }}>
           <Text style={styles.textPeriod}>{period}</Text>
