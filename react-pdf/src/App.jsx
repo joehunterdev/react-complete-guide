@@ -63,6 +63,7 @@ const App = () => {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
+    fetchData(lng); // call fetchData with the new language
   };
 
   const [experiences, setExperiences] = useState([]);
@@ -71,34 +72,29 @@ const App = () => {
   const [education, setEducation] = useState([]);
   const [certification, setCertification] = useState([]);
 
-  const { isLoading, error, sendRequest: fetchData } = useHttp(); // neatly unpack declare above top level
+  const { isLoading, error, sendRequest: fetchData } = useHttp();
 
-  //This is only good when state is changing here
-  //Mulitple calls ?
   useEffect(() => {
     const assignData = (data) => {
       setExperiences(data.experiences);
       setAboutDescription(data.about);
       setContactInfo(data.contactInfo);
       setEducation(data.education);
-      setCertification(data.certification[0]); //Why first object suddenly ? State releated ?
+      setCertification(data.certification[0]);
     };
 
-    fetchData(
-      {
-        url: "https://joehunter.es/data/api.php?page=curriculum-en",
-      },
-      assignData
-    ); //call back here
-  }, [fetchData]); //dependancies
+    const language = i18n.language || "en"; // get the current language
+    const url = `https://joehunter.es/data/api.php?page=curriculum-${language}`; // construct the URL
+    fetchData({ url }, assignData);
+  }, [fetchData, i18n.language]); // depend on fetchData and the current language
 
   return (
     <div className="App">
       {error && <p>{error}</p>}
-      
+
       {isLoading && <p>Loading...</p>}
-      <button onClick={() => changeLanguage('en')}>English</button>
-      <button onClick={() => changeLanguage('es')}>Español</button>
+      <button onClick={() => changeLanguage("en")}>English</button>
+      <button onClick={() => changeLanguage("es")}>Español</button>
       <PDFViewer style={{ width: "100%", height: "100vh" }} scale={1.2}>
         <Document>
           <Page size="A4" style={{ top: "0px", ...styles.container }}>
@@ -114,7 +110,9 @@ const App = () => {
               contactInfo={contactInfo}
             />
             <View>
-              <Text style={styles.headingPrimary}>{t("professionalExperience")}</Text>
+              <Text style={styles.headingPrimary}>
+                {t("professionalExperience")}
+              </Text>
             </View>
             {experiences.map((experience) => (
               <Experience
@@ -135,5 +133,4 @@ const App = () => {
     </div>
   );
 };
-
 export default App;
