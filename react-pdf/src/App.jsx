@@ -92,47 +92,86 @@ const App = () => {
   return (
     <div className="App">
       <div className="container content-center">
-            {error && <p>{error}</p>}
-            {isLoading && <p>Loading...</p>}
-            <button className="btn btn-primary" onClick={() => changeLanguage("en")}>English</button>
-            <button className="btn btn-primary" onClick={() => changeLanguage("es")}>Español</button>
+        {error && <p>{error}</p>}
+        {isLoading && <p>Loading...</p>}
+        <button
+          className="btn btn-primary"
+          onClick={() => changeLanguage("en")}
+        >
+          English
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={() => changeLanguage("es")}
+        >
+          Español
+        </button>
       </div>
-
-      <PDFViewer style={{ width: "100%", height: "100vh", borderColor:0 }} scale={1.2}>
-        <Document>
-          <Page size="A4" style={{ top: "0px", ...styles.container }}>
-            <View style={styles.pageBackgroundContainer} wrap>
-              <Image
-                src={BackgroundImage}
-                style={{ height: "840px", width: "794px" }}
+      {experiences.length > 0 && (
+        <PDFViewer
+          style={{ width: "100%", height: "100vh", borderColor: 0 }}
+          scale={1.2}
+        >
+          <Document>
+            <Page size="A4" style={{ top: "0px", ...styles.container }}>
+              <View style={styles.pageBackgroundContainer} wrap>
+                <Image
+                  src={BackgroundImage}
+                  style={{ height: "840px", width: "794px" }}
+                />
+              </View>
+              <Header />
+              <AboutMe
+                aboutDescription={aboutDescription}
+                contactInfo={contactInfo}
               />
-            </View>
-            <Header />
-            <AboutMe
-              aboutDescription={aboutDescription}
-              contactInfo={contactInfo}
-            />
-            <View>
-              <Text style={styles.headingPrimary}>
-                {t("professionalExperience")}
-              </Text>
-            </View>
-            {experiences.map((experience) => (
+              <View>
+                <Text style={styles.headingPrimary}>
+                  {t("professionalExperience")}
+                </Text>
+              </View>
               <Experience
-                key={experience.id + experience.company}
-                period={experience.period}
-                title={experience.title}
-                company={experience.company}
-                description={experience.description}
-                summary={experience.summary}
+                period={experiences[0].period}
+                title={experiences[0].title}
+                company={experiences[0].company}
+                description={experiences[0].description}
+                summary={experiences[0].summary}
               />
-            ))}
-            <Text style={styles.headingPrimary}>{t("education")}</Text>
-            <Education education={education} certification={certification} />
-            <Certificates certification={certification} />
-          </Page>
-        </Document>
-      </PDFViewer>
+              <Experience
+                period={experiences[1].period}
+                title={experiences[1].title}
+                company={experiences[1].company}
+                description={experiences[1].description}
+                summary={experiences[1].summary}
+              />
+              <Experience
+                period={experiences[2].period}
+                title={experiences[2].title}
+                company={experiences[2].company}
+                description={experiences[2].description}
+                summary={experiences[2].summary}
+              />
+              <Experience
+                period={experiences[3].period}
+                title={experiences[3].title}
+                company={experiences[3].company}
+                description={experiences[3].description}
+                summary={experiences[3].summary}
+              />
+              <Experience
+                period={experiences[4].period}
+                title={experiences[4].title}
+                company={experiences[4].company}
+                description={experiences[4].description}
+                summary={experiences[4].summary}
+              />
+              <Text style={styles.headingPrimary}>{t("education")}</Text>
+              <Education education={education} certification={certification} />
+              <Certificates certification={certification} />
+            </Page>
+          </Document>
+        </PDFViewer>
+      )}
     </div>
   );
 };
