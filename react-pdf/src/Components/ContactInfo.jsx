@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Font, Link } from "@react-pdf/renderer";
 import TitilliumWebBlack from "../assets/fonts/TitilliumWeb-Black.ttf";
-
+import { useTranslation } from "react-i18next";
 Font.register({
   family: "TitilliumWeb-Black",
   src: TitilliumWebBlack,
@@ -42,11 +42,12 @@ const styles = StyleSheet.create({
     fontSize:10
   },
 });
-//BUG: The email link is spilling over @ 12 font size
-const ContactInfo = ({ contactInfo }) => {
+ const ContactInfo = ({ contactInfo }) => {
+  const { t, i18n } = useTranslation();
+
   return (
     <View style={styles.containerContactInfo}>
-      <Text style={styles.headingPrimary}>Contact Info</Text>
+      <Text style={styles.headingPrimary}>{t("contactInfo")}</Text>
       <View style={styles.row}>
         <View style={styles.colLeft}>
           <Text>Tel:</Text>

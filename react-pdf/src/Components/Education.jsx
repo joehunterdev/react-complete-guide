@@ -1,13 +1,14 @@
 import React from "react";
-import { Text, View, StyleSheet,Font } from "@react-pdf/renderer";
+import { Text, View, StyleSheet, Font } from "@react-pdf/renderer";
 
 import TitilliumWebBlack from "../assets/fonts/TitilliumWeb-Black.ttf";
+
+import { useTranslation } from "react-i18next";
 
 Font.register({
   family: "TitilliumWeb-Black",
   src: TitilliumWebBlack,
 });
-
 
 //Secondary title font
 import TitilliumWebSemiBold from "../assets/fonts/TitilliumWeb-SemiBold.ttf";
@@ -51,10 +52,11 @@ const styles = StyleSheet.create({
   },
   headingTitled: {
     fontWeight: 800,
-  }
+  },
 });
 
 const Education = ({ education }) => {
+  const { t, i18n } = useTranslation();
   if (!education || education.length === 0) {
     return null;
   }
@@ -62,7 +64,7 @@ const Education = ({ education }) => {
     <>
       <View style={styles.containerEducation} wrap={false}>
         <View style={styles.containerAwardedHeading}>
-          <Text>Awarded</Text>
+          <Text>{t("awarded")}</Text>
         </View>
         {education.map((item, index) => (
           <View key={index} style={styles.containerColInner}>

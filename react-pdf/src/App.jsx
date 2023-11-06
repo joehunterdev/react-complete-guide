@@ -126,7 +126,7 @@ const App = () => {
                 summary={experience.summary}
               />
             ))}
-            <Text style={styles.headingPrimary}>Education</Text>
+            <Text style={styles.headingPrimary}>{t("education")}</Text>
             <Education education={education} certification={certification} />
             <Certificates certification={certification} />
           </Page>

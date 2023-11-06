@@ -3,7 +3,7 @@ import { View, StyleSheet, Image, Text, Font } from "@react-pdf/renderer";
 import ProfileImage from "../assets/image/cv-square_300x300.jpg";
 import headerBackground from "../assets/image/code-bkg.jpg";
 import HeaderIcon from "./HeaderIcon";
-
+import { useTranslation } from "react-i18next";
 import FacebookIcon from "../assets/image/facebook.png";
 import GitHubIcon from "../assets/image/github.png";
 import LinkedInIcon from "../assets/image/linkedin.png";
@@ -77,47 +77,51 @@ const styles = StyleSheet.create({
 });
 
 // Define your component
-const Header = () => (
-  <>
-    <View style={styles.headerBackgroundContainer}>
-      <Image src={headerBackground} style={{ height: "100%" }} />
-    </View>
-    <View style={{ top: "0px", ...styles.container }}>
-      <View style={styles.profileImageContainer}>
-        <Image style={styles.borderCircle} src={ProfileImage} />
+const Header = () => {
+  const { t, i18n } = useTranslation();
+
+  return (
+    <>
+      <View style={styles.headerBackgroundContainer}>
+        <Image src={headerBackground} style={{ height: "100%" }} />
       </View>
-      <View>
-        <View>
-          <Text style={styles.headingPrimary}>Joe Hunter</Text>
+      <View style={{ top: "0px", ...styles.container }}>
+        <View style={styles.profileImageContainer}>
+          <Image style={styles.borderCircle} src={ProfileImage} />
         </View>
         <View>
-          <Text style={styles.headingSecondary}>Web Developer</Text>
-        </View>
-        <View style={styles.containerIcons}>
-          <View style={{ flexDirection: "row", justifyContent: "center" }}>
-            <HeaderIcon
-              platformName="GitHub"
-              url="https://github.com/joehunterdev"
-              icon={GitHubIcon}
-              imageUrl="https://img.icons8.com/material/200/03f8bd/facebook.png"
-            />
-            <HeaderIcon
-              platformName="Facebook"
-              url="https://www.facebook.com/joe.hunter.dev"
-              icon={FacebookIcon}
-              imageUrl="https://img.icons8.com/material/96/03f8bd/facebook.png"
-            />
-            <HeaderIcon
-              platformName="LinkedIn"
-              url="https://www.linkedin.com/in/joseph-hunter-594832220/"
-              icon={LinkedInIcon}
-              imageUrl="https://img.icons8.com/material/96/03f8bd/linkedin.png"
-            />
+          <View>
+            <Text style={styles.headingPrimary}>Joe Hunter</Text>
+          </View>
+          <View>
+            <Text style={styles.headingSecondary}>{t("myProfession")}</Text>
+          </View>
+          <View style={styles.containerIcons}>
+            <View style={{ flexDirection: "row", justifyContent: "center" }}>
+              <HeaderIcon
+                platformName="GitHub"
+                url="https://github.com/joehunterdev"
+                icon={GitHubIcon}
+                imageUrl="https://img.icons8.com/material/200/03f8bd/facebook.png"
+              />
+              <HeaderIcon
+                platformName="Facebook"
+                url="https://www.facebook.com/joe.hunter.dev"
+                icon={FacebookIcon}
+                imageUrl="https://img.icons8.com/material/96/03f8bd/facebook.png"
+              />
+              <HeaderIcon
+                platformName="LinkedIn"
+                url="https://www.linkedin.com/in/joseph-hunter-594832220/"
+                icon={LinkedInIcon}
+                imageUrl="https://img.icons8.com/material/96/03f8bd/linkedin.png"
+              />
+            </View>
           </View>
         </View>
       </View>
-    </View>
-  </>
-);
+    </>
+  );
+};
 
 export default Header;

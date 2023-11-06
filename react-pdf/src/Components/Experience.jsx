@@ -1,22 +1,11 @@
 import React from "react";
-import { Text, View, Image, StyleSheet } from "@react-pdf/renderer";
+import { Text, View, Image, StyleSheet,Font } from "@react-pdf/renderer";
 import { cleanText } from "../util/utils";
-import { Font } from "@react-pdf/renderer";
-import  SourceCode from "../assets/image/source-code.png";
-import  Services from "../assets/image/services.png";
-import  Console from "../assets/image/console.png";
+import SourceCode from "../assets/image/source-code.png";
+import Services from "../assets/image/services.png";
+import Console from "../assets/image/console.png";
+import { useTranslation } from "react-i18next";
 
-// Font.register({
-//   family: "TitilliumWeb-SemiBold",
-//   src: "https://fonts.gstatic.com/s/titilliumweb/v9/NaPDcZTIAOhVxoMyOr9n_E7ffAzHKIw.ttf",
-//   fontWeight: "400",
-// });
-
-// Font.register({
-//   family: "TitilliumWeb-Black",
-//   src: "https://fonts.gstatic.com/s/titilliumweb/v9/NaPDcZTIAOhVxoMyOr9n_E7ffAzHKIw.ttf",
-//   fontWeight: "900",
-// });
 
 import TitilliumWebBlack from "../assets/fonts/TitilliumWeb-Black.ttf";
 
@@ -40,22 +29,18 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontFamily: "TitilliumWeb-SemiBold",
     fontWeight: 600,
-    // letterSpacing: 0.7,
-    // lineHeight: 1,
   },
   containerExperience: {
     margin: 10,
     backgroundColor: "rgba(0, 0, 0, 0.4)",
     fontSize: 12,
-    //padding: 4,
   },
   containerCols: {
     flexDirection: "row",
-    paddingTop:0,
+    paddingTop: 0,
     paddingLeft: 10,
     paddingRight: 10,
-    paddingBottom:10,
-
+    paddingBottom: 10,
   },
   col: {
     flexGrow: 4,
@@ -105,6 +90,7 @@ const styles = StyleSheet.create({
 });
 
 const Experience = ({ period, title, company, description, summary }) => {
+  const { t, i18n } = useTranslation();
   return (
     <View style={styles.containerExperience} wrap={false}>
       <View style={styles.containerPositionHeading}>
@@ -125,7 +111,7 @@ const Experience = ({ period, title, company, description, summary }) => {
       <View style={styles.containerCols}>
         <View style={styles.col}>
           <View style={styles.containerListHeading}>
-            <Text>Design:</Text>
+            <Text>{t("design")}:</Text>
             <Image
               // src="https://img.icons8.com/material/200/ffffff/source-code.png"
               src={SourceCode}
@@ -143,11 +129,10 @@ const Experience = ({ period, title, company, description, summary }) => {
         </View>
         <View style={styles.col}>
           <View style={styles.containerListHeading}>
-            <Text>Solutions:</Text>
+            <Text>{t("solutions")}:</Text>
             <Image
               // src="https://img.icons8.com/material/200/ffffff/services.png"
-               src={Services}
-
+              src={Services}
               style={styles.icon}
             />
           </View>
@@ -162,7 +147,7 @@ const Experience = ({ period, title, company, description, summary }) => {
         </View>
         <View style={styles.col}>
           <View style={styles.containerListHeading}>
-            <Text>Management:</Text>
+            <Text>{t("management")}:</Text>
             <Image
               // src="https://img.icons8.com/material/200/ffffff/console.png"
               src={Console}

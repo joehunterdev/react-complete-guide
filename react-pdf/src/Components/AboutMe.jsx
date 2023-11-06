@@ -2,7 +2,8 @@ import React from "react";
 import { Text, View, Link, StyleSheet, Font } from "@react-pdf/renderer";
 import { cleanText } from "../util/utils";
 import ContactInfo from "./ContactInfo";
-//Primary Bold Font
+import { useTranslation } from "react-i18next";
+ //Primary Bold Font
 import TitilliumWebBlack from "../assets/fonts/TitilliumWeb-Black.ttf";
 
 Font.register({
@@ -55,10 +56,13 @@ const styles = StyleSheet.create({
 });
 
 const AboutMe = ({ aboutDescription, contactInfo }) => {
+
+  const { t, i18n } = useTranslation();
+
   return (
     <View style={styles.container}>
       <View style={styles.containerAbout}>
-        <Text style={styles.headingPrimary}>About me</Text>
+        <Text style={styles.headingPrimary}>{t("aboutMe")}</Text>
         <View style={styles.containerAboutDescription}>
           <Text style={styles.textBody}>{cleanText(aboutDescription)}</Text>
         </View>
